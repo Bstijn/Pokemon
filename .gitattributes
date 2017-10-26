@@ -1,5 +1,5 @@
 #ignores metadatefile
-00/ export-ignore
+/Library/ export-ignore
 
 #Auto detect text files and perform LF normalization
 * text=auto
