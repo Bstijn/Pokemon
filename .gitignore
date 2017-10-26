@@ -37,11 +37,3 @@ sysinfo.txt
 Library/metadata/00/00000000000000008000000000000000
 *.csproj
 Library/
-Library/metadata/00/00000000000000005100000000000000
-Library/metadata/00/0000000000000000c000000000000000
-Library/metadata/00/0000000000000000e100000000000000
-*.mdb
-obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-*.asset
-Library/assetDatabase3
-*.csproj
