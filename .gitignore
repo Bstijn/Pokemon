@@ -37,3 +37,4 @@ sysinfo.txt
 Library/metadata/00/00000000000000008000000000000000
 *.csproj
 Library/
+*.asset
