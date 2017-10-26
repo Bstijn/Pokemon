@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{443AEE82-87C1-8211-D5BC-E3CA1CC4F237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "..\Classes\Classes.csproj", "{564DA5AA-C690-4456-A107-0C2824E0292E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{564DA5AA-C690-4456-A107-0C2824E0292E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

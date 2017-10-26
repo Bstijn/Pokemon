@@ -53,6 +53,8 @@
     <Compile Include="EnemyHQ.cs" />
     <Compile Include="Gym.cs" />
     <Compile Include="Gymleader.cs" />
+    <Compile Include="IItemUser.cs" />
+    <Compile Include="ISellBuy.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="KeyItem.cs" />
     <Compile Include="Location.cs" />
