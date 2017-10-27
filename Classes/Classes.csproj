@@ -58,6 +58,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="KeyItem.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Move.cs" />
     <Compile Include="NonConsumable.cs" />
     <Compile Include="Nurse.cs" />
     <Compile Include="Oppenent.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="PokedexPokemon.cs" />
     <Compile Include="Pokemart.cs" />
     <Compile Include="Pokemon.cs" />
+    <Compile Include="PokemonMoves.cs" />
     <Compile Include="Possesion.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
