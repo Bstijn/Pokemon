@@ -1,34 +1,34 @@
 fileFormatVersion: 2
-guid: d0154d03aad828e44addaf967c07e96b
-timeCreated: 1509087852
+guid: 783fe5aabb7a7514499fa1520f92e2ff
+timeCreated: 1509087810
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PokeCenter_0
-    21300002: PokeCenter_1
-    21300004: PokeCenter_2
-    21300006: PokeCenter_3
-    21300008: PokeCenter_4
-    21300010: PokeCenter_5
-    21300012: PokeCenter_6
-    21300014: PokeCenter_7
-    21300016: PokeCenter_8
-    21300018: PokeCenter_9
-    21300020: PokeCenter_10
-    21300022: PokeCenter_11
-    21300024: PokeCenter_12
-    21300026: PokeCenter_13
-    21300028: PokeCenter_14
-    21300030: PokeCenter_15
-    21300032: PokeCenter_16
-    21300034: PokeCenter_17
-    21300036: PokeCenter_18
-    21300038: PokeCenter_19
-    21300040: PokeCenter_20
-    21300042: PokeCenter_21
-    21300044: PokeCenter_22
-    21300046: PokeCenter_23
-    21300048: PokeCenter_24
+    21300000: House_Red_0
+    21300002: House_Red_1
+    21300004: House_Red_2
+    21300006: House_Red_3
+    21300008: House_Red_4
+    21300010: House_Red_5
+    21300012: House_Red_6
+    21300014: House_Red_7
+    21300016: House_Red_8
+    21300018: House_Red_9
+    21300020: House_Red_10
+    21300022: House_Red_11
+    21300024: House_Red_12
+    21300026: House_Red_13
+    21300028: House_Red_14
+    21300030: House_Red_15
+    21300032: House_Red_16
+    21300034: House_Red_17
+    21300036: House_Red_18
+    21300038: House_Red_19
+    21300040: House_Red_20
+    21300042: House_Red_21
+    21300044: House_Red_22
+    21300046: House_Red_23
+    21300048: House_Red_24
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -70,7 +70,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 16
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PokeCenter_0
+      name: House_Red_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 69
+        x: 1
+        y: 61
         width: 16
-        height: 6
+        height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,13 +114,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_1
+      name: House_Red_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 69
+        x: 18
+        y: 61
         width: 16
-        height: 6
+        height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,13 +128,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_2
+      name: House_Red_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 69
+        x: 35
+        y: 61
         width: 16
-        height: 6
+        height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,13 +142,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_3
+      name: House_Red_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 69
+        x: 52
+        y: 61
         width: 16
-        height: 6
+        height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,13 +156,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_4
+      name: House_Red_4
       rect:
         serializedVersion: 2
-        x: 68
-        y: 69
+        x: 69
+        y: 61
         width: 16
-        height: 6
+        height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,25 +170,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_5
+      name: House_Red_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 52
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_6
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 52
+        x: 1
+        y: 44
         width: 16
         height: 16
       alignment: 6
@@ -198,11 +184,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_7
+      name: House_Red_6
       rect:
         serializedVersion: 2
-        x: 34
-        y: 52
+        x: 18
+        y: 44
         width: 16
         height: 16
       alignment: 6
@@ -212,11 +198,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_8
+      name: House_Red_7
       rect:
         serializedVersion: 2
-        x: 51
-        y: 52
+        x: 35
+        y: 44
         width: 16
         height: 16
       alignment: 6
@@ -226,11 +212,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_9
+      name: House_Red_8
       rect:
         serializedVersion: 2
-        x: 68
-        y: 52
+        x: 52
+        y: 44
         width: 16
         height: 16
       alignment: 6
@@ -240,11 +226,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_10
+      name: House_Red_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 35
+        x: 69
+        y: 44
         width: 16
         height: 16
       alignment: 6
@@ -254,11 +240,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_11
+      name: House_Red_10
       rect:
         serializedVersion: 2
-        x: 17
-        y: 35
+        x: 1
+        y: 27
         width: 16
         height: 16
       alignment: 6
@@ -268,11 +254,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_12
+      name: House_Red_11
       rect:
         serializedVersion: 2
-        x: 34
-        y: 35
+        x: 18
+        y: 27
         width: 16
         height: 16
       alignment: 6
@@ -282,11 +268,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_13
+      name: House_Red_12
       rect:
         serializedVersion: 2
-        x: 51
-        y: 35
+        x: 35
+        y: 27
         width: 16
         height: 16
       alignment: 6
@@ -296,11 +282,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_14
+      name: House_Red_13
       rect:
         serializedVersion: 2
-        x: 68
-        y: 35
+        x: 52
+        y: 27
         width: 16
         height: 16
       alignment: 6
@@ -310,11 +296,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_15
+      name: House_Red_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 18
+        x: 69
+        y: 27
         width: 16
         height: 16
       alignment: 6
@@ -324,11 +310,25 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_16
+      name: House_Red_15
       rect:
         serializedVersion: 2
-        x: 17
-        y: 18
+        x: 2
+        y: 10
+        width: 15
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: House_Red_16
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 10
         width: 16
         height: 16
       alignment: 6
@@ -338,11 +338,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_17
+      name: House_Red_17
       rect:
         serializedVersion: 2
-        x: 34
-        y: 18
+        x: 35
+        y: 10
         width: 16
         height: 16
       alignment: 6
@@ -352,11 +352,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_18
+      name: House_Red_18
       rect:
         serializedVersion: 2
-        x: 51
-        y: 18
+        x: 52
+        y: 10
         width: 16
         height: 16
       alignment: 6
@@ -366,11 +366,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_19
+      name: House_Red_19
       rect:
         serializedVersion: 2
-        x: 68
-        y: 18
+        x: 69
+        y: 10
         width: 16
         height: 16
       alignment: 6
@@ -380,13 +380,55 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_20
+      name: House_Red_20
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
+        y: 0
+        width: 15
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: House_Red_21
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 16
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: House_Red_22
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 16
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: House_Red_23
+      rect:
+        serializedVersion: 2
+        x: 52
         y: 1
         width: 16
-        height: 16
+        height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,55 +436,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_21
+      name: House_Red_24
       rect:
         serializedVersion: 2
-        x: 17
+        x: 69
         y: 1
         width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_22
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 1
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_23
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 1
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_24
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 1
-        width: 16
-        height: 16
+        height: 8
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

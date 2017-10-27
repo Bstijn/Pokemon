@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 478c2fe549720244da4cd137a73d4209
-timeCreated: 1507807104
+guid: 8d9949fba815e0744aa88996a97d3f88
+timeCreated: 1509090205
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Red_0
-    21300002: Red_1
-    21300004: Red_2
-    21300006: Red_3
+    21300000: Tree_Row_0
+    21300002: Tree_Row_1
+    21300004: Tree_Row_2
+    21300006: Tree_Row_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -38,18 +38,18 @@ TextureImporter:
     aniso: -1
     mipBias: -1
     wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapV: -1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 19
+  spritePixelsToUnits: 16
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -79,27 +79,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Red_0
+      name: Tree_Row_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
+        x: 1
+        y: 18
         width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Red_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 40
-        width: 16
-        height: 20
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -107,13 +93,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Red_2
+      name: Tree_Row_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
+        x: 18
+        y: 18
         width: 16
-        height: 20
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,26 +107,34 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Red_3
+      name: Tree_Row_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 1
         width: 16
-        height: 20
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
-    outline:
-    - - {x: -8, y: 40}
-      - {x: -8, y: -37}
-      - {x: -5, y: -40}
-      - {x: 4, y: -40}
-      - {x: 8, y: -33}
-      - {x: 8, y: 40}
+    - serializedVersion: 2
+      name: Tree_Row_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1
+        width: 16
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
     physicsShape: []
   spritePackingTag: 
   userData: 

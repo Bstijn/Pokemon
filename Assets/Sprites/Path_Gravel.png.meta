@@ -1,25 +1,21 @@
 fileFormatVersion: 2
-guid: 652b9aa5ddd415140b94d64cb7fe853d
-timeCreated: 1509087856
+guid: 4a293d150ddcfe74da90465c1a6db1e9
+timeCreated: 1509087833
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PokeMarkt_0
-    21300002: PokeMarkt_1
-    21300004: PokeMarkt_2
-    21300006: PokeMarkt_3
-    21300008: PokeMarkt_4
-    21300010: PokeMarkt_5
-    21300012: PokeMarkt_6
-    21300014: PokeMarkt_7
-    21300016: PokeMarkt_8
-    21300018: PokeMarkt_9
-    21300020: PokeMarkt_10
-    21300022: PokeMarkt_11
-    21300024: PokeMarkt_12
-    21300026: PokeMarkt_13
-    21300028: PokeMarkt_14
-    21300030: PokeMarkt_15
+    21300000: Path_Gravel_0
+    21300002: Path_Gravel_1
+    21300004: Path_Gravel_2
+    21300006: Path_Gravel_3
+    21300008: Path_Gravel_4
+    21300010: Path_Gravel_5
+    21300012: Path_Gravel_6
+    21300014: Path_Gravel_7
+    21300016: Path_Gravel_8
+    21300018: Path_Gravel_9
+    21300020: Path_Gravel_10
+    21300022: Path_Gravel_11
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -91,63 +87,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PokeMarkt_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 52
-        width: 16
-        height: 14
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_1
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 52
-        width: 16
-        height: 14
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_2
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 52
-        width: 16
-        height: 14
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_3
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 52
-        width: 16
-        height: 14
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_4
+      name: Path_Gravel_0
       rect:
         serializedVersion: 2
         x: 1
@@ -161,7 +101,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_5
+      name: Path_Gravel_1
       rect:
         serializedVersion: 2
         x: 18
@@ -175,7 +115,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_6
+      name: Path_Gravel_2
       rect:
         serializedVersion: 2
         x: 35
@@ -189,7 +129,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_7
+      name: Path_Gravel_3
       rect:
         serializedVersion: 2
         x: 52
@@ -203,7 +143,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_8
+      name: Path_Gravel_4
       rect:
         serializedVersion: 2
         x: 1
@@ -217,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_9
+      name: Path_Gravel_5
       rect:
         serializedVersion: 2
         x: 18
@@ -231,7 +171,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_10
+      name: Path_Gravel_6
       rect:
         serializedVersion: 2
         x: 35
@@ -245,7 +185,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_11
+      name: Path_Gravel_7
       rect:
         serializedVersion: 2
         x: 52
@@ -259,7 +199,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_12
+      name: Path_Gravel_8
       rect:
         serializedVersion: 2
         x: 1
@@ -273,7 +213,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_13
+      name: Path_Gravel_9
       rect:
         serializedVersion: 2
         x: 18
@@ -287,7 +227,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_14
+      name: Path_Gravel_10
       rect:
         serializedVersion: 2
         x: 35
@@ -301,7 +241,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_15
+      name: Path_Gravel_11
       rect:
         serializedVersion: 2
         x: 52

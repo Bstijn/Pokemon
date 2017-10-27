@@ -1,25 +1,21 @@
 fileFormatVersion: 2
-guid: 652b9aa5ddd415140b94d64cb7fe853d
-timeCreated: 1509087856
+guid: 30946c061644d7749bda67175172ce25
+timeCreated: 1509087819
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PokeMarkt_0
-    21300002: PokeMarkt_1
-    21300004: PokeMarkt_2
-    21300006: PokeMarkt_3
-    21300008: PokeMarkt_4
-    21300010: PokeMarkt_5
-    21300012: PokeMarkt_6
-    21300014: PokeMarkt_7
-    21300016: PokeMarkt_8
-    21300018: PokeMarkt_9
-    21300020: PokeMarkt_10
-    21300022: PokeMarkt_11
-    21300024: PokeMarkt_12
-    21300026: PokeMarkt_13
-    21300028: PokeMarkt_14
-    21300030: PokeMarkt_15
+    21300000: Path_Concrete_0
+    21300002: Path_Concrete_1
+    21300004: Path_Concrete_2
+    21300006: Path_Concrete_3
+    21300008: Path_Concrete_4
+    21300010: Path_Concrete_5
+    21300012: Path_Concrete_6
+    21300014: Path_Concrete_7
+    21300016: Path_Concrete_8
+    21300018: Path_Concrete_9
+    21300020: Path_Concrete_10
+    21300022: Path_Concrete_11
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -91,13 +87,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PokeMarkt_0
+      name: Path_Concrete_0
       rect:
         serializedVersion: 2
         x: 1
-        y: 52
+        y: 34
         width: 16
-        height: 14
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -105,13 +101,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_1
+      name: Path_Concrete_1
       rect:
         serializedVersion: 2
         x: 18
-        y: 52
+        y: 34
         width: 16
-        height: 14
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,13 +115,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_2
+      name: Path_Concrete_2
       rect:
         serializedVersion: 2
         x: 35
-        y: 52
+        y: 34
         width: 16
-        height: 14
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,13 +129,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_3
+      name: Path_Concrete_3
       rect:
         serializedVersion: 2
         x: 52
-        y: 52
+        y: 34
         width: 16
-        height: 14
+        height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,11 +143,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_4
+      name: Path_Concrete_4
       rect:
         serializedVersion: 2
         x: 1
-        y: 35
+        y: 17
         width: 16
         height: 16
       alignment: 6
@@ -161,11 +157,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_5
+      name: Path_Concrete_5
       rect:
         serializedVersion: 2
         x: 18
-        y: 35
+        y: 17
         width: 16
         height: 16
       alignment: 6
@@ -175,11 +171,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_6
+      name: Path_Concrete_6
       rect:
         serializedVersion: 2
         x: 35
-        y: 35
+        y: 17
         width: 16
         height: 16
       alignment: 6
@@ -189,11 +185,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_7
+      name: Path_Concrete_7
       rect:
         serializedVersion: 2
         x: 52
-        y: 35
+        y: 17
         width: 16
         height: 16
       alignment: 6
@@ -203,69 +199,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_8
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_9
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_10
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_11
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeMarkt_12
+      name: Path_Concrete_8
       rect:
         serializedVersion: 2
         x: 1
         y: 1
         width: 16
-        height: 16
+        height: 15
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,13 +213,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_13
+      name: Path_Concrete_9
       rect:
         serializedVersion: 2
         x: 18
         y: 1
         width: 16
-        height: 16
+        height: 15
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,13 +227,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_14
+      name: Path_Concrete_10
       rect:
         serializedVersion: 2
         x: 35
         y: 1
         width: 16
-        height: 16
+        height: 15
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,13 +241,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeMarkt_15
+      name: Path_Concrete_11
       rect:
         serializedVersion: 2
         x: 52
         y: 1
         width: 16
-        height: 16
+        height: 15
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

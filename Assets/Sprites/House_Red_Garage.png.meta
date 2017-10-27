@@ -1,34 +1,24 @@
 fileFormatVersion: 2
-guid: d0154d03aad828e44addaf967c07e96b
-timeCreated: 1509087852
+guid: 7a5b5702e0af7e74eb0854712d42957f
+timeCreated: 1509087814
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PokeCenter_0
-    21300002: PokeCenter_1
-    21300004: PokeCenter_2
-    21300006: PokeCenter_3
-    21300008: PokeCenter_4
-    21300010: PokeCenter_5
-    21300012: PokeCenter_6
-    21300014: PokeCenter_7
-    21300016: PokeCenter_8
-    21300018: PokeCenter_9
-    21300020: PokeCenter_10
-    21300022: PokeCenter_11
-    21300024: PokeCenter_12
-    21300026: PokeCenter_13
-    21300028: PokeCenter_14
-    21300030: PokeCenter_15
-    21300032: PokeCenter_16
-    21300034: PokeCenter_17
-    21300036: PokeCenter_18
-    21300038: PokeCenter_19
-    21300040: PokeCenter_20
-    21300042: PokeCenter_21
-    21300044: PokeCenter_22
-    21300046: PokeCenter_23
-    21300048: PokeCenter_24
+    21300000: House_Red_Garage_0
+    21300002: House_Red_Garage_1
+    21300004: House_Red_Garage_2
+    21300006: House_Red_Garage_3
+    21300008: House_Red_Garage_4
+    21300010: House_Red_Garage_5
+    21300012: House_Red_Garage_6
+    21300014: House_Red_Garage_7
+    21300016: House_Red_Garage_8
+    21300018: House_Red_Garage_9
+    21300020: House_Red_Garage_10
+    21300022: House_Red_Garage_11
+    21300024: House_Red_Garage_12
+    21300026: House_Red_Garage_13
+    21300028: House_Red_Garage_14
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -100,11 +90,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PokeCenter_0
+      name: House_Red_Garage_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 69
+        x: 1
+        y: 55
         width: 16
         height: 6
       alignment: 6
@@ -114,11 +104,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_1
+      name: House_Red_Garage_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 69
+        x: 18
+        y: 55
         width: 16
         height: 6
       alignment: 6
@@ -128,11 +118,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_2
+      name: House_Red_Garage_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 69
+        x: 35
+        y: 55
         width: 16
         height: 6
       alignment: 6
@@ -142,12 +132,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_3
+      name: House_Red_Garage_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 69
-        width: 16
+        x: 52
+        y: 55
+        width: 20
         height: 6
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -156,25 +146,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_4
+      name: House_Red_Garage_4
       rect:
         serializedVersion: 2
-        x: 68
-        y: 69
-        width: 16
-        height: 6
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 52
+        x: 1
+        y: 38
         width: 16
         height: 16
       alignment: 6
@@ -184,11 +160,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_6
+      name: House_Red_Garage_5
       rect:
         serializedVersion: 2
-        x: 17
-        y: 52
+        x: 18
+        y: 38
         width: 16
         height: 16
       alignment: 6
@@ -198,11 +174,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_7
+      name: House_Red_Garage_6
       rect:
         serializedVersion: 2
-        x: 34
-        y: 52
+        x: 35
+        y: 38
         width: 16
         height: 16
       alignment: 6
@@ -212,12 +188,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_8
+      name: House_Red_Garage_7
       rect:
         serializedVersion: 2
-        x: 51
-        y: 52
-        width: 16
+        x: 52
+        y: 38
+        width: 20
         height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -226,167 +202,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_9
+      name: House_Red_Garage_8
       rect:
         serializedVersion: 2
-        x: 68
-        y: 52
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 35
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_11
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 35
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_12
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 35
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_13
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 35
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_14
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 35
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_15
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_16
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_17
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_18
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_19
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 18
-        width: 16
-        height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: PokeCenter_20
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 1
         y: 1
         width: 16
-        height: 16
+        height: 36
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,11 +216,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_21
+      name: House_Red_Garage_9
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1
+        x: 18
+        y: 21
         width: 16
         height: 16
       alignment: 6
@@ -408,11 +230,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_22
+      name: House_Red_Garage_10
       rect:
         serializedVersion: 2
-        x: 34
-        y: 1
+        x: 35
+        y: 21
         width: 16
         height: 16
       alignment: 6
@@ -422,12 +244,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_23
+      name: House_Red_Garage_11
       rect:
         serializedVersion: 2
-        x: 51
-        y: 1
-        width: 16
+        x: 52
+        y: 21
+        width: 20
         height: 16
       alignment: 6
       pivot: {x: 0, y: 0}
@@ -436,13 +258,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PokeCenter_24
+      name: House_Red_Garage_12
       rect:
         serializedVersion: 2
-        x: 68
+        x: 18
         y: 1
         width: 16
-        height: 16
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: House_Red_Garage_13
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1
+        width: 16
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: House_Red_Garage_14
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1
+        width: 19
+        height: 19
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
