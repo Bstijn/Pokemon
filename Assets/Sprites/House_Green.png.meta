@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cd8d576711825e54f844d897332a962b
-timeCreated: 1509087778
+timeCreated: 1509530822
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,6 +28,7 @@ TextureImporter:
     21300042: House_Green_21
     21300044: House_Green_22
     21300046: House_Green_23
+  externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -81,6 +82,7 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -89,6 +91,7 @@ TextureImporter:
     overridden: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -103,10 +106,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 61
+        y: 69
         width: 16
-        height: 8
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -117,10 +120,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 18
-        y: 61
+        y: 69
         width: 16
-        height: 8
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -131,10 +134,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 35
-        y: 61
+        y: 69
         width: 16
-        height: 8
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -145,10 +148,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 61
+        y: 69
         width: 16
-        height: 8
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -159,10 +162,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 61
+        y: 69
         width: 16
-        height: 8
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -173,10 +176,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 44
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -187,10 +190,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 18
-        y: 44
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -201,10 +204,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 35
-        y: 44
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -215,10 +218,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 44
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -229,10 +232,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 44
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -243,10 +246,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 27
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -257,10 +260,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 18
-        y: 27
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -271,10 +274,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 35
-        y: 27
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -285,10 +288,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 27
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -299,10 +302,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 27
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -312,11 +315,11 @@ TextureImporter:
       name: House_Green_15
       rect:
         serializedVersion: 2
-        x: 2
-        y: 10
-        width: 15
+        x: 1
+        y: 18
+        width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -327,10 +330,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 18
-        y: 10
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -341,10 +344,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 35
-        y: 10
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -355,10 +358,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 10
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -369,10 +372,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 10
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -382,11 +385,11 @@ TextureImporter:
       name: House_Green_20
       rect:
         serializedVersion: 2
-        x: 2
+        x: 1
         y: 1
-        width: 15
-        height: 8
-      alignment: 6
+        width: 16
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -399,8 +402,8 @@ TextureImporter:
         x: 35
         y: 1
         width: 16
-        height: 8
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -413,8 +416,8 @@ TextureImporter:
         x: 52
         y: 1
         width: 16
-        height: 8
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -426,9 +429,9 @@ TextureImporter:
         serializedVersion: 2
         x: 69
         y: 1
-        width: 15
-        height: 8
-      alignment: 6
+        width: 16
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []

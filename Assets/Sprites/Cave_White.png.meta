@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2aed1476504800f4db638c5ceaa6f362
-timeCreated: 1509087763
+timeCreated: 1509530972
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -83,6 +83,7 @@ TextureImporter:
     21300152: Cave_White_76
     21300154: Cave_White_77
     21300156: Cave_White_78
+  externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -136,6 +137,7 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -144,6 +146,7 @@ TextureImporter:
     overridden: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -157,11 +160,11 @@ TextureImporter:
       name: Cave_White_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 103
+        x: 1
+        y: 102
         width: 15
         height: 33
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -171,11 +174,11 @@ TextureImporter:
       name: Cave_White_1
       rect:
         serializedVersion: 2
-        x: 18
-        y: 120
+        x: 17
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -185,11 +188,11 @@ TextureImporter:
       name: Cave_White_2
       rect:
         serializedVersion: 2
-        x: 35
-        y: 120
+        x: 34
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -199,11 +202,11 @@ TextureImporter:
       name: Cave_White_3
       rect:
         serializedVersion: 2
-        x: 52
-        y: 120
+        x: 51
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -213,11 +216,11 @@ TextureImporter:
       name: Cave_White_4
       rect:
         serializedVersion: 2
-        x: 69
-        y: 120
+        x: 68
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -227,11 +230,11 @@ TextureImporter:
       name: Cave_White_5
       rect:
         serializedVersion: 2
-        x: 86
-        y: 120
+        x: 85
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -241,11 +244,11 @@ TextureImporter:
       name: Cave_White_6
       rect:
         serializedVersion: 2
-        x: 103
-        y: 120
+        x: 102
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -255,11 +258,11 @@ TextureImporter:
       name: Cave_White_7
       rect:
         serializedVersion: 2
-        x: 120
-        y: 120
+        x: 119
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -269,11 +272,11 @@ TextureImporter:
       name: Cave_White_8
       rect:
         serializedVersion: 2
-        x: 137
-        y: 120
+        x: 136
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -283,11 +286,11 @@ TextureImporter:
       name: Cave_White_9
       rect:
         serializedVersion: 2
-        x: 154
-        y: 120
+        x: 153
+        y: 119
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -297,11 +300,11 @@ TextureImporter:
       name: Cave_White_10
       rect:
         serializedVersion: 2
-        x: 18
-        y: 103
+        x: 17
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -311,11 +314,11 @@ TextureImporter:
       name: Cave_White_11
       rect:
         serializedVersion: 2
-        x: 35
-        y: 103
+        x: 34
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -325,11 +328,11 @@ TextureImporter:
       name: Cave_White_12
       rect:
         serializedVersion: 2
-        x: 52
-        y: 103
+        x: 51
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -339,11 +342,11 @@ TextureImporter:
       name: Cave_White_13
       rect:
         serializedVersion: 2
-        x: 69
-        y: 103
+        x: 68
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -353,11 +356,11 @@ TextureImporter:
       name: Cave_White_14
       rect:
         serializedVersion: 2
-        x: 86
-        y: 103
+        x: 85
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -367,11 +370,11 @@ TextureImporter:
       name: Cave_White_15
       rect:
         serializedVersion: 2
-        x: 103
-        y: 103
+        x: 102
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -381,11 +384,11 @@ TextureImporter:
       name: Cave_White_16
       rect:
         serializedVersion: 2
-        x: 120
-        y: 103
+        x: 119
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -395,11 +398,11 @@ TextureImporter:
       name: Cave_White_17
       rect:
         serializedVersion: 2
-        x: 137
-        y: 103
+        x: 136
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -409,11 +412,11 @@ TextureImporter:
       name: Cave_White_18
       rect:
         serializedVersion: 2
-        x: 154
-        y: 103
+        x: 153
+        y: 102
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -423,11 +426,11 @@ TextureImporter:
       name: Cave_White_19
       rect:
         serializedVersion: 2
-        x: 2
-        y: 86
+        x: 1
+        y: 85
         width: 15
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -437,11 +440,11 @@ TextureImporter:
       name: Cave_White_20
       rect:
         serializedVersion: 2
-        x: 18
-        y: 86
+        x: 17
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -451,11 +454,11 @@ TextureImporter:
       name: Cave_White_21
       rect:
         serializedVersion: 2
-        x: 35
-        y: 86
+        x: 34
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -465,11 +468,11 @@ TextureImporter:
       name: Cave_White_22
       rect:
         serializedVersion: 2
-        x: 52
-        y: 86
+        x: 51
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -479,11 +482,11 @@ TextureImporter:
       name: Cave_White_23
       rect:
         serializedVersion: 2
-        x: 69
-        y: 86
+        x: 68
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -493,11 +496,11 @@ TextureImporter:
       name: Cave_White_24
       rect:
         serializedVersion: 2
-        x: 86
-        y: 86
+        x: 85
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -507,11 +510,11 @@ TextureImporter:
       name: Cave_White_25
       rect:
         serializedVersion: 2
-        x: 103
-        y: 86
+        x: 102
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -521,11 +524,11 @@ TextureImporter:
       name: Cave_White_26
       rect:
         serializedVersion: 2
-        x: 120
-        y: 86
+        x: 119
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -535,11 +538,11 @@ TextureImporter:
       name: Cave_White_27
       rect:
         serializedVersion: 2
-        x: 137
-        y: 86
+        x: 136
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -549,11 +552,11 @@ TextureImporter:
       name: Cave_White_28
       rect:
         serializedVersion: 2
-        x: 154
-        y: 86
+        x: 153
+        y: 85
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -563,11 +566,11 @@ TextureImporter:
       name: Cave_White_29
       rect:
         serializedVersion: 2
-        x: 2
-        y: 69
+        x: 1
+        y: 68
         width: 15
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -577,11 +580,11 @@ TextureImporter:
       name: Cave_White_30
       rect:
         serializedVersion: 2
-        x: 18
-        y: 69
+        x: 17
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -591,11 +594,11 @@ TextureImporter:
       name: Cave_White_31
       rect:
         serializedVersion: 2
-        x: 35
-        y: 69
+        x: 34
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -605,11 +608,11 @@ TextureImporter:
       name: Cave_White_32
       rect:
         serializedVersion: 2
-        x: 52
-        y: 69
+        x: 51
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -619,11 +622,11 @@ TextureImporter:
       name: Cave_White_33
       rect:
         serializedVersion: 2
-        x: 69
-        y: 69
+        x: 68
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -633,11 +636,11 @@ TextureImporter:
       name: Cave_White_34
       rect:
         serializedVersion: 2
-        x: 86
-        y: 69
+        x: 85
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -647,11 +650,11 @@ TextureImporter:
       name: Cave_White_35
       rect:
         serializedVersion: 2
-        x: 103
-        y: 69
+        x: 102
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -661,11 +664,11 @@ TextureImporter:
       name: Cave_White_36
       rect:
         serializedVersion: 2
-        x: 120
-        y: 69
+        x: 119
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -675,11 +678,11 @@ TextureImporter:
       name: Cave_White_37
       rect:
         serializedVersion: 2
-        x: 137
-        y: 69
+        x: 136
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -689,11 +692,11 @@ TextureImporter:
       name: Cave_White_38
       rect:
         serializedVersion: 2
-        x: 154
-        y: 69
+        x: 153
+        y: 68
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -703,11 +706,11 @@ TextureImporter:
       name: Cave_White_39
       rect:
         serializedVersion: 2
-        x: 2
-        y: 52
+        x: 1
+        y: 51
         width: 15
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -717,11 +720,11 @@ TextureImporter:
       name: Cave_White_40
       rect:
         serializedVersion: 2
-        x: 18
-        y: 52
+        x: 17
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -731,11 +734,11 @@ TextureImporter:
       name: Cave_White_41
       rect:
         serializedVersion: 2
-        x: 35
-        y: 52
+        x: 34
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -745,11 +748,11 @@ TextureImporter:
       name: Cave_White_42
       rect:
         serializedVersion: 2
-        x: 52
-        y: 52
+        x: 51
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -759,11 +762,11 @@ TextureImporter:
       name: Cave_White_43
       rect:
         serializedVersion: 2
-        x: 69
-        y: 52
+        x: 68
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -773,11 +776,11 @@ TextureImporter:
       name: Cave_White_44
       rect:
         serializedVersion: 2
-        x: 86
-        y: 52
+        x: 85
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -787,11 +790,11 @@ TextureImporter:
       name: Cave_White_45
       rect:
         serializedVersion: 2
-        x: 103
-        y: 52
+        x: 102
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -801,11 +804,11 @@ TextureImporter:
       name: Cave_White_46
       rect:
         serializedVersion: 2
-        x: 120
-        y: 52
+        x: 119
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -815,11 +818,11 @@ TextureImporter:
       name: Cave_White_47
       rect:
         serializedVersion: 2
-        x: 137
-        y: 52
+        x: 136
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -829,11 +832,11 @@ TextureImporter:
       name: Cave_White_48
       rect:
         serializedVersion: 2
-        x: 154
-        y: 52
+        x: 153
+        y: 51
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -843,11 +846,11 @@ TextureImporter:
       name: Cave_White_49
       rect:
         serializedVersion: 2
-        x: 2
-        y: 35
+        x: 1
+        y: 34
         width: 15
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -857,11 +860,11 @@ TextureImporter:
       name: Cave_White_50
       rect:
         serializedVersion: 2
-        x: 18
-        y: 35
+        x: 17
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -871,11 +874,11 @@ TextureImporter:
       name: Cave_White_51
       rect:
         serializedVersion: 2
-        x: 35
-        y: 35
+        x: 34
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -885,11 +888,11 @@ TextureImporter:
       name: Cave_White_52
       rect:
         serializedVersion: 2
-        x: 52
-        y: 35
+        x: 51
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -899,11 +902,11 @@ TextureImporter:
       name: Cave_White_53
       rect:
         serializedVersion: 2
-        x: 69
-        y: 35
+        x: 68
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -913,11 +916,11 @@ TextureImporter:
       name: Cave_White_54
       rect:
         serializedVersion: 2
-        x: 86
-        y: 35
+        x: 85
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -927,11 +930,11 @@ TextureImporter:
       name: Cave_White_55
       rect:
         serializedVersion: 2
-        x: 103
-        y: 35
+        x: 102
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -941,11 +944,11 @@ TextureImporter:
       name: Cave_White_56
       rect:
         serializedVersion: 2
-        x: 120
-        y: 35
+        x: 119
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -955,11 +958,11 @@ TextureImporter:
       name: Cave_White_57
       rect:
         serializedVersion: 2
-        x: 137
-        y: 35
+        x: 136
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -969,11 +972,11 @@ TextureImporter:
       name: Cave_White_58
       rect:
         serializedVersion: 2
-        x: 154
-        y: 35
+        x: 153
+        y: 34
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -983,11 +986,11 @@ TextureImporter:
       name: Cave_White_59
       rect:
         serializedVersion: 2
-        x: 2
-        y: 18
+        x: 1
+        y: 17
         width: 15
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -997,11 +1000,11 @@ TextureImporter:
       name: Cave_White_60
       rect:
         serializedVersion: 2
-        x: 18
-        y: 18
+        x: 17
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1011,11 +1014,11 @@ TextureImporter:
       name: Cave_White_61
       rect:
         serializedVersion: 2
-        x: 35
-        y: 18
+        x: 34
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1025,11 +1028,11 @@ TextureImporter:
       name: Cave_White_62
       rect:
         serializedVersion: 2
-        x: 52
-        y: 18
+        x: 51
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1039,11 +1042,11 @@ TextureImporter:
       name: Cave_White_63
       rect:
         serializedVersion: 2
-        x: 69
-        y: 18
+        x: 68
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1053,11 +1056,11 @@ TextureImporter:
       name: Cave_White_64
       rect:
         serializedVersion: 2
-        x: 86
-        y: 18
+        x: 85
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1067,11 +1070,11 @@ TextureImporter:
       name: Cave_White_65
       rect:
         serializedVersion: 2
-        x: 103
-        y: 18
+        x: 102
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1081,11 +1084,11 @@ TextureImporter:
       name: Cave_White_66
       rect:
         serializedVersion: 2
-        x: 120
-        y: 18
+        x: 119
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1095,11 +1098,11 @@ TextureImporter:
       name: Cave_White_67
       rect:
         serializedVersion: 2
-        x: 137
-        y: 18
+        x: 136
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1109,11 +1112,11 @@ TextureImporter:
       name: Cave_White_68
       rect:
         serializedVersion: 2
-        x: 154
-        y: 18
+        x: 153
+        y: 17
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1123,11 +1126,11 @@ TextureImporter:
       name: Cave_White_69
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
+        x: 1
+        y: 1
         width: 15
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1137,11 +1140,11 @@ TextureImporter:
       name: Cave_White_70
       rect:
         serializedVersion: 2
-        x: 18
-        y: 2
+        x: 17
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1151,11 +1154,11 @@ TextureImporter:
       name: Cave_White_71
       rect:
         serializedVersion: 2
-        x: 35
-        y: 2
+        x: 34
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1165,11 +1168,11 @@ TextureImporter:
       name: Cave_White_72
       rect:
         serializedVersion: 2
-        x: 52
-        y: 2
+        x: 51
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1179,11 +1182,11 @@ TextureImporter:
       name: Cave_White_73
       rect:
         serializedVersion: 2
-        x: 69
-        y: 2
+        x: 68
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1193,11 +1196,11 @@ TextureImporter:
       name: Cave_White_74
       rect:
         serializedVersion: 2
-        x: 86
-        y: 2
+        x: 85
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1207,11 +1210,11 @@ TextureImporter:
       name: Cave_White_75
       rect:
         serializedVersion: 2
-        x: 103
-        y: 2
+        x: 102
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1221,11 +1224,11 @@ TextureImporter:
       name: Cave_White_76
       rect:
         serializedVersion: 2
-        x: 120
-        y: 2
+        x: 119
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1235,11 +1238,11 @@ TextureImporter:
       name: Cave_White_77
       rect:
         serializedVersion: 2
-        x: 137
-        y: 2
+        x: 136
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1249,11 +1252,11 @@ TextureImporter:
       name: Cave_White_78
       rect:
         serializedVersion: 2
-        x: 154
-        y: 2
+        x: 153
+        y: 1
         width: 16
         height: 15
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []

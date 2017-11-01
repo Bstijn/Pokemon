@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 589c3407afa181c42ac3041695ae98b1
-timeCreated: 1509087753
+timeCreated: 1509530942
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -84,6 +84,7 @@ TextureImporter:
     21300154: Cave_Grey_77
     21300156: Cave_Grey_78
     21300158: Cave_Grey_79
+  externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -137,6 +138,7 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -145,6 +147,7 @@ TextureImporter:
     overridden: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -158,11 +161,11 @@ TextureImporter:
       name: Cave_Grey_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 121
-        width: 18
-        height: 18
-      alignment: 6
+        x: 1
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -172,11 +175,11 @@ TextureImporter:
       name: Cave_Grey_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 121
+        x: 18
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -186,11 +189,11 @@ TextureImporter:
       name: Cave_Grey_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 121
+        x: 35
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -200,11 +203,11 @@ TextureImporter:
       name: Cave_Grey_3
       rect:
         serializedVersion: 2
-        x: 53
-        y: 121
+        x: 52
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -214,11 +217,11 @@ TextureImporter:
       name: Cave_Grey_4
       rect:
         serializedVersion: 2
-        x: 70
-        y: 121
+        x: 69
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -228,11 +231,11 @@ TextureImporter:
       name: Cave_Grey_5
       rect:
         serializedVersion: 2
-        x: 87
-        y: 121
+        x: 86
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -242,11 +245,11 @@ TextureImporter:
       name: Cave_Grey_6
       rect:
         serializedVersion: 2
-        x: 104
-        y: 121
+        x: 103
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -256,11 +259,11 @@ TextureImporter:
       name: Cave_Grey_7
       rect:
         serializedVersion: 2
-        x: 121
-        y: 121
+        x: 120
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -270,11 +273,11 @@ TextureImporter:
       name: Cave_Grey_8
       rect:
         serializedVersion: 2
-        x: 138
-        y: 121
+        x: 137
+        y: 120
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -284,11 +287,11 @@ TextureImporter:
       name: Cave_Grey_9
       rect:
         serializedVersion: 2
-        x: 155
+        x: 154
         y: 120
-        width: 18
-        height: 19
-      alignment: 6
+        width: 16
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -298,11 +301,11 @@ TextureImporter:
       name: Cave_Grey_10
       rect:
         serializedVersion: 2
-        x: 2
-        y: 104
+        x: 1
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -312,11 +315,11 @@ TextureImporter:
       name: Cave_Grey_11
       rect:
         serializedVersion: 2
-        x: 19
-        y: 104
+        x: 18
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -326,11 +329,11 @@ TextureImporter:
       name: Cave_Grey_12
       rect:
         serializedVersion: 2
-        x: 36
-        y: 104
+        x: 35
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -340,11 +343,11 @@ TextureImporter:
       name: Cave_Grey_13
       rect:
         serializedVersion: 2
-        x: 53
-        y: 104
+        x: 52
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -354,11 +357,11 @@ TextureImporter:
       name: Cave_Grey_14
       rect:
         serializedVersion: 2
-        x: 70
-        y: 104
+        x: 69
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -368,11 +371,11 @@ TextureImporter:
       name: Cave_Grey_15
       rect:
         serializedVersion: 2
-        x: 87
-        y: 104
+        x: 86
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -382,11 +385,11 @@ TextureImporter:
       name: Cave_Grey_16
       rect:
         serializedVersion: 2
-        x: 104
-        y: 104
+        x: 103
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -396,11 +399,11 @@ TextureImporter:
       name: Cave_Grey_17
       rect:
         serializedVersion: 2
-        x: 121
-        y: 104
+        x: 120
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -410,11 +413,11 @@ TextureImporter:
       name: Cave_Grey_18
       rect:
         serializedVersion: 2
-        x: 138
-        y: 104
+        x: 137
+        y: 103
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -424,11 +427,11 @@ TextureImporter:
       name: Cave_Grey_19
       rect:
         serializedVersion: 2
-        x: 155
-        y: 104
-        width: 18
+        x: 154
+        y: 103
+        width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -438,11 +441,11 @@ TextureImporter:
       name: Cave_Grey_20
       rect:
         serializedVersion: 2
-        x: 2
-        y: 87
+        x: 1
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -452,11 +455,11 @@ TextureImporter:
       name: Cave_Grey_21
       rect:
         serializedVersion: 2
-        x: 19
-        y: 87
+        x: 18
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -466,11 +469,11 @@ TextureImporter:
       name: Cave_Grey_22
       rect:
         serializedVersion: 2
-        x: 36
-        y: 87
+        x: 35
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -480,11 +483,11 @@ TextureImporter:
       name: Cave_Grey_23
       rect:
         serializedVersion: 2
-        x: 53
-        y: 87
+        x: 52
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -494,11 +497,11 @@ TextureImporter:
       name: Cave_Grey_24
       rect:
         serializedVersion: 2
-        x: 70
-        y: 87
+        x: 69
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -508,11 +511,11 @@ TextureImporter:
       name: Cave_Grey_25
       rect:
         serializedVersion: 2
-        x: 87
-        y: 87
+        x: 86
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -522,11 +525,11 @@ TextureImporter:
       name: Cave_Grey_26
       rect:
         serializedVersion: 2
-        x: 104
-        y: 87
+        x: 103
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -536,11 +539,11 @@ TextureImporter:
       name: Cave_Grey_27
       rect:
         serializedVersion: 2
-        x: 121
-        y: 87
+        x: 120
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -550,11 +553,11 @@ TextureImporter:
       name: Cave_Grey_28
       rect:
         serializedVersion: 2
-        x: 138
-        y: 87
+        x: 137
+        y: 86
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -564,11 +567,11 @@ TextureImporter:
       name: Cave_Grey_29
       rect:
         serializedVersion: 2
-        x: 155
-        y: 87
-        width: 18
+        x: 154
+        y: 86
+        width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -578,11 +581,11 @@ TextureImporter:
       name: Cave_Grey_30
       rect:
         serializedVersion: 2
-        x: 2
-        y: 70
+        x: 1
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -592,11 +595,11 @@ TextureImporter:
       name: Cave_Grey_31
       rect:
         serializedVersion: 2
-        x: 19
-        y: 70
+        x: 18
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -606,11 +609,11 @@ TextureImporter:
       name: Cave_Grey_32
       rect:
         serializedVersion: 2
-        x: 36
-        y: 70
+        x: 35
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -620,11 +623,11 @@ TextureImporter:
       name: Cave_Grey_33
       rect:
         serializedVersion: 2
-        x: 53
-        y: 70
+        x: 52
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -634,11 +637,11 @@ TextureImporter:
       name: Cave_Grey_34
       rect:
         serializedVersion: 2
-        x: 70
-        y: 70
+        x: 69
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -648,11 +651,11 @@ TextureImporter:
       name: Cave_Grey_35
       rect:
         serializedVersion: 2
-        x: 87
-        y: 70
+        x: 86
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -662,11 +665,11 @@ TextureImporter:
       name: Cave_Grey_36
       rect:
         serializedVersion: 2
-        x: 104
-        y: 70
+        x: 103
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -676,11 +679,11 @@ TextureImporter:
       name: Cave_Grey_37
       rect:
         serializedVersion: 2
-        x: 121
-        y: 70
+        x: 120
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -690,11 +693,11 @@ TextureImporter:
       name: Cave_Grey_38
       rect:
         serializedVersion: 2
-        x: 138
-        y: 70
+        x: 137
+        y: 69
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -704,11 +707,11 @@ TextureImporter:
       name: Cave_Grey_39
       rect:
         serializedVersion: 2
-        x: 155
-        y: 70
-        width: 18
+        x: 154
+        y: 69
+        width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -718,11 +721,11 @@ TextureImporter:
       name: Cave_Grey_40
       rect:
         serializedVersion: 2
-        x: 2
-        y: 53
+        x: 1
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -732,11 +735,11 @@ TextureImporter:
       name: Cave_Grey_41
       rect:
         serializedVersion: 2
-        x: 19
-        y: 53
+        x: 18
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -746,11 +749,11 @@ TextureImporter:
       name: Cave_Grey_42
       rect:
         serializedVersion: 2
-        x: 36
-        y: 53
+        x: 35
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -760,11 +763,11 @@ TextureImporter:
       name: Cave_Grey_43
       rect:
         serializedVersion: 2
-        x: 53
-        y: 53
+        x: 52
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -774,11 +777,11 @@ TextureImporter:
       name: Cave_Grey_44
       rect:
         serializedVersion: 2
-        x: 70
-        y: 53
+        x: 69
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -788,11 +791,11 @@ TextureImporter:
       name: Cave_Grey_45
       rect:
         serializedVersion: 2
-        x: 87
-        y: 53
+        x: 86
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -802,11 +805,11 @@ TextureImporter:
       name: Cave_Grey_46
       rect:
         serializedVersion: 2
-        x: 104
-        y: 53
+        x: 103
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -816,11 +819,11 @@ TextureImporter:
       name: Cave_Grey_47
       rect:
         serializedVersion: 2
-        x: 121
-        y: 53
+        x: 120
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -830,11 +833,11 @@ TextureImporter:
       name: Cave_Grey_48
       rect:
         serializedVersion: 2
-        x: 138
-        y: 53
+        x: 137
+        y: 52
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -844,11 +847,11 @@ TextureImporter:
       name: Cave_Grey_49
       rect:
         serializedVersion: 2
-        x: 155
-        y: 53
-        width: 18
+        x: 154
+        y: 52
+        width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -858,11 +861,11 @@ TextureImporter:
       name: Cave_Grey_50
       rect:
         serializedVersion: 2
-        x: 2
-        y: 36
+        x: 1
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -872,11 +875,11 @@ TextureImporter:
       name: Cave_Grey_51
       rect:
         serializedVersion: 2
-        x: 19
-        y: 36
+        x: 18
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -886,11 +889,11 @@ TextureImporter:
       name: Cave_Grey_52
       rect:
         serializedVersion: 2
-        x: 36
-        y: 36
+        x: 35
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -900,11 +903,11 @@ TextureImporter:
       name: Cave_Grey_53
       rect:
         serializedVersion: 2
-        x: 53
-        y: 36
+        x: 52
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -914,11 +917,11 @@ TextureImporter:
       name: Cave_Grey_54
       rect:
         serializedVersion: 2
-        x: 70
-        y: 36
+        x: 69
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -928,11 +931,11 @@ TextureImporter:
       name: Cave_Grey_55
       rect:
         serializedVersion: 2
-        x: 87
-        y: 36
+        x: 86
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -942,11 +945,11 @@ TextureImporter:
       name: Cave_Grey_56
       rect:
         serializedVersion: 2
-        x: 104
-        y: 36
+        x: 103
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -956,11 +959,11 @@ TextureImporter:
       name: Cave_Grey_57
       rect:
         serializedVersion: 2
-        x: 121
-        y: 36
+        x: 120
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -970,11 +973,11 @@ TextureImporter:
       name: Cave_Grey_58
       rect:
         serializedVersion: 2
-        x: 138
-        y: 36
+        x: 137
+        y: 35
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -984,11 +987,11 @@ TextureImporter:
       name: Cave_Grey_59
       rect:
         serializedVersion: 2
-        x: 155
-        y: 36
-        width: 18
+        x: 154
+        y: 35
+        width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -998,11 +1001,11 @@ TextureImporter:
       name: Cave_Grey_60
       rect:
         serializedVersion: 2
-        x: 2
-        y: 19
+        x: 1
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1012,11 +1015,11 @@ TextureImporter:
       name: Cave_Grey_61
       rect:
         serializedVersion: 2
-        x: 19
-        y: 19
+        x: 18
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1026,11 +1029,11 @@ TextureImporter:
       name: Cave_Grey_62
       rect:
         serializedVersion: 2
-        x: 36
-        y: 19
+        x: 35
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1040,11 +1043,11 @@ TextureImporter:
       name: Cave_Grey_63
       rect:
         serializedVersion: 2
-        x: 53
-        y: 19
+        x: 52
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1054,11 +1057,11 @@ TextureImporter:
       name: Cave_Grey_64
       rect:
         serializedVersion: 2
-        x: 70
-        y: 19
+        x: 69
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1068,11 +1071,11 @@ TextureImporter:
       name: Cave_Grey_65
       rect:
         serializedVersion: 2
-        x: 87
-        y: 19
+        x: 86
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1082,11 +1085,11 @@ TextureImporter:
       name: Cave_Grey_66
       rect:
         serializedVersion: 2
-        x: 104
-        y: 19
+        x: 103
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1096,11 +1099,11 @@ TextureImporter:
       name: Cave_Grey_67
       rect:
         serializedVersion: 2
-        x: 121
-        y: 19
+        x: 120
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1110,11 +1113,11 @@ TextureImporter:
       name: Cave_Grey_68
       rect:
         serializedVersion: 2
-        x: 138
-        y: 19
+        x: 137
+        y: 18
         width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1124,11 +1127,11 @@ TextureImporter:
       name: Cave_Grey_69
       rect:
         serializedVersion: 2
-        x: 155
-        y: 19
-        width: 18
+        x: 154
+        y: 18
+        width: 16
         height: 16
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1138,11 +1141,11 @@ TextureImporter:
       name: Cave_Grey_70
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
+        x: 1
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1152,11 +1155,11 @@ TextureImporter:
       name: Cave_Grey_71
       rect:
         serializedVersion: 2
-        x: 19
-        y: 0
+        x: 18
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1166,11 +1169,11 @@ TextureImporter:
       name: Cave_Grey_72
       rect:
         serializedVersion: 2
-        x: 36
-        y: 0
+        x: 35
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1180,11 +1183,11 @@ TextureImporter:
       name: Cave_Grey_73
       rect:
         serializedVersion: 2
-        x: 53
-        y: 0
+        x: 52
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1194,11 +1197,11 @@ TextureImporter:
       name: Cave_Grey_74
       rect:
         serializedVersion: 2
-        x: 70
-        y: 0
+        x: 69
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1208,11 +1211,11 @@ TextureImporter:
       name: Cave_Grey_75
       rect:
         serializedVersion: 2
-        x: 87
-        y: 0
+        x: 86
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1222,11 +1225,11 @@ TextureImporter:
       name: Cave_Grey_76
       rect:
         serializedVersion: 2
-        x: 104
-        y: 0
+        x: 103
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1236,11 +1239,11 @@ TextureImporter:
       name: Cave_Grey_77
       rect:
         serializedVersion: 2
-        x: 121
-        y: 0
+        x: 120
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1250,11 +1253,11 @@ TextureImporter:
       name: Cave_Grey_78
       rect:
         serializedVersion: 2
-        x: 138
-        y: 0
+        x: 137
+        y: 1
         width: 16
-        height: 18
-      alignment: 6
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -1264,11 +1267,11 @@ TextureImporter:
       name: Cave_Grey_79
       rect:
         serializedVersion: 2
-        x: 155
-        y: 0
-        width: 18
-        height: 18
-      alignment: 6
+        x: 154
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
