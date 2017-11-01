@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 73c771ee5f5e1244e8db49ff3c6f9063
-timeCreated: 1507807466
+guid: 652b9aa5ddd415140b94d64cb7fe853d
+timeCreated: 1509087856
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -50,8 +50,8 @@ TextureImporter:
     aniso: -1
     mipBias: -1
     wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapV: -1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -94,8 +94,8 @@ TextureImporter:
       name: PokeMarkt_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 53
+        x: 1
+        y: 52
         width: 16
         height: 14
       alignment: 6
@@ -108,8 +108,8 @@ TextureImporter:
       name: PokeMarkt_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 53
+        x: 18
+        y: 52
         width: 16
         height: 14
       alignment: 6
@@ -122,8 +122,8 @@ TextureImporter:
       name: PokeMarkt_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 53
+        x: 35
+        y: 52
         width: 16
         height: 14
       alignment: 6
@@ -136,8 +136,8 @@ TextureImporter:
       name: PokeMarkt_3
       rect:
         serializedVersion: 2
-        x: 53
-        y: 53
+        x: 52
+        y: 52
         width: 16
         height: 14
       alignment: 6
@@ -150,8 +150,8 @@ TextureImporter:
       name: PokeMarkt_4
       rect:
         serializedVersion: 2
-        x: 2
-        y: 36
+        x: 1
+        y: 35
         width: 16
         height: 16
       alignment: 6
@@ -164,8 +164,8 @@ TextureImporter:
       name: PokeMarkt_5
       rect:
         serializedVersion: 2
-        x: 19
-        y: 36
+        x: 18
+        y: 35
         width: 16
         height: 16
       alignment: 6
@@ -178,8 +178,8 @@ TextureImporter:
       name: PokeMarkt_6
       rect:
         serializedVersion: 2
-        x: 36
-        y: 36
+        x: 35
+        y: 35
         width: 16
         height: 16
       alignment: 6
@@ -192,8 +192,8 @@ TextureImporter:
       name: PokeMarkt_7
       rect:
         serializedVersion: 2
-        x: 53
-        y: 36
+        x: 52
+        y: 35
         width: 16
         height: 16
       alignment: 6
@@ -206,8 +206,8 @@ TextureImporter:
       name: PokeMarkt_8
       rect:
         serializedVersion: 2
-        x: 2
-        y: 19
+        x: 1
+        y: 18
         width: 16
         height: 16
       alignment: 6
@@ -220,8 +220,8 @@ TextureImporter:
       name: PokeMarkt_9
       rect:
         serializedVersion: 2
-        x: 19
-        y: 19
+        x: 18
+        y: 18
         width: 16
         height: 16
       alignment: 6
@@ -234,8 +234,8 @@ TextureImporter:
       name: PokeMarkt_10
       rect:
         serializedVersion: 2
-        x: 36
-        y: 19
+        x: 35
+        y: 18
         width: 16
         height: 16
       alignment: 6
@@ -248,8 +248,8 @@ TextureImporter:
       name: PokeMarkt_11
       rect:
         serializedVersion: 2
-        x: 53
-        y: 19
+        x: 52
+        y: 18
         width: 16
         height: 16
       alignment: 6
@@ -262,8 +262,8 @@ TextureImporter:
       name: PokeMarkt_12
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
+        x: 1
+        y: 1
         width: 16
         height: 16
       alignment: 6
@@ -276,8 +276,8 @@ TextureImporter:
       name: PokeMarkt_13
       rect:
         serializedVersion: 2
-        x: 19
-        y: 2
+        x: 18
+        y: 1
         width: 16
         height: 16
       alignment: 6
@@ -290,8 +290,8 @@ TextureImporter:
       name: PokeMarkt_14
       rect:
         serializedVersion: 2
-        x: 36
-        y: 2
+        x: 35
+        y: 1
         width: 16
         height: 16
       alignment: 6
@@ -304,8 +304,8 @@ TextureImporter:
       name: PokeMarkt_15
       rect:
         serializedVersion: 2
-        x: 53
-        y: 2
+        x: 52
+        y: 1
         width: 16
         height: 16
       alignment: 6
