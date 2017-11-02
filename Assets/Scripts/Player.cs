@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-enum Direction
+﻿enum Direction
 {
     Up,
     Down,
@@ -38,7 +33,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        switch(dir)
+        switch (dir)
         {
             case (Direction.Up):
                 sprite.sprite = playerUp;
@@ -57,11 +52,11 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if((Input.GetKeyDown(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow)) && !((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))&& !(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))))
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && !((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && !(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))))
         {
             dir = Direction.Left;
         }
-        if((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && !(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)))
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && !(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && !(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)))
         {
             dir = Direction.Right;
         }
@@ -83,7 +78,7 @@ public class Player : MonoBehaviour
         {           //(-1,0)
             pos += Vector3.left;// Add -1 to pos.x
         }
-        if ((Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow)) && transform.position == pos && hitright.collider == null)
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && transform.position == pos && hitright.collider == null)
         {           //(1,0)
             pos += Vector3.right;// Add 1 to pos.x
         }

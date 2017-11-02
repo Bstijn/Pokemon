@@ -53,6 +53,16 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Classes\Classes.csproj">
+      <Project>{564da5aa-c690-4456-a107-0c2824e0292e}</Project>
+      <Name>Classes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pokemon.csproj">
+      <Project>{2ba0e587-8de9-de32-9a64-88c1a25cdf35}</Project>
+      <Name>Pokemon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
