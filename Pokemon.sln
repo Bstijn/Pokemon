@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon", "Pokemon.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{564DA5AA-C690-4456-A107-0C2824E0292E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "..\UnitTestProject1\UnitTestProject1.csproj", "{F91E7B07-8EC7-4AEF-9EB1-70A6347B778C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject1\UnitTestProject\UnitTestProject.csproj", "{F09E80E7-9379-45CF-89B6-52BD4A53F6BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{564DA5AA-C690-4456-A107-0C2824E0292E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{564DA5AA-C690-4456-A107-0C2824E0292E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{564DA5AA-C690-4456-A107-0C2824E0292E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F91E7B07-8EC7-4AEF-9EB1-70A6347B778C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F91E7B07-8EC7-4AEF-9EB1-70A6347B778C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F91E7B07-8EC7-4AEF-9EB1-70A6347B778C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F91E7B07-8EC7-4AEF-9EB1-70A6347B778C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F09E80E7-9379-45CF-89B6-52BD4A53F6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F09E80E7-9379-45CF-89B6-52BD4A53F6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F09E80E7-9379-45CF-89B6-52BD4A53F6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F09E80E7-9379-45CF-89B6-52BD4A53F6BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
