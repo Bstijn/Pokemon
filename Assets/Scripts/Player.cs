@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 {
     private int x;
     private int y;
-    private float speed = 0.05f;
+    private float speed = 3f;
     private Vector3 pos;
     private Transform tr;
     private bool moving;
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
             pos += Vector3.down;// Add -1 to pos.y
         }
         //The Current Position = Move To (the current position to the new position by the speed * Time.DeltaTime)
-        transform.position = Vector3.MoveTowards(transform.position, pos, speed);
+        transform.position = Vector3.MoveTowards(transform.position, pos, speed*Time.deltaTime);
     }
 }
 
