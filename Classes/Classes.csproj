@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="Badge.cs" />
+    <Compile Include="Battle.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Bystander.cs" />
     <Compile Include="Cave.cs" />

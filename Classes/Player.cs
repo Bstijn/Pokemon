@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Classes
 {
@@ -10,6 +7,12 @@ namespace Classes
     {
         public int Wins { get; private set; }
         public int Loses { get; private set; }
+
+        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> partyPokemon, int wins, int loses) : base(name, id, gender, money, posX, posY, currentLocation, inventory, partyPokemon)
+        {
+            Wins = wins;
+            Loses = loses;
+        }
 
         public void UseItemInBattle(Consumable consumable)
         {
@@ -72,11 +75,6 @@ namespace Classes
         }
 
         public void CatchPokemon(Pokemon pokemon)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RunAway()
         {
             throw new NotImplementedException();
         }

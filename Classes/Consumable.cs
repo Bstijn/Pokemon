@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Classes
+﻿namespace Classes
 {
     public abstract class Consumable : Item
     {
-
-        public void Use()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Use(Pokemon targetPokemon);
     }
 }

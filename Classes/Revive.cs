@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Classes
+﻿namespace Classes
 {
     public class Revive : Consumable
     {
         public int Percentage { get; private set; }
+
+        public override void Use(Pokemon pokemon)
+        {
+            if (pokemon.Fainted)
+            {
+                pokemon.Revive();
+            }
+        }
     }
 }

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Classes
+﻿namespace Classes
 {
     public class Potion : Consumable
     {
         public int HealAmount { get; private set; }
+
+        public override void Use(Pokemon pokemon)
+        {
+            pokemon.HealByPotion(this);
+        }
     }
 }

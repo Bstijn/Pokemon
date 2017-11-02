@@ -9,33 +9,21 @@ namespace Classes
         public string Name { get; private set; }
         public bool InParty { get; private set; }
         public int Level { get; private set; }
-
-        public int CurrentHp
-        {
-            get { return CurrentHp; }
-            private set
-            {
-                if (CurrentHp <= 0)
-                {
-                    Fainted = true;
-                }
-            }
-        }
-
+        public int CurrentHp { get; private set; }
         public int MaxHp { get; private set; }
         public int Xp { get; private set; }
         public int Attack { get; private set; }
         public int Defense { get; private set; }
         public int Speed { get; private set; }
         public int EvolveLevel { get; private set; }
-
         public bool Fainted { get; private set; }
+        public int CaptureRate { get; private set; }
 
         private Type type;
 
         private List<Move> moves;
 
-        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel)
+        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
         {
             this.type = type;
             this.moves = moves;
@@ -50,7 +38,8 @@ namespace Classes
             Defense = defense;
             Speed = speed;
             EvolveLevel = evolveLevel;
-            Fainted = false;
+            Fainted = true;
+            CaptureRate = captureRate;
         }
 
         public void AddMove(Move move)
@@ -128,6 +117,46 @@ namespace Classes
             double effectiveness = 1.5;
             return effectiveness;
 
+        }
+
+        public void Revive()
+        {
+            if (Fainted)
+                CurrentHp = MaxHp / 2;
+        }
+
+        public void HealByPotion(Potion potion)
+        {
+            if ((CurrentHp += potion.HealAmount) > MaxHp)
+            {
+                CurrentHp = MaxHp;
+            }
+        }
+
+        public bool TryFlee(int enemySpeed, int escapeAttempts)
+        {
+            int b = (enemySpeed / 4) % 256;
+            int f;
+            try
+            {
+                f = ((Speed * 32) / b) + 30 * escapeAttempts;
+            }
+            catch (DivideByZeroException)
+            {
+                return true;
+            }
+
+            if (f > 255)
+            {
+                return true;
+            }
+            Random random = new Random();
+            int m = random.Next(0, 255);
+            if (m < f)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void LevelUp()

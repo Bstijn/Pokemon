@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Classes
@@ -15,10 +12,23 @@ namespace Classes
         public int Money { get; private set; }
         public int PosX { get; private set; }
         public int PosY { get; private set; }
-        public Location CurrentLocation { get; private set; }
-        public List<Possesion> Inventory { get; private set; }
-        public List<Pokemon> Pokemons { get; private set; }
-        
+        private Location currentLocation;
+        private List<Possesion> inventory;
+        private List<Pokemon> partyPokemon;
+
+        protected Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> partyPokemon)
+        {
+            Name = name;
+            Id = id;
+            Gender = gender;
+            Money = money;
+            PosX = posX;
+            PosY = posY;
+            this.currentLocation = currentLocation;
+            this.inventory = inventory;
+            this.partyPokemon = partyPokemon;
+        }
+
         public string Talk(Dialogue dialogue)
         {
             throw new NotImplementedException();

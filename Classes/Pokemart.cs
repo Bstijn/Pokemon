@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Classes
 {
@@ -10,5 +6,8 @@ namespace Classes
     {
         public List<Consumable> ShopItems { get; private set; }
 
+        public Pokemart(int id, int sizeX, int sizeY, string name, List<Passage> passages) : base(id, sizeX, sizeY, name, passages)
+        {
+        }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Classes
 {
@@ -11,6 +7,14 @@ namespace Classes
         public int MinLevel { get; private set; }
         public int MaxLevel { get; private set; }
         public decimal EncounterChance { get; private set; }
-        public List<Pokemon> AvailablePokemons { get; private set; }
+        private List<Pokemon> availablePokemons;
+
+        protected Area(int id, int sizeX, int sizeY, string name, List<Passage> passages, int minLevel, int maxLevel, decimal encounterChance, List<Pokemon> availablePokemons) : base(id, sizeX, sizeY, name, passages)
+        {
+            MinLevel = minLevel;
+            MaxLevel = maxLevel;
+            EncounterChance = encounterChance;
+            this.availablePokemons = availablePokemons;
+        }
     }
 }
