@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_scene/Park Town.unity
+    guid: 30c1e67174051bf44858400c931f3f19
+  - enabled: 1
+    path: Assets/_scene/Route 101.unity
+    guid: cfe60fe0df34cfe42aa7d7e84031c2a0
+  - enabled: 1
+    path: Assets/_scene/Test.unity
+    guid: 80055d4af7376214b92bf1cb7e598834

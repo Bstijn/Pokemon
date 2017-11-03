@@ -13,18 +13,20 @@ enum Direction
 
 public class Player : MonoBehaviour
 {
-    private int x;
-    private int y;
+    private float x;
+    private float y;
     private float speed = 3f;
     private Vector3 pos;
     private Transform tr;
-    private bool moving;
+
     private SpriteRenderer sprite;
 
     public Sprite playerLeft;
     public Sprite playerRight;
     public Sprite playerUp;
     public Sprite playerDown;
+    [HideInInspector]
+    public bool moving;
 
     Direction dir;
 
@@ -34,6 +36,11 @@ public class Player : MonoBehaviour
         tr = transform;
         sprite = GetComponent<SpriteRenderer>();
         dir = Direction.Down;
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 
     private void Update()
@@ -79,24 +86,32 @@ public class Player : MonoBehaviour
         RaycastHit2D hitright = Physics2D.Raycast(transform.position, Vector2.right, 1);
         RaycastHit2D hitleft = Physics2D.Raycast(transform.position, Vector2.left, 1);
         //==Inputs==//
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && transform.position == pos && hitleft.collider == null)
-        {           //(-1,0)
-            pos += Vector3.left;// Add -1 to pos.x
+        if (!moving)
+        {
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && transform.position == pos && hitleft.collider == null)
+            {           //(-1,0)
+                pos += Vector3.left;// Add -1 to pos.x
+            }
+            if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && transform.position == pos && hitright.collider == null)
+            {           //(1,0)
+                pos += Vector3.right;// Add 1 to pos.x
+            }
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && transform.position == pos && hitup.collider == null)
+            {           //(0,1)
+                pos += Vector3.up; // Add 1 to pos.y
+            }
+            if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && transform.position == pos && hitdown.collider == null)
+            {           //(0,-1)
+                pos += Vector3.down;// Add -1 to pos.y
+            }
+            //The Current Position = Move To (the current position to the new position by the speed * Time.DeltaTime)
+            transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
         }
-        if ((Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow)) && transform.position == pos && hitright.collider == null)
-        {           //(1,0)
-            pos += Vector3.right;// Add 1 to pos.x
-        }
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && transform.position == pos && hitup.collider == null)
-        {           //(0,1)
-            pos += Vector3.up; // Add 1 to pos.y
-        }
-        if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && transform.position == pos && hitdown.collider == null)
-        {           //(0,-1)
-            pos += Vector3.down;// Add -1 to pos.y
-        }
-        //The Current Position = Move To (the current position to the new position by the speed * Time.DeltaTime)
-        transform.position = Vector3.MoveTowards(transform.position, pos, speed*Time.deltaTime);
+    }
+    public void SavePosition()
+    {
+        x = transform.position.x;
+        y = transform.position.y;
     }
 }
 
