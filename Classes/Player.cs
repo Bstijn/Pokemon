@@ -8,7 +8,7 @@ namespace Classes
         public int Wins { get; private set; }
         public int Loses { get; private set; }
 
-        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> partyPokemon, int wins, int loses) : base(name, id, gender, money, posX, posY, currentLocation, inventory, partyPokemon)
+        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> partyPokemon, int wins, int loses) : base(name, id, gender, money, posX, posY, currentLocation, inventory, partyPokemon)
         {
             Wins = wins;
             Loses = loses;

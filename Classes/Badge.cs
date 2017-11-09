@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Classes
+﻿namespace Classes
 {
     public class Badge : NonConsumable
     {
+        public Badge(int id, string name, int cost, string description) : base(id, name, cost, description)
+        {
+
+        }
     }
 }

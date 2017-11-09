@@ -13,10 +13,10 @@ namespace Classes
         public int PosX { get; private set; }
         public int PosY { get; private set; }
         private Location currentLocation;
-        private List<Possesion> inventory;
+        private List<Item> inventory;
         private List<Pokemon> partyPokemon;
 
-        protected Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> partyPokemon)
+        protected Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> partyPokemon)
         {
             Name = name;
             Id = id;

@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Classes
+﻿namespace Classes
 {
     public class Choice
     {
         public int Id { get; private set; }
         public string Text { get; private set; }
-        public Dialogue LeadsToDialogue { get; private set; }
+        private Dialogue leadsToDialogue;
+
+        public Choice(Dialogue leadsToDialogue, int id, string text)
+        {
+            this.leadsToDialogue = leadsToDialogue;
+            Id = id;
+            Text = text;
+        }
     }
 }

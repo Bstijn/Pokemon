@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Classes
 {
@@ -10,6 +6,13 @@ namespace Classes
     {
         public int Id { get; private set; }
         public string Text { get; private set; }
-        public List<Choice> Choices { get; private set; }
+        private List<Choice> choices;
+
+        public Dialogue(int id, string text, List<Choice> choices)
+        {
+            Id = id;
+            Text = text;
+            this.choices = choices;
+        }
     }
 }

@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Classes
+﻿namespace Classes
 {
     public class KeyItem : NonConsumable
     {
         public bool IsUsable { get; private set; }
+
+        public KeyItem(int id, string name, int cost, string description, bool isUsable) : base(id, name, cost, description)
+        {
+            IsUsable = isUsable;
+        }
+
+        public void Use()
+        {
+
+        }
     }
 }

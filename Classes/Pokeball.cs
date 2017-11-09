@@ -7,6 +7,12 @@ namespace Classes
         public decimal CatchRate { get; private set; }
         public int BallValue { get; }
 
+        public Pokeball(int id, string name, int cost, string description, decimal catchRate, int ballValue) : base(id, name, cost, description)
+        {
+            CatchRate = catchRate;
+            BallValue = ballValue;
+        }
+
         public override void Use(Pokemon targetPokemon)
         {
             if (CalculateCatch(Name, BallValue, targetPokemon.MaxHp, targetPokemon.CurrentHp, targetPokemon.CaptureRate))
