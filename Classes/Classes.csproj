@@ -40,41 +40,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Area.cs" />
-    <Compile Include="Badge.cs" />
-    <Compile Include="Battle.cs" />
-    <Compile Include="Building.cs" />
-    <Compile Include="Bystander.cs" />
-    <Compile Include="Cave.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="Choice.cs" />
-    <Compile Include="Consumable.cs" />
-    <Compile Include="Dialogue.cs" />
-    <Compile Include="EnemyHQ.cs" />
-    <Compile Include="Gym.cs" />
-    <Compile Include="Gymleader.cs" />
-    <Compile Include="IItemUser.cs" />
-    <Compile Include="ISellBuy.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="KeyItem.cs" />
-    <Compile Include="Location.cs" />
-    <Compile Include="Move.cs" />
-    <Compile Include="NonConsumable.cs" />
-    <Compile Include="Nurse.cs" />
-    <Compile Include="Oppenent.cs" />
-    <Compile Include="Passage.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Pokeball.cs" />
-    <Compile Include="Pokecenter.cs" />
-    <Compile Include="Pokemart.cs" />
-    <Compile Include="Pokemon.cs" />
-    <Compile Include="Potion.cs" />
+    <Compile Include="Classes\Area.cs" />
+    <Compile Include="Classes\Badge.cs" />
+    <Compile Include="Classes\Battle.cs" />
+    <Compile Include="Classes\Building.cs" />
+    <Compile Include="Classes\Bystander.cs" />
+    <Compile Include="Classes\Cave.cs" />
+    <Compile Include="Classes\Character.cs" />
+    <Compile Include="Classes\Choice.cs" />
+    <Compile Include="Classes\Consumable.cs" />
+    <Compile Include="Classes\Dialogue.cs" />
+    <Compile Include="Classes\EnemyHQ.cs" />
+    <Compile Include="Classes\Gym.cs" />
+    <Compile Include="Classes\Gymleader.cs" />
+    <Compile Include="Classes\IItemUser.cs" />
+    <Compile Include="Classes\ISellBuy.cs" />
+    <Compile Include="Classes\Item.cs" />
+    <Compile Include="Classes\KeyItem.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\Move.cs" />
+    <Compile Include="Classes\NonConsumable.cs" />
+    <Compile Include="Classes\Nurse.cs" />
+    <Compile Include="Classes\Oppenent.cs" />
+    <Compile Include="Classes\Passage.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\Pokeball.cs" />
+    <Compile Include="Classes\Pokecenter.cs" />
+    <Compile Include="Classes\Pokemart.cs" />
+    <Compile Include="Classes\Pokemon.cs" />
+    <Compile Include="Classes\Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Revive.cs" />
-    <Compile Include="Route.cs" />
-    <Compile Include="ShopKeeper.cs" />
-    <Compile Include="Stad.cs" />
-    <Compile Include="Type.cs" />
+    <Compile Include="Classes\Revive.cs" />
+    <Compile Include="Classes\Route.cs" />
+    <Compile Include="Classes\ShopKeeper.cs" />
+    <Compile Include="Classes\Stad.cs" />
+    <Compile Include="Classes\Type.cs" />
+    <Compile Include="Repositories\CharacterRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{b2a02067-7c9e-4a4c-b1ec-f40b2a29c880}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
