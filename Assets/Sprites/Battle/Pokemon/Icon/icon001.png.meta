@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: b21877d255d752240b1172b81464aa71
-timeCreated: 1510506648
+guid: 5f461ed255a08e2488bfbdc6f18b0fec
+timeCreated: 1510519843
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ButtonBagSelected
-    21300002: Unselected
+    21300000: 001_1
+    21300002: 001_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -80,27 +80,27 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ButtonBagSelected
+      name: 001_1
       rect:
         serializedVersion: 2
-        x: 612
-        y: 0
-        width: 216
-        height: 95
+        x: 12
+        y: 4
+        width: 40
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Unselected
+      name: 001_2
       rect:
         serializedVersion: 2
-        x: 393
-        y: 2
-        width: 208
-        height: 88
+        x: 76
+        y: 4
+        width: 44
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

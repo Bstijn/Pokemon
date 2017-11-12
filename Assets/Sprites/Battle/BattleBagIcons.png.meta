@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: b21877d255d752240b1172b81464aa71
-timeCreated: 1510506648
+guid: f63af915950d9d044a1bca7e49d5a2b0
+timeCreated: 1510506343
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ButtonBagSelected
-    21300002: Unselected
+    21300000: BattleBagIcons_0
+    21300002: Medicine
+    21300004: Pokeball
+    21300006: Berry
+    21300008: Battle
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -80,27 +83,69 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ButtonBagSelected
+      name: BattleBagIcons_0
       rect:
         serializedVersion: 2
-        x: 612
-        y: 0
-        width: 216
-        height: 95
+        x: 236
+        y: 1
+        width: 44
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Unselected
+      name: Medicine
       rect:
         serializedVersion: 2
-        x: 393
-        y: 2
-        width: 208
-        height: 88
+        x: 185
+        y: 33
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Pokeball
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 28
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Berry
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 27
+        width: 54
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Battle
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 22
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

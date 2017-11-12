@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: b21877d255d752240b1172b81464aa71
-timeCreated: 1510506648
+guid: 96a9a7ca621e6b9468498a916d94decb
+timeCreated: 1510503884
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ButtonBagSelected
-    21300002: Unselected
+    21300000: Medicine
+    21300002: Pokeballs
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -80,13 +80,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ButtonBagSelected
+      name: Medicine
       rect:
         serializedVersion: 2
-        x: 612
-        y: 0
-        width: 216
-        height: 95
+        x: 4
+        y: 4
+        width: 208
+        height: 88
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -94,11 +94,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Unselected
+      name: Pokeballs
       rect:
         serializedVersion: 2
-        x: 393
-        y: 2
+        x: 220
+        y: 4
         width: 208
         height: 88
       alignment: 0

@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: acf41d19503b43541a8945c6e62efb9b
-timeCreated: 1510239857
+guid: 69a4fee4444c91f41a1b1783586773eb
+timeCreated: 1510511167
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 20
+  fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Power Green
+  fontName: Pokemon GB
   fontNames:
-  - Power Green
+  - Pokemon GB
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
