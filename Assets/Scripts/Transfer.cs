@@ -34,8 +34,9 @@ public class Transfer : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player"))
         {
             Red.GetComponent<Player>().moving = true;
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
             Red.transform.position = target;
-            //SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            Red.GetComponent<Player>().pos = target;
             Red.GetComponent<Player>().moving = false;
         }
     }

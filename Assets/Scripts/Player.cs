@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private float x;
     private float y;
     private float speed = 3f;
-    private Vector3 pos;
+    public Vector3 pos;
     private Transform tr;
 
     private SpriteRenderer sprite;
