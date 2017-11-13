@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -8,10 +9,15 @@ namespace Assets.Scripts
         [SerializeField] private Sprite[] AttackTypeSprites;
         [SerializeField] private GameObject MainMenu;
         [SerializeField] private GameObject InfoAttackMenu;
+        [SerializeField] private GameObject PokemonMenu;
 
         private const string Power = "100";
         private const string Accuracy = "80";
         private const string Description = "ya ya yippee yippee ya ya yee we lopen op het strand en dansen blootsvoets hand in hand we zingen ya ya yippee yippee ya ya yee en onze stem weerklinkt over de golven zingen ya ya yippee yippee ya ya yee";
+
+        private const string PokemonName = "Pokemonname";
+        private const int PokemonCurrentHp = 15;
+        private const int PokemonMaxHp = 20;
 
         #region ButtonHandlers
         public void OnAttackMenuButtonPress(GameObject attackMenu)
@@ -54,6 +60,7 @@ namespace Assets.Scripts
         {
             pokemonMenu.SetActive(true);
             MainMenu.SetActive(false);
+            LoadPokemonMenuInfo(pokemonMenu);
         }
 
         public void OnShowBackPackMenuButtonPress(GameObject backpackMenu)
@@ -67,5 +74,28 @@ namespace Assets.Scripts
             
         }
         #endregion
+
+        public void LoadPokemonMenuInfo(GameObject pokemonMenu)
+        {
+            for (var i = 0; i < 6; i++)
+            {
+                StartCoroutine("SwitchIconSprites", i);
+            }
+        }
+
+        public IEnumerator SwitchIconSprites(int counter)
+        {
+            var count = 0;
+            var sprites = Resources.LoadAll<Sprite>("PokemonIcons/icon" + (counter + 1).ToString("000"));
+            yield return sprites;
+            while (PokemonMenu.activeSelf)
+            {
+                PokemonMenu.transform.Find("PokemonButton" + counter).transform.Find("Image").gameObject.GetComponent<Image>().sprite = sprites[count];
+
+                count++;
+                count = count % 2;
+                yield return new WaitForSeconds(0.25f);
+            }
+        }
     }
 }

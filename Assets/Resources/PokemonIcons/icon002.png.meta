@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 5f461ed255a08e2488bfbdc6f18b0fec
-timeCreated: 1510519843
+guid: 9e72e72561129d349a70987590ce23a1
+timeCreated: 1510531537
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: 001_1
-    21300002: 001_2
+    21300000: 002_0
+    21300002: 002_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -76,17 +76,53 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 001_1
+      name: 002_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 8
         y: 4
-        width: 40
-        height: 36
+        width: 46
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -94,13 +130,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: 001_2
+      name: 002_1
       rect:
         serializedVersion: 2
-        x: 76
+        x: 70
         y: 4
-        width: 44
-        height: 32
+        width: 52
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
