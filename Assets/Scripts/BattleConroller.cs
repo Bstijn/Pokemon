@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using 
 
 namespace Assets.Scripts
 {
@@ -15,6 +16,7 @@ namespace Assets.Scripts
         private const string Accuracy = "80";
         private const string Description = "ya ya yippee yippee ya ya yee we lopen op het strand en dansen blootsvoets hand in hand we zingen ya ya yippee yippee ya ya yee en onze stem weerklinkt over de golven zingen ya ya yippee yippee ya ya yee";
 
+        
         private const string PokemonName = "Pokemonname";
         private const int PokemonCurrentHp = 15;
         private const int PokemonMaxHp = 20;
