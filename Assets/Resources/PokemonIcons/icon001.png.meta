@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 5f461ed255a08e2488bfbdc6f18b0fec
-timeCreated: 1510525536
+timeCreated: 1510569099
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: 001_0
-    21300002: 001_1
+    21300000: icon001_0
+    21300002: icon001_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -34,7 +34,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
     wrapU: 1
     wrapV: 1
@@ -80,29 +80,29 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 001_0
+      name: icon001_0
       rect:
         serializedVersion: 2
         x: 12
-        y: 4
-        width: 40
-        height: 36
+        y: 5
+        width: 37
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: 001_1
+      name: icon001_1
       rect:
         serializedVersion: 2
         x: 76
-        y: 4
-        width: 44
-        height: 32
+        y: 6
+        width: 34
+        height: 35
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

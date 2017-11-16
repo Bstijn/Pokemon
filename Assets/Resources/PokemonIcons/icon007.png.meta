@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 200041a1b9c81ec498f6dae4061068ce
-timeCreated: 1510569334
+guid: ddd8696b1b965e7448001ed19caec3e3
+timeCreated: 1510569360
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: icon006_0
-    21300002: icon006_1
+    21300000: icon007_0
+    21300002: icon007_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -80,13 +80,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: icon006_0
+      name: icon007_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 12
         y: 6
-        width: 60
-        height: 48
+        width: 36
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -94,13 +94,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: icon006_1
+      name: icon007_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 60
-        height: 48
+        x: 76
+        y: 6
+        width: 40
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

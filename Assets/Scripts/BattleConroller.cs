@@ -46,7 +46,7 @@ namespace Assets.Scripts
 
         public void OnUseMoveButtonPress(int moveNumber)
         {
-            //do move things
+            //do things
         }
         
         public void OnHighlightButton(int moveNumber)
@@ -74,7 +74,7 @@ namespace Assets.Scripts
             
         }
         #endregion
-
+            
         public void LoadPokemonMenuInfo(GameObject pokemonMenu)
         {
             for (var i = 0; i < 6; i++)

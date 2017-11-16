@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: d10cddd318eae3f4c90c8476c5d71389
-timeCreated: 1510531485
+timeCreated: 1510569291
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: 005_0
-    21300002: 005_1
+    21300000: icon005_0
+    21300002: icon005_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -76,52 +76,16 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 005_0
+      name: icon005_0
       rect:
         serializedVersion: 2
         x: 8
         y: 4
-        width: 40
+        width: 44
         height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -130,13 +94,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: 005_1
+      name: icon005_1
       rect:
         serializedVersion: 2
-        x: 72
-        y: 4
-        width: 40
-        height: 36
+        x: 76
+        y: 6
+        width: 36
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

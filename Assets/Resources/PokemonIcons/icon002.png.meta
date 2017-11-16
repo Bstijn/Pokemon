@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 9e72e72561129d349a70987590ce23a1
-timeCreated: 1510531537
+timeCreated: 1510569161
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: 002_0
-    21300002: 002_1
+    21300000: icon002_0
+    21300002: icon002_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -76,53 +76,17 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 002_0
+      name: icon002_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 4
-        width: 46
-        height: 40
+        x: 14
+        y: 6
+        width: 36
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,12 +94,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: 002_1
+      name: icon002_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 4
-        width: 52
+        x: 76
+        y: 6
+        width: 40
         height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
