@@ -88,8 +88,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo ON  
-call "C:\Program Files\Mono\bin\pdb2mdb.bat" $(C:\Users\gebruiker\Documents\GitHub\Pokemon\Assets\Scripts\librarys\Classes)  
-mkdir "C:\Users\gebruiker\Documents\GitHub\Pokemon\Assets\Scripts\librarys\$(ProjectName)\"  
-copy /Y "$(C:\Users\gebruiker\Documents\GitHub\Pokemon\Assets\Scripts\librarys\)$(ProjectName)*" "C:\Users\gebruiker\Documents\GitHub\Pokemon\Assets\Scripts\librarys\$(ProjectName)\"</PostBuildEvent>
+call "%25MONO_PATH%25\bin\pdb2mdb.bat" $(%25UNITY_DATA_PATH%25Classes)  
+mkdir "%25UNITY_DATA_PATH%25$(ProjectName)\"  
+copy /Y "$(%25UNITY_DATA_PATH%25)$(ProjectName)*"  "$(SolutionDir)Assets\Scripts\librarys\$(ProjectName)\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
