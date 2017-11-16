@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4308456287122022}
   - component: {fileID: 212295603206733096}
   - component: {fileID: 114585590996130086}
-  m_Layer: 0
+  - component: {fileID: 61017838096947830}
+  - component: {fileID: 50714009107481508}
+  m_Layer: 2
   m_Name: Red
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +41,7 @@ GameObject:
   - component: {fileID: 20318454226935702}
   - component: {fileID: 124728794469618282}
   - component: {fileID: 81753519796794768}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -66,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062571061028454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 15.289563, y: 4.3241405, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4270862648013168}
@@ -108,6 +110,51 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!50 &50714009107481508
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062571061028454}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &61017838096947830
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062571061028454}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.3}
+    oldSize: {x: 1, y: 1.25}
+    newSize: {x: 1, y: 1.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.875, y: 0.625}
+  m_EdgeRadius: 0
 --- !u!81 &81753519796794768
 AudioListener:
   m_ObjectHideFlags: 1
@@ -126,10 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5484438e6f40d4c99a42b9e2015031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pos: {x: 0, y: 0, z: 0}
   playerLeft: {fileID: 21300004, guid: 478c2fe549720244da4cd137a73d4209, type: 3}
   playerRight: {fileID: 21300006, guid: 478c2fe549720244da4cd137a73d4209, type: 3}
   playerUp: {fileID: 21300002, guid: 478c2fe549720244da4cd137a73d4209, type: 3}
   playerDown: {fileID: 21300000, guid: 478c2fe549720244da4cd137a73d4209, type: 3}
+  moving: 0
 --- !u!124 &124728794469618282
 Behaviour:
   m_ObjectHideFlags: 1
