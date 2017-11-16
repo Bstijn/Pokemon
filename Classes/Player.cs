@@ -78,6 +78,11 @@ namespace Classes
             throw new NotImplementedException();
         }
 
+        public void GiveMoney(int money)
+        {
+            Money += money;
+        }
+
         public void BuyItem(Consumable consumable, int amount)//TODO Stijn: saving to database will still be added. or it will be added in the scenechange save or save game function.
         {
             if (consumable.Cost * amount <= Money)
