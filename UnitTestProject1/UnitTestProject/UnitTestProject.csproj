@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dialoguetests.cs" />
+    <Compile Include="BuySellTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Classes\Classes.csproj">

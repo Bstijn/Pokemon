@@ -59,6 +59,7 @@
     <Compile Include="Effectiveness.cs" />
     <Compile Include="EnemyHQ.cs" />
     <Compile Include="Exceptions\ChoiceDoesNotExistException.cs" />
+    <Compile Include="Exceptions\NotEnoughConsumablesToSellException.cs" />
     <Compile Include="Gym.cs" />
     <Compile Include="Gymleader.cs" />
     <Compile Include="IItemUser.cs" />

@@ -13,7 +13,7 @@ namespace Classes
         public int PosX { get; private set; }
         public int PosY { get; private set; }
         public Location CurrentLocation { get; private set; }
-        public List<Item> Inventory { get; protected set; }
+        public List<Item> Inventory { get; protected set; } = new List<Item>();
         public List<Pokemon> Pokemons { get; private set; }
         
         public string Talk(Dialogue dialogue)

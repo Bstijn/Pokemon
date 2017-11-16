@@ -1,4 +1,5 @@
 ﻿using System;
+using Classes.Exceptions;
 
 namespace Classes
 {
@@ -77,7 +78,7 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void BuyItem(Consumable consumable, int amount)//TODO Stijn: saving to database will still be added.
+        public void BuyItem(Consumable consumable, int amount)//TODO Stijn: saving to database will still be added. or it will be added in the scenechange save or save game function.
         {
             if (consumable.Cost * amount <= Money)
             {
@@ -89,29 +90,62 @@ namespace Classes
             }
         }
 
-        public void SellItem(Consumable consumable, int amount)//TODO Stijn: check if the removing of list
+        public void SellItem(Consumable consumable, int amount)//TODO Stijn: Or just remove it from the list and save it in the database when the scene changes or when games saves or change it immediatelly in the database
         {
             Money += consumable.Cost * amount;
             for (int i = 0; i < amount; i++)
             {
                 if (consumable is Pokeball)
                 {
-                    Pokeball removingpokeball = new Pokeball();
+                    Pokeball removingpokeball = null;
                     foreach(Pokeball pokeball in Inventory)
                     {
                         removingpokeball = pokeball;
                         break;
                     }
-                    Inventory.Remove(removingpokeball);
+                    if (removingpokeball != null)
+                    {
+                        Inventory.Remove(removingpokeball);
+                    }
+                    else
+                    {
+                        throw new NotEnoughConsumablesToSellException();
+                    }
 
                 }
                 else if (consumable is Revive)
                 {
-
+                    Revive removingRevive = null;
+                    foreach (Revive revive in Inventory)
+                    {
+                        removingRevive = revive;
+                        break;
+                    }
+                    if (removingRevive != null)
+                    {
+                        Inventory.Remove(removingRevive);
+                    }
+                    else
+                    {
+                        throw new NotEnoughConsumablesToSellException();
+                    }
                 }
                 else if (consumable is Potion)
                 {
-
+                    Potion removingPotion = null;
+                    foreach (Potion potion in Inventory)
+                    {
+                        removingPotion = potion;
+                        break;
+                    }
+                    if (removingPotion != null)
+                    {
+                        Inventory.Remove(removingPotion);
+                    }
+                    else
+                    {
+                        throw new NotEnoughConsumablesToSellException();
+                    }
                 }
             }
         }
