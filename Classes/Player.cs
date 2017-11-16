@@ -77,14 +77,43 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void BuyItem(Consumable consumable, int amount)
+        public void BuyItem(Consumable consumable, int amount)//TODO Stijn: saving to database will still be added.
         {
-            throw new NotImplementedException();
+            if (consumable.Cost * amount <= Money)
+            {
+                Money -= consumable.Cost * amount;
+                for (int i = 0; i < amount; i++)
+                {
+                    Inventory.Add(consumable);
+                }
+            }
         }
 
-        public void SellItem(Consumable consumable, int amount)
+        public void SellItem(Consumable consumable, int amount)//TODO Stijn: check if the removing of list
         {
-            throw new NotImplementedException();
+            Money += consumable.Cost * amount;
+            for (int i = 0; i < amount; i++)
+            {
+                if (consumable is Pokeball)
+                {
+                    Pokeball removingpokeball = new Pokeball();
+                    foreach(Pokeball pokeball in Inventory)
+                    {
+                        removingpokeball = pokeball;
+                        break;
+                    }
+                    Inventory.Remove(removingpokeball);
+
+                }
+                else if (consumable is Revive)
+                {
+
+                }
+                else if (consumable is Potion)
+                {
+
+                }
+            }
         }
     }
 }
