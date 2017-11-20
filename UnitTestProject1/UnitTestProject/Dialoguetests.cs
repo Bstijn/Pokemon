@@ -2,6 +2,7 @@
 using Classes;
 using Classes.Exceptions;
 using System.Collections.Generic;
+using System;
 
 namespace UnitTestProject
 {
@@ -37,8 +38,12 @@ namespace UnitTestProject
             {
                 return; 
             }
+            catch(Exception ex)
+            {
+                Assert.Fail("verkeerde exception");
+            }
             //Assert
-            Assert.Fail();
+            Assert.Fail("geen exception gethrowd");
         }
     }
 }
