@@ -8,7 +8,7 @@ namespace DAL_Remake.Interfaces
 {
     public interface IPokemonContext
     {
-        List<object[]> GetMoves();
+        List<object[]> GetMoves(int pokemonID);
 
         object[] GetPokemonType();
     }

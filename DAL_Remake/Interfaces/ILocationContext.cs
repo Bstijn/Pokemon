@@ -8,7 +8,7 @@ namespace DAL_Remake.Interfaces
 {
     public interface ILocationContext
     {
-        List<object[]> GetCharacters();
+        List<object[]> GetCharacters(int locationID);
 
         List<object[]> GetPassages();
 

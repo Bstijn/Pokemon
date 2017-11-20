@@ -8,10 +8,10 @@ namespace DAL_Remake.Interfaces
 {
     public interface ICharacterContext
     {
-        List<object[]> GetItems();
+        List<object[]> GetItems(int characterID);
 
-        List<object[]> GetPokemon();
+        List<object[]> GetPokemon(int characterID);
 
-        List<object[]> GetDialogues();
+        List<object[]> GetDialogues(int characterID);
     }
 }
