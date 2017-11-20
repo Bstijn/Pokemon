@@ -11,12 +11,12 @@ namespace DAL_Remake.SQLContexts
 {
     public class PokemartContext : IPokemartContext
     {
-        private SQLiteConnection connection;
+        private SqliteConnection connection;
         private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
 
         public PokemartContext()
         {
-            connection = new SQLiteConnection(connectionString);
+            connection = new SqliteConnection(connectionString);
         }
 
         public List<object[]> GetConsumables(string pokemartName)
@@ -29,7 +29,7 @@ namespace DAL_Remake.SQLContexts
                              " inner join Consumable as c on cp.ConsumableID = c.Id" +
                              " inner join Item as I on c.Id = I.ID" +
                              " where L.Name = @pokemartName";
-            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@pokemartName", pokemartName);
                 DataTable dataTable = new DataTable();
