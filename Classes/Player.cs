@@ -80,7 +80,15 @@ namespace Classes
 
         public void BuyItem(Consumable consumable, int amount)
         {
-            throw new NotImplementedException();
+            if(Money >= consumable.Cost * amount)
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    Inventory.Add(consumable);
+                        
+                }
+                Money -= consumable.Cost * amount;
+            }
         }
 
         public void SellItem(Consumable consumable, int amount)
