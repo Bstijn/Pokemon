@@ -1,5 +1,11 @@
-﻿using System.Collections.Generic;
+using DAL_Remake.SQLContexts;
 using DAL_Remake.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace DAL_Remake.Repositories
 {
@@ -7,10 +13,16 @@ namespace DAL_Remake.Repositories
     {
         private ILocationContext context;
 
-        public List<object[]> GetCharacters()
+
+        public LocationRepository(ILocationContext context)
         {
-            return context.GetCharacters();
+            context = new LocationContext();
         }
+
+        public List<object[]> GetCharacters(int locationID)
+        {
+            return context.GetCharacters(locationID);
+
 
         public List<object[]> GetPassages()
         {

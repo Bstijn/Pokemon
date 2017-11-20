@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
-using DAL_Remake.Interfaces;
 using DAL_Remake.SQLContexts;
+using DAL_Remake.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace DAL_Remake.Repositories
 {
@@ -13,19 +18,19 @@ namespace DAL_Remake.Repositories
             context = new CharacterContext();
         }
 
-        public List<object[]> GetItems()
+        public List<object[]> GetItems(int characterID)
         {
-            return context.GetItems();
+            return context.GetItems(characterID);
         }
 
-        public List<object[]> GetPokemon()
+        public List<object[]> GetPokemon(int characterID)
         {
-            return context.GetPokemon();
+            return context.GetPokemon(characterID);
         }
 
-        public List<object[]> GetDialogues()
+        public List<object[]> GetDialogues(int characterID)
         {
-            return context.GetDialogues();
+            return context.GetDialogues(characterID);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace DAL_Remake.Interfaces
 {
     public interface IPokemartContext
     {
-        List<object[]> GetConsumables();
+        List<object[]> GetConsumables(string pokemartName);
     }
 }
