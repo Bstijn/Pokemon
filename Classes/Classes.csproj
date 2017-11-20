@@ -60,6 +60,7 @@
     <Compile Include="Effectiveness.cs" />
     <Compile Include="EnemyHQ.cs" />
     <Compile Include="Exceptions\ChoiceDoesNotExistException.cs" />
+    <Compile Include="Exceptions\NotEnoughItemsToSellExceptions.cs" />
     <Compile Include="Gym.cs" />
     <Compile Include="Gymleader.cs" />
     <Compile Include="IItemUser.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Pokemart.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="PokemonMoves.cs" />
-    <Compile Include="Possesion.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Revive.cs" />

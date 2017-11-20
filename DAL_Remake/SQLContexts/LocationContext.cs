@@ -1,16 +1,15 @@
 using System.Data;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System;
-
+using System.Collections.Generic;
+using Mono.Data.Sqlite;
+using DAL_Remake.Interfaces;
 
 namespace DAL_Remake.SQLContexts
 {
     public class LocationContext : ILocationContext
     {
-        private SQLiteConnection connection;
+        private SqliteConnection connection;
         private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
 
         public List<object[]> GetCharacters(int locationID)
@@ -21,7 +20,7 @@ namespace DAL_Remake.SQLContexts
                                 " inner join Character c on cl.CharacterId = c.id" +
                                 " where l.id = @locationID";
 
-            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
                 DataTable dataTable = new DataTable();
