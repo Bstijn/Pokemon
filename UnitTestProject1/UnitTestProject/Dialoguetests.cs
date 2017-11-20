@@ -2,12 +2,14 @@
 using Classes;
 using Classes.Exceptions;
 using System.Collections.Generic;
+using System;
 
 namespace UnitTestProject
 {
     [TestClass]
     public class Dialoguetests
     {
+        
         [TestMethod]
         public void DialogueClose()
         {
@@ -31,14 +33,18 @@ namespace UnitTestProject
             //Act
             try
             {
-                Dialogue CurrentDialogue = StartDialogue.Choose(2);
+                StartDialogue.Choose(2);
             }
             catch (ChoiceDoesNotExistException)
             {
                 return; 
             }
+            catch(Exception)
+            {
+                Assert.Fail("verkeerde exception");
+            }
             //Assert
-            Assert.Fail();
+            Assert.Fail("choice is succesvol dit hoort niet.");
         }
     }
 }

@@ -21,5 +21,17 @@ namespace UnitTestProject
 
             
         }
+        [TestMethod]
+        public void PlayerSellTest()
+        {
+            //assemble
+            Player player = new Player();
+            Pokeball pokeball = new Pokeball(1, "pokeball", 300, "pokemon vang bal ding", 00);
+            player.GiveItem(pokeball);
+            //act
+            player.SellItem(pokeball,1);
+            //assert
+            Assert.AreEqual(300, player.Money);
+        }
     }
 }

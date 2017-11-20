@@ -3,7 +3,7 @@ using Classes.Exceptions;
 
 namespace Classes
 {
-    public class Player : Character, IItemUser, ISellBuy
+    public class Player : Character, IItemUser
     {
         public int Wins { get; private set; }
         public int Loses { get; private set; }
@@ -100,59 +100,42 @@ namespace Classes
             Money += consumable.Cost * amount;
             for (int i = 0; i < amount; i++)
             {
-                if (consumable is Pokeball)
+                Consumable removingconsumable = null;
+                foreach (Consumable consumableinInv in Inventory)
                 {
-                    Pokeball removingpokeball = null;
-                    foreach(Pokeball pokeball in Inventory)
+                    if (consumableinInv.Name == consumable.Name)
                     {
-                        removingpokeball = pokeball;
+                        removingconsumable = consumable;
                         break;
-                    }
-                    if (removingpokeball != null)
-                    {
-                        Inventory.Remove(removingpokeball);
-                    }
-                    else
-                    {
-                        throw new NotEnoughConsumablesToSellException();
-                    }
-
-                }
-                else if (consumable is Revive)
-                {
-                    Revive removingRevive = null;
-                    foreach (Revive revive in Inventory)
-                    {
-                        removingRevive = revive;
-                        break;
-                    }
-                    if (removingRevive != null)
-                    {
-                        Inventory.Remove(removingRevive);
-                    }
-                    else
-                    {
-                        throw new NotEnoughConsumablesToSellException();
                     }
                 }
-                else if (consumable is Potion)
+                if (removingconsumable != null)
                 {
-                    Potion removingPotion = null;
-                    foreach (Potion potion in Inventory)
-                    {
-                        removingPotion = potion;
-                        break;
-                    }
-                    if (removingPotion != null)
-                    {
-                        Inventory.Remove(removingPotion);
-                    }
-                    else
-                    {
-                        throw new NotEnoughConsumablesToSellException();
-                    }
+                    Inventory.Remove(removingconsumable);
+                }
+                else
+                {
+                    throw new NotEnoughConsumablesToSellException();
                 }
             }
         }
+
+        public void GiveItem(Item item)
+        {
+            if(item is NonConsumable)
+            {
+                foreach(NonConsumable NC in Inventory)
+                {
+                    if(NC.Name == item.Name)
+                    {
+                        throw new Exception();
+                    }
+                }
+
+            }
+            Inventory.Add(item);
+
+        }
     }
 }
+
