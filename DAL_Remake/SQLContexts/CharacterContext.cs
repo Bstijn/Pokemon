@@ -1,17 +1,16 @@
 ﻿using DAL_Remake.Interfaces;
+using Mono.Data.Sqlite;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace DAL_Remake.SQLContexts
 {
     public class CharacterContext : ICharacterContext
     {
-        private SQLiteConnection connection;
+        private SqliteConnection connection;
         private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
 
         public List<object[]> GetItems(int characterID)
@@ -20,7 +19,7 @@ namespace DAL_Remake.SQLContexts
             string query = "select * from Possesion p" +
                                 " where p.characterID = @characterID";
 
-            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@characterID", characterID);
                 DataTable dataTable = new DataTable();
@@ -40,7 +39,7 @@ namespace DAL_Remake.SQLContexts
             string query = "select * from Character c" +
                                 " inner join Pokemon as p on p.characterId = c.id" +
                                 " where c.id = @characterID  and p.inparty is not null";
-            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@characterID", characterID);
                 DataTable dataTable = new DataTable();
@@ -63,7 +62,7 @@ namespace DAL_Remake.SQLContexts
                                 " inner join character ch" +
                                 " on ch.dialogue = d.ID" +
                                 " where ch.ID = @CharacterID";
-            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@CharacterID", characterID);
                 DataTable dataTable = new DataTable();

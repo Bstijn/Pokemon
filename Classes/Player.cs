@@ -1,4 +1,5 @@
 ﻿using System;
+using Classes.Exceptions;
 
 namespace Classes
 {
@@ -84,7 +85,45 @@ namespace Classes
 
         public void SellItem(Consumable consumable, int amount)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < amount; i++)
+            {
+                Consumable consToRemove = null;
+                foreach (Consumable consinInv in Inventory)
+                {
+                    if (consinInv.Name == consumable.Name)
+                    {
+                        consToRemove = consinInv;
+                        break;
+                    }
+                }
+                if (consToRemove != null)
+                {
+                    Money += consToRemove.Cost;
+                    Inventory.Remove(consToRemove);
+                }
+                else
+                {
+                    throw new NotEnoughItemsToSellExceptions();
+                }
+            }
+        }
+        public void GiveItem(Item item)
+        {
+            if(item is NonConsumable)
+            {
+                foreach(NonConsumable NC in Inventory)
+                {
+                    if(NC.Name == item.Name)
+                    {
+                        return;
+                    }
+                }
+            }
+            Inventory.Add(item);
+        }
+        public void GiveMoney(int amount)
+        {
+            Money += amount;
         }
     }
 }
