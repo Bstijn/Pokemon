@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-enum Direction
+public enum Direction
 {
     Up,
     Down,
@@ -28,7 +25,10 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool moving;
 
-    Direction dir;
+    [HideInInspector]
+    public Direction dir;
+
+    public bool surfing;
 
     void Start()
     {
@@ -112,6 +112,27 @@ public class Player : MonoBehaviour
     {
         x = transform.position.x;
         y = transform.position.y;
+    }
+
+    public void GoSurf(string surfDirection)
+    {
+        surfing = true;
+        switch(surfDirection)
+        {
+            case "s":
+                pos += Vector3.down;
+                break;
+            case "n":
+                pos += Vector3.up;
+                break;
+            case "w":
+                pos += Vector3.left;
+                break;
+            case "e":
+                pos += Vector3.right;
+                break;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
     }
 }
 
