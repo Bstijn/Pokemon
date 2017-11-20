@@ -271,6 +271,9 @@
     <Reference Include="System.Data">
       <HintPath>Assets\Plugins\System.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Classes">
+      <HintPath>Assets\Scripts\librarys\Classes\Classes.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Pokemon.csproj">
