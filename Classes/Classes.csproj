@@ -86,7 +86,7 @@
     <Compile Include="Revive.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="ShopKeeper.cs" />
-    <Compile Include="Stad.cs" />
+    <Compile Include="City.cs" />
     <Compile Include="Type.cs" />
   </ItemGroup>
   <ItemGroup>
