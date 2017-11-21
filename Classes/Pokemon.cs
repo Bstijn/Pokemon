@@ -23,7 +23,7 @@ namespace Classes
 
         private List<Move> moves;
 
-        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
+        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate, bool fainted)
         {
             this.type = type;
             this.moves = moves;
@@ -38,7 +38,7 @@ namespace Classes
             Defense = defense;
             Speed = speed;
             EvolveLevel = evolveLevel;
-            Fainted = true;
+            Fainted = fainted;
             CaptureRate = captureRate;
         }
 
