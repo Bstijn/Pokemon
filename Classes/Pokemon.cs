@@ -155,5 +155,22 @@ namespace Classes
             }
             return false;
         }
+
+        public List<Move> GetMoves()
+        {
+            return moves;
+        }
+
+        public void Heal(int Amount)
+        {
+            CurrentHp = Math.Min(CurrentHp + Amount, MaxHp);
+        }
+
+        public void Revive(double percentage)
+        {
+            Fainted = false;
+            CurrentHp = Convert.ToInt32(Math.Round(MaxHp * (percentage / 100)));
+        }
+
     }
 }

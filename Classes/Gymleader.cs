@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Classes.Exceptions;
 
 namespace Classes
 {
@@ -14,14 +15,40 @@ namespace Classes
         }
 
 
-        public void UseItemInBattle(Consumable consumable)
-        {
-            throw new NotImplementedException();
-        }
 
         public Badge GiveBadge()
         {
             throw new NotImplementedException();
-        } 
+        }
+
+        public void UseItemInBattle(Pokemon targetForItem, Consumable consumable)
+        {
+            foreach (Consumable consInInv in Inventory)
+            {
+                if (consInInv.Id == consumable.Id)
+                {
+                    consumable = consInInv;
+                    break;
+                }
+            }
+            if (!Inventory.Contains(consumable))
+            {
+                throw new ItemNotInInventoryException();
+            }
+
+            if (consumable is Potion)
+            {
+                targetForItem.Heal((consumable as Potion).HealAmount);
+            }
+            else if (consumable is Revive)
+            {
+                targetForItem.Revive((consumable as Revive).Percentage);
+            }
+            else if (consumable is Pokeball)
+            {
+                throw new NotImplementedException();
+            }
+            Inventory.Remove(consumable);
+        }
     }
 }

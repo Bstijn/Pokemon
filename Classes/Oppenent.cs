@@ -12,9 +12,20 @@ namespace Classes
             this.Defeated = defeated;
         }
 
-        public void UseItemInBattle(Consumable consumable)
+        public void UseItemInBattle(Pokemon targetForItem, Consumable consumable)
         {
-            throw new NotImplementedException();
+            if (consumable is Potion)
+            {
+                targetForItem.Heal((consumable as Potion).HealAmount);
+            }
+            else if (consumable is Revive)
+            {
+                targetForItem.Revive((consumable as Revive).Percentage);
+            }
+            else if (consumable is Pokeball)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

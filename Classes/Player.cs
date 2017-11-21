@@ -16,14 +16,38 @@ namespace Classes
             this.Loses = losses;
         }
 
-        public void UseItemInBattle(Consumable consumable)
+        public void UseItem(Item item)//keyItem such as bike might also need to be used.
         {
             throw new NotImplementedException();
         }
 
-        public void UseItem(Item item)//keyItem such as bike might also need to be used.
+        public void UseItem(Pokemon pokemon, Consumable consumable)
         {
-            throw new NotImplementedException();
+            foreach (Consumable consInInv in Inventory)
+            {
+                if (consInInv.Id == consumable.Id)
+                {
+                    consumable = consInInv;
+                    break;
+                }
+            }
+            if (!Inventory.Contains(consumable))
+            {
+                throw new ItemNotInInventoryException(); 
+            }
+            if (consumable is Potion)
+            {
+                pokemon.Heal((consumable as Potion).HealAmount);
+            }
+            else if(consumable is Revive)
+            {
+                pokemon.Revive((consumable as Revive).Percentage);
+            }
+            else if (consumable is Pokeball)
+            {
+                throw new NotImplementedException();
+            }
+            Inventory.Remove(consumable);
         }
 
         public void Walk(int x, int y)//dont forget to change the posX and posY when player moves so u can save the position.
@@ -140,6 +164,36 @@ namespace Classes
         public void GiveMoney(int amount)
         {
             Money += amount;
+        }
+
+        public void UseItemInBattle(Pokemon targetForItem, Consumable consumable)
+        {
+            foreach(Consumable consInInv in Inventory)
+            {
+                if(consInInv.Id == consumable.Id)
+                {
+                    consumable = consInInv;
+                    break;
+                }
+            }
+            if (!Inventory.Contains(consumable))
+            {
+                throw new ItemNotInInventoryException();
+            }
+
+            if (consumable is Potion)
+            {
+                targetForItem.Heal((consumable as Potion).HealAmount);
+            }
+            else if (consumable is Revive)
+            {
+                targetForItem.Revive((consumable as Revive).Percentage);
+            }
+            else if (consumable is Pokeball)
+            {
+                throw new NotImplementedException();
+            }
+            Inventory.Remove(consumable);
         }
     }
 }
