@@ -76,11 +76,9 @@
     <Compile Include="Player.cs" />
     <Compile Include="Pokeball.cs" />
     <Compile Include="Pokecenter.cs" />
-    <Compile Include="PokedexMove.cs" />
-    <Compile Include="PokedexPokemon.cs" />
+    <Compile Include="Pokedex.cs" />
     <Compile Include="Pokemart.cs" />
     <Compile Include="Pokemon.cs" />
-    <Compile Include="PokemonMoves.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Revive.cs" />
