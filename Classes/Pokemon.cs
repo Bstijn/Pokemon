@@ -59,7 +59,11 @@ namespace Classes
 
         public void LevelUp()
         {
-            throw new NotImplementedException();
+            Level++;
+            if(Level >= EvolveLevel)
+            {
+                Evolve();
+            }
         }
 
         public void Evolve()

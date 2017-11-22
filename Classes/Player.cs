@@ -73,9 +73,24 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void ManageParty()//open party menu
+        public void ManageParty(Pokemon pokemon1, Pokemon pokemon2)//switches 2 pokemon of position in the Party.
         {
-            throw new NotImplementedException();
+            int index1 = Pokemons.IndexOf(pokemon1);
+            int index2 = Pokemons.IndexOf(pokemon2);
+            if(index1 < index2)
+            {
+                Pokemons.RemoveAt(index2);
+                Pokemons.Insert(index1, pokemon2);
+                Pokemons.Remove(pokemon1);
+                Pokemons.Insert(index2,pokemon1);
+            }
+            else
+            {
+                Pokemons.RemoveAt(index1);
+                Pokemons.Insert(index2, pokemon1);
+                Pokemons.Remove(pokemon2);
+                Pokemons.Insert(index1, pokemon2);
+            }
         }
 
         public void ManagePC()//open PC menu check might be required in unity.
