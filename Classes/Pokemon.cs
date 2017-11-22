@@ -56,19 +56,32 @@ namespace Classes
             int damage = (int)((((((2 * (Convert.ToDouble(Level)) / 5) + 2) * Convert.ToDouble(move.BasePower) * (Convert.ToDouble(Attack) / Convert.ToDouble(defendingPokemon.Defense))) / 50) + 2) * GetModifier(move, defendingPokemon));
             defendingPokemon.TakeDamage(damage);
         }
-
+        
         public void LevelUp()
         {
+            //check xp with xp to lvlupxp.
             Level++;
             if(Level >= EvolveLevel)
             {
-                Evolve();
+                throw new NotImplementedException();//evolve met database
+                Xp = 0;
+                //update xp to lvlupxp.
             }
         }
 
-        public void Evolve()
+        public void Evolve(Pokemon pokemon)
         {
-            throw new NotImplementedException();
+            type = pokemon.type;
+            moves = pokemon.moves;
+            Id = pokemon.Id;
+            Name = pokemon.Name;
+            CurrentHp = pokemon.CurrentHp;
+            MaxHp = pokemon.MaxHp;
+            Attack = pokemon.Attack;
+            Defense = pokemon.Defense;
+            Speed = pokemon.Speed;
+            EvolveLevel = pokemon.EvolveLevel;
+            CaptureRate = pokemon.CaptureRate;
         }
 
         public Type GetType()
@@ -76,7 +89,7 @@ namespace Classes
             return type;
         }
 
-        private double GetModifier(Move move, Pokemon defendingPokemon)
+        private double GetModifier(Move move, Pokemon defendingPokemon)//TODO: check if there is need to be changed
         {
             double critValue = GetCritValue(Speed);
             double randomRate = GetRandomRate();
@@ -85,7 +98,7 @@ namespace Classes
             return critValue * randomRate * stab * effectiveType;
         }
 
-        private double GetCritValue(int speed)
+        private double GetCritValue(int speed)//TODO: check if there is need to be changed
         {
             int T = speed / 2;
             Random random = new Random();
@@ -97,13 +110,13 @@ namespace Classes
             return 1;
         }
 
-        private double GetRandomRate()
+        private double GetRandomRate()//TODO: check if there is need to be changed
         {
             Random random = new Random();
             return (double)random.Next(85, 100) / 100;
         }
 
-        private double GetSTAB(Type PokemonType, Type MoveType)
+        private double GetSTAB(Type PokemonType, Type MoveType)//TODO: check if there is need to be changed
         {
             if (PokemonType == MoveType)
             {

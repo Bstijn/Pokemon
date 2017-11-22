@@ -9,9 +9,11 @@ namespace Classes
 
         public int Wins { get; private set; }
         public int Loses { get; private set; }
-        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons, int wins, int losses)
+        public Pokecenter LastVisitedPokeCenter { get; private set; }
+        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons, int wins, int losses,Pokecenter lastVistedPokeCenter)
             : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
         {
+            this.LastVisitedPokeCenter = lastVistedPokeCenter;
             this.Wins = wins;
             this.Loses = losses;
         }
@@ -93,7 +95,7 @@ namespace Classes
             }
         }
 
-        public void ManagePC()//open PC menu check might be required in unity.
+        public void ManagePC()//open PC menu check might be required in unity. 
         {
             throw new NotImplementedException();
         }
@@ -217,6 +219,19 @@ namespace Classes
                 throw new NotImplementedException();
             }
             Inventory.Remove(consumable);
+        }
+
+        public void SetLastVistedPokeCenter(Pokecenter pokeCenter)
+        {
+            //implement in database;
+            throw new NotImplementedException();
+
+        }
+        public void GoToLocation(Passage passage)//Maybe check with database if character can go to location.
+        {
+            CurrentLocation = passage.ToLocation;
+            PosX = passage.ToX;
+            PosY = passage.ToY;
         }
     }
 }

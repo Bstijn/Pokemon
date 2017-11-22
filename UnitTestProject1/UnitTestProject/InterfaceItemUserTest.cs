@@ -15,7 +15,7 @@ namespace UnitTestProject
             //assemble
             List<Item> items = new List<Item>() { new Potion(1, "pot", 20, "pot", 30) };
             List<Pokemon> pokemon = new List<Pokemon>() { new Pokemon(null, null, 1, "gerald", true, 1, 1, 20, 0, 0, 0, 0, 0, 0, false) };
-            Player player = new Player("ads", 1, "", 0, 0, 0, null, items, pokemon, 0, 0);
+            Player player = new Player("ads", 1, "", 0, 0, 0, null, items, pokemon, 0, 0,null);
             //act
             player.UseItem(pokemon[0], items[0] as Consumable);
             //assert
@@ -27,7 +27,7 @@ namespace UnitTestProject
         {
             List<Item> items = new List<Item>() { new Revive(1, "pot", 20, "pot", 30) };
             List<Pokemon> pokemon = new List<Pokemon>() { new Pokemon(null, null, 1, "gerald", true, 1, 0, 100, 0, 0, 0, 0, 0, 0, true) };
-            Player player = new Player("ads", 1, "", 0, 0, 0, null, items, pokemon, 0, 0);
+            Player player = new Player("ads", 1, "", 0, 0, 0, null, items, pokemon, 0, 0,null);
             player.UseItem(pokemon[0], items[0] as Revive);
 
             Assert.AreEqual(items.Count, 0, "items hoort nul te zijn item is niet goed van lijst verwijdert");
