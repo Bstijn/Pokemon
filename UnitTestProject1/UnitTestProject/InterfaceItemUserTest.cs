@@ -23,7 +23,7 @@ namespace UnitTestProject
             Assert.AreEqual(items.Count, 0, "items hoort nul te zijn item is niet goed van lijst verwijdert");
         }
         [TestMethod]
-        public void UsePotion()
+        public void UseReviveTest()
         {
             List<Item> items = new List<Item>() { new Revive(1, "pot", 20, "pot", 30) };
             List<Pokemon> pokemon = new List<Pokemon>() { new Pokemon(null, null, 1, "gerald", true, 1, 0, 100, 0, 0, 0, 0, 0, 0, true) };

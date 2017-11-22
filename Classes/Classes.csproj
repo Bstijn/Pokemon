@@ -60,6 +60,7 @@
     <Compile Include="Effectiveness.cs" />
     <Compile Include="EnemyHQ.cs" />
     <Compile Include="Exceptions\ChoiceDoesNotExistException.cs" />
+    <Compile Include="Exceptions\GymLeaderHasNoBadgeException.cs" />
     <Compile Include="Exceptions\ItemNotInInventoryException.cs" />
     <Compile Include="Exceptions\NotEnoughItemsToSellExceptions.cs" />
     <Compile Include="Gym.cs" />

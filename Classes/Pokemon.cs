@@ -115,11 +115,15 @@ namespace Classes
             return effectiveness;
 
         }
-
+        /// <summary>
+        /// Revive will be used by Nurse
+        /// </summary>
         public void Revive()
         {
             if (Fainted)
-                CurrentHp = MaxHp / 2;
+            {
+                Fainted = false;
+            }
         }
 
         public void HealByPotion(Potion potion)
@@ -165,7 +169,10 @@ namespace Classes
         {
             CurrentHp = Math.Min(CurrentHp + Amount, MaxHp);
         }
-
+        /// <summary>
+        /// revive used by items
+        /// </summary>
+        /// <param name="percentage">stands for the percentage of hp the pokemon will recover on being revived.</param>
         public void Revive(double percentage)
         {
             Fainted = false;

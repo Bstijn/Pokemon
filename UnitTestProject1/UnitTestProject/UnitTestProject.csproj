@@ -56,6 +56,8 @@
     <Compile Include="buyselltests.cs" />
     <Compile Include="PokemonBattleTest.cs" />
     <Compile Include="InterfaceItemUserTest.cs" />
+    <Compile Include="GymLeaderTest.cs" />
+    <Compile Include="NurseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Classes\Classes.csproj">

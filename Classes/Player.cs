@@ -16,11 +16,19 @@ namespace Classes
             this.Loses = losses;
         }
 
-        public void UseItem(Item item)//keyItem such as bike might also need to be used.
+        /// <summary>
+        /// used for keyItems in player inventory
+        /// </summary>
+        /// <param name="item">stands for a keyitem</param>
+        public void UseItem(Item item)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// uses consumable on a pokemon and will remove it from the inventory
+        /// </summary>
+        /// <param name="pokemon">target for consumable</param>
+        /// <param name="consumable">which consumable you want to use</param>
         public void UseItem(Pokemon pokemon, Consumable consumable)
         {
             foreach (Consumable consInInv in Inventory)

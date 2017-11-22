@@ -16,9 +16,26 @@ namespace Classes
 
 
 
-        public Badge GiveBadge()
+        public Badge Lose()//Before GiveBadge now also switches defeated to true.
         {
-            throw new NotImplementedException();
+            Defeated = true;
+            Item ToBeRemoved = null;
+            foreach (Item i in Inventory)
+            {
+                if (i is Badge)
+                {
+                    ToBeRemoved = i; break;
+                }
+            }
+            if (ToBeRemoved != null)
+            {
+                Inventory.Remove(ToBeRemoved);
+                return ToBeRemoved as Badge;
+            }
+            else
+            {
+                throw new GymLeaderHasNoBadgeException();
+            }
         }
 
         public void UseItemInBattle(Pokemon targetForItem, Consumable consumable)
@@ -50,5 +67,7 @@ namespace Classes
             }
             Inventory.Remove(consumable);
         }
+
+
     }
 }
