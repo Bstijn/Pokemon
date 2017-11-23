@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Classes.Exceptions;
 
 namespace Classes
 {
@@ -14,14 +15,59 @@ namespace Classes
         }
 
 
-        public void UseItemInBattle(Consumable consumable)
+
+        public Badge Lose()//Before GiveBadge now also switches defeated to true.
         {
-            throw new NotImplementedException();
+            Defeated = true;
+            Item ToBeRemoved = null;
+            foreach (Item i in Inventory)
+            {
+                if (i is Badge)
+                {
+                    ToBeRemoved = i; break;
+                }
+            }
+            if (ToBeRemoved != null)
+            {
+                Inventory.Remove(ToBeRemoved);
+                return ToBeRemoved as Badge;
+            }
+            else
+            {
+                throw new GymLeaderHasNoBadgeException();
+            }
         }
 
-        public Badge GiveBadge()
+        public void UseItemInBattle(Pokemon targetForItem, Consumable consumable)
         {
-            throw new NotImplementedException();
-        } 
+            foreach (Consumable consInInv in Inventory)
+            {
+                if (consInInv.Id == consumable.Id)
+                {
+                    consumable = consInInv;
+                    break;
+                }
+            }
+            if (!Inventory.Contains(consumable))
+            {
+                throw new ItemNotInInventoryException();
+            }
+
+            if (consumable is Potion)
+            {
+                targetForItem.Heal((consumable as Potion).HealAmount);
+            }
+            else if (consumable is Revive)
+            {
+                targetForItem.Revive((consumable as Revive).Percentage);
+            }
+            else if (consumable is Pokeball)
+            {
+                throw new NotImplementedException();
+            }
+            Inventory.Remove(consumable);
+        }
+
+
     }
 }
