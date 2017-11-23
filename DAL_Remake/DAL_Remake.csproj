@@ -55,12 +55,6 @@
     <Compile Include="Interfaces\IPokemartContext.cs" />
     <Compile Include="Interfaces\IPokemonContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CharacterRepository.cs" />
-    <Compile Include="Repositories\LocationRepository.cs" />
-    <Compile Include="Repositories\PlayerRepository.cs" />
-    <Compile Include="Repositories\PokedexRepository.cs" />
-    <Compile Include="Repositories\PokemartRepository.cs" />
-    <Compile Include="Repositories\PokemonRepository.cs" />
     <Compile Include="SQLContexts\CharacterContext.cs" />
     <Compile Include="SQLContexts\LocationContext.cs" />
     <Compile Include="SQLContexts\PlayerContext.cs" />
