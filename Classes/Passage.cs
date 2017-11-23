@@ -20,9 +20,5 @@ namespace Classes
             ToY = toY;
             ToLocation = toLocation;
         }
-        public void EnternewLocation()//gebruikt waarschijnlijk ToLocation
-        {
-            throw new NotImplementedException();
-        }
     }
 }
