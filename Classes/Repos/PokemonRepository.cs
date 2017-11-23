@@ -1,13 +1,11 @@
+﻿using DAL_Remake.Interfaces;
+using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DAL_Remake.Interfaces;
-using DAL_Remake.SQLContexts;
-using Classes;
 
-
-namespace DAL_Remake.Repositories
+namespace Classes.Repos
 {
     public class PokemonRepository
     {
@@ -33,6 +31,5 @@ namespace DAL_Remake.Repositories
         {
             return context.GetPokemonType();
         }
-
     }
 }

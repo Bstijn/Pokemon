@@ -1,12 +1,11 @@
+﻿using DAL_Remake.Interfaces;
 using DAL_Remake.SQLContexts;
-using DAL_Remake.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
-namespace DAL_Remake.Repositories
+namespace Classes.Repos
 {
     public class PokedexRepository
     {
@@ -26,6 +25,5 @@ namespace DAL_Remake.Repositories
         {
             return context.GetOwnedPokemon();
         }
-
     }
 }

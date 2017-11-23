@@ -84,6 +84,12 @@
     <Compile Include="Pokemon.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\CharacterRepository.cs" />
+    <Compile Include="Repos\LocationRepository.cs" />
+    <Compile Include="Repos\PlayerRepository.cs" />
+    <Compile Include="Repos\PokedexRepository.cs" />
+    <Compile Include="Repos\PokemartRepository.cs" />
+    <Compile Include="Repos\PokemonRepository.cs" />
     <Compile Include="Revive.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="ShopKeeper.cs" />
