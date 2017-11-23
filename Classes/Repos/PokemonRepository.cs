@@ -19,17 +19,22 @@ namespace Classes.Repos
         public List<Move> GetMoves(int pokemonID)
         {
             List<Move> moves = new List<Move>();
-            List<object[]> moveData = context.GetMoves(pokemonID);
-            //foreach (object[] move in moveData)
-            //{
-            //    moves.Add(new Move(move[0], move[1], move[2], ))
-            //}
+            List<object[]> data = context.GetMoves(pokemonID);
+
+            foreach (object[] row in data)
+            {
+                moves.Add(new Move(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), Convert.ToInt32(data[3]), 
+                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8])));
+            }
+
             return moves;
         }
 
-        public object[] GetPokemonType()
+        public Type GetPokemonType(int pokedexPokemonID)
         {
-            return context.GetPokemonType();
+            object[] data = context.GetPokemonType(pokedexPokemonID);
+            Type type = new Type(Convert.ToInt32(data[0]), data[1].ToString());
+            return type;
         }
     }
 }

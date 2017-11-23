@@ -16,14 +16,23 @@ namespace Classes.Repos
             context = new PokedexContext();
         }
 
-        public List<object[]> GetSeenPokemon()
+        public List<Pokemon> GetSeenPokemon()
         {
-            return context.GetSeenPokemon();
+            List<object[]> data = context.GetSeenPokemon();
+            List<Pokemon> pokemon = new List<Pokemon>();
+
+
+            //TODO: Fixen dat er een hele pokemon word opgehaald
+            return pokemon;
         }
 
-        public List<object[]> GetOwnedPokemon()
+        public List<Pokemon> GetOwnedPokemon()
         {
-            return context.GetOwnedPokemon();
+            List<object[]> data = context.GetSeenPokemon();
+            List<Pokemon> pokemon = new List<Pokemon>();
+
+            //TODO: Fixen dat er een hele pokemon word opgehaald
+            return pokemon;
         }
     }
 }
