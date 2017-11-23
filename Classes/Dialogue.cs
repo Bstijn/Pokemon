@@ -10,7 +10,7 @@ namespace Classes
         public string Text { get; private set; }
         public bool ClosingDialogue { get; private set; }
 
-        public Dialogue(int id, string text, List<Choice> choices)//Propably need to limit choices for unity so it doesnt get errors.
+        public Dialogue(int id, string text)//Propably need to limit choices for unity so it doesnt get errors.
         {
             this.Id = id;
             this.Text = text;

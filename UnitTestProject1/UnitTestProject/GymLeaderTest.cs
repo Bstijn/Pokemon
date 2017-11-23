@@ -16,7 +16,7 @@ namespace UnitTestProject
         public void GymLeaderLoseTest()
         {
             //assemble
-            Badge actualBadge =  new Badge(1, "fireBadge", 0, "the badge of the fire gym");
+            Badge actualBadge =  new Badge(1, "fireBadge", "the badge of the fire gym");
             List<Item> items = new List<Item>() {actualBadge};
             Gymleader GL = new Gymleader("leader", 1, "", 0, 0, 0, null, items, null, false);
             //act
@@ -32,7 +32,7 @@ namespace UnitTestProject
         [TestMethod]
         public void GymLeaderExceptionTest()
         {
-            Badge actualBadge = new Badge(1, "fireBadge", 0, "the badge of the fire gym");
+            Badge actualBadge = new Badge(1, "fireBadge", "the badge of the fire gym");
             List<Item> items = new List<Item>() { };
             Gymleader GL = new Gymleader("leader", 1, "", 0, 0, 0, null, items, null, false);
             //act

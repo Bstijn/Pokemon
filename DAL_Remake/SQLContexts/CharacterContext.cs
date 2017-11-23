@@ -12,7 +12,10 @@ namespace DAL_Remake.SQLContexts
     {
         private SqliteConnection connection;
         private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
-
+        public CharacterContext()
+        {
+            connection = new SqliteConnection(connectionString);
+        }
         public List<object[]> GetRevives(int characterID)
         {
             List<object[]> data = new List<object[]>();
@@ -88,7 +91,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetBadges(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description " +
+            string query = "select i.ID, i.Name, i.Description " +
                                     "from Posession p, Item i, NonConsumable nc, Badge b " +
                                     "where p.CharacterID = @CharacterID " +
                                     "and p.ItemID = i.ID " +
@@ -112,7 +115,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetKeyItems(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description, ki.IsUsable " +
+            string query = "select i.ID, i.Name, i.Description, ki.IsUsable " +
                                     "from Posession p, Item i, NonConsumable nc, KeyItem ki " +
                                     "where p.CharacterID = @CharacterID " +
                                     "and p.ItemID = i.ID " +

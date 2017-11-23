@@ -13,6 +13,10 @@ namespace DAL_Remake.SQLContexts
         private SqliteConnection connection;
         private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
 
+        public PokemonContext()
+        {
+            connection = new SqliteConnection(connectionString);
+        }
         public List<object[]> GetMoves(int pokemonID)
         {
             List<object[]> data = new List<object[]>();

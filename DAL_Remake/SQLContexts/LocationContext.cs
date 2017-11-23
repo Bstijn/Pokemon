@@ -12,6 +12,11 @@ namespace DAL_Remake.SQLContexts
         private SqliteConnection connection;
         private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
 
+        public LocationContext()
+        {
+            connection = new SqliteConnection(connectionString);
+        }
+
         public object[] GetGymleader(int locationID)
         {
             object[] data;

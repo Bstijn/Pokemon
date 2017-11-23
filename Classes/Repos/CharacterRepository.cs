@@ -63,7 +63,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                badges.Add(new Badge(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString()));
+                badges.Add(new Badge(Convert.ToInt32(data[0]), data[1].ToString(), data[2].ToString()));
             }
 
             return badges;
@@ -76,7 +76,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                keyItems.Add(new KeyItem(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToBoolean(data[4])));
+                keyItems.Add(new KeyItem(Convert.ToInt32(data[0]), data[1].ToString(), data[2].ToString(), Convert.ToBoolean(data[3])));
             }
 
             return keyItems;
