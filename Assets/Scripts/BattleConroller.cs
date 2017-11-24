@@ -30,7 +30,7 @@ namespace Assets.Scripts
             for (var i = 0; i < 4; i++)
             {
                 attackMenu.transform.Find("MoveButton" + i).gameObject.GetComponent<Image>().sprite = AttackTypeSprites[0];
-                //TODO
+                //TODO set color moves
                 //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("Name").gameObject.GetComponent<Text>.text = movename;
                 //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>.text = ppcurrent + " / " + ppmax;
                 //if pp < 50%
@@ -60,15 +60,16 @@ namespace Assets.Scripts
 
         public void OnUseMoveButtonPress(int moveNumber)
         {
-            //TODO
+            //TODO do move stuff
             //do things
         }
         
         public void OnHighlightButton(int moveNumber)
         {
-            InfoAttackMenu.transform.Find("DescriptionText").gameObject.GetComponent<Text>().text = Description;//TODO
-            InfoAttackMenu.transform.Find("PowerText").gameObject.GetComponent<Text>().text = "Power: " + Power;//TODO
-            InfoAttackMenu.transform.Find("AccuracyText").gameObject.GetComponent<Text>().text = "Accuracy: " + Accuracy;//TODO
+            //TODO pokemonmove waardes pakken
+            InfoAttackMenu.transform.Find("DescriptionText").gameObject.GetComponent<Text>().text = Description;
+            InfoAttackMenu.transform.Find("PowerText").gameObject.GetComponent<Text>().text = "Power: " + Power;
+            InfoAttackMenu.transform.Find("AccuracyText").gameObject.GetComponent<Text>().text = "Accuracy: " + Accuracy;
         }
 
         public void OnShowPokemonMenuButtonPress(GameObject pokemonMenu)  
@@ -86,7 +87,7 @@ namespace Assets.Scripts
 
         public void OnTryFleeButtonPress()
         {
-         //TODO
+         //TODO try flee
         }
         #endregion
             
@@ -94,7 +95,7 @@ namespace Assets.Scripts
         {
             for (var i = 0; i < 6; i++)
             {
-                //TODO
+                //TODO 
                 StartCoroutine("SwitchIconSprites", i);
             }
         }
