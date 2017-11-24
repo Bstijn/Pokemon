@@ -55,6 +55,16 @@ namespace Classes
         {
             int damage = (int)((((((2 * (Convert.ToDouble(Level)) / 5) + 2) * Convert.ToDouble(move.BasePower) * (Convert.ToDouble(Attack) / Convert.ToDouble(defendingPokemon.Defense))) / 50) + 2) * GetModifier(move, defendingPokemon));
             defendingPokemon.TakeDamage(damage);
+            MoveExecuted(move);
+        }
+
+        private void MoveExecuted(Move move)
+        {
+            foreach (Move m in moves)
+            {
+                if (m.Name == move.Name)
+                    m.PPDown();
+            }
         }
 
         public void LevelUp()
@@ -116,10 +126,10 @@ namespace Classes
 
         }
 
-        public void Revive()
+        public void Revive(int percentage)
         {
             if (Fainted)
-                CurrentHp = MaxHp / 2;
+                CurrentHp = MaxHp * (percentage/100);
         }
 
         public void HealByPotion(Potion potion)

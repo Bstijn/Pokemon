@@ -36,7 +36,7 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void EncounterOppenent(Oppenent oppenent)
+        public void EncounterOppenent(Opponent oppenent)
         {
             throw new NotImplementedException();
         }

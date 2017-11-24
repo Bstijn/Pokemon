@@ -9,4 +9,9 @@
 
         public decimal CatchRate { get; private set; }
     }
+
+    public override void Use(Pokemon targetPokemon)
+    {
+
+    }
 }

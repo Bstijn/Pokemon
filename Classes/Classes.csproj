@@ -60,6 +60,7 @@
     <Compile Include="Dialogue.cs" />
     <Compile Include="Effectiveness.cs" />
     <Compile Include="EnemyHQ.cs" />
+    <Compile Include="Exceptions\CannotFleeTrainerBattleException.cs" />
     <Compile Include="Exceptions\ChoiceDoesNotExistException.cs" />
     <Compile Include="Exceptions\NotEnoughItemsToSellExceptions.cs" />
     <Compile Include="Gym.cs" />
@@ -72,7 +73,7 @@
     <Compile Include="Move.cs" />
     <Compile Include="NonConsumable.cs" />
     <Compile Include="Nurse.cs" />
-    <Compile Include="Oppenent.cs" />
+    <Compile Include="Opponent.cs" />
     <Compile Include="Passage.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pokeball.cs" />
