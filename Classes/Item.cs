@@ -14,6 +14,5 @@
             Cost = cost;
             Description = description;
         }
-
     }
 }

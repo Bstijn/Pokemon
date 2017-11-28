@@ -8,5 +8,10 @@
         }
 
         public int HealAmount { get; private set; }
+        public override bool Use(Pokemon pokemon)
+        {
+            //TODO Potion van inventory af
+            throw new System.NotImplementedException();
+        }
     }
 }

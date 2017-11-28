@@ -60,6 +60,7 @@
     <Compile Include="NurseTest.cs" />
     <Compile Include="PokemonManagementTest.cs" />
     <Compile Include="PassageTest.cs" />
+    <Compile Include="BattleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Classes\Classes.csproj">
