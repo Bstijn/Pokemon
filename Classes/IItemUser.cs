@@ -2,6 +2,6 @@
 {
     public interface IItemUser
     {
-        void UseItemInBattle(Consumable consumable);
+        void UseItemInBattle(Pokemon targetForItem,Consumable consumable);
     }
 }

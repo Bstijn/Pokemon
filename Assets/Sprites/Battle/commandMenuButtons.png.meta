@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9dcc61d64a8c52245a2bc5c09b17b4e1
-timeCreated: 1510223099
+timeCreated: 1511442261
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,14 @@ TextureImporter:
     21300002: ButtonBag
     21300004: ButtonPokemon
     21300006: ButtonFlee
+    21300008: commandMenuButtons_0
+    21300010: commandMenuButtons_1
+    21300012: commandMenuButtons_2
+    21300014: commandMenuButtons_3
+    21300016: commandMenuButtons_4
+    21300018: commandMenuButtons_5
+    21300020: commandMenuButtons_6
+    21300022: commandMenuButtons_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -35,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -82,7 +90,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ButtonAttack
+      name: commandMenuButtons_0
       rect:
         serializedVersion: 2
         x: 4
@@ -90,13 +98,13 @@ TextureImporter:
         width: 108
         height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ButtonBag
+      name: commandMenuButtons_1
       rect:
         serializedVersion: 2
         x: 120
@@ -104,13 +112,13 @@ TextureImporter:
         width: 108
         height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ButtonPokemon
+      name: commandMenuButtons_2
       rect:
         serializedVersion: 2
         x: 236
@@ -118,17 +126,73 @@ TextureImporter:
         width: 108
         height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ButtonFlee
+      name: commandMenuButtons_3
       rect:
         serializedVersion: 2
         x: 352
         y: 54
+        width: 108
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: commandMenuButtons_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 108
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: commandMenuButtons_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 6
+        width: 108
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: commandMenuButtons_6
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 6
+        width: 108
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: commandMenuButtons_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 6
         width: 108
         height: 40
       alignment: 0

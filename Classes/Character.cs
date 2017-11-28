@@ -11,11 +11,11 @@ namespace Classes
         public int Id { get; private set; }
         public string Gender { get; private set; }
         public int Money { get; protected set; }
-        public int PosX { get; private set; }
-        public int PosY { get; private set; }
-        public Location CurrentLocation { get; private set; }
+        public int PosX { get; protected set; }
+        public int PosY { get; protected set; }
+        public Location CurrentLocation { get; protected set; }
         public List<Item> Inventory { get; protected set; }
-        public List<Pokemon> Pokemons { get; private set; }
+        public List<Pokemon> Pokemons { get; protected set; }
 
         public Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons)
         {
@@ -35,9 +35,6 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void GoToLocation(Location location)//Maybe check with database if character can go to location.
-        {
-            CurrentLocation = location;
-        }
+       
     }
 }
