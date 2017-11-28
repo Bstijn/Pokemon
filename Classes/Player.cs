@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Classes.Exceptions;
 
 namespace Classes
@@ -16,9 +17,32 @@ namespace Classes
             this.Loses = losses;
         }
 
-        public void UseItemInBattle(Consumable consumable)
+        public bool UseItemInBattle(Consumable consumable, Pokemon targetPokemon)
         {
-            throw new NotImplementedException();
+            //TODO Bij items 1 van inventory af als deze gebruikt wordt
+            if (consumable.GetType() == typeof(Pokeball))
+            {
+
+                if (consumable.Use(targetPokemon))
+                    return true;
+                return false;
+            }
+
+            var selectedPokemon = Pokemons.First(p => targetPokemon.Id == p.Id);
+            if (consumable.GetType() == typeof(Revive))
+            {
+                var revive = (Revive)consumable;
+                selectedPokemon.Revive(revive.Percentage);
+                return true;
+            }
+
+            if (consumable.GetType() == typeof(Potion))
+            {
+                var potion = (Potion)consumable;
+                selectedPokemon.HealByPotion(potion);
+                return true;
+            }
+            return false;
         }
 
         public void UseItem(Item item)//keyItem such as bike might also need to be used.

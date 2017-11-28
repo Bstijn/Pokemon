@@ -37,29 +37,7 @@ namespace Classes
 
         public bool UseItem(Consumable consumable, Pokemon targetPokemon)
         {
-            //TODO Bij items 1 van inventory af als deze gebruikt wordt
-            if (consumable.GetType() == typeof(Pokeball))
-            {
-                if (consumable.Use(targetPokemon))
-                    return true;
-                return false;
-            }
-
-            var selectedPokemon = Player.Pokemons.First(p => targetPokemon.Id == p.Id);
-            if (consumable.GetType() == typeof(Revive))
-            {
-                var revive = (Revive) consumable;
-                selectedPokemon.Revive(revive.Percentage);
-                return true;
-            }
-
-            if (consumable.GetType() == typeof(Potion))
-            {
-                var potion = (Potion) consumable;
-                selectedPokemon.HealByPotion(potion);
-                return true;
-            }
-            return false;
+            return Player.UseItemInBattle(consumable, targetPokemon);
         }
 
         /* 
