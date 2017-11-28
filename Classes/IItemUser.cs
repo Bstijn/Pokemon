@@ -2,6 +2,7 @@
 {
     public interface IItemUser
     {
-        void UseItemInBattle(Pokemon targetForItem,Consumable consumable);
+        bool UseItemInBattle(Consumable consumable, Pokemon targetPokemon); 
+
     }
 }

@@ -8,9 +8,7 @@ namespace Classes
         {
         }
 
-        public void Use()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract bool Use(Pokemon pokemon);
+
     }
 }
