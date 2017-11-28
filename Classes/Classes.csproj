@@ -74,7 +74,7 @@
     <Compile Include="Move.cs" />
     <Compile Include="NonConsumable.cs" />
     <Compile Include="Nurse.cs" />
-    <Compile Include="Opponent.cs" />
+    <Compile Include="Oppenent.cs" />
     <Compile Include="Passage.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pokeball.cs" />
