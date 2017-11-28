@@ -55,6 +55,16 @@ namespace Classes
         {
             int damage = (int)((((((2 * (Convert.ToDouble(Level)) / 5) + 2) * Convert.ToDouble(move.BasePower) * (Convert.ToDouble(Attack) / Convert.ToDouble(defendingPokemon.Defense))) / 50) + 2) * GetModifier(move, defendingPokemon));
             defendingPokemon.TakeDamage(damage);
+            MoveExecuted(move);
+        }
+
+        private void MoveExecuted(Move move)
+        {
+            foreach (Move m in moves)
+            {
+                if (m.Name == move.Name)
+                    m.PPDown();
+            }
         }
         
         public void LevelUp()
@@ -132,15 +142,12 @@ namespace Classes
             return effectiveness;
 
         }
-        /// <summary>
-        /// Revive will be used by Nurse
-        /// </summary>
-        public void Revive()
+
+
+        public void Revive(int percentage)
         {
             if (Fainted)
-            {
-                Fainted = false;
-            }
+                CurrentHp = Convert.ToInt32(MaxHp * (Convert.ToDouble(percentage/100)));
         }
 
         public void HealByPotion(Potion potion)
