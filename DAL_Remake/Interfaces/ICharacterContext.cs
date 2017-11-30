@@ -1,17 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DAL_Remake.Interfaces
 {
     public interface ICharacterContext
     {
-        List<object[]> GetItems();
+        List<object[]> GetRevives(int characterID);
 
-        List<object[]> GetPokemon();
+        List<object[]> GetPotions(int characterID);
 
-        List<object[]> GetDialogues();
+        List<object[]> GetPokeballs(int characterID);
+
+        List<object[]> GetBadges(int characterID);
+
+        List<object[]> GetKeyItems(int characterID);
+
+        List<object[]> GetPokemonFromParty(int characterID);
+
+        List<object[]> GetPokemonMoves(int pokemonID);
+
+        object[] GetPokemonType(int pokemonID);
+
+        List<object[]> GetDialogues(int characterID);
     }
 }

@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Classes
 {
     public abstract class Consumable : Item
     {
+        public int Cost { get; set; }
 
-        public void Use()
+        public Consumable(int id, string name, int cost, string description) : base(id, name, description)
         {
-            throw new NotImplementedException();
+            Cost = cost;
         }
+
+        public abstract bool Use(Pokemon pokemon);
+
     }
 }

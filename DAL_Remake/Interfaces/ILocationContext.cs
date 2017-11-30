@@ -1,17 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DAL_Remake.Interfaces
 {
     public interface ILocationContext
     {
-        List<object[]> GetCharacters();
+        object[] GetGymleader(int locationID);
 
-        List<object[]> GetPassages();
+        object[] GetNurse(int locationID);
 
-        List<object[]> GetPokemon();
+        object[] GetShopkeeper(int locationID);
+
+        List<object[]> GetOpponents(int locationID);
+
+        List<object[]> GetBystanders(int locationID);
+
+        List<object[]> GetPassages(int locationID);
+
+        List<object[]> GetEncounterablePokemon(int locationID);
+
+        List<object[]> GetPokemonMoves(int pokemonID);
+
+        object[] GetPokemonType(int pokemonID);
+
+        List<object[]> GetRevives(int characterID);
+
+        List<object[]> GetPotions(int characterID);
+
+        List<object[]> GetPokeballs(int characterID);
+
+        List<object[]> GetInventory(int characterID);
     }
 }

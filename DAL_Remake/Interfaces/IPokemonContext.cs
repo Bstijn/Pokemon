@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DAL_Remake.Interfaces
 {
     public interface IPokemonContext
     {
-        List<object[]> GetMoves();
+        List<object[]> GetMoves(int pokemonID);
 
-        object[] GetPokemonType();
+        object[] GetPokemonType(int pokedexPokemonID);
     }
 }

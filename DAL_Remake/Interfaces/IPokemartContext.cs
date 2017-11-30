@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DAL_Remake.Interfaces
 {
     public interface IPokemartContext
     {
-        List<object[]> GetConsumables();
+        List<object[]> GetRevives(int pokemartID);
+
+        List<object[]> GetPotions(int pokemartID);
+
+        List<object[]> GetPokeballs(int pokemartID);
     }
 }

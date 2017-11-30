@@ -1,23 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Classes.Exceptions;
 
 namespace Classes
 {
     public class Gymleader : Character, IItemUser
     {
-        public Boolean Defeated { get; private set; }
+        //if opponent or gymleader is defeated they might give the player money or an item.
+        public bool Defeated { get; private set; }
 
-        public void UseItemInBattle(Consumable consumable)
+        public Gymleader(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons, bool defeated) : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
         {
-            throw new NotImplementedException();
+            Defeated = defeated;
         }
 
-        public void GiveBadge(Badge badge)
+
+
+        public Badge Lose()//Before GiveBadge now also switches defeated to true.
         {
-            throw new NotImplementedException();
-        } 
+            Defeated = true;
+            Item ToBeRemoved = null;
+            foreach (Item i in Inventory)
+            {
+                if (i is Badge)
+                {
+                    ToBeRemoved = i; break;
+                }
+            }
+            if (ToBeRemoved != null)
+            {
+                Inventory.Remove(ToBeRemoved);
+                return ToBeRemoved as Badge;
+            }
+            else
+            {
+                throw new GymLeaderHasNoBadgeException();
+            }
+        }
+
+        public bool UseItemInBattle(Consumable consumable, Pokemon targetForItem)
+        {
+            foreach (Consumable consInInv in Inventory)
+            {
+                if (consInInv.Id == consumable.Id)
+                {
+                    consumable = consInInv;
+                    break;
+                }
+            }
+            if (!Inventory.Contains(consumable))
+            {
+                throw new ItemNotInInventoryException();
+            }
+
+            if (consumable is Potion)
+            {
+                targetForItem.Heal((consumable as Potion).HealAmount);
+            }
+            else if (consumable is Revive)
+            {
+                targetForItem.Revive((consumable as Revive).Percentage);
+            }
+            else if (consumable is Pokeball)
+            {
+                throw new NotImplementedException();
+            }
+            Inventory.Remove(consumable);
+            return true;//TODO
+        }
     }
 }

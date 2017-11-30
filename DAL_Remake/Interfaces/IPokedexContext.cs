@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DAL_Remake.Interfaces
 {
@@ -11,5 +7,9 @@ namespace DAL_Remake.Interfaces
         List<object[]> GetSeenPokemon();
 
         List<object[]> GetOwnedPokemon();
+
+        object[] GetPokemonType(int pokemonID);
+
+        List<object[]> GetPokemonMoves(int pokemonID);
     }
 }

@@ -1,22 +1,64 @@
-﻿using DAL_Remake.Interfaces;
-using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using DAL_Remake.Interfaces;
+using Mono.Data.Sqlite;
 
 namespace DAL_Remake.SQLContexts
 {
     public class PokemonContext :IPokemonContext
     {
-        public List<object[]> GetMoves()
+        private SqliteConnection connection;
+        private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
+
+        public PokemonContext()
         {
-            return new List<object[]>();
+            connection = new SqliteConnection(connectionString);
+        }
+        public List<object[]> GetMoves(int pokemonID)
+        {
+            List<object[]> data = new List<object[]>();
+            string query = "select m.id, pdm.Name, m.currentpp, pdm.maxpp, pdm.accuracy, pdm.Description, pdm.hasoverworldeffect, pdm.basepower, pm.minlevel " +
+                                    "from Move as m " +
+                                    "inner join PokemonMove as pm " +
+                                    "on pm.ID = m.PMID " +
+                                    "inner join PokedexMove as pdm on pm.id = pdm.id " +
+                                    "inner join Type as t on Pdm.TypeID = t.id " +
+                                    "where m.PokemonID = @pokemonID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@pokemonID", pokemonID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    data.Add(dataRow.ItemArray);
+                }
+            }
+                return data;
         }
 
-        public object[] GetPokemonType()
+        public object[] GetPokemonType(int pokedexPokemonID)
         {
-            return null;
+            object[] data;
+            string query = "select t.* " +
+                                "from Type t, PokedexPokemon pp " +
+                                "where t.ID = pp.TypeID " +
+                                "and pp.ID = @PokedexPokemonID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@PokedexPokemonID", pokedexPokemonID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
         }
     }
 }

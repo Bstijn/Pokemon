@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class ShopKeeper : Character, ISellBuy
+    public class ShopKeeper : Character
     {
-        public void BuyItem(Consumable consumable, int amount)
+        public ShopKeeper(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons) : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SellItem(Consumable consumable, int amount)
-        {
-            throw new NotImplementedException();
         }
     }
 }

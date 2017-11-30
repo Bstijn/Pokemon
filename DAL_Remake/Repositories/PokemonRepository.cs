@@ -1,8 +1,12 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
+using DAL_Remake.Interfaces;
+using DAL_Remake.SQLContexts;
 
 namespace DAL_Remake.Repositories
 {
@@ -10,9 +14,20 @@ namespace DAL_Remake.Repositories
     {
         private IPokemonContext context;
 
-        public List<object[]> GetMoves()
+        public PokemonRepository(IPokemonContext context)
         {
-            return context.GetMoves();
+            context = new PokemonContext();
+        }
+
+        public List<Move> GetMoves(int pokemonID)
+        {
+            List<Move> moves = new List<Move>();
+            List<object[]> moveData = context.GetMoves(pokemonID);
+            //foreach (object[] move in moveData)
+            //{
+            //    moves.Add(new Move(move[0], move[1], move[2], ))
+            //}
+            return moves;
         }
 
         public object[] GetPokemonType()

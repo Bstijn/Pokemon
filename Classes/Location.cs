@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Classes
 {
@@ -13,5 +9,15 @@ namespace Classes
         public int SizeY { get; private set; }
         public string Name { get; private set; }
         public List<Passage> Passages { get; private set; }
+
+        public Location(int id, int sizeX, int sizeY, string name, List<Passage> passages)
+        {
+            Id = id;
+            SizeX = sizeX;
+            SizeY = sizeY;
+            Name = name;
+            Passages = passages;
+        }
+
     }
 }
