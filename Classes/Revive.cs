@@ -1,4 +1,6 @@
-﻿namespace Classes
+﻿using System;
+
+namespace Classes
 {
     public class Revive : Consumable
     {
@@ -8,5 +10,10 @@
         }
 
         public int Percentage { get; private set; }
+
+        public override bool Use(Pokemon pokemon)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

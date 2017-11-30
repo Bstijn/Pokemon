@@ -12,18 +12,18 @@ namespace Classes
         public int CurrentHp { get; private set; }
         public int MaxHp { get; private set; }
         public int Xp { get; private set; }
+        public bool Fainted { get; private set; }
         public int Attack { get; private set; }
         public int Defense { get; private set; }
         public int Speed { get; private set; }
         public int EvolveLevel { get; private set; }
-        public bool Fainted { get; private set; }
         public int CaptureRate { get; private set; }
 
         private Type type;
 
         private List<Move> moves;
 
-        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate, bool fainted)
+        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
         {
             this.type = type;
             this.moves = moves;
@@ -38,7 +38,6 @@ namespace Classes
             Defense = defense;
             Speed = speed;
             EvolveLevel = evolveLevel;
-            Fainted = fainted;
             CaptureRate = captureRate;
         }
 
@@ -48,7 +47,7 @@ namespace Classes
             CurrentHp = Math.Max(CurrentHp - damage, 0);
             if (CurrentHp == 0)
             {
-                Fainted = true;
+                //Fainted = true;
             }
         }
         public void DealDamage(Move move, Pokemon defendingPokemon)
@@ -148,6 +147,7 @@ namespace Classes
         {
             if (Fainted)
                 CurrentHp = Convert.ToInt32(MaxHp * (Convert.ToDouble(percentage/100)));
+
         }
 
         public void HealByPotion(Potion potion)
@@ -199,7 +199,7 @@ namespace Classes
         /// <param name="percentage">stands for the percentage of hp the pokemon will recover on being revived.</param>
         public void Revive(double percentage)
         {
-            Fainted = false;
+            //Fainted = false;
             CurrentHp = Convert.ToInt32(Math.Round(MaxHp * (percentage / 100)));
         }
 
