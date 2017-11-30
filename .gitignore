@@ -21,6 +21,7 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
+*.dll
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -34,4 +35,5 @@ sysinfo.txt
 *.Library
 Library/metadata/00/00000000000000008000000000000000
 Library/
+*.dll
 

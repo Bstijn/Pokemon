@@ -23,7 +23,7 @@ namespace Classes
 
         private List<Move> moves;
 
-        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
+        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate, bool fainted)
         {
             this.type = type;
             this.moves = moves;
@@ -38,7 +38,7 @@ namespace Classes
             Defense = defense;
             Speed = speed;
             EvolveLevel = evolveLevel;
-            Fainted = true;
+            Fainted = fainted;
             CaptureRate = captureRate;
         }
 
@@ -66,15 +66,32 @@ namespace Classes
                     m.PPDown();
             }
         }
-
+        
         public void LevelUp()
         {
-            throw new NotImplementedException();
+            //check xp with xp to lvlupxp.
+            Level++;
+            if(Level >= EvolveLevel)
+            {
+                throw new NotImplementedException();//evolve met database
+                Xp = 0;
+                //update xp to lvlupxp.
+            }
         }
 
-        public void Evolve()
+        public void Evolve(Pokemon pokemon)
         {
-            throw new NotImplementedException();
+            type = pokemon.type;
+            moves = pokemon.moves;
+            Id = pokemon.Id;
+            Name = pokemon.Name;
+            CurrentHp = pokemon.CurrentHp;
+            MaxHp = pokemon.MaxHp;
+            Attack = pokemon.Attack;
+            Defense = pokemon.Defense;
+            Speed = pokemon.Speed;
+            EvolveLevel = pokemon.EvolveLevel;
+            CaptureRate = pokemon.CaptureRate;
         }
 
         public Type GetType()
@@ -82,7 +99,7 @@ namespace Classes
             return type;
         }
 
-        private double GetModifier(Move move, Pokemon defendingPokemon)
+        private double GetModifier(Move move, Pokemon defendingPokemon)//TODO: check if there is need to be changed
         {
             double critValue = GetCritValue(Speed);
             double randomRate = GetRandomRate();
@@ -91,7 +108,7 @@ namespace Classes
             return critValue * randomRate * stab * effectiveType;
         }
 
-        private double GetCritValue(int speed)
+        private double GetCritValue(int speed)//TODO: check if there is need to be changed
         {
             int T = speed / 2;
             Random random = new Random();
@@ -103,13 +120,13 @@ namespace Classes
             return 1;
         }
 
-        private double GetRandomRate()
+        private double GetRandomRate()//TODO: check if there is need to be changed
         {
             Random random = new Random();
             return (double)random.Next(85, 100) / 100;
         }
 
-        private double GetSTAB(Type PokemonType, Type MoveType)
+        private double GetSTAB(Type PokemonType, Type MoveType)//TODO: check if there is need to be changed
         {
             if (PokemonType == MoveType)
             {
@@ -126,10 +143,11 @@ namespace Classes
 
         }
 
+
         public void Revive(int percentage)
         {
             if (Fainted)
-                CurrentHp = MaxHp * (percentage/100);
+                CurrentHp = Convert.ToInt32(MaxHp * (Convert.ToDouble(percentage/100)));
         }
 
         public void HealByPotion(Potion potion)
@@ -165,5 +183,25 @@ namespace Classes
             }
             return false;
         }
+
+        public List<Move> GetMoves()
+        {
+            return moves;
+        }
+
+        public void Heal(int Amount)
+        {
+            CurrentHp = Math.Min(CurrentHp + Amount, MaxHp);
+        }
+        /// <summary>
+        /// revive used by items
+        /// </summary>
+        /// <param name="percentage">stands for the percentage of hp the pokemon will recover on being revived.</param>
+        public void Revive(double percentage)
+        {
+            Fainted = false;
+            CurrentHp = Convert.ToInt32(Math.Round(MaxHp * (percentage / 100)));
+        }
+
     }
 }

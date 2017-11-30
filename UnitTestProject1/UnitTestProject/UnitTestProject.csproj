@@ -54,6 +54,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dialoguetests.cs" />
     <Compile Include="buyselltests.cs" />
+    <Compile Include="PokemonBattleTest.cs" />
+    <Compile Include="InterfaceItemUserTest.cs" />
+    <Compile Include="GymLeaderTest.cs" />
+    <Compile Include="NurseTest.cs" />
+    <Compile Include="PokemonManagementTest.cs" />
+    <Compile Include="PassageTest.cs" />
     <Compile Include="BattleTest.cs" />
   </ItemGroup>
   <ItemGroup>
