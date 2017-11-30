@@ -7,5 +7,9 @@ namespace DAL_Remake.Interfaces
         List<object[]> GetSeenPokemon();
 
         List<object[]> GetOwnedPokemon();
+
+        object[] GetPokemonType(int pokemonID);
+
+        List<object[]> GetPokemonMoves(int pokemonID);
     }
 }
