@@ -92,7 +92,7 @@ namespace Classes
         }
 
 
-        public void EncounterOppenent(Opponent oppenent)
+        public void EncounterOppenent(Oppenent oppenent)
         {
             throw new NotImplementedException();
         }
