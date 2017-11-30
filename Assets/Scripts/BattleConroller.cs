@@ -8,12 +8,13 @@ namespace Assets.Scripts
 {
     public class BattleConroller : MonoBehaviour
     {
-        [SerializeField] private Sprite[] AttackTypeSprites;
-        [SerializeField] private GameObject MainMenu;
-        [SerializeField] private GameObject InfoAttackMenu;
-        [SerializeField] private GameObject PokemonMenu;
-        [SerializeField] private GameObject ItemContent;
-        [SerializeField] private GameObject ItemButton;
+        [SerializeField] private Sprite[] _attackTypeSprites;
+        [SerializeField] private GameObject _mainMenu;
+        [SerializeField] private GameObject _infoAttackMenu;
+        [SerializeField] private GameObject _pokemonMenu;
+        [SerializeField] private GameObject _itemContent;
+        [SerializeField] private GameObject _itemButton;
+        private Battle _battle;
 
         private const string Power = "100";
         private const string Accuracy = "80";
@@ -22,8 +23,11 @@ namespace Assets.Scripts
         private const string PokemonName = "Pokemonname";
         private const int PokemonCurrentHp = 15;
         private const int PokemonMaxHp = 20;
-        
-        
+
+        public void CreateNewBattle(Battle battle)
+        {
+            _battle = battle;
+        }
         
         #region ButtonHandlers
         public void OnAttackMenuButtonPress(GameObject attackMenu)
@@ -31,10 +35,10 @@ namespace Assets.Scripts
 
             for (var i = 0; i < 4; i++)
             {
-                attackMenu.transform.Find("MoveButton" + i).gameObject.GetComponent<Image>().sprite = AttackTypeSprites[0];
+                attackMenu.transform.Find("MoveButton" + i).gameObject.GetComponent<Image>().sprite = _attackTypeSprites[0];
                 //TODO set color moves
-                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("Name").gameObject.GetComponent<Text>.text = movename;
-                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>.text = ppcurrent + " / " + ppmax;
+                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("Name").gameObject.GetComponent<Text>().text = ;
+                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>().text = ppcurrent + " / " + ppmax;
                 //if pp < 50%
                 //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>().color = new Color(189f/255f, 129f/255f, 0);
                 //if pp < 25%
@@ -56,7 +60,7 @@ namespace Assets.Scripts
         
         public void OnBackToMainMenuButtonPress(GameObject currentMenu)
         {
-            MainMenu.SetActive(true);
+            _mainMenu.SetActive(true);
             currentMenu.SetActive(false);
         }
 
@@ -69,22 +73,22 @@ namespace Assets.Scripts
         public void OnHighlightButton(int moveNumber)
         {
             //TODO pokemonmove waardes pakken
-            InfoAttackMenu.transform.Find("DescriptionText").gameObject.GetComponent<Text>().text = Description;
-            InfoAttackMenu.transform.Find("PowerText").gameObject.GetComponent<Text>().text = "Power: " + Power;
-            InfoAttackMenu.transform.Find("AccuracyText").gameObject.GetComponent<Text>().text = "Accuracy: " + Accuracy;
+            _infoAttackMenu.transform.Find("DescriptionText").gameObject.GetComponent<Text>().text = Description;
+            _infoAttackMenu.transform.Find("PowerText").gameObject.GetComponent<Text>().text = "Power: " + Power;
+            _infoAttackMenu.transform.Find("AccuracyText").gameObject.GetComponent<Text>().text = "Accuracy: " + Accuracy;
         }
 
         public void OnShowPokemonMenuButtonPress(GameObject pokemonMenu)  
         {
             pokemonMenu.SetActive(true);
-            MainMenu.SetActive(false);
+            _mainMenu.SetActive(false);
             LoadPokemonMenuInfo(pokemonMenu);
         }
 
         public void OnShowBackPackMenuButtonPress(GameObject backpackMenu)
         {
             backpackMenu.SetActive(true);
-            MainMenu.SetActive(false);
+            _mainMenu.SetActive(false);
         }
 
         public void OnTryFleeButtonPress()
@@ -104,15 +108,15 @@ namespace Assets.Scripts
 
         public void ShowItems()
         {
-            foreach (Transform i in ItemContent.transform)
+            foreach (Transform i in _itemContent.transform)
             {
                 Destroy(i.gameObject);
             }
             var itemList = new List<Item>();//TODO
-            ItemContent.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 300 + 100 * itemList.Count);
+            _itemContent.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 300 + 100 * itemList.Count);
             for (var i = 0; i < itemList.Count; i++)
             {
-                var button = Instantiate(ItemButton, ItemContent.transform);
+                var button = Instantiate(_itemButton, _itemContent.transform);
                 var y = -200 - i * 100;
                 int x;
                 if (IsEven(i))
@@ -140,9 +144,9 @@ namespace Assets.Scripts
             var count = 0;
             var sprites = Resources.LoadAll<Sprite>("PokemonIcons/icon" + (counter + 1).ToString("000"));
             yield return sprites;
-            while (PokemonMenu.activeSelf)
+            while (_pokemonMenu.activeSelf)
             { 
-                PokemonMenu.transform.Find("PokemonButton" + counter).transform.Find("Image").gameObject.GetComponent<Image>().sprite = sprites[count];
+                _pokemonMenu.transform.Find("PokemonButton" + counter).transform.Find("Image").gameObject.GetComponent<Image>().sprite = sprites[count];
                 count++;
                 count = count % 2;
                 yield return new WaitForSeconds(0.25f);
