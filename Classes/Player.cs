@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Classes.Exceptions;
 
 namespace Classes
@@ -18,13 +19,33 @@ namespace Classes
             this.Loses = losses;
         }
 
-        /// <summary>
-        /// used for keyItems in player inventory
-        /// </summary>
-        /// <param name="item">stands for a keyitem</param>
-        public void UseItem(Item item)
+
+        public bool UseItemInBattle(Consumable consumable, Pokemon targetPokemon)
         {
-            throw new NotImplementedException();
+            //TODO Bij items 1 van inventory af als deze gebruikt wordt
+            if (consumable.GetType() == typeof(Pokeball))
+            {
+
+                if (consumable.Use(targetPokemon))
+                    return true;
+                return false;
+            }
+
+            var selectedPokemon = Pokemons.First(p => targetPokemon.Id == p.Id);
+            if (consumable.GetType() == typeof(Revive))
+            {
+                var revive = (Revive)consumable;
+                selectedPokemon.Revive(revive.Percentage);
+                return true;
+            }
+
+            if (consumable.GetType() == typeof(Potion))
+            {
+                var potion = (Potion)consumable;
+                selectedPokemon.HealByPotion(potion);
+                return true;
+            }
+            return false;
         }
         /// <summary>
         /// uses consumable on a pokemon and will remove it from the inventory
@@ -70,7 +91,8 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void EncounterOppenent(Oppenent oppenent)//verwerk in db
+
+        public void EncounterOppenent(Opponent oppenent)
         {
             throw new NotImplementedException();
         }

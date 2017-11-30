@@ -12,6 +12,5 @@
             Name = name;
             Description = description;
         }
-
     }
 }

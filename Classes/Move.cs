@@ -30,5 +30,15 @@
         {
             return type;
         }
+
+        public void PPDown()
+        {
+            CurrentPP--;
+        }
+
+        public void RestorePP()
+        {
+            CurrentPP = MaxPP;
+        }
     }
 }
