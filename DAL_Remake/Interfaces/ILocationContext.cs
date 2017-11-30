@@ -16,6 +16,18 @@ namespace DAL_Remake.Interfaces
 
         List<object[]> GetPassages(int locationID);
 
-        List<object[]> GetPokemon(int locationID);
+        List<object[]> GetEncounterablePokemon(int locationID);
+
+        List<object[]> GetPokemonMoves(int pokemonID);
+
+        object[] GetPokemonType(int pokemonID);
+
+        List<object[]> GetRevives(int characterID);
+
+        List<object[]> GetPotions(int characterID);
+
+        List<object[]> GetPokeballs(int characterID);
+
+        List<object[]> GetInventory(int characterID);
     }
 }
