@@ -4,11 +4,10 @@ namespace Classes
 {
     public class Pokeball : Consumable
     {
-        public Pokeball(int id, string name, int cost, string description, decimal catchrate,int ballValue) : base(id, name, cost,
+        public Pokeball(int id, string name, int cost, string description, decimal catchrate) : base(id, name, cost,
             description)
         {
             this.CatchRate = catchrate;
-            this.BallValue = ballValue;
         }
 
         public decimal CatchRate { get; private set; }
