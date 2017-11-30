@@ -65,12 +65,12 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void EncounterPokemon(Pokemon pokemon)
+        public void EncounterPokemon(Pokemon pokemon)//verwerk in db
         {
             throw new NotImplementedException();
         }
 
-        public void EncounterOppenent(Oppenent oppenent)
+        public void EncounterOppenent(Oppenent oppenent)//verwerk in db
         {
             throw new NotImplementedException();
         }
@@ -100,32 +100,32 @@ namespace Classes
             throw new NotImplementedException();
         }
 
-        public void CheckPlayerInfo()
+        public Player CheckPlayerInfo()
         {
             throw new NotImplementedException();
         }
 
-        public void CheckPokedex()
+        public Pokedex CheckPokedex()
         {
             throw new NotImplementedException();
         }
 
-        public void CheckInventory()
+        public List<Item> CheckInventory()
         {
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public void Save()//verwerk met db classes
         {
             throw new NotImplementedException();
         }
 
-        public void Load()
+        public void Load()//verwerk met db classes misschien de return Type aan passen
         {
             throw new NotImplementedException();
         }
 
-        public void CatchPokemon(Pokemon pokemon)
+        public void CatchPokemon(Pokemon pokemon)//boolean of  pokemon returnen of het gelukt is.
         {
             throw new NotImplementedException();
         }
