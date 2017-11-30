@@ -2,7 +2,7 @@
 {
     public class KeyItem : NonConsumable
     {
-        public KeyItem(int id, string name, int cost, string description,bool isUsable) : base(id, name, cost, description)
+        public KeyItem(int id, string name, string description,bool isUsable) : base(id, name, description)
         {
             this.IsUsable = isUsable;
         }

@@ -4,10 +4,18 @@ namespace DAL_Remake.Interfaces
 {
     public interface ILocationContext
     {
-        List<object[]> GetCharacters(int locationID);
+        object[] GetGymleader(int locationID);
 
-        List<object[]> GetPassages();
+        object[] GetNurse(int locationID);
 
-        List<object[]> GetPokemon();
+        object[] GetShopkeeper(int locationID);
+
+        List<object[]> GetOpponents(int locationID);
+
+        List<object[]> GetBystanders(int locationID);
+
+        List<object[]> GetPassages(int locationID);
+
+        List<object[]> GetPokemon(int locationID);
     }
 }
