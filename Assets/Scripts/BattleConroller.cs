@@ -23,6 +23,8 @@ namespace Assets.Scripts
         private const int PokemonCurrentHp = 15;
         private const int PokemonMaxHp = 20;
         
+        
+        
         #region ButtonHandlers
         public void OnAttackMenuButtonPress(GameObject attackMenu)
         {
