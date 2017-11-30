@@ -10,7 +10,7 @@ namespace Classes
         {
             foreach(Pokemon p in pokemon)
             {
-                p.Revive();
+                p.Revive(0);
                 p.Heal(p.MaxHp - p.CurrentHp);
             }
         }
