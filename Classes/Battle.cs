@@ -11,7 +11,7 @@ namespace Classes
 
         public Player Player { get; private set; }
         public Pokemon WildPokemon { get; private set; }
-        public Opponent Opponent { get; private set; }
+        public Oppenent Opponent { get; private set; }
         public int FleeAttempts { get; private set; }
 
         public Battle(Player player,Pokemon wildPokemon)
@@ -20,7 +20,7 @@ namespace Classes
             this.WildPokemon = wildPokemon;
         }
 
-        public Battle(Player player, Opponent opponent)
+        public Battle(Player player, Oppenent opponent)
         {
             this.Player = player;
             this.Opponent = opponent;
