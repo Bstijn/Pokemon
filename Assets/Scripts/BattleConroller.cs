@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Classes;
+using Classes.Exceptions;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -14,6 +17,7 @@ namespace Assets.Scripts
         [SerializeField] private GameObject _pokemonMenu;
         [SerializeField] private GameObject _itemContent;
         [SerializeField] private GameObject _itemButton;
+        [SerializeField] private GameObject _textPanel;
         private Battle _battle;
 
         private const string Power = "100";
@@ -35,16 +39,35 @@ namespace Assets.Scripts
 
             for (var i = 0; i < 4; i++)
             {
-                attackMenu.transform.Find("MoveButton" + i).gameObject.GetComponent<Image>().sprite = _attackTypeSprites[0];
-                //TODO set color moves
-                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("Name").gameObject.GetComponent<Text>().text = ;
-                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>().text = ppcurrent + " / " + ppmax;
-                //if pp < 50%
-                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>().color = new Color(189f/255f, 129f/255f, 0);
-                //if pp < 25%
-                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>().color = new Color(193f/255f, 9f/255f, 0);
-                //else 
-                //attackMenu.transform.Find("MoveButton" + i).gameObject.transform.Find("PP").gameObject.GetComponent<Text>().color = new Color(0, 0, 0);
+                var button = attackMenu.transform.Find("MoveButton" + i).gameObject;
+                try
+                {
+                    var move = _battle.PlayerPokemon.GetMoves()[i];
+                    button.GetComponent<Image>().sprite = _attackTypeSprites[0];
+                    button.transform.Find("Name").gameObject
+                        .GetComponent<Text>().text = move.Name;
+                    button.transform.Find("PP").gameObject.GetComponent<Text>().text = move.CurrentPP + " / " + move.MaxPP;
+                    var percentage = move.CurrentPP / (float)move.MaxPP;
+                    if (percentage < 0.5)
+                    {
+                        button.transform.Find("PP").gameObject.GetComponent<Text>().color = new Color(189f / 255f, 129f / 255f, 0);
+                    }
+                    else if (percentage < 0.25)
+                    {
+                        button.transform.Find("PP").gameObject
+                            .GetComponent<Text>().color = new Color(193f / 255f, 9f / 255f, 0);
+                    }
+                    else
+                    {
+                        button.transform.Find("PP").gameObject.GetComponent<Text>().color = new Color(0, 0, 0);
+                    }
+                    button.SetActive(true);
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    button.SetActive(false);
+                }
+
             }
         }
 
@@ -67,7 +90,6 @@ namespace Assets.Scripts
         public void OnUseMoveButtonPress(int moveNumber)
         {
             //TODO do move stuff
-            //do things
         }
         
         public void OnHighlightButton(int moveNumber)
@@ -78,22 +100,49 @@ namespace Assets.Scripts
             _infoAttackMenu.transform.Find("AccuracyText").gameObject.GetComponent<Text>().text = "Accuracy: " + Accuracy;
         }
 
-        public void OnShowPokemonMenuButtonPress(GameObject pokemonMenu)  
-        {
-            pokemonMenu.SetActive(true);
-            _mainMenu.SetActive(false);
-            LoadPokemonMenuInfo(pokemonMenu);
-        }
-
-        public void OnShowBackPackMenuButtonPress(GameObject backpackMenu)
-        {
-            backpackMenu.SetActive(true);
-            _mainMenu.SetActive(false);
-        }
-
         public void OnTryFleeButtonPress()
         {
-         //TODO try flee
+            var text = _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text;
+            bool flee;
+            try
+            {
+                flee = _battle.Flee(_battle.PlayerPokemon);
+                text = flee ? "You escaped the battle succesfully!" : "You could did not escape!";
+            }
+            catch (CannotFleeTrainerBattleException)
+            {
+                flee = false;
+                text = "You cannot flee from a trainer battle!";
+            }
+            StartCoroutine("FleeAnimation", flee);
+        }
+
+        private IEnumerator FleeAnimation(bool flee)
+        {
+            var pressed = false;
+            _mainMenu.SetActive(false);
+            _textPanel.SetActive(true);
+            _textPanel.transform.Find("ArrowPanel").gameObject.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            _textPanel.transform.Find("ArrowPanel").gameObject.SetActive(true);
+            while (!pressed)
+            {
+                if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    pressed = true;
+                }
+                yield return null;
+            }
+            if (flee)
+            {
+                SceneManager.UnloadSceneAsync("Battle");
+            }
+            else
+            {
+                //TODO GO TO ENEMY MOVE
+                //flee failed, enemy can do move
+            }
+
         }
         #endregion
             
@@ -101,7 +150,6 @@ namespace Assets.Scripts
         {
             for (var i = 0; i < 6; i++)
             {
-                //TODO 
                 StartCoroutine("SwitchIconSprites", i);
             }
         }
@@ -119,7 +167,7 @@ namespace Assets.Scripts
                 var button = Instantiate(_itemButton, _itemContent.transform);
                 var y = -200 - i * 100;
                 int x;
-                if (IsEven(i))
+                if (i % 2 == 0)
                 {
                     x = -400;
                 }
@@ -134,12 +182,7 @@ namespace Assets.Scripts
             }
         }
 
-        private bool IsEven(int value)
-        {
-            return value % 2 == 0;
-        }
-
-        public IEnumerator SwitchIconSprites(int counter)
+        private IEnumerator SwitchIconSprites(int counter)
         {
             var count = 0;
             var sprites = Resources.LoadAll<Sprite>("PokemonIcons/icon" + (counter + 1).ToString("000"));
