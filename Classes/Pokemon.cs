@@ -12,6 +12,7 @@ namespace Classes
         public int CurrentHp { get; private set; }
         public int MaxHp { get; private set; }
         public int Xp { get; private set; }
+        public bool Fainted { get; private set; }
         public int Attack { get; private set; }
         public int Defense { get; private set; }
         public int Speed { get; private set; }

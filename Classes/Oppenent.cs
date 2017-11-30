@@ -13,7 +13,7 @@ namespace Classes
             this.Defeated = defeated;
         }
 
-        public void UseItemInBattle(Pokemon targetForItem, Consumable consumable)
+        public bool UseItemInBattle(Consumable consumable, Pokemon targetForItem)
         {
             foreach (Consumable consInInv in Inventory)
             {
@@ -42,6 +42,7 @@ namespace Classes
                 throw new NotImplementedException();
             }
             Inventory.Remove(consumable);
+            return true;
         }
     }
 }
