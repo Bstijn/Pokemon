@@ -219,5 +219,78 @@ namespace DAL_Remake.SQLContexts
             }
             return data;
         }
+
+        public object[] GetCurrentLocation(int characterID)
+        {
+            object[] data;
+            string query = "select l.ID, l.Name, pc.LastVisited " +
+                                    "from CharacterLocation cl, Location l, Building b, PokeCenter pc " +
+                                    "where cl.LocationID = l.ID " +
+                                    "and l.ID = b.LocationID " +
+                                    "and b.LocationID = pc.BuildingID " +
+                                    "and lc.CharacterID = @CharacterID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@CharacterID", characterID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
+
+        public string GetLocationType(int locationID)
+        {
+            string locationType = "";
+            if (CheckLocationType("select buildingID from pokemart where buildingID = @LocationID", locationID))
+            {
+                locationType = "pokemart";
+            }
+            else if (CheckLocationType("select buildingID from gym where buildingID = @LocationID", locationID))
+            {
+                locationType = "gym";
+            }
+            else if (CheckLocationType("select buildingID from pokecenter where buildingID = @LocationID", locationID))
+            {
+                locationType = "pokecenter";
+            }
+            else if (CheckLocationType("select buildingID from enemyhq where buildingID = @LocationID", locationID))
+            {
+                locationType = "enemyhq";
+            }
+            else if (CheckLocationType("select areaID from city where areaID = @LocationID", locationID))
+            {
+                locationType = "city";
+            }
+            else if (CheckLocationType("select areaID from cave where areaID = @LocationID", locationID))
+            {
+                locationType = "cave";
+            }
+            else if (CheckLocationType("select areaID from route where areaID = @LocationID", locationID))
+            {
+                locationType = "route";
+            }
+            return locationType;
+        }
+
+        private bool CheckLocationType(string query, int locationID)
+        {
+            object data;
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                DataTable dataTable = new DataTable();
+                adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray[0];
+            }
+
+            if (!string.IsNullOrEmpty(data.ToString()))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
