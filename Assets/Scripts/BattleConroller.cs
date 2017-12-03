@@ -5,35 +5,66 @@ using UnityEngine;
 using UnityEngine.UI;
 using Classes;
 using Classes.Exceptions;
+using NUnit.Framework.Interfaces;
 using UnityEngine.SceneManagement;
+using Player = Classes.Player;
 
 namespace Assets.Scripts
 {
     public class BattleConroller : MonoBehaviour
     {
         [SerializeField] private Sprite[] _attackTypeSprites;
-        [SerializeField] private GameObject _mainMenu;
-        [SerializeField] private GameObject _infoAttackMenu;
-        [SerializeField] private GameObject _pokemonMenu;
+        [SerializeField] private GameObject _mainPanel;
+        [SerializeField] private GameObject _infoAttackPanel;
+        [SerializeField] private GameObject _pokemonPanel;
         [SerializeField] private GameObject _itemContent;
         [SerializeField] private GameObject _itemButton;
         [SerializeField] private GameObject _textPanel;
-        private Battle _battle;
+        [SerializeField] private GameObject _EnemyPanel;
+        [SerializeField] private GameObject _PlayerPanel;
 
-        private const string Power = "100";
-        private const string Accuracy = "80";
-        private const string Description = "ya ya yippee yippee ya ya yee we lopen op het strand en dansen blootsvoets hand in hand we zingen ya ya yippee yippee ya ya yee en onze stem weerklinkt over de golven zingen ya ya yippee yippee ya ya yee";
-        
-        private const string PokemonName = "Pokemonname";
-        private const int PokemonCurrentHp = 15;
-        private const int PokemonMaxHp = 20;
+        private Battle _battle;
 
         public void CreateNewBattle(Battle battle)
         {
             _battle = battle;
+            SetPokemonInfo(_PlayerPanel, _battle.PlayerPokemon);
+            SetPokemonInfo(_EnemyPanel, _battle.WildPokemon ?? _battle.OpponentPokemon);         
+            //TODO FIX DEZE ID ALS MENSEN DAT HEBBEN GEDAAN  id -> pokedexId
+            SetPokemonSprite(_PlayerPanel, "PokemonBack/back" + _battle.PlayerPokemon.Id.ToString("000"));
+            if (_battle.WildPokemon == null)
+            {
+                SetPokemonSprite(_EnemyPanel, "PokemonFront/front" + _battle.OpponentPokemon.Id.ToString("000"));
+            }
+            else
+            {
+                SetPokemonSprite(_EnemyPanel, "PokemonFront/front" + _battle.WildPokemon.Id.ToString("000"));
+            }
+        }
+
+        private void SetPokemonSprite(GameObject panel, string uri)
+        {
+            panel.transform.Find("Base").transform.Find("Image").gameObject.GetComponent<Image>().sprite =
+                Resources.LoadAll<Sprite>(uri)[0];
+        }
+
+        private void SetPokemonInfo(GameObject panel, Pokemon pokemon)
+        {
+            panel.transform.Find("Stats").transform.Find("NameText").gameObject.GetComponent<Text>().text =
+                pokemon.Name;
+            panel.transform.Find("Stats").transform.Find("LevelText").gameObject.GetComponent<Text>().text =
+                "Lv " + pokemon.Level;
+            UpdateHpUi(panel, pokemon);
+        }
+
+        private void UpdateHpUi(GameObject panel, Pokemon pokemon)
+        {
+            panel.transform.Find("Stats").transform.Find("HpBar").gameObject.GetComponent<Scrollbar>().size =
+                pokemon.CurrentHp / (float) pokemon.MaxHp;
+            panel.transform.Find("Stats").transform.Find("HpText").gameObject.GetComponent<Text>().text =
+                pokemon.CurrentHp + "/" + pokemon.MaxHp;
         }
         
-        #region ButtonHandlers
         public void OnAttackMenuButtonPress(GameObject attackMenu)
         {
 
@@ -83,21 +114,47 @@ namespace Assets.Scripts
         
         public void OnBackToMainMenuButtonPress(GameObject currentMenu)
         {
-            _mainMenu.SetActive(true);
+            _mainPanel.SetActive(true);
             currentMenu.SetActive(false);
         }
 
         public void OnUseMoveButtonPress(int moveNumber)
         {
-            //TODO do move stuff
+            StartCoroutine(Turn(moveNumber));
         }
-        
+
+        private IEnumerator Turn(int playerMoveNumber)
+        {
+            //TODO TURN!
+            var first = _battle.WildPokemon == null ? _battle.FirstAttack(_battle.PlayerPokemon, _battle.WildPokemon) : _battle.FirstAttack(_battle.PlayerPokemon, _battle.OpponentPokemon);
+            var second = _battle.PlayerPokemon;
+            if (first.Id == _battle.PlayerPokemon.Id)
+            {
+                second = _battle.WildPokemon ?? _battle.OpponentPokemon;
+            }
+            
+            yield return UseAttack(first, second, );
+        }
+
+        public IEnumerator UseAttack(Pokemon attackPokemon, Pokemon defendPokemon, Move move)
+        {
+            _textPanel.SetActive(true);
+            _mainPanel.SetActive(false);
+            _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                attackPokemon.Name + " used " + move.Name;
+            yield return new WaitForSeconds(1);
+            var damage = _battle.Attack(attackPokemon, defendPokemon, move);
+            _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                move.Name + " did " + damage + "damage";
+            yield return new WaitForSeconds(1);
+
+        }
+
         public void OnHighlightButton(int moveNumber)
         {
-            //TODO pokemonmove waardes pakken
-            _infoAttackMenu.transform.Find("DescriptionText").gameObject.GetComponent<Text>().text = Description;
-            _infoAttackMenu.transform.Find("PowerText").gameObject.GetComponent<Text>().text = "Power: " + Power;
-            _infoAttackMenu.transform.Find("AccuracyText").gameObject.GetComponent<Text>().text = "Accuracy: " + Accuracy;
+            _infoAttackPanel.transform.Find("DescriptionText").gameObject.GetComponent<Text>().text = _battle.PlayerPokemon.GetMoves()[moveNumber].Description;
+            _infoAttackPanel.transform.Find("PowerText").gameObject.GetComponent<Text>().text = "Power: " + _battle.PlayerPokemon.GetMoves()[moveNumber].BasePower;
+            _infoAttackPanel.transform.Find("AccuracyText").gameObject.GetComponent<Text>().text = "Accuracy: " + _battle.PlayerPokemon.GetMoves()[moveNumber].Accuracy;
         }
 
         public void OnTryFleeButtonPress()
@@ -120,7 +177,7 @@ namespace Assets.Scripts
         private IEnumerator FleeAnimation(bool flee)
         {
             var pressed = false;
-            _mainMenu.SetActive(false);
+            _mainPanel.SetActive(false);
             _textPanel.SetActive(true);
             _textPanel.transform.Find("ArrowPanel").gameObject.SetActive(false);
             yield return new WaitForSeconds(1f);
@@ -140,11 +197,11 @@ namespace Assets.Scripts
             else
             {
                 //TODO GO TO ENEMY MOVE
+                //TODO CHECK FAINTED!
                 //flee failed, enemy can do move
             }
 
         }
-        #endregion
             
         public void LoadPokemonMenuInfo(GameObject pokemonMenu)
         {
@@ -176,9 +233,9 @@ namespace Assets.Scripts
                     x = 400;
                 }
                 button.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(x, y, 0);
-                var sprites = Resources.LoadAll<Sprite>("ItemIcon/item" + itemList[i].Id.ToString("000"));//TODO
+                var sprites = Resources.LoadAll<Sprite>("ItemIcon/item" + itemList[i].Id.ToString("000"));//TODO items
                 button.transform.Find("Image").gameObject.GetComponent<Image>().sprite = sprites[0];
-                button.transform.Find("Text").gameObject.GetComponent<Text>().text = "DummyText";//TODO
+                button.transform.Find("Text").gameObject.GetComponent<Text>().text = "DummyText";
             }
         }
 
@@ -187,9 +244,9 @@ namespace Assets.Scripts
             var count = 0;
             var sprites = Resources.LoadAll<Sprite>("PokemonIcons/icon" + (counter + 1).ToString("000"));
             yield return sprites;
-            while (_pokemonMenu.activeSelf)
+            while (_pokemonPanel.activeSelf)
             { 
-                _pokemonMenu.transform.Find("PokemonButton" + counter).transform.Find("Image").gameObject.GetComponent<Image>().sprite = sprites[count];
+                _pokemonPanel.transform.Find("PokemonButton" + counter).transform.Find("Image").gameObject.GetComponent<Image>().sprite = sprites[count];
                 count++;
                 count = count % 2;
                 yield return new WaitForSeconds(0.25f);

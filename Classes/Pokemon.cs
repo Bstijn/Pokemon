@@ -6,6 +6,7 @@ namespace Classes
     public class Pokemon
     {
         public int Id { get; private set; }
+        public int PokedexId { get; private set; }
         public string Name { get; private set; }
         public bool InParty { get; private set; }
         public int Level { get; private set; }
@@ -23,6 +24,27 @@ namespace Classes
 
         private List<Move> moves;
 
+        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate)
+        {
+            //TODO USE THIS WITH PokedexId
+            this.type = type;
+            this.moves = moves;
+            Id = id;
+            PokedexId = pokedexId;
+            Name = name;
+            InParty = inParty;
+            Level = level;
+            CurrentHp = currentHp;
+            MaxHp = maxHp;
+            Xp = xp;
+            Fainted = fainted;
+            Attack = attack;
+            Defense = defense;
+            Speed = speed;
+            EvolveLevel = evolveLevel;
+            CaptureRate = captureRate;
+        }
+        
         public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
         {
             this.type = type;
