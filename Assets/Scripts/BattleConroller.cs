@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 using UnityEngine.UI;
 using Classes;
@@ -30,15 +31,14 @@ namespace Assets.Scripts
             _battle = battle;
             SetPokemonInfo(_PlayerPanel, _battle.PlayerPokemon);
             SetPokemonInfo(_EnemyPanel, _battle.WildPokemon ?? _battle.OpponentPokemon);         
-            //TODO FIX DEZE ID ALS MENSEN DAT HEBBEN GEDAAN  id -> pokedexId
-            SetPokemonSprite(_PlayerPanel, "PokemonBack/back" + _battle.PlayerPokemon.Id.ToString("000"));
+            SetPokemonSprite(_PlayerPanel, "PokemonBack/back" + _battle.PlayerPokemon.PokedexId.ToString("000"));
             if (_battle.WildPokemon == null)
             {
-                SetPokemonSprite(_EnemyPanel, "PokemonFront/front" + _battle.OpponentPokemon.Id.ToString("000"));
+                SetPokemonSprite(_EnemyPanel, "PokemonFront/front" + _battle.OpponentPokemon.PokedexId.ToString("000"));
             }
             else
             {
-                SetPokemonSprite(_EnemyPanel, "PokemonFront/front" + _battle.WildPokemon.Id.ToString("000"));
+                SetPokemonSprite(_EnemyPanel, "PokemonFront/front" + _battle.WildPokemon.PokedexId.ToString("000"));
             }
         }
 
@@ -125,15 +125,19 @@ namespace Assets.Scripts
 
         private IEnumerator Turn(int playerMoveNumber)
         {
-            //TODO TURN!
+            //TODO TURNc
             var first = _battle.WildPokemon == null ? _battle.FirstAttack(_battle.PlayerPokemon, _battle.WildPokemon) : _battle.FirstAttack(_battle.PlayerPokemon, _battle.OpponentPokemon);
             var second = _battle.PlayerPokemon;
             if (first.Id == _battle.PlayerPokemon.Id)
             {
                 second = _battle.WildPokemon ?? _battle.OpponentPokemon;
             }
-            
-            yield return UseAttack(first, second, );
+
+            yield return UseAttack(first, second, first.GetMoves()[playerMoveNumber]);
+            if (second.Fainted)
+            {
+                
+            }
         }
 
         public IEnumerator UseAttack(Pokemon attackPokemon, Pokemon defendPokemon, Move move)

@@ -6,6 +6,7 @@ namespace Classes
     public class Pokemon
     {
         public int Id { get; private set; }
+        //TODO Implement this
         public int PokedexId { get; private set; }
         public string Name { get; private set; }
         public bool InParty { get; private set; }
