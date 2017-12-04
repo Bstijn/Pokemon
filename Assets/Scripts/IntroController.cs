@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Classes;
+using Classes.Repos;
+
+
 
 public class IntroController : MonoBehaviour
 {
@@ -13,13 +17,51 @@ public class IntroController : MonoBehaviour
     private GameObject dialogueUI;
     [SerializeField]
     private GameObject BoyOrGirlUI;
-    private string Gender;
+    [SerializeField]
+    private GameObject PokemonChoiceUI;
+    [SerializeField]
+    private GameObject professor;
+    [SerializeField]
+    private GameObject NameUI;
+    [SerializeField]
+    private Text nameText;
+    private string name = null;
+    private string gender = null;
+    private int pokemonId;
+    private CharacterRepository dal = new CharacterRepository();
     void Start()
     {
         dialogue.text = dialogues[currentdialogue];
     }
 
     void Update()
+    {
+        
+        if (name == null)
+        {
+            ShowNameDialogue();
+            
+        }
+        else
+        {
+            IntroDialogue();
+        }
+    }
+
+    private void ShowNameDialogue()
+    {
+        NameUI.SetActive(true);
+    }
+
+    public void ChooseName()
+    {
+        
+        this.name = nameText.text;
+        NameUI.SetActive(false);
+        dialogueUI.SetActive(true);
+        professor.SetActive(true);
+    }
+    private void IntroDialogue()
     {
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
         {
@@ -30,23 +72,40 @@ public class IntroController : MonoBehaviour
             }
             else
             {
-                dialogueUI.SetActive(false);
+                dialogue.text = "Are you a boy or a grill";
+                dialogue.fontSize = 28;
                 BoyOrGirlUI.SetActive(true);
             }
         }
     }
 
-    private void ChooseGender(string gender)
+    public void ChooseGender(string gender)
     {
-        this.Gender = gender;
+        this.gender = gender;
+        BoyOrGirlUI.SetActive(false);
+        dialogueUI.SetActive(false);
+        professor.SetActive(false);
+        OpenPokemonSelection();
     }
     private void OpenPokemonSelection()
     {
-
+        PokemonChoiceUI.SetActive(true);
     }
 
-    private void ChoosePokemon(string name)
+    public void ChoosePokemon(int Id)
     {
+        pokemonId = Id;
+        SaveChoices();
+    }
 
+    private void SaveChoices()
+    {
+        dal.InserIntro(pokemonId, name, gender);
+        //TODO IMPLEMENT IN DB
+        StartGame();
+    }
+    private void StartGame()
+    {
+        //TODO IMPLEMENT Right Scene
     }
 }

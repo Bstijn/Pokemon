@@ -11,7 +11,7 @@ namespace Classes.Repos
     {
         private ICharacterContext context;
 
-        public CharacterRepository(ICharacterContext context)
+        public CharacterRepository()
         {
             context = new CharacterContext();
         }
@@ -133,6 +133,11 @@ namespace Classes.Repos
             object[] data = context.GetPokemonType(pokemonID);
 
             return new Type(Convert.ToInt32(data[0]), data[1].ToString());
+        }
+
+        public void InserIntro(int pokemonID, string naam, string gender)
+        {
+            context.InsterIntro(pokemonID, naam, gender);
         }
     }
 }
