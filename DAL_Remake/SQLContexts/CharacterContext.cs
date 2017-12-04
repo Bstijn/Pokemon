@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-
+using System;
 
 namespace DAL_Remake.SQLContexts
 {
@@ -291,6 +291,22 @@ namespace DAL_Remake.SQLContexts
                 return true;
             }
             return false;
+
+        public void InsterIntro(int pokemonID, string CharacterName, string Gender)
+        {
+            string query = "insert into Character (gender, Name,Money) values (@gender,@name,@money)";
+            SqliteCommand insercharactercmd = new SqliteCommand(query, connection);
+            insercharactercmd.Parameters.Add(new SqliteParameter("@gender", Gender));
+            insercharactercmd.Parameters.Add(new SqliteParameter("@name", CharacterName));
+            insercharactercmd.Parameters.Add(new SqliteParameter("@money", 2000));
+            SqliteCommand playercmd = new SqliteCommand("insert into Player(PlayerId, wins, losses) values((select id from Character where Name = '@name'), 0, 0))", connection);
+            using (connection)
+            {
+                connection.Open();
+                insercharactercmd.ExecuteNonQuery();
+                playercmd.ExecuteNonQuery();
+            }
+
         }
     }
 }

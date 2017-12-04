@@ -25,5 +25,8 @@ namespace DAL_Remake.Interfaces
         object[] GetCurrentLocation(int characterID);
 
         string GetLocationType(int locationID);
+
+        void InsterIntro(int pokemonID, string CharacterName, string Gender);
+
     }
 }

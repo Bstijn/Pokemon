@@ -11,7 +11,7 @@ namespace Classes.Repos
     {
         private ICharacterContext context;
 
-        public CharacterRepository(ICharacterContext context)
+        public CharacterRepository()
         {
             context = new CharacterContext();
         }
@@ -135,6 +135,7 @@ namespace Classes.Repos
             return new Type(Convert.ToInt32(data[0]), data[1].ToString());
         }
 
+
         public List<Item> GetInventory(int characterID)
         {
             List<Item> inventory = new List<Item>();
@@ -184,6 +185,11 @@ namespace Classes.Repos
 
             //return new Location(Convert.ToInt32(data[0]), data[1].ToString()); 
             return null;
+
+        public void InserIntro(int pokemonID, string naam, string gender)
+        {
+            context.InsterIntro(pokemonID, naam, gender);
+
         }
     }
 }
