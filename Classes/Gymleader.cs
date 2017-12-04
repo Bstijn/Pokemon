@@ -4,12 +4,12 @@ using Classes.Exceptions;
 
 namespace Classes
 {
-    public class Gymleader : Character, IItemUser
+    public class Gymleader : Character
     {
         //if opponent or gymleader is defeated they might give the player money or an item.
         public bool Defeated { get; private set; }
 
-        public Gymleader(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons, bool defeated) : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
+        public Gymleader(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons, bool defeated) : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
         {
             Defeated = defeated;
         }
@@ -19,10 +19,10 @@ namespace Classes
         public Badge Lose()//Before GiveBadge now also switches defeated to true.
         {
             Defeated = true;
-            Item ToBeRemoved = null;
-            foreach (Item i in Inventory)
+            Possesion ToBeRemoved = null;
+            foreach (Possesion i in Inventory)
             {
-                if (i is Badge)
+                if (i.Item is Badge)
                 {
                     ToBeRemoved = i; break;
                 }
@@ -30,43 +30,12 @@ namespace Classes
             if (ToBeRemoved != null)
             {
                 Inventory.Remove(ToBeRemoved);
-                return ToBeRemoved as Badge;
+                return ToBeRemoved.Item as Badge;
             }
             else
             {
                 throw new GymLeaderHasNoBadgeException();
             }
-        }
-
-        public bool UseItemInBattle(Consumable consumable, Pokemon targetForItem)
-        {
-            foreach (Consumable consInInv in Inventory)
-            {
-                if (consInInv.Id == consumable.Id)
-                {
-                    consumable = consInInv;
-                    break;
-                }
-            }
-            if (!Inventory.Contains(consumable))
-            {
-                throw new ItemNotInInventoryException();
-            }
-
-            if (consumable is Potion)
-            {
-                targetForItem.Heal((consumable as Potion).HealAmount);
-            }
-            else if (consumable is Revive)
-            {
-                targetForItem.Revive((consumable as Revive).Percentage);
-            }
-            else if (consumable is Pokeball)
-            {
-                throw new NotImplementedException();
-            }
-            Inventory.Remove(consumable);
-            return true;//TODO
         }
     }
 }
