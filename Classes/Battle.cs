@@ -112,7 +112,8 @@ namespace Classes
 
         public Move NoPPMove()
         {
-            return new Move(9999999,"Struggle", 99999,99999,100,"Does Almost nothing",false,10,0);
+            //TODO Look this type
+            return new Move(9999999,"Struggle", 99999,99999,100,"Does Almost nothing",false,10,0, new Type(0, "Normal"));
         }
 
     }

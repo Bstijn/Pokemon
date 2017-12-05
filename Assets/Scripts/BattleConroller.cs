@@ -6,9 +6,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Classes;
 using Classes.Exceptions;
-using NUnit.Framework.Interfaces;
+using UnityEngine.Networking.NetworkSystem;
 using UnityEngine.SceneManagement;
-using Player = Classes.Player;
+using CPlayer = Classes.Player;
+using CType = Classes.Type;
 
 namespace Assets.Scripts
 {
@@ -26,7 +27,31 @@ namespace Assets.Scripts
 
         private Battle _battle;
 
-        public void CreateNewBattle(Battle battle)
+        public void Start()
+        {
+            var type1 = new CType(1, "Fire");
+            var type2 = new CType(2, "Water");
+            var type3 = new CType(3, "Grass");
+
+            var move1 = new Move(1, "Fire attack", 15, 15, 100, "A fire attack, duhh", false, 60, 1, type1);
+            var move2 = new Move(2, "Water attack", 15, 15, 100, "A water attack, duhh", false, 60, 1, type2);
+            var move3 = new Move(3, "grass attack", 15, 15, 100, "A grass attack, duhh", false, 60, 1, type3);
+            var move4 = new Move(4, "Fire!!!!", 15, 15, 80, "A fire attack, duhh", false, 80, 1, type1);
+            var move5 = new Move(5, "Water!!!!", 15, 15, 80, "A water attack, duhh", false, 80, 1, type2);
+            var move6 = new Move(6, "grass!!!!", 15, 15, 80, "A grass attack, duhh", false, 80, 1, type3);
+
+            var movelist1 = new List<Move> {move1, move4, move2, move5};
+            var movelist2 = new List<Move>{move3, move6};
+
+            var wildpokemon = new Pokemon(type3, movelist2, 110, 7, "WOOOW", false, 10, 100, 100, 5, false, 10, 10, 10, 50, 50);
+            var playerpokemon = new Pokemon(type1, movelist1, 15, 1, "Doubleup", false, 11, 80, 100, 100, false, 15, 11, 9, 50, 10);
+
+            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon>{playerpokemon}, 50, 5, null);
+            var battle = new Battle(player, wildpokemon);
+            CreateNewBattle(battle);
+        }
+
+    public void CreateNewBattle(Battle battle)
         {
             _battle = battle;
             SetPokemonInfo(_PlayerPanel, _battle.PlayerPokemon);
@@ -96,6 +121,7 @@ namespace Assets.Scripts
                 }
                 catch (IndexOutOfRangeException)
                 {
+                    Debug.Log("NOOOO!");
                     button.SetActive(false);
                 }
 
@@ -120,24 +146,60 @@ namespace Assets.Scripts
 
         public void OnUseMoveButtonPress(int moveNumber)
         {
-            StartCoroutine(Turn(moveNumber));
+            StartCoroutine(AttackTurn(moveNumber));
         }
 
-        private IEnumerator Turn(int playerMoveNumber)
+        private IEnumerator AttackTurn(int playerMoveNumber)
         {
-            //TODO TURNc
+            //TODO TURN
             var first = _battle.WildPokemon == null ? _battle.FirstAttack(_battle.PlayerPokemon, _battle.WildPokemon) : _battle.FirstAttack(_battle.PlayerPokemon, _battle.OpponentPokemon);
             var second = _battle.PlayerPokemon;
+            var firstMove = _battle.PickRandomMove(_battle.WildPokemon) ??
+                            _battle.PickRandomMove(_battle.OpponentPokemon);
+            var secondMove = _battle.PlayerPokemon.GetMoves()[playerMoveNumber];
+
             if (first.Id == _battle.PlayerPokemon.Id)
             {
                 second = _battle.WildPokemon ?? _battle.OpponentPokemon;
+                secondMove = firstMove;
+                firstMove = _battle.PlayerPokemon.GetMoves()[playerMoveNumber];
             }
 
-            yield return UseAttack(first, second, first.GetMoves()[playerMoveNumber]);
+            yield return UseAttack(first, second, firstMove);
             if (second.Fainted)
             {
-                
+                yield return EndBattle(second);
             }
+            else
+            {
+                yield return UseAttack(second, first, secondMove);
+            }
+            if (first.Fainted)
+            {
+                yield return EndBattle(first);
+            }
+        }
+
+        public IEnumerator EndBattle(Pokemon pokemon)
+        {
+            if (pokemon.Id == _battle.PlayerPokemon.Id)
+            {
+                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                    pokemon.Name + " has fainted.";
+                yield return new WaitForSeconds(1f);
+                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                    "You lost the battle.";
+            }
+            else
+            {
+                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                    pokemon.Name + " has fainted. You won the battle.";
+                yield return new WaitForSeconds(1f);
+                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                   "You won the battle.";
+            }
+            yield return new WaitForSeconds(1f);
+
         }
 
         public IEnumerator UseAttack(Pokemon attackPokemon, Pokemon defendPokemon, Move move)
@@ -151,7 +213,6 @@ namespace Assets.Scripts
             _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
                 move.Name + " did " + damage + "damage";
             yield return new WaitForSeconds(1);
-
         }
 
         public void OnHighlightButton(int moveNumber)
@@ -163,17 +224,17 @@ namespace Assets.Scripts
 
         public void OnTryFleeButtonPress()
         {
-            var text = _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text;
+            var text = _textPanel.transform.Find("Text").gameObject.GetComponent<Text>();
             bool flee;
             try
             {
                 flee = _battle.Flee(_battle.PlayerPokemon);
-                text = flee ? "You escaped the battle succesfully!" : "You could did not escape!";
+                text.text = flee ? "You escaped the battle succesfully!" : "You could did not escape!";
             }
             catch (CannotFleeTrainerBattleException)
             {
                 flee = false;
-                text = "You cannot flee from a trainer battle!";
+                text.text = "You cannot flee from a trainer battle!";
             }
             StartCoroutine("FleeAnimation", flee);
         }
@@ -196,6 +257,7 @@ namespace Assets.Scripts
             }
             if (flee)
             {
+                yield return new WaitForSeconds(1f);
                 SceneManager.UnloadSceneAsync("Battle");
             }
             else
