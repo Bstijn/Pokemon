@@ -22,6 +22,7 @@ namespace Classes
 
         public Area(int id, string name, List<Passage> passages) : base(id, name, passages)
         {
+            EncounterChance = repo.GetEncounterChance(id);
             AvailablePokemons = repo.GetEncounterablePokemon(id);
         }
 

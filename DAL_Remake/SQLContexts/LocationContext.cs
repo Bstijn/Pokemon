@@ -189,6 +189,21 @@ namespace DAL_Remake.SQLContexts
             return data;
         }
 
+        public object[] GetEncounterChance(int locationID)
+        {
+            object[] data;
+
+            string query = "select encounterchance from area where ID = @locationID";
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
+
         public List<object[]> GetInventory(int characterID)
         {
             List<object[]> data = new List<object[]>();

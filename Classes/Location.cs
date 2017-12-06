@@ -27,8 +27,8 @@ namespace Classes
         {
             Id = id;
             Name = name;
-            passages = repo.GetPassages(id);
             repo = new LocationRepository(new LocationContext());
+            passages = repo.GetPassages(id);
         }
 
         public void SetPassages(List<Passage> passages)
