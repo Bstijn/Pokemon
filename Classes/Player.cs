@@ -147,7 +147,14 @@ namespace Classes
 
         public void CatchPokemon(Pokemon pokemon)//boolean of  pokemon returnen of het gelukt is.
         {
-            throw new NotImplementedException();
+            if (Pokemons.Count() < 6)
+            {
+                Pokemons.Add(pokemon);
+            }
+            else
+            {
+                
+            }
         }
 
         public void RunAway()

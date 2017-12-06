@@ -15,7 +15,7 @@ namespace Classes
         public int PosY { get; protected set; }
         public Location CurrentLocation { get; protected set; }
         public List<Possesion> Inventory { get; protected set; }
-        public List<Pokemon> Pokemons { get; protected set; }
+        public List<Pokemon> Pokemons { get; private set; }
 
         public Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons)
         {
@@ -34,7 +34,5 @@ namespace Classes
         {
             throw new NotImplementedException();
         }
-
-       
     }
 }

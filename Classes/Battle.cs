@@ -11,7 +11,6 @@ namespace Classes
 {
     public class Battle
     {
-
         public Player Player { get; private set; }
         public Pokemon PlayerPokemon { get; private set; }
         public Pokemon WildPokemon { get; private set; }
@@ -48,8 +47,9 @@ namespace Classes
 
         public int Attack(Pokemon attackingPokemon, Pokemon defendingPokemon, Move move)
         {
-            defendingPokemon.TakeDamage(attackingPokemon.CalculateDamage(move,defendingPokemon));
-            return defendingPokemon.CurrentHp;
+            int damageTaken = attackingPokemon.CalculateDamage(move, defendingPokemon);
+            defendingPokemon.TakeDamage(damageTaken);
+            return damageTaken;
         }
 
         public Pokemon PokemonFaintedCheck() //Return null == No Pokemon Fainted
@@ -112,7 +112,19 @@ namespace Classes
 
         public Move NoPPMove()
         {
-            return new Move(9999999,"Struggle", 99999,99999,100,"Does Almost nothing",false,10,0);
+            return new Move(9999999,"Struggle", 99999,99999,100,"Did close to nothing",false,10,0);
+        }
+
+        public void PokemonCaught(Pokemon caughtPokemon)
+        {
+            if (Player.Pokemons.Count() < 6)
+            {
+                Player.Pokemons.Add(caughtPokemon);
+            }
+            else
+            {
+                //TODO Database Pokemon Caught --> Party caught
+            }
         }
 
     }
