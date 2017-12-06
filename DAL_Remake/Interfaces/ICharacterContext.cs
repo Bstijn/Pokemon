@@ -21,5 +21,6 @@ namespace DAL_Remake.Interfaces
         object[] GetPokemonType(int pokemonID);
 
         List<object[]> GetDialogues(int characterID);
+        void InsterIntro(int pokemonID, string CharacterName, string Gender);
     }
 }
