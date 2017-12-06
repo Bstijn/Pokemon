@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.49641287, b: 0.5748173, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5210,7 +5210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49cd55e55f3f90240a853621995f75ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackTypeSprites: []
+  _attackTypeSprites:
+  - {fileID: 21300002, guid: 42a985da582895349877a0bf8e641403, type: 3}
+  - {fileID: 21300006, guid: 42a985da582895349877a0bf8e641403, type: 3}
+  - {fileID: 21300008, guid: 42a985da582895349877a0bf8e641403, type: 3}
+  - {fileID: 21300004, guid: 42a985da582895349877a0bf8e641403, type: 3}
   _mainPanel: {fileID: 1744621419}
   _infoAttackPanel: {fileID: 1324673131}
   _pokemonPanel: {fileID: 2046956602}

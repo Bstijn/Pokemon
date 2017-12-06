@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 using UnityEngine.UI;
@@ -99,8 +100,8 @@ namespace Assets.Scripts
                 try
                 {
                     var move = _battle.PlayerPokemon.GetMoves()[i];
-                    button.GetComponent<Image>().sprite = _attackTypeSprites[0];
-                    button.transform.Find("Name").gameObject
+                    button.GetComponent<Image>().sprite = _attackTypeSprites.First(p => p.name == _battle.PlayerPokemon.GetMoves()[i].GetType().Name);
+                    button.transform.Find("Move").gameObject
                         .GetComponent<Text>().text = move.Name;
                     button.transform.Find("PP").gameObject.GetComponent<Text>().text = move.CurrentPP + " / " + move.MaxPP;
                     var percentage = move.CurrentPP / (float)move.MaxPP;
@@ -121,7 +122,7 @@ namespace Assets.Scripts
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    Debug.Log("NOOOO!");
+                    Debug.Log("no move bitch!");
                     button.SetActive(false);
                 }
 
@@ -151,8 +152,8 @@ namespace Assets.Scripts
 
         private IEnumerator AttackTurn(int playerMoveNumber)
         {
-            //TODO TURN
-            var first = _battle.WildPokemon == null ? _battle.FirstAttack(_battle.PlayerPokemon, _battle.WildPokemon) : _battle.FirstAttack(_battle.PlayerPokemon, _battle.OpponentPokemon);
+            //var first = _battle.WildPokemon == null ? _battle.FirstAttack(_battle.PlayerPokemon, _battle.WildPokemon) : _battle.FirstAttack(_battle.PlayerPokemon, _battle.OpponentPokemon);
+            var first = _battle.FirstAttack(_battle.PlayerPokemon, _battle.WildPokemon ?? _battle.OpponentPokemon);
             var second = _battle.PlayerPokemon;
             var firstMove = _battle.PickRandomMove(_battle.WildPokemon) ??
                             _battle.PickRandomMove(_battle.OpponentPokemon);
@@ -169,15 +170,36 @@ namespace Assets.Scripts
             if (second.Fainted)
             {
                 yield return EndBattle(second);
+                if (second.Id == _battle.PlayerPokemon.Id)
+                {
+                    UpdateHpUi(_PlayerPanel, second);
+                    UpdateHpUi(_EnemyPanel, first);
+                }
+                else
+                {
+                    UpdateHpUi(_EnemyPanel, first);
+                    UpdateHpUi(_PlayerPanel, second);
+                }
             }
             else
             {
                 yield return UseAttack(second, first, secondMove);
+                if (second.Id == _battle.PlayerPokemon.Id)
+                {
+                    UpdateHpUi(_PlayerPanel, second);
+                    UpdateHpUi(_EnemyPanel, first);
+                }
+                else
+                {
+                    UpdateHpUi(_EnemyPanel, first);
+                    UpdateHpUi(_PlayerPanel, second);
+                }
             }
             if (first.Fainted)
             {
                 yield return EndBattle(first);
             }
+            yield return null;
         }
 
         public IEnumerator EndBattle(Pokemon pokemon)
@@ -239,14 +261,9 @@ namespace Assets.Scripts
             StartCoroutine("FleeAnimation", flee);
         }
 
-        private IEnumerator FleeAnimation(bool flee)
+        private IEnumerator WaitForSecondsAndInput()
         {
             var pressed = false;
-            _mainPanel.SetActive(false);
-            _textPanel.SetActive(true);
-            _textPanel.transform.Find("ArrowPanel").gameObject.SetActive(false);
-            yield return new WaitForSeconds(1f);
-            _textPanel.transform.Find("ArrowPanel").gameObject.SetActive(true);
             while (!pressed)
             {
                 if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
@@ -255,6 +272,15 @@ namespace Assets.Scripts
                 }
                 yield return null;
             }
+        }
+        private IEnumerator FleeAnimation(bool flee)
+        {
+            _mainPanel.SetActive(false);
+            _textPanel.SetActive(true);
+            _textPanel.transform.Find("ArrowPanel").gameObject.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            _textPanel.transform.Find("ArrowPanel").gameObject.SetActive(true);
+            
             if (flee)
             {
                 yield return new WaitForSeconds(1f);
