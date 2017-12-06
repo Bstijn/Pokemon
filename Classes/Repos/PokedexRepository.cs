@@ -68,8 +68,9 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
+                //TODO Roberto fix die null -> type moet ook worden opgehaald (ook fix query)
                 pokemonMoves.Add(new Move(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), Convert.ToInt32(data[3]), 
-                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8])));
+                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), null));
             }
 
             return pokemonMoves;
