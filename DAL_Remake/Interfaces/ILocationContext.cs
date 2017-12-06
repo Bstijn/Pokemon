@@ -29,5 +29,9 @@ namespace DAL_Remake.Interfaces
         List<object[]> GetPokeballs(int characterID);
 
         List<object[]> GetInventory(int characterID);
+
+        object[] GetCurrentLocation(int locationID);
+
+        List<object[]> GetPokemonFromOpponent(int characterID);
     }
 }

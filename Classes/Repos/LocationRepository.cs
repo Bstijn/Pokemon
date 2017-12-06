@@ -181,5 +181,11 @@ namespace Classes.Repos
             }
             return pokeballs;
         }
+
+        //public Location GetCurrentLocation(int locationID)
+        //{
+        //    object[] data = context.GetCurrentLocation(locationID);
+        //    Location location = new Location(Convert.ToInt32(data[0]), data[1], data[2], data[3]);
+        //}
     }
 }
