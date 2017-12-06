@@ -14,12 +14,13 @@ namespace Classes
         public int Money { get; protected set; }
         public int PosX { get; protected set; }
         public int PosY { get; protected set; }
-        private Location currentLocation;
-        private List<Item> inventory;
-        private List<Pokemon> pokemons;
-        private CharacterRepository repo;
 
-        public Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons)
+        public Location CurrentLocation { get; protected set; }
+        public List<Possesion> Inventory { get; protected set; }
+        public List<Pokemon> Pokemons { get; private set; }
+
+
+        public Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons)
         {
             Name = name;
             Id = id;

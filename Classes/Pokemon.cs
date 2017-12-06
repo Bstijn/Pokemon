@@ -50,11 +50,11 @@ namespace Classes
                 //Fainted = true;
             }
         }
-        public void DealDamage(Move move, Pokemon defendingPokemon)
+        public int CalculateDamage(Move move, Pokemon defendingPokemon)
         {
             int damage = (int)((((((2 * (Convert.ToDouble(Level)) / 5) + 2) * Convert.ToDouble(move.BasePower) * (Convert.ToDouble(Attack) / Convert.ToDouble(defendingPokemon.Defense))) / 50) + 2) * GetModifier(move, defendingPokemon));
-            defendingPokemon.TakeDamage(damage);
             MoveExecuted(move);
+            return damage;
         }
 
         private void MoveExecuted(Move move)

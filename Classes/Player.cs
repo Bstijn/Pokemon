@@ -7,11 +7,10 @@ namespace Classes
 {
     public class Player : Character, IItemUser, ISellBuy
     {
-
         public int Wins { get; private set; }
         public int Loses { get; private set; }
         public Pokecenter LastVisitedPokeCenter { get; private set; }
-        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Item> inventory, List<Pokemon> pokemons, int wins, int losses,Pokecenter lastVistedPokeCenter)
+        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons, int wins, int losses,Pokecenter lastVistedPokeCenter)
             : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
         {
             this.LastVisitedPokeCenter = lastVistedPokeCenter;
@@ -22,10 +21,10 @@ namespace Classes
 
         public bool UseItemInBattle(Consumable consumable, Pokemon targetPokemon)
         {
-            //TODO Bij items 1 van inventory af als deze gebruikt wordt
+            var useditem = Inventory.First(i => consumable.Id == i.Item.Id);
+            useditem.ItemUsed();
             if (consumable.GetType() == typeof(Pokeball))
             {
-
                 if (consumable.Use(targetPokemon))
                     return true;
                 return false;
@@ -54,18 +53,8 @@ namespace Classes
         /// <param name="consumable">which consumable you want to use</param>
         public void UseItem(Pokemon pokemon, Consumable consumable)
         {
-            foreach (Consumable consInInv in Inventory)
-            {
-                if (consInInv.Id == consumable.Id)
-                {
-                    consumable = consInInv;
-                    break;
-                }
-            }
-            if (!Inventory.Contains(consumable))
-            {
-                throw new ItemNotInInventoryException(); 
-            }
+            var useditem = Inventory.First(i => consumable.Id == i.Item.Id);
+            useditem.ItemUsed();
             if (consumable is Potion)
             {
                 pokemon.Heal((consumable as Potion).HealAmount);
@@ -74,13 +63,22 @@ namespace Classes
             {
                 pokemon.Revive((consumable as Revive).Percentage);
             }
-            else if (consumable is Pokeball)
-            {
-                throw new NotImplementedException();
-            }
-            Inventory.Remove(consumable);
+            useditem.ItemUsed();
         }
 
+        private Possesion PossesionCheck(Consumable consumable)
+        {
+            Possesion possesion = new Possesion();
+            foreach (Possesion consInInv in Inventory)
+            {
+                if (consInInv.Item.Id == consumable.Id)
+                {
+                    possesion = consInInv;
+                    break;
+                }
+            }
+            return possesion;
+        }
         public void Walk(int x, int y)//dont forget to change the posX and posY when player moves so u can save the position.
         {
             throw new NotImplementedException();
@@ -149,7 +147,14 @@ namespace Classes
 
         public void CatchPokemon(Pokemon pokemon)//boolean of  pokemon returnen of het gelukt is.
         {
-            throw new NotImplementedException();
+            if (Pokemons.Count() < 6)
+            {
+                Pokemons.Add(pokemon);
+            }
+            else
+            {
+                
+            }
         }
 
         public void RunAway()
@@ -159,54 +164,16 @@ namespace Classes
 
         public void BuyItem(Consumable consumable, int amount)
         {
-            if (Money >= consumable.Cost * amount)
-            {
-                for (int i = 0; i < amount; i++)
-                {
-                    Inventory.Add(consumable);
-
-                }
-                Money -= consumable.Cost * amount;
-            }
+            //TODO IMPLEMENTEER JOEL POSSESION
         }
 
         public void SellItem(Consumable consumable, int amount)
         {
-            for (int i = 0; i < amount; i++)
-            {
-                Consumable consToRemove = null;
-                foreach (Consumable consinInv in Inventory)
-                {
-                    if (consinInv.Name == consumable.Name)
-                    {
-                        consToRemove = consinInv;
-                        break;
-                    }
-                }
-                if (consToRemove != null)
-                {
-                    Money += consToRemove.Cost;
-                    Inventory.Remove(consToRemove);
-                }
-                else
-                {
-                    throw new NotEnoughItemsToSellExceptions();
-                }
-            }
+            //TODO IMPLEMENTEREN JOEL POSSESION
         }
         public void GiveItem(Item item)
         {
-            if (item is NonConsumable)
-            {
-                foreach (NonConsumable NC in Inventory)
-                {
-                    if (NC.Name == item.Name)
-                    {
-                        return;
-                    }
-                }
-            }
-            Inventory.Add(item);
+            //TODO IMPLEMENTEREN JOEL POSSESION
         }
         public void GiveMoney(int amount)
         {
@@ -215,32 +182,7 @@ namespace Classes
 
         public void UseItemInBattle(Pokemon targetForItem, Consumable consumable)
         {
-            foreach(Consumable consInInv in Inventory)
-            {
-                if(consInInv.Id == consumable.Id)
-                {
-                    consumable = consInInv;
-                    break;
-                }
-            }
-            if (!Inventory.Contains(consumable))
-            {
-                throw new ItemNotInInventoryException();
-            }
-
-            if (consumable is Potion)
-            {
-                targetForItem.Heal((consumable as Potion).HealAmount);
-            }
-            else if (consumable is Revive)
-            {
-                targetForItem.Revive((consumable as Revive).Percentage);
-            }
-            else if (consumable is Pokeball)
-            {
-                throw new NotImplementedException();
-            }
-            Inventory.Remove(consumable);
+            //TODO IMPLEMENTEER JOEL POSSESION
         }
 
         public void SetLastVistedPokeCenter(Pokecenter pokeCenter)
