@@ -301,9 +301,12 @@ namespace DAL_Remake.SQLContexts
         public object[] GetCurrentLocation(int locationID)
         {
             object[] data;
-            string query = "select id, sizeX, sizeY, name " +
-                                "from location " +
-                                "where id = @LocationID";
+            string query = "SELECT *"+
+                            "FROM location"+
+                            "LEFT OUTER JOIN Area ON location.id = area.id"+
+                            "LEFT OUTER JOIN Building ON location.id = building.id"+
+                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID"+
+                            "WHERE Location.ID = 1";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
