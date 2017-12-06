@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="Badge.cs" />
+    <Compile Include="Battle.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Bystander.cs" />
     <Compile Include="Cave.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="ISellBuy.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="KeyItem.cs" />
+    <Compile Include="LevelUpXP.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="NonConsumable.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Pokedex.cs" />
     <Compile Include="Pokemart.cs" />
     <Compile Include="Pokemon.cs" />
+    <Compile Include="Possesion.cs" />
     <Compile Include="Potion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\CharacterRepository.cs" />
