@@ -186,6 +186,7 @@ namespace Classes.Repos
             //return new Location(Convert.ToInt32(data[0]), data[1].ToString()); 
             return null;
         }
+
         public void InserIntro(int pokemonID, string naam, string gender)
         {
             context.InsterIntro(pokemonID, naam, gender);

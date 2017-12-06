@@ -8,6 +8,8 @@ namespace Classes
         public string Name { get; private set; }
 
         private List<Passage> passages;
+        private int sizeX;
+        private int sizeY;
 
         public Location(int id, string name, List<Passage> passages)
         {

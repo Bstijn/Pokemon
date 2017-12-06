@@ -28,9 +28,9 @@ namespace Classes
             Money = money;
             PosX = posX;
             PosY = posY;
-            this.currentLocation = currentLocation;
-            this.inventory = inventory;
-            this.pokemons = pokemons;
+            CurrentLocation = currentLocation;
+            Inventory = inventory;
+            Pokemons = pokemons;
         }
 
         public Character(string name, int id, string gender, int money, int posX, int posY)
@@ -41,39 +41,40 @@ namespace Classes
             Money = money;
             PosX = posX;
             PosY = posY;
-            this.currentLocation = repo.GetCurrentLocation(id);
-            this.inventory = repo.GetInventory(id);
-            this.pokemons = repo.GetPokemonFromParty(id);
+            //TODO Roberto look at this
+            //CurrentLocation = repo.GetCurrentLocation(id);
+            //Inventory = repo.GetInventory(id);
+            //Pokemons = repo.GetPokemonFromParty(id);
         }
 
         public Location GetCurrentLocation()
         {
-            return currentLocation;
+            return CurrentLocation;
         }
 
         public void SetCurrentLocation(Location location)
         {
-            location = currentLocation;
+            location = CurrentLocation;
         }
 
-        public List<Item> GetInventory()
+        public List<Possesion> GetInventory()
         {
-            return inventory;
+            return Inventory;
         }
 
-        public void SetInventory(List<Item> inventory)
+        public void SetInventory(List<Possesion> inventory)
         {
-            this.inventory = inventory;
+           Inventory = inventory;
         }
 
         public List<Pokemon> GetPokemons()
         {
-            return pokemons;
+            return Pokemons;
         }
 
         public void SetPokemons(List<Pokemon> pokemons)
         {
-            this.pokemons = pokemons;
+            Pokemons = pokemons;
         }
 
         public string Talk(Dialogue dialogue)

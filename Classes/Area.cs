@@ -10,9 +10,10 @@ namespace Classes
         public int MaxLevel { get; private set; }
         public decimal EncounterChance { get; private set; }
         public List<Pokemon> AvailablePokemons { get; private set; }
-
         private Random random;
-        public Area(int id, int sizeX, int sizeY, string name, List<Passage> passages, int minLevel, int maxLevel, decimal encounterChance, List<Pokemon> availablePokemons) : base(id, sizeX, sizeY, name, passages)
+
+        public Area(int id, string name, List<Passage> passages, int minLevel, int maxLevel, decimal encounterChance, List<Pokemon> availablePokemons) : base(id, name, passages)
+
         {
             MinLevel = minLevel;
             MaxLevel = maxLevel;
