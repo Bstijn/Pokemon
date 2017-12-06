@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using DAL_Remake.Interfaces;
 using Mono.Data.Sqlite;
+using Classes;
 
 namespace DAL_Remake.SQLContexts
 {
@@ -59,6 +60,23 @@ namespace DAL_Remake.SQLContexts
                 data = dataTable.Rows[0].ItemArray;
             }
             return data;
+        }
+
+        public LevelUpXP GetLvlUp(int level)
+        {
+            LevelUpXP levelUpXp;
+            string query = "Select * from LevelUpXP " +
+                           "where lvl = ";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@PokemonLvl", level + 1);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                levelUpXp = new LevelUpXP(Convert.ToInt32(dataTable.Rows[0].ItemArray),Convert.ToInt32(dataTable.Rows[1].ItemArray));
+            }
+            return levelUpXp;
+
         }
     }
 }

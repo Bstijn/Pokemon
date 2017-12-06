@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using DAL_Remake.Interfaces;
+using System;
 
 namespace DAL_Remake.SQLContexts
 {
@@ -280,6 +281,28 @@ namespace DAL_Remake.SQLContexts
                 }
             }
             return data;
+        }
+
+        public object[] GetCurrentLocation(int locationID)
+        {
+            object[] data;
+            string query = "select id, sizeX, sizeY, name " +
+                                "from location " +
+                                "where id = @LocationID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray; 
+            }
+            return data;
+        }
+
+        public List<object[]> GetPokemonFromOpponent(int characterID)
+        {
+            throw new NotImplementedException();
         }
     }
 }
