@@ -25,7 +25,7 @@ namespace Classes.Repos
             {
                 revives.Add(new Revive(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
             }
-            
+
 
             return revives;
         }
@@ -152,7 +152,7 @@ namespace Classes.Repos
                 inventory.Add(badge);
 
             return inventory;
-        } 
+        }
 
         public Location GetCurrentLocation(int locationID)
         {
@@ -182,10 +182,9 @@ namespace Classes.Repos
                 //    location = new Route()
                 //    break;
             }
-
             //return new Location(Convert.ToInt32(data[0]), data[1].ToString()); 
             return null;
-
+        }
         public void InserIntro(int pokemonID, string naam, string gender)
         {
             context.InsterIntro(pokemonID, naam, gender);
