@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Classes.Repos;
+using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
@@ -7,6 +8,7 @@ public class GameController : MonoBehaviour {
     public float encounterRate;
     public bool surfEnabled;
 
+    Classes.Player dummy;
     string checkDir;
     public SurfEnabler surfEnabler;
     void Awake()
@@ -20,6 +22,7 @@ public class GameController : MonoBehaviour {
             //...destroy this one because it is a duplicate.
             Destroy(gameObject);
         DontDestroyOnLoad(this);
+
         if (GameObject.FindWithTag("Player"))
         {
 
@@ -27,6 +30,8 @@ public class GameController : MonoBehaviour {
         else
         {
             Instantiate(Red, new Vector3(9.5f, 6.5f, -1f), new Quaternion());
+            dummy = new Classes.Player("Henk", 1, "male", 0, 1, 1, 0, 0);
+            GameObject.FindWithTag("Player").GetComponent<Player>().player = dummy;
         }
     }
 
