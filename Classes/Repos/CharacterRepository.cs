@@ -153,7 +153,7 @@ namespace Classes.Repos
                 inventory.Add(badge);
 
             return inventory;
-        } 
+        }
 
         public Location GetCurrentLocation(int locationID)
         {
@@ -186,6 +186,7 @@ namespace Classes.Repos
 
             //return new Location(Convert.ToInt32(data[0]), data[1].ToString()); 
             return null;
+        }
 
         public void InserIntro(int pokemonID, string naam, string gender)
         {
