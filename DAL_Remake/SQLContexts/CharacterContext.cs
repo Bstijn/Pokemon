@@ -291,7 +291,7 @@ namespace DAL_Remake.SQLContexts
                 return true;
             }
             return false;
-
+        }
         public void InsterIntro(int pokemonID, string CharacterName, string Gender)
         {
             string query = "insert into Character (gender, Name,Money) values (@gender,@name,@money)";
