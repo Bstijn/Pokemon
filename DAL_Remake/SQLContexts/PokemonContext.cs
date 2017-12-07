@@ -1,15 +1,11 @@
-using System.Data;
-using System.Linq;
-using System.Text;
-using System;
-using System.Collections.Generic;
 using DAL_Remake.Interfaces;
 using Mono.Data.Sqlite;
-using Classes;
+using System.Collections.Generic;
+using System.Data;
 
 namespace DAL_Remake.SQLContexts
 {
-    public class PokemonContext :IPokemonContext
+    public class PokemonContext : IPokemonContext
     {
         private SqliteConnection connection;
         private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
@@ -40,7 +36,7 @@ namespace DAL_Remake.SQLContexts
                     data.Add(dataRow.ItemArray);
                 }
             }
-                return data;
+            return data;
         }
 
         public object[] GetPokemonType(int pokedexPokemonID)
@@ -60,9 +56,46 @@ namespace DAL_Remake.SQLContexts
                 data = dataTable.Rows[0].ItemArray;
             }
             return data;
-            
+
         }
-        
+
+        public object[] GetMoveType(int moveID)
+        {
+            object[] data;
+            string query = "select t.ID, t.Name " +
+                           "from type t, pokedexmove pm" +
+                           "where t.id = pm.typeID " +
+                           "and pm.ID = @MoveID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@MoveID", moveID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
+
+        public object GetEffectiveness(int attackTypeID, int defenseTypeID)
+        {
+            object data;
+            string query = "select ratio " +
+                           "from type " +
+                           "where attackTypeID = @AttackTypeID " +
+                           "and defenseTypeID = @DefenseTypeID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@AttackTypeID", attackTypeID);
+                adapter.SelectCommand.Parameters.AddWithValue("@DefenseTypeID", defenseTypeID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray[0];
+            }
+            return data;
+        }
+
         /*public LevelUpXP GetLvlUp(int level)
         {
             LevelUpXP levelUpXp;

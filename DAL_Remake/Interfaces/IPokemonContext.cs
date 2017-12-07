@@ -8,6 +8,8 @@ namespace DAL_Remake.Interfaces
 
         object[] GetPokemonType(int pokedexPokemonID);
 
+        object[] GetMoveType(int moveID);
 
+        object GetEffectiveness(int attackTypeID, int defenseTypeID);
     }
 }

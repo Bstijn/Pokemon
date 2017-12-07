@@ -2,8 +2,6 @@
 using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Classes.Repos
 {
@@ -23,7 +21,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                revives.Add(new Revive(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
+                revives.Add(new Revive(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
             }
 
             return revives;
@@ -36,7 +34,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                potions.Add(new Potion(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
+                potions.Add(new Potion(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
             }
 
             return potions;
@@ -49,7 +47,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                pokeballs.Add(new Pokeball(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToDecimal(data[4])));
+                pokeballs.Add(new Pokeball(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToDecimal(row[4])));
             }
 
             return pokeballs;

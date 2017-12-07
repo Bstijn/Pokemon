@@ -45,7 +45,7 @@ namespace Classes
             EvolveLevel = evolveLevel;
             CaptureRate = captureRate;
         }
-        
+
         public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
         {
             this.type = type;
@@ -88,12 +88,12 @@ namespace Classes
                     m.PPDown();
             }
         }
-        
+
         public void LevelUp()
         {
             //check xp with xp to lvlupxp.
             Level++;
-            if(Level >= EvolveLevel)
+            if (Level >= EvolveLevel)
             {
                 throw new NotImplementedException();//evolve met database
                 Xp = 0;
@@ -126,8 +126,8 @@ namespace Classes
             double critValue = GetCritValue(Speed);
             double randomRate = GetRandomRate();
             double stab = GetSTAB(type, move.GetType());
-            double effectiveType = GetEffectiveType(move.GetType(), defendingPokemon.GetType());
-            return critValue * randomRate * stab * effectiveType;
+            double effectiveness = GetEffectiveness(move.GetType(), defendingPokemon.GetType());
+            return critValue * randomRate * stab * effectiveness;
         }
 
         private double GetCritValue(int speed)//TODO: check if there is need to be changed
@@ -157,7 +157,7 @@ namespace Classes
             return 1;
         }
 
-        private double GetEffectiveType(Type attackType, Type defenseType)
+        private double GetEffectiveness(Type attackType, Type defenseType)
         {
             //ToDo Ask Database for Effectiveness based on ID's
             double effectiveness = 1.5;

@@ -1,10 +1,8 @@
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Collections.Generic;
-using Mono.Data.Sqlite;
 using DAL_Remake.Interfaces;
+using Mono.Data.Sqlite;
 using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace DAL_Remake.SQLContexts
 {
@@ -127,7 +125,7 @@ namespace DAL_Remake.SQLContexts
         {
             List<object[]> data = new List<object[]>();
             string query = "select p.id, pp.name, p.inParty, p.level, p.currentHp, p.maxHp, p.xp, p.attack, p.defense, p.speed, pp.evolveLevel, pp.captureRate " +
-                                    "from pokemon p, pokedexpokemon pp, pokemonlocation pl, area a " + 
+                                    "from pokemon p, pokedexpokemon pp, pokemonlocation pl, area a " +
                                     "where p.pokedexpokemonID = pp.ID " +
                                     "and pp.ID = pl.pokedexpokemonID " +
                                     "and pl.areaID = a.locationID " +
@@ -182,6 +180,24 @@ namespace DAL_Remake.SQLContexts
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@PokemonID", pokemonID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
+
+        public object[] GetMoveType(int moveID)
+        {
+            object[] data;
+            string query = "select t.ID, t.Name " +
+                           "from type t, pokedexmove pm" +
+                           "where t.id = pm.typeID " +
+                           "and pm.ID = @MoveID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@MoveID", moveID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 data = dataTable.Rows[0].ItemArray;
@@ -301,11 +317,11 @@ namespace DAL_Remake.SQLContexts
         public object[] GetCurrentLocation(int locationID)
         {
             object[] data;
-            string query = "SELECT *"+
-                            "FROM location"+
-                            "LEFT OUTER JOIN Area ON location.id = area.id"+
-                            "LEFT OUTER JOIN Building ON location.id = building.id"+
-                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID"+
+            string query = "SELECT *" +
+                            "FROM location" +
+                            "LEFT OUTER JOIN Area ON location.id = area.id" +
+                            "LEFT OUTER JOIN Building ON location.id = building.id" +
+                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID" +
                             "WHERE Location.ID = 1";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
@@ -313,7 +329,7 @@ namespace DAL_Remake.SQLContexts
                 adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                data = dataTable.Rows[0].ItemArray; 
+                data = dataTable.Rows[0].ItemArray;
             }
             return data;
         }

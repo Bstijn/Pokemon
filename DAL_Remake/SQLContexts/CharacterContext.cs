@@ -297,7 +297,7 @@ namespace DAL_Remake.SQLContexts
             return false;
         }
 
-        public void InsterIntro(int pokemonID, string CharacterName, string Gender)
+        public void InsertIntro(int pokemonID, string CharacterName, string Gender)
         {
             string query = "insert into Character (gender, Name,Money) values (@gender,@name,@money)";
             SqliteCommand insercharactercmd = new SqliteCommand(query, connection);
