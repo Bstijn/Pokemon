@@ -60,9 +60,10 @@ namespace DAL_Remake.SQLContexts
                 data = dataTable.Rows[0].ItemArray;
             }
             return data;
+            
         }
-
         public LevelUpXP GetNextLevelUpXp(int level)
+
         {
             LevelUpXP levelUpXp;
             string query = "Select * from LevelUpXP " +
