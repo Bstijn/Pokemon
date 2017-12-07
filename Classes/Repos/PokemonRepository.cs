@@ -37,5 +37,10 @@ namespace Classes.Repos
             Type type = new Type(Convert.ToInt32(data[0]), data[1].ToString());
             return type;
         }
+
+        public LevelUpXP GetNextLevelUpXp(int level)
+        {
+            return context.GetNextLevelUpXp(level);
+        }
     }
 }

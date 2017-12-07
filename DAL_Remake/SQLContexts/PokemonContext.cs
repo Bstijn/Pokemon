@@ -62,8 +62,8 @@ namespace DAL_Remake.SQLContexts
             return data;
             
         }
-        
-        /*public LevelUpXP GetLvlUp(int level)
+        public LevelUpXP GetNextLevelUpXp(int level)
+
         {
             LevelUpXP levelUpXp;
             string query = "Select * from LevelUpXP " +
@@ -78,6 +78,6 @@ namespace DAL_Remake.SQLContexts
             }
             return levelUpXp;
 
-        }*/
+        }
     }
 }
