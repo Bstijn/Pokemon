@@ -18,6 +18,16 @@ namespace Classes
             this.Loses = losses;
         }
 
+        public Player(string name, int id, string gender, int money, int posX, int posY, int wins, int losses) 
+            : base(name, id, gender, money, posX, posY)
+        {
+            this.Wins = wins;
+            this.Loses = losses;
+            Inventory = new List<Possesion>();
+            SetPokemons(new List<Pokemon>());
+            SetCurrentLocation(new Route(1, "Route 101", new List<Passage>(), 1, 10, 0.10M, GetPokemons()));
+        }
+
 
         public bool UseItemInBattle(Consumable consumable, Pokemon targetPokemon)
         {

@@ -183,10 +183,22 @@ namespace Classes.Repos
             return pokeballs;
         }
 
+        public decimal GetEncounterChance(int locationID)
+        {
+            object[] data = context.GetEncounterChance(locationID);
+
+            return Convert.ToDecimal(data[0]);
+        }
+
+        //TODO: Laura, fix dit, en vraag om database. Query is niet toereikend.
         //public Location GetCurrentLocation(int locationID)
         //{
         //    object[] data = context.GetCurrentLocation(locationID);
         //    Location location = new Location(Convert.ToInt32(data[0]), data[1], data[2], data[3]);
+        //      Geen idee, kan niet zien hoe de database in elkaar zit. ik stel voor dat we hier nog even kijken vanavond.
+        //      kan iets bedenken met een switch statement, afhankelijk van wat er in het type vak zit, en dat daarmee wordt bepaald wat voor location er wordt teruggegeven.
+        //      Zoals het er nu staat, kan ik niks, omdat ik niet in de database kan kijken.
+        //    return location;
         //}
     }
 }

@@ -32,6 +32,8 @@ namespace DAL_Remake.Interfaces
 
         object[] GetCurrentLocation(int locationID);
 
+        object[] GetEncounterChance(int locationID);
+
         List<object[]> GetPokemonFromOpponent(int characterID);
     }
 }
