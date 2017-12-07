@@ -31,8 +31,9 @@ namespace Classes
         public int AttackGrowth { get; private set; }
         public int DefenseGrowth { get; private set; }
         public int HpGrowth { get; private set; }
+        public int DefeatXp { get; private set; }
 
-        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate, int speedGrowth, int attackGrowth, int defenseGrowth, int hpGrowth)
+        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate, int speedGrowth, int attackGrowth, int defenseGrowth, int hpGrowth, int defeatXp)
         {
             this.type = type;
             this.moves = moves;
@@ -54,6 +55,7 @@ namespace Classes
             AttackGrowth = attackGrowth;
             DefenseGrowth = defenseGrowth;
             HpGrowth = hpGrowth;
+            DefeatXp = defeatXp;
         }
 
         public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate)

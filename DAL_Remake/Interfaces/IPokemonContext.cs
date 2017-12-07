@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Classes;
 
 namespace DAL_Remake.Interfaces
@@ -9,7 +10,7 @@ namespace DAL_Remake.Interfaces
 
         object[] GetPokemonType(int pokedexPokemonID);
 
-        LevelUpXP GetNextLevelUpXp(int level);
+        object[] GetNextLevelUpXp(int level);
 
     }
 }

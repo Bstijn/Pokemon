@@ -133,9 +133,9 @@ namespace Classes
             return 0;
         }
 
-        public int LevelUpCheck(Pokemon defeatedPokemon, int xp)
+        public int LevelUpCheck(Pokemon defeatedPokemon, int xp, Pokemon playerPokemon)
         {
-            //TODO
+            
             return 0;
         }
     }
