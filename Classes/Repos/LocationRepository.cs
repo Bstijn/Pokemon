@@ -10,7 +10,7 @@ namespace Classes.Repos
         private ILocationContext context;
 
 
-        public LocationRepository(ILocationContext context)
+        public LocationRepository()
         {
             context = new LocationContext();
         }
@@ -18,9 +18,8 @@ namespace Classes.Repos
         public Gymleader GetGymleader(int locationID)
         {
             object[] data = context.GetGymleader(locationID);
-
-            // TODO: implementeer dit
-            return null;
+            //TODO: zet methodes voor location en pokemon hier
+            return new Gymleader(data[0].ToString(), Convert.ToInt32(data[1]), data[2].ToString(), Convert.ToInt32(data[3]), Convert.ToInt32(data[4]), Convert.ToInt32(data[5]), null/*dit wordt location*/, null/*GetInventory(Convert.ToInt32(data[1]))*/, null/*GetPokemon(data[1])*/, Convert.ToBoolean(data[6]));
         }
 
         public Nurse GetNurse(int locationID)

@@ -19,11 +19,15 @@ namespace DAL_Remake.SQLContexts
         public object[] GetGymleader(int locationID)
         {
             object[] data;
-            string query = "";
+            string query = "select c.name, c.id, c.gender, c.money, cl.posX, cl.posY, gl.defeated " +
+                           "from characterlocation cl, character c, gymleader gl " +
+                           "where cl.characterID = c.ID " +
+                           "and c.ID = gl.ID " +
+                           "and cl.locationID = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
-                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 data = dataTable.Rows[0].ItemArray;
@@ -34,11 +38,15 @@ namespace DAL_Remake.SQLContexts
         public object[] GetNurse(int locationID)
         {
             object[] data;
-            string query = "";
+            string query = "select c.name, c.id, c.gender, c.money, cl.posX, cl.posY " +
+                           "from characterlocation cl, character c, nurse n " +
+                           "where cl.characterID = c.ID " +
+                           "and c.ID = n.ID " +
+                           "and cl.locationID = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
-                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 data = dataTable.Rows[0].ItemArray;
@@ -49,11 +57,15 @@ namespace DAL_Remake.SQLContexts
         public object[] GetShopkeeper(int locationID)
         {
             object[] data;
-            string query = "";
+            string query = "select c.name, c.id, c.gender, c.money, cl.posX, cl.posY " +
+                           "from characterlocation cl, character c, shopkeeper sk " +
+                           "where cl.characterID = c.ID " +
+                           "and c.ID = sk.ID " +
+                           "and cl.locationID = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
-                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 data = dataTable.Rows[0].ItemArray;
@@ -64,11 +76,15 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetOpponents(int locationID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "";
+            string query = "select c.name, c.id, c.gender, c.money, cl.posX, cl.posY, op.defeated " +
+                           "from characterlocation cl, character c, opponent op " +
+                           "where cl.characterID = c.ID " +
+                           "and c.ID = op.ID " +
+                           "and cl.locationID = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
-                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
@@ -83,11 +99,15 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetBystanders(int locationID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "";
+            string query = "select c.name, c.id, c.gender, c.money, cl.posX, cl.posY " +
+                           "from characterlocation cl, character c, bystander by " +
+                           "where cl.characterID = c.ID " +
+                           "and c.ID = by.ID " +
+                           "and cl.locationID = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
-                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
