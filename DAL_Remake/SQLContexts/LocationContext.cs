@@ -189,6 +189,21 @@ namespace DAL_Remake.SQLContexts
             return data;
         }
 
+        public object[] GetEncounterChance(int locationID)
+        {
+            object[] data;
+
+            string query = "select encounterchance from area where ID = @locationID";
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
+
         public List<object[]> GetInventory(int characterID)
         {
             List<object[]> data = new List<object[]>();
@@ -286,9 +301,12 @@ namespace DAL_Remake.SQLContexts
         public object[] GetCurrentLocation(int locationID)
         {
             object[] data;
-            string query = "select id, sizeX, sizeY, name " +
-                                "from location " +
-                                "where id = @LocationID";
+            string query = "SELECT *"+
+                            "FROM location"+
+                            "LEFT OUTER JOIN Area ON location.id = area.id"+
+                            "LEFT OUTER JOIN Building ON location.id = building.id"+
+                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID"+
+                            "WHERE Location.ID = 1";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {

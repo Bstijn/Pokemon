@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private float speed = 3f;
     public Vector3 pos;
     private Transform tr;
-    private Classes.Player player;
+    public Classes.Player player;
 
     private SpriteRenderer sprite;
 

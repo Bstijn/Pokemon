@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Classes.Repos;
+using DAL_Remake.SQLContexts;
+using System.Collections.Generic;
 
 namespace Classes
 {
@@ -11,18 +13,22 @@ namespace Classes
         private int sizeX;
         private int sizeY;
 
+        protected LocationRepository repo;
+
         public Location(int id, string name, List<Passage> passages)
         {
             Id = id;
             Name = name;
             this.passages = passages;
+            repo = new LocationRepository(new LocationContext());
         }
 
         public Location(int id, string name)
         {
             Id = id;
             Name = name;
-            passages = null;
+            repo = new LocationRepository(new LocationContext());
+            passages = repo.GetPassages(id);
         }
 
         public void SetPassages(List<Passage> passages)

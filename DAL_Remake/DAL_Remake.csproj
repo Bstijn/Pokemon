@@ -34,8 +34,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Classes">
-      <HintPath>..\Classes\bin\Debug\Classes.dll</HintPath>
+    <Reference Include="Classes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Classes\bin\Debug\Classes\Classes.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>..\..\..\..\..\..\Program Files\Unity\Editor\Data\Mono\lib\mono\2.0\Mono.Data.Sqlite.dll</HintPath>
