@@ -6,7 +6,7 @@ namespace Classes
     {
         public List<Consumable> ShopItems { get; private set; }
 
-        public Pokemart(int id, int sizeX, int sizeY, string name, List<Passage> passages,List<Consumable> shopItems) : base(id, sizeX, sizeY, name, passages)
+        public Pokemart(int id, string name, List<Passage> passages,List<Consumable> shopItems) : base(id, name, passages)
         {
             this.ShopItems = shopItems;
         }

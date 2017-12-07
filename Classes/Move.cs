@@ -11,9 +11,9 @@
         public bool HasOverworldEffect { get; private set; }
         public int BasePower { get; private set; }
         public int MinLevel { get; private set; }
-        private Type type;
+        private readonly Type type;
 
-        public Move(int id, string name, int currentPp, int maxPp, int accuracy, string description, bool hasOverworldEffect, int basePower, int minLevel)
+        public Move(int id, string name, int currentPp, int maxPp, int accuracy, string description, bool hasOverworldEffect, int basePower, int minLevel, Type type)
         {
             Id = id;
             Name = name;
@@ -24,6 +24,7 @@
             HasOverworldEffect = hasOverworldEffect;
             BasePower = basePower;
             MinLevel = minLevel;
+            this.type = type;
         }
 
         public Type GetType()

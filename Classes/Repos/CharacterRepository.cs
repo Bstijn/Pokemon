@@ -11,12 +11,12 @@ namespace Classes.Repos
     {
         private ICharacterContext context;
 
-        public CharacterRepository(ICharacterContext context)
+        public CharacterRepository()
         {
             context = new CharacterContext();
         }
 
-        public List<Revive> GetRevives(int characterID)
+        private List<Revive> GetRevives(int characterID)
         {
             List<object[]> data = context.GetRevives(characterID);
             List<Revive> revives = new List<Revive>();
@@ -25,12 +25,12 @@ namespace Classes.Repos
             {
                 revives.Add(new Revive(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
             }
-            
+
 
             return revives;
         }
 
-        public List<Potion> GetPotions(int characterID)
+        private List<Potion> GetPotions(int characterID)
         {
             List<object[]> data = context.GetPotions(characterID);
             List<Potion> potions = new List<Potion>();
@@ -43,7 +43,7 @@ namespace Classes.Repos
             return potions;
         }
 
-        public List<Pokeball> GetPokeballs(int characterID)
+        private List<Pokeball> GetPokeballs(int characterID)
         {
             List<object[]> data = context.GetPokeballs(characterID);
             List<Pokeball> pokeballs = new List<Pokeball>();
@@ -56,7 +56,7 @@ namespace Classes.Repos
             return pokeballs;
         }
 
-        public List<Badge> GetBadges(int characterID)
+        private List<Badge> GetBadges(int characterID)
         {
             List<object[]> data = context.GetBadges(characterID);
             List<Badge> badges = new List<Badge>();
@@ -69,7 +69,7 @@ namespace Classes.Repos
             return badges;
         }
 
-        public List<KeyItem> GetKeyItems(int characterID)
+        private List<KeyItem> GetKeyItems(int characterID)
         {
             List<object[]> data = context.GetKeyItems(characterID);
             List<KeyItem> keyItems = new List<KeyItem>();
@@ -121,8 +121,9 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
+                //TODO Roberto fix die null -> type moet ook worden opgehaald (ook fix query)
                 pokemonMoves.Add(new Move(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), Convert.ToInt32(data[3]),
-                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8])));
+                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), null));
             }
 
             return pokemonMoves;
@@ -133,6 +134,63 @@ namespace Classes.Repos
             object[] data = context.GetPokemonType(pokemonID);
 
             return new Type(Convert.ToInt32(data[0]), data[1].ToString());
+        }
+
+
+        public List<Item> GetInventory(int characterID)
+        {
+            List<Item> inventory = new List<Item>();
+
+            foreach (Potion potion in GetPotions(characterID))
+                inventory.Add(potion);
+            foreach (Revive revive in GetRevives(characterID))
+                inventory.Add(revive);
+            foreach (Pokeball pokeball in GetPokeballs(characterID))
+                inventory.Add(pokeball);
+            foreach (KeyItem keyItem in GetKeyItems(characterID))
+                inventory.Add(keyItem);
+            foreach (Badge badge in GetBadges(characterID))
+                inventory.Add(badge);
+
+            return inventory;
+        }
+
+        public Location GetCurrentLocation(int locationID)
+        {
+            string locationType = context.GetLocationType(locationID);
+            Location location;
+            switch (locationType)
+            {
+                //case "pokemart":
+                //    location = new Pokemart()
+                //    break;
+                //case "gym":
+                //    location = new Gym()
+                //    break;
+                //case "pokecenter":
+                //    location = new Pokecenter()
+                //    break;
+                //case "enemyhq":
+                //    location = new EnemyHQ()
+                //    break;
+                //case "city":
+                //    location = new City()
+                //    break;
+                //case "cave":
+                //    location = new Cave()
+                //    break;
+                //case "route":
+                //    location = new Route()
+                //    break;
+            }
+            //return new Location(Convert.ToInt32(data[0]), data[1].ToString()); 
+            return null;
+        }
+
+        public void InserIntro(int pokemonID, string naam, string gender)
+        {
+            context.InsterIntro(pokemonID, naam, gender);
+
         }
     }
 }

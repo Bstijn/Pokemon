@@ -5,19 +5,34 @@ namespace Classes
     public abstract class Location
     {
         public int Id { get; private set; }
-        public int SizeX { get; private set; }
-        public int SizeY { get; private set; }
         public string Name { get; private set; }
-        public List<Passage> Passages { get; private set; }
 
-        public Location(int id, int sizeX, int sizeY, string name, List<Passage> passages)
+        private List<Passage> passages;
+        private int sizeX;
+        private int sizeY;
+
+        public Location(int id, string name, List<Passage> passages)
         {
             Id = id;
-            SizeX = sizeX;
-            SizeY = sizeY;
             Name = name;
-            Passages = passages;
+            this.passages = passages;
         }
 
+        public Location(int id, string name)
+        {
+            Id = id;
+            Name = name;
+            passages = null;
+        }
+
+        public void SetPassages(List<Passage> passages)
+        {
+            this.passages = passages;
+        }
+
+        public List<Passage> GetPassages()
+        {
+            return passages;
+        }
     }
 }

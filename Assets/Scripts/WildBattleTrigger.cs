@@ -1,27 +1,26 @@
 ﻿using UnityEngine;
+using Classes;
 
 public class WildBattleTrigger : MonoBehaviour {
 
     public float EncounterRate;
-    System.Random rando;
-
+    Area location;
     //DB -> Pokémon
 
     private void Awake()
     {
-        rando = new System.Random();
         EncounterRate = GameController.instance.encounterRate;
+        location = FindObjectOfType<Player>().GetCurrentLocation() as Area;
         //Load Pokémon
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (rando.Next(0, 100) < EncounterRate)
+        if (location.EncounterPokemon())
         {
-            //Get Pokemon
-            //Start Battle
-
-            Debug.Log("Encountered Pokemon: "/*random pokemon*/);
+            Pokemon pokemon = location.GenerateBattle();
+            //SceneManager.LoadScene(battle, pokemon);
+            Debug.Log("Encountered Pokemon: "+ pokemon.Name);
         }
     }
 }

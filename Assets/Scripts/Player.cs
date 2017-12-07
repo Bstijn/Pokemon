@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using Classes;
 public enum Direction
 {
     Up,
@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private float speed = 3f;
     public Vector3 pos;
     private Transform tr;
+    private Classes.Player player;
 
     private SpriteRenderer sprite;
 
@@ -133,6 +134,11 @@ public class Player : MonoBehaviour
                 break;
         }
         transform.position = Vector3.MoveTowards(transform.position, pos, speed * Time.deltaTime);
+    }
+
+    public Location GetCurrentLocation()
+    {
+        return player.CurrentLocation;
     }
 }
 
