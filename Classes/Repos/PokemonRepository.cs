@@ -40,7 +40,8 @@ namespace Classes.Repos
 
         public LevelUpXP GetNextLevelUpXp(int level)
         {
-            return context.GetNextLevelUpXp(level);
+           // return context.GetNextLevelUpXp(level);
+            return null;
         }
     }
 }

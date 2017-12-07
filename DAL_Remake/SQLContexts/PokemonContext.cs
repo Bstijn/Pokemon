@@ -62,6 +62,7 @@ namespace DAL_Remake.SQLContexts
             return data;
             
         }
+        /*
         public LevelUpXP GetNextLevelUpXp(int level)
 
         {
@@ -78,6 +79,6 @@ namespace DAL_Remake.SQLContexts
             }
             return levelUpXp;
 
-        }
+        }*/
     }
 }
