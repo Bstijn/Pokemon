@@ -25,6 +25,37 @@ namespace Classes
 
         private List<Move> moves;
 
+        //GrowStats
+
+        public int SpeedGrowth { get; private set; }
+        public int AttackGrowth { get; private set; }
+        public int DefenseGrowth { get; private set; }
+        public int HpGrowth { get; private set; }
+
+        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate, int speedGrowth, int attackGrowth, int defenseGrowth, int hpGrowth)
+        {
+            this.type = type;
+            this.moves = moves;
+            Id = id;
+            PokedexId = pokedexId;
+            Name = name;
+            InParty = inParty;
+            Level = level;
+            CurrentHp = currentHp;
+            MaxHp = maxHp;
+            Xp = xp;
+            Fainted = fainted;
+            Attack = attack;
+            Defense = defense;
+            Speed = speed;
+            EvolveLevel = evolveLevel;
+            CaptureRate = captureRate;
+            SpeedGrowth = speedGrowth;
+            AttackGrowth = attackGrowth;
+            DefenseGrowth = defenseGrowth;
+            HpGrowth = hpGrowth;
+        }
+
         public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate)
         {
             //TODO USE THIS WITH PokedexId
