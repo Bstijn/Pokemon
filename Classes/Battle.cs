@@ -127,5 +127,16 @@ namespace Classes
             }
         }
 
+        public int XpGranted(Pokemon defeatPokemon)
+        {
+            //TODO XPGranted
+            return 0;
+        }
+
+        public int LevelUpCheck(Pokemon defeatedPokemon, int xp)
+        {
+            //TODO
+            return 0;
+        }
     }
 }
