@@ -70,7 +70,7 @@ namespace Classes
             CurrentHp = Math.Max(CurrentHp - damage, 0);
             if (CurrentHp == 0)
             {
-                //Fainted = true;
+                Fainted = true;
             }
         }
         public int CalculateDamage(Move move, Pokemon defendingPokemon)
@@ -169,7 +169,10 @@ namespace Classes
         public void Revive(int percentage)
         {
             if (Fainted)
-                CurrentHp = Convert.ToInt32(MaxHp * (Convert.ToDouble(percentage/100)));
+            {
+                CurrentHp = Convert.ToInt32(MaxHp * (Convert.ToDouble(percentage / 100)));
+                Fainted = false;
+            }
 
         }
 
