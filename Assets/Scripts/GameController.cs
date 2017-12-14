@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
     public bool surfEnabled;
 
     Classes.Player dummy;
+    LocationRepository repo;
     string checkDir;
     public SurfEnabler surfEnabler;
     void Awake()
@@ -22,7 +23,6 @@ public class GameController : MonoBehaviour {
             //...destroy this one because it is a duplicate.
             Destroy(gameObject);
         DontDestroyOnLoad(this);
-
         if (GameObject.FindWithTag("Player"))
         {
 
