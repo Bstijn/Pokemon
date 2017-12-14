@@ -45,7 +45,7 @@ namespace Classes
             PosX = posX;
             PosY = posY;
             //TODO Roberto look at this
-            locationRepo = new LocationRepository(new LocationContext());
+            locationRepo = new LocationRepository();
             CurrentLocation = locationRepo.GetCurrentLocation(id);
             //Inventory = repo.GetInventory(id);
             //Pokemons = repo.GetPokemonFromParty(id);
