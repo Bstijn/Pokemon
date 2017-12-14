@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection.Emit;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Classes.Exceptions;
 
@@ -129,8 +130,12 @@ namespace Classes
 
         public int XpGranted(Pokemon defeatPokemon)
         {
-            //TODO XPGranted
-            return 0;
+            return defeatPokemon.DefeatXp ^ 3;
+        }
+
+        public LevelUpXP GetLevelUpXp()
+        {
+            return PlayerPokemon.GetLevelUpXp(PlayerPokemon.Level);
         }
 
         public int LevelUpCheck(int xp, Pokemon playerPokemon)
@@ -138,10 +143,15 @@ namespace Classes
             LevelUpXP levelUpXp = playerPokemon.GetLevelUpXp(playerPokemon.Level);
             if (levelUpXp.Xp - xp < 0 )
             {
-                PlayerPokemon.LevelUp(playerPokemon);
+                PlayerPokemon.LevelUp();
                 return xp - levelUpXp.Xp;
             }
             return 0;
+        }
+
+        public Pokemon GetLvlUpStats()
+        {
+            return PlayerPokemon.GetLevelUpStats();
         }
     }
 }
