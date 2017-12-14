@@ -137,13 +137,12 @@ namespace Classes
         {
             return PlayerPokemon.GetLevelUpXp(PlayerPokemon.Level);
         }
-
         public int LevelUpCheck(int xp, Pokemon playerPokemon)
         {
             LevelUpXP levelUpXp = playerPokemon.GetLevelUpXp(playerPokemon.Level);
             if (levelUpXp.Xp - xp < 0 )
             {
-                PlayerPokemon.LevelUp();
+                PlayerPokemon.LevelUp(playerPokemon);
                 return xp - levelUpXp.Xp;
             }
             return 0;
