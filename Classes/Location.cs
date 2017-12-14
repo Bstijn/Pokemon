@@ -20,7 +20,15 @@ namespace Classes
             Id = id;
             Name = name;
             this.passages = passages;
-            repo = new LocationRepository(new LocationContext());
+            repo = new LocationRepository();
+        }
+
+        public Location(int id, string name)
+        {
+            Id = id;
+            Name = name;
+            repo = new LocationRepository();
+            passages = repo.GetPassages(id);
         }
 
         public void SetPassages(List<Passage> passages)
