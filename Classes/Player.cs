@@ -25,7 +25,7 @@ namespace Classes
             this.Loses = losses;
             Inventory = new List<Possesion>();
             SetPokemons(new List<Pokemon>());
-            SetCurrentLocation(new Route(1, "Route 101", new List<Passage>(), 1, 10, 0.10M, GetPokemons()));
+            SetCurrentLocation(locationRepo.GetCurrentLocation(1));
         }
 
 

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Classes;
+using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Transfer : MonoBehaviour {
@@ -14,11 +16,14 @@ public class Transfer : MonoBehaviour {
 
     Vector3 target;
 
+    Passage passage;
+
     private void Start()
     {
         Red = GameObject.FindGameObjectWithTag("Player");
-        x = targetX + 0.5f;
-        y = targetY + 0.5f;
+        passage = Red.GetComponent<Player>().GetCurrentLocation().GetPassageByCoords(Convert.ToInt32(transform.position.x), Convert.ToInt32(transform.position.y));
+        x = passage.ToX;
+        y = passage.ToY;
         target = new Vector3(x, y, -1f);
     }
 
@@ -36,6 +41,7 @@ public class Transfer : MonoBehaviour {
             Red.transform.position = target;
             Red.GetComponent<Player>().pos = target;
             Red.GetComponent<Player>().moving = false;
+            Red.GetComponent<Player>().player.GoToLocation(passage);
         }
     }
 }

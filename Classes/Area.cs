@@ -20,12 +20,6 @@ namespace Classes
             random = new Random();
         }
 
-        public Area(int id, string name, List<Passage> passages) : base(id, name, passages)
-        {
-            EncounterChance = repo.GetEncounterChance(id);
-            AvailablePokemons = repo.GetEncounterablePokemon(id);
-        }
-
         public bool EncounterPokemon()
         {
             if(random.Next(100) < EncounterChance * 100)

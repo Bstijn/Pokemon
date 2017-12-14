@@ -40,5 +40,16 @@ namespace Classes
         {
             return passages;
         }
+        public Passage GetPassageByCoords(int x, int y)
+        {
+            foreach (Passage passage in passages)
+            {
+                if(passage.FromX == x && passage.FromY == y)
+                {
+                    return passage;
+                }
+            }
+            return null;
+        }
     }
 }
