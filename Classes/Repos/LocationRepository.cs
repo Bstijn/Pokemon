@@ -12,7 +12,7 @@ namespace Classes.Repos
         private ILocationContext context;
 
 
-        public LocationRepository(ILocationContext context)
+        public LocationRepository()
         {
             context = new LocationContext();
         }

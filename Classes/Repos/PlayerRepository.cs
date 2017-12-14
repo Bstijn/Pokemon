@@ -11,7 +11,7 @@ namespace Classes.Repos
     {
         private IPlayerContext context;
 
-        public PlayerRepository(IPlayerContext context)
+        public PlayerRepository()
         {
             context = new PlayerContext();
         }
