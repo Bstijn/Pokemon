@@ -11,7 +11,7 @@ namespace Classes.Repos
     {
         private IPokemartContext context;
 
-        public PokemartRepository(IPokemartContext context)
+        public PokemartRepository()
         {
             context = new PokemartContext();
         }

@@ -11,7 +11,7 @@ namespace Classes.Repos
     {
         private IPokedexContext context;
 
-        public PokedexRepository(IPokedexContext context)
+        public PokedexRepository()
         {
             context = new PokedexContext();
         }

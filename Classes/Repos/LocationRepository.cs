@@ -12,7 +12,7 @@ namespace Classes.Repos
         private ILocationContext context;
 
 
-        public LocationRepository(ILocationContext context)
+        public LocationRepository()
         {
             context = new LocationContext();
         }
@@ -190,15 +190,20 @@ namespace Classes.Repos
             return Convert.ToDecimal(data[0]);
         }
 
-        //TODO: Laura, fix dit, en vraag om database. Query is niet toereikend.
-        //public Location GetCurrentLocation(int locationID)
-        //{
-        //    object[] data = context.GetCurrentLocation(locationID);
-        //    Location location = new Location(Convert.ToInt32(data[0]), data[1], data[2], data[3]);
-        //      Geen idee, kan niet zien hoe de database in elkaar zit. ik stel voor dat we hier nog even kijken vanavond.
-        //      kan iets bedenken met een switch statement, afhankelijk van wat er in het type vak zit, en dat daarmee wordt bepaald wat voor location er wordt teruggegeven.
-        //      Zoals het er nu staat, kan ik niks, omdat ik niet in de database kan kijken.
-        //    return location;
-        //}
+        //TODO: Laura, fix dit
+        public Location GetCurrentLocation(int locationID)
+        {
+            //atm alleen routes
+            object[] data = context.GetCurrentLocation(locationID);
+            Location location = new Route(Convert.ToInt32(data[0]), data[1].ToString(), GetPassages(locationID),Convert.ToInt32(data[4]), Convert.ToInt32(data[5]), Convert.ToInt32(data[3]), GetEncounterablePokemon(locationID));
+            return location;
+        }
+
+        public Passage GetPassageByLocationAndCoords(int locationID, int x, int y)
+        {
+            object[] data = context.GetPassageByLocationAndCoords(locationID, x, y);
+            Passage passage = new Passage(Convert.ToInt32(data[2]), Convert.ToInt32(data[5]), Convert.ToInt32(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), GetCurrentLocation(Convert.ToInt32(data[4])));
+            return passage;
+        }
     }
 }
