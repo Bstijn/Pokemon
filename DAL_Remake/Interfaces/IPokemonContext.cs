@@ -12,5 +12,7 @@ namespace DAL_Remake.Interfaces
 
         object[] GetNextLevelUpXp(int level);
 
+        void UpdatePokemon(Pokemon pokemon);
+        Pokemon GetEvolvePokemon(Pokemon pokemon);
     }
 }

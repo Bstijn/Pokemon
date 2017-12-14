@@ -81,5 +81,16 @@ namespace DAL_Remake.SQLContexts
 
             }
         }
+
+        public void UpdatePokemon(Pokemon pokemon)//TODO Query update pokemon
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pokemon GetEvolvePokemon(Pokemon pokemon)//TODO Get Evolve Pokemon Database
+        {
+
+            throw new NotImplementedException();
+        }
     }
 }
