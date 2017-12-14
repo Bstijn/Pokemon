@@ -1,4 +1,5 @@
 ﻿using Classes.Repos;
+using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
 
@@ -18,6 +19,8 @@ namespace Classes
         public Location CurrentLocation { get; protected set; }
         public List<Possesion> Inventory { get; protected set; }
         public List<Pokemon> Pokemons { get; private set; }
+
+        protected LocationRepository locationRepo;
 
 
         public Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons)
@@ -42,7 +45,8 @@ namespace Classes
             PosX = posX;
             PosY = posY;
             //TODO Roberto look at this
-            //CurrentLocation = repo.GetCurrentLocation(id);
+            locationRepo = new LocationRepository(new LocationContext());
+            CurrentLocation = locationRepo.GetCurrentLocation(id);
             //Inventory = repo.GetInventory(id);
             //Pokemons = repo.GetPokemonFromParty(id);
         }
