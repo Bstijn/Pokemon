@@ -54,10 +54,5 @@ namespace Classes.Repos
         {
             return context.GetEvolvePokemon(pokemon);
         }
-
-        internal Pokemon GetLevelUpStats(int id)
-        {
-            return context.GetLevelUpStats(id);
-        }
     }
 }

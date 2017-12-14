@@ -128,9 +128,23 @@ namespace Classes
             }
         }
 
-        public int XpGranted(Pokemon defeatPokemon)
+        public int XpGranted(Pokemon defeatPokemon, Pokemon playerPokemon)
         {
-            return defeatPokemon.DefeatXp ^ 3;
+            double formula1 = 0;
+            if (WildPokemon != null)
+            {
+                formula1 = ((1.0 * Convert.ToDouble(defeatPokemon.DefeatXp) * Convert.ToDouble(defeatPokemon.Level)) / 5.0);
+            }
+            else if (OpponentPokemon != null)
+            {
+                formula1 = ((1.5 * Convert.ToDouble(defeatPokemon.DefeatXp) * Convert.ToDouble(defeatPokemon.Level)) / 5.0);
+            }
+
+            double formula2 = Math.Pow(2.0 * Convert.ToDouble(defeatPokemon.Level) + 10.0,2.5) / Math.Pow(defeatPokemon.Level + playerPokemon.Level + 10,2.5);
+
+            int grantedXp = Convert.ToInt32(formula1 * formula2 + 1.0);
+
+            return grantedXp;
         }
 
         public LevelUpXP GetLevelUpXp()
@@ -148,9 +162,24 @@ namespace Classes
             return 0;
         }
 
-        public Pokemon GetLvlUpStats()
+        public void SwitchPokemon(Pokemon pokemon1, Pokemon pokemon2)//switches 2 pokemon of position in the Party.
         {
-            return PlayerPokemon.GetLevelUpStats();
+            int index1 = Player.Pokemons.IndexOf(pokemon1);
+            int index2 = Player.Pokemons.IndexOf(pokemon2);
+            if (index1 < index2)
+            {
+                Player.Pokemons.RemoveAt(index2);
+                Player.Pokemons.Insert(index1, pokemon2);
+                Player.Pokemons.Remove(pokemon1);
+                Player.Pokemons.Insert(index2, pokemon1);
+            }
+            else
+            {
+                Player.Pokemons.RemoveAt(index1);
+                Player.Pokemons.Insert(index2, pokemon1);
+                Player.Pokemons.Remove(pokemon2);
+                Player.Pokemons.Insert(index1, pokemon2);
+            }
         }
     }
 }
