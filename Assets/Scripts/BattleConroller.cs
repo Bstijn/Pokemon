@@ -411,5 +411,22 @@ namespace Assets.Scripts
                 yield return new WaitForSeconds(0.001f);
             }
         }
+
+        private IEnumerator GetExp(Pokemon defeaded, Pokemon winner)
+        {
+            var exp = _battle.XpGranted(defeaded);
+            exp = _battle.LevelUpCheck(exp, winner);
+            
+            while (exp > 0)
+            {
+                //exp full
+                //level animation
+                // 
+
+
+                exp = _battle.LevelUpCheck(exp, winner);
+            }
+            yield return null;
+        }
     }
 }
