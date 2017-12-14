@@ -141,13 +141,13 @@ namespace Classes
             return repository.GetLevelUpStats(this.Id);
         }
 
-        public void LevelUp()
+        public void LevelUp(Pokemon pokemon)
         {
             Level++;
 
             if (Level >= EvolveLevel)
             {
-                pokemon = repository.GetEvolvePokemon();
+                pokemon = repository.GetEvolvePokemon(pokemon);
                 pokemon.Id = this.Id;
                 repository.UpdatePokemon(pokemon);
                 Xp = 0;
