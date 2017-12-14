@@ -11,7 +11,7 @@ namespace Classes.Repos
     {
         private IPokemonContext context;
 
-        public PokemonRepository(IPokemonContext context)
+        public PokemonRepository()
         {
             context = new PokemonContext();
         }
@@ -37,11 +37,22 @@ namespace Classes.Repos
             Type type = new Type(Convert.ToInt32(data[0]), data[1].ToString());
             return type;
         }
-
+        
         public LevelUpXP GetNextLevelUpXp(int level)
         {
-           // return context.GetNextLevelUpXp(level);
-            return null;
+            object[] data = context.GetNextLevelUpXp(level);
+            LevelUpXP levelUpXp = new LevelUpXP(Convert.ToInt32(data[0]),Convert.ToInt32(data[1]));
+            return levelUpXp;
+        }
+
+        public void UpdatePokemon(Pokemon pokemon)//TODO Query voor updaten van pokemon
+        {
+            context.UpdatePokemon(pokemon);
+        }
+
+        public Pokemon GetEvolvePokemon(Pokemon pokemon)
+        {
+            return context.GetEvolvePokemon(pokemon);
         }
     }
 }

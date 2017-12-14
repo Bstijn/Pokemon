@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using Classes.Repos;
 
 namespace Classes
 {
     public class Pokemon
     {
+        private PokemonRepository repository;
+
         public int Id { get; private set; }
+
         //TODO Implement this
         public int PokedexId { get; private set; }
+
         public string Name { get; private set; }
         public bool InParty { get; private set; }
         public int Level { get; private set; }
@@ -31,8 +36,11 @@ namespace Classes
         public int AttackGrowth { get; private set; }
         public int DefenseGrowth { get; private set; }
         public int HpGrowth { get; private set; }
+        public int DefeatXp { get; private set; }
 
-        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate, int speedGrowth, int attackGrowth, int defenseGrowth, int hpGrowth)
+        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level,
+            int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel,
+            int captureRate, int speedGrowth, int attackGrowth, int defenseGrowth, int hpGrowth, int defeatXp)
         {
             this.type = type;
             this.moves = moves;
@@ -54,9 +62,12 @@ namespace Classes
             AttackGrowth = attackGrowth;
             DefenseGrowth = defenseGrowth;
             HpGrowth = hpGrowth;
+            DefeatXp = defeatXp;
         }
 
-        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level, int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel, int captureRate)
+        public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level,
+            int currentHp, int maxHp, int xp, bool fainted, int attack, int defense, int speed, int evolveLevel,
+            int captureRate)
         {
             //TODO USE THIS WITH PokedexId
             this.type = type;
@@ -76,8 +87,9 @@ namespace Classes
             EvolveLevel = evolveLevel;
             CaptureRate = captureRate;
         }
-        
-        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp, int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
+
+        public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp,
+            int maxHp, int xp, int attack, int defense, int speed, int evolveLevel, int captureRate)
         {
             this.type = type;
             this.moves = moves;
@@ -104,9 +116,13 @@ namespace Classes
                 Fainted = true;
             }
         }
+
         public int CalculateDamage(Move move, Pokemon defendingPokemon)
         {
-            int damage = (int)((((((2 * (Convert.ToDouble(Level)) / 5) + 2) * Convert.ToDouble(move.BasePower) * (Convert.ToDouble(Attack) / Convert.ToDouble(defendingPokemon.Defense))) / 50) + 2) * GetModifier(move, defendingPokemon));
+            int damage =
+                (int) ((((((2 * (Convert.ToDouble(Level)) / 5) + 2) * Convert.ToDouble(move.BasePower) *
+                          (Convert.ToDouble(Attack) / Convert.ToDouble(defendingPokemon.Defense))) / 50) + 2) *
+                       GetModifier(move, defendingPokemon));
             MoveExecuted(move);
             return damage;
         }
@@ -119,17 +135,23 @@ namespace Classes
                     m.PPDown();
             }
         }
-        
-        public void LevelUp()
+
+        public void LevelUp(Pokemon pokemon)
         {
-            //check xp with xp to lvlupxp.
             Level++;
-            if(Level >= EvolveLevel)
+
+            if (Level >= EvolveLevel)
             {
-                throw new NotImplementedException();//evolve met database
+                pokemon = repository.GetEvolvePokemon(pokemon);
+                pokemon.Id = this.Id;
+                repository.UpdatePokemon(pokemon);
                 Xp = 0;
-                //update xp to lvlupxp.
             }
+            else
+            {
+                repository.UpdatePokemon(pokemon);
+            }
+            
         }
 
         public void Evolve(Pokemon pokemon)
@@ -152,7 +174,7 @@ namespace Classes
             return type;
         }
 
-        private double GetModifier(Move move, Pokemon defendingPokemon)//TODO: check if there is need to be changed
+        private double GetModifier(Move move, Pokemon defendingPokemon) //TODO: check if there is need to be changed
         {
             double critValue = GetCritValue(Speed);
             double randomRate = GetRandomRate();
@@ -161,7 +183,7 @@ namespace Classes
             return critValue * randomRate * stab * effectiveType;
         }
 
-        private double GetCritValue(int speed)//TODO: check if there is need to be changed
+        private double GetCritValue(int speed) //TODO: check if there is need to be changed
         {
             int T = speed / 2;
             Random random = new Random();
@@ -173,13 +195,13 @@ namespace Classes
             return 1;
         }
 
-        private double GetRandomRate()//TODO: check if there is need to be changed
+        private double GetRandomRate() //TODO: check if there is need to be changed
         {
             Random random = new Random();
-            return (double)random.Next(85, 100) / 100;
+            return (double) random.Next(85, 100) / 100;
         }
 
-        private double GetSTAB(Type PokemonType, Type MoveType)//TODO: check if there is need to be changed
+        private double GetSTAB(Type PokemonType, Type MoveType) //TODO: check if there is need to be changed
         {
             if (PokemonType == MoveType)
             {
@@ -250,6 +272,7 @@ namespace Classes
         {
             CurrentHp = Math.Min(CurrentHp + Amount, MaxHp);
         }
+
         /// <summary>
         /// revive used by items
         /// </summary>
@@ -260,5 +283,9 @@ namespace Classes
             CurrentHp = Convert.ToInt32(Math.Round(MaxHp * (percentage / 100)));
         }
 
+        public LevelUpXP GetLevelUpXp(int level)
+        {
+            return repository.GetNextLevelUpXp(level);
+        }
     }
 }
