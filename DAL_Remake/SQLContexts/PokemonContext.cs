@@ -24,6 +24,11 @@ namespace DAL_Remake.SQLContexts
             throw new NotImplementedException();
         }
 
+        public Pokemon GetLevelUpStats(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<object[]> GetMoves(int pokemonID)
         {
             List<object[]> data = new List<object[]>();
