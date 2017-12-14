@@ -64,6 +64,9 @@ namespace DAL_Remake.SQLContexts
             return data;
 
         }
+        
+        /*
+        public LevelUpXP GetNextLevelUpXp(int level)
 
         public object[] GetNextLevelUpXp(int level)
         {
@@ -90,7 +93,7 @@ namespace DAL_Remake.SQLContexts
         public Pokemon GetEvolvePokemon(Pokemon pokemon)//TODO Get Evolve Pokemon Database
         {
 
-            throw new NotImplementedException();
-        }
+            throw new NotImplementedException()
+        }*/
     }
 }
