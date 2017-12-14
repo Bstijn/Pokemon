@@ -19,6 +19,16 @@ namespace DAL_Remake.SQLContexts
             connection = new SqliteConnection(connectionString);
         }
 
+        public Pokemon GetEvolvePokemon(Pokemon pokemon)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pokemon GetLevelUpStats(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<object[]> GetMoves(int pokemonID)
         {
             List<object[]> data = new List<object[]>();
@@ -45,6 +55,11 @@ namespace DAL_Remake.SQLContexts
             return data;
         }
 
+        public object[] GetNextLevelUpXp(int level)
+        {
+            throw new NotImplementedException();
+        }
+
         public object[] GetPokemonType(int pokedexPokemonID)
         {
             object[] data;
@@ -64,7 +79,12 @@ namespace DAL_Remake.SQLContexts
             return data;
 
         }
-        
+
+        public void UpdatePokemon(Pokemon pokemon)
+        {
+            throw new NotImplementedException();
+        }
+
         /*
         public LevelUpXP GetNextLevelUpXp(int level)
 
