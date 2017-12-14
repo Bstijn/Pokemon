@@ -36,7 +36,7 @@ namespace Classes
             Pokemons = pokemons;
         }
 
-        public Character(string name, int id, string gender, int money, int posX, int posY)
+        public Character(string name, int id, string gender, int money, int posX, int posY, int locationID)
         {
             Name = name;
             Id = id;
@@ -46,7 +46,7 @@ namespace Classes
             PosY = posY;
             //TODO Roberto look at this
             locationRepo = new LocationRepository(new LocationContext());
-            CurrentLocation = locationRepo.GetCurrentLocation(id);
+            CurrentLocation = locationRepo.GetCurrentLocation(locationID);
             //Inventory = repo.GetInventory(id);
             //Pokemons = repo.GetPokemonFromParty(id);
         }

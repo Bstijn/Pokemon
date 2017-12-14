@@ -18,14 +18,14 @@ namespace Classes
             this.Loses = losses;
         }
 
-        public Player(string name, int id, string gender, int money, int posX, int posY, int wins, int losses) 
-            : base(name, id, gender, money, posX, posY)
+        public Player(string name, int id, string gender, int money, int posX, int posY, int wins, int losses, int locationID) 
+            : base(name, id, gender, money, posX, posY, locationID)
         {
             this.Wins = wins;
             this.Loses = losses;
             Inventory = new List<Possesion>();
             SetPokemons(new List<Pokemon>());
-            SetCurrentLocation(locationRepo.GetCurrentLocation(1));
+            SetCurrentLocation(locationRepo.GetCurrentLocation(locationID));
         }
 
 
