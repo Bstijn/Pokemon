@@ -220,6 +220,9 @@
     <Reference Include="Classes">
       <HintPath>Assets/Scripts/librarys/Classes/Classes.dll</HintPath>
     </Reference>
+    <Reference Include="DAL_Remake">
+      <HintPath>Assets/Scripts/librarys/DAL_Remake/DAL_Remake.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/Floris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
     </Reference>
