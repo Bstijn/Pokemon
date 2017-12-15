@@ -41,13 +41,13 @@ namespace Assets.Scripts
             var move5 = new Move(5, "Water!!!!", 15, 15, 80, "A water attack, duhh", false, 80, 1, type2);
             var move6 = new Move(6, "grass!!!!", 15, 15, 80, "A grass attack, duhh", false, 80, 1, type3);
 
-            var movelist1 = new List<Move> {move1, move4, move3};
-            var movelist2 = new List<Move>{move5, move6};
+            var movelist1 = new List<Move> { move1, move4, move3 };
+            var movelist2 = new List<Move> { move5, move6 };
 
             var wildpokemon = new Pokemon(type3, movelist2, 110, 1, "Cutecumber", false, 10, 100, 100, 5, false, 10, 10, 10, 50, 50);
             var playerpokemon = new Pokemon(type1, movelist1, 15, 4, "Dubbleup", false, 11, 80, 100, 100, false, 15, 11, 9, 50, 10);
 
-            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon>{playerpokemon}, 50, 5, null);
+            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon> { playerpokemon }, 50, 5, null);
             var battle = new Battle(player, wildpokemon);
             CreateNewBattle(battle);
         }
@@ -228,6 +228,7 @@ namespace Assets.Scripts
                    "\nYou won the battle.";
             }
             yield return WaitForInput();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = false;
             SceneManager.UnloadSceneAsync("Battle");
         }
 
@@ -299,6 +300,7 @@ namespace Assets.Scripts
             if (flee)
             {
                 yield return new WaitForSeconds(1f);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = false;
                 SceneManager.UnloadSceneAsync("Battle");
             }
             else

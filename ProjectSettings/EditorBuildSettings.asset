@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_scene/WaterTest.unity
     guid: 536c9b53198c0434eaaf09501856cd0d
+  - enabled: 1
+    path: Assets/_scene/Battle.unity
+    guid: c1898fb72a6a1484784d646a8e803c20
