@@ -136,6 +136,11 @@ namespace Classes
             }
         }
 
+        public Pokemon GetLevelUpStats()
+        {
+            return repository.GetLevelUpStats(this.Id);
+        }
+
         public void LevelUp(Pokemon pokemon)
         {
             Level++;

@@ -29,9 +29,10 @@ public class IntroController : MonoBehaviour
     private string name = null;
     private string gender = null;
     private int pokemonId;
-    private CharacterRepository dal = new CharacterRepository();
+    private CharacterRepository dal;
     void Start()
     {
+        dal = new CharacterRepository();
         dialogue.text = dialogues[currentdialogue];
     }
 

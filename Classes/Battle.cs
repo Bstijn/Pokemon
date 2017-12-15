@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection.Emit;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Classes.Exceptions;
 
@@ -127,13 +128,30 @@ namespace Classes
             }
         }
 
-        public int XpGranted(Pokemon defeatPokemon)
+        public int XpGranted(Pokemon defeatPokemon, Pokemon playerPokemon)
         {
-            //TODO XPGranted
-            return 0;
+            double formula1 = 0;
+            if (WildPokemon != null)
+            {
+                formula1 = ((1.0 * Convert.ToDouble(defeatPokemon.DefeatXp) * Convert.ToDouble(defeatPokemon.Level)) / 5.0);
+            }
+            else if (OpponentPokemon != null)
+            {
+                formula1 = ((1.5 * Convert.ToDouble(defeatPokemon.DefeatXp) * Convert.ToDouble(defeatPokemon.Level)) / 5.0);
+            }
+
+            double formula2 = Math.Pow(2.0 * Convert.ToDouble(defeatPokemon.Level) + 10.0,2.5) / Math.Pow(defeatPokemon.Level + playerPokemon.Level + 10,2.5);
+
+            int grantedXp = Convert.ToInt32(formula1 * formula2 + 1.0);
+
+            return grantedXp;
         }
 
-        public int LevelUpCheck(Pokemon defeatedPokemon, int xp, Pokemon playerPokemon)
+        public LevelUpXP GetLevelUpXp()
+        {
+            return PlayerPokemon.GetLevelUpXp(PlayerPokemon.Level);
+        }
+        public int LevelUpCheck(int xp, Pokemon playerPokemon)
         {
             LevelUpXP levelUpXp = playerPokemon.GetLevelUpXp(playerPokemon.Level);
             if (levelUpXp.Xp - xp < 0 )
@@ -142,6 +160,26 @@ namespace Classes
                 return xp - levelUpXp.Xp;
             }
             return 0;
+        }
+
+        public void SwitchPokemon(Pokemon pokemon1, Pokemon pokemon2)//switches 2 pokemon of position in the Party.
+        {
+            int index1 = Player.Pokemons.IndexOf(pokemon1);
+            int index2 = Player.Pokemons.IndexOf(pokemon2);
+            if (index1 < index2)
+            {
+                Player.Pokemons.RemoveAt(index2);
+                Player.Pokemons.Insert(index1, pokemon2);
+                Player.Pokemons.Remove(pokemon1);
+                Player.Pokemons.Insert(index2, pokemon1);
+            }
+            else
+            {
+                Player.Pokemons.RemoveAt(index1);
+                Player.Pokemons.Insert(index2, pokemon1);
+                Player.Pokemons.Remove(pokemon2);
+                Player.Pokemons.Insert(index1, pokemon2);
+            }
         }
     }
 }
