@@ -14,6 +14,5 @@ namespace DAL_Remake.Interfaces
 
         void UpdatePokemon(Pokemon pokemon);
         Pokemon GetEvolvePokemon(Pokemon pokemon);
-        Pokemon GetLevelUpStats(int id);
     }
 }
