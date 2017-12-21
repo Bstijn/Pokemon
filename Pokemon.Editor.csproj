@@ -250,14 +250,14 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Classes">
+      <HintPath>Assets/Plugins/Classes.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="System.Data">
       <HintPath>Assets/Plugins/System.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Classes">
-      <HintPath>Assets/Scripts/librarys/Classes/Classes.dll</HintPath>
     </Reference>
     <Reference Include="DAL_Remake">
       <HintPath>Assets/Scripts/librarys/DAL_Remake/DAL_Remake.dll</HintPath>

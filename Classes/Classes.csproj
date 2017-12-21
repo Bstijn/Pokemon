@@ -110,6 +110,6 @@
     <PostBuildEvent>echo ON  
 call "%25MONO_PATH%25\bin\pdb2mdb.bat" $(%25UNITY_DATA_PATH%25Classes)  
 mkdir "%25UNITY_DATA_PATH%25$(ProjectName)\"  
-copy /Y "$(%25UNITY_DATA_PATH%25)$(ProjectName)*"  "$(SolutionDir)Assets\Scripts\librarys\$(ProjectName)\"</PostBuildEvent>
+copy /Y "$(%25UNITY_DATA_PATH%25)$(ProjectName)*"  "$(SolutionDir)Assets\Plugins"</PostBuildEvent>
   </PropertyGroup>
 </Project>

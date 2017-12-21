@@ -416,14 +416,13 @@ namespace Assets.Scripts
 
         private IEnumerator GetExp(Pokemon defeaded, Pokemon winner)
         {
-            var exp = _battle.XpGranted(defeaded);
+            var exp = _battle.XpGranted(defeaded, winner);
             exp = _battle.LevelUpCheck(exp, winner);
             
             while (exp > 0)
             {
                 //exp full
                 //level animation
-                // 
 
 
                 exp = _battle.LevelUpCheck(exp, winner);
