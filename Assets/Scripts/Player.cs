@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private float speed = 3f;
     public Vector3 pos;
     private Transform tr;
-    public Classes.Player player;
+    public Classes.Player player; 
 
     private SpriteRenderer sprite;
 
@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        //TODO: Vind uit waarom hier een Null Reference Exception uit komt
+        if (player == null)
+        {
+            player = new Classes.Player("Henk", 1, "Male", 0, 0, 0, 0, 0, 1); //Blijkbaar is dit een null reference exception
+        }
     }
 
     private void Update()

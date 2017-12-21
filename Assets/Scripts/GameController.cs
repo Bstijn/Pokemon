@@ -31,8 +31,6 @@ public class GameController : MonoBehaviour {
         else
         {
             Instantiate(Red, new Vector3(9.5f, 5.5f, -1f), new Quaternion());
-            dummy = new Classes.Player("Henk", 1, "male", 0, 1, 1, 0, 0, 1);
-            GameObject.FindWithTag("Player").GetComponent<Player>().player = dummy;
         }
     }
 

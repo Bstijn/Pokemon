@@ -429,5 +429,11 @@ namespace Assets.Scripts
             }
             yield return null;
         }
+
+        public void LoadBattle(CPlayer player, Pokemon wildpokemon)
+        {
+            var battle = new Battle(player, wildpokemon);
+            CreateNewBattle(battle);
+        }
     }
 }
