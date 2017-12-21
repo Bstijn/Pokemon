@@ -3,13 +3,14 @@ using DAL_Remake.Interfaces;
 using Mono.Data.Sqlite;
 using System.Collections.Generic;
 using System.Data;
+using UnityEngine;
 
 namespace DAL_Remake.SQLContexts
 {
     public class PokemonContext : IPokemonContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
+        private readonly string connectionString = @"Data Source =" + @Application.dataPath + @"\DBProftaak.db;Version=3; ";
 
         public PokemonContext()
         {

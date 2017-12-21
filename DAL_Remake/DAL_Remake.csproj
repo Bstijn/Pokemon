@@ -47,6 +47,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ICharacterContext.cs" />
@@ -64,6 +67,12 @@
     <Compile Include="SQLContexts\PokemonContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo ON  
+call "%25MONO_PATH%25\bin\pdb2mdb.bat" $(%25UNITY_DATA_PATH%25DAL_Remake)  
+mkdir "%25UNITY_DATA_PATH%25$(ProjectName)\"  
+copy /Y "$(%25UNITY_DATA_PATH%25)$(ProjectName)*"  "$(SolutionDir)Assets\Plugins"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

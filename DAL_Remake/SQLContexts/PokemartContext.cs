@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using UnityEngine;
+
 
 
 namespace DAL_Remake.SQLContexts
@@ -12,7 +14,7 @@ namespace DAL_Remake.SQLContexts
     public class PokemartContext : IPokemartContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
+        private readonly string connectionString = @"Data Source =" + @Application.dataPath + @"\DBProftaak.db;Version=3; ";
 
         public PokemartContext()
         {

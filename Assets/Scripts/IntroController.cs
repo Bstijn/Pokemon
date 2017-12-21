@@ -102,8 +102,8 @@ public class IntroController : MonoBehaviour
 
     private void SaveChoices()
     {
-        Debug.Log("we zijn hier i guess");
         dal.InsertIntro(pokemonId, name, gender);
+        Debug.Log("we zijn hier i guess");
         //TODO IMPLEMENT IN DB
         StartGame();
     }
