@@ -38,21 +38,21 @@ namespace Classes.Repos
             return type;
         }
         
-        public LevelUpXP GetNextLevelUpXp(int level)
-        {
-            object[] data = context.GetNextLevelUpXp(level);
-            LevelUpXP levelUpXp = new LevelUpXP(Convert.ToInt32(data[0]),Convert.ToInt32(data[1]));
-            return levelUpXp;
-        }
+        //public LevelUpXP GetNextLevelUpXp(int level)
+        //{
+        //    object[] data = context.GetNextLevelUpXp(level);
+        //    LevelUpXP levelUpXp = new LevelUpXP(Convert.ToInt32(data[0]),Convert.ToInt32(data[1]));
+        //    return levelUpXp;
+        //}
 
-        public void UpdatePokemon(Pokemon pokemon)//TODO Query voor updaten van pokemon
-        {
-            context.UpdatePokemon(pokemon);
-        }
+        //public void UpdatePokemon(Pokemon pokemon)//TODO Query voor updaten van pokemon
+        //{
+        //    context.UpdatePokemon(pokemon);
+        //}
 
-        public Pokemon GetEvolvePokemon(Pokemon pokemon)
-        {
-            return context.GetEvolvePokemon(pokemon);
-        }
+        //public Pokemon GetEvolvePokemon(Pokemon pokemon)
+        //{
+        //    return context.GetEvolvePokemon(pokemon);
+        //}
     }
 }

@@ -131,16 +131,17 @@ namespace Classes
         {
             //TODO XPGranted
             return 0;
+           
         }
 
         public int LevelUpCheck(Pokemon defeatedPokemon, int xp, Pokemon playerPokemon)
         {
-            LevelUpXP levelUpXp = playerPokemon.GetLevelUpXp(playerPokemon.Level);
-            if (levelUpXp.Xp - xp < 0 )
-            {
-                PlayerPokemon.LevelUp(playerPokemon);
-                return xp - levelUpXp.Xp;
-            }
+            //LevelUpXP levelUpXp = playerPokemon.GetLevelUpXp(playerPokemon.Level);
+            //if (levelUpXp.Xp - xp < 0 )
+            //{
+            //    PlayerPokemon.LevelUp(playerPokemon);
+            //    return xp - levelUpXp.Xp;
+            //}
             return 0;
         }
     }

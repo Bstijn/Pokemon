@@ -21,7 +21,7 @@ public class Transfer : MonoBehaviour {
     private void Start()
     {
         Red = GameObject.FindGameObjectWithTag("Player");
-        passage = Red.GetComponent<Player>().GetCurrentLocation().GetPassageByCoords(Convert.ToInt32(transform.position.x), Convert.ToInt32(transform.position.y));
+        //passage = Red.GetComponent<Player>().GetCurrentLocation().GetPassageByCoords(Convert.ToInt32(transform.position.x), Convert.ToInt32(transform.position.y));
         x = passage.ToX;
         y = passage.ToY;
         target = new Vector3(x, y, -1f);

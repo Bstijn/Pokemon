@@ -140,17 +140,17 @@ namespace Classes
         {
             Level++;
 
-            if (Level >= EvolveLevel)
-            {
-                pokemon = repository.GetEvolvePokemon(pokemon);
-                pokemon.Id = this.Id;
-                repository.UpdatePokemon(pokemon);
-                Xp = 0;
-            }
-            else
-            {
-                repository.UpdatePokemon(pokemon);
-            }
+            //if (Level >= EvolveLevel)
+            //{
+            //    pokemon = repository.GetEvolvePokemon(pokemon);
+            //    pokemon.Id = this.Id;
+            //    repository.UpdatePokemon(pokemon);
+            //    Xp = 0;
+            //}
+            //else
+            //{
+            //    repository.UpdatePokemon(pokemon);
+            //}
             
         }
 
@@ -283,9 +283,9 @@ namespace Classes
             CurrentHp = Convert.ToInt32(Math.Round(MaxHp * (percentage / 100)));
         }
 
-        public LevelUpXP GetLevelUpXp(int level)
-        {
-            return repository.GetNextLevelUpXp(level);
-        }
+        //public LevelUpXP GetLevelUpXp(int level)
+        //{
+        //    return repository.GetNextLevelUpXp(level);
+        //}
     }
 }
