@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_scene/IntroScene.unity
+    guid: 3ed172aff93759e49b874dfc3dac0d93
+  - enabled: 1
     path: Assets/_scene/Park Town.unity
     guid: 30c1e67174051bf44858400c931f3f19
   - enabled: 1
