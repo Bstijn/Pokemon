@@ -2,8 +2,6 @@
 using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Classes.Repos
 {
@@ -20,22 +18,21 @@ namespace Classes.Repos
         public Gymleader GetGymleader(int locationID)
         {
             object[] data = context.GetGymleader(locationID);
-
-
-            return null;
+            //TODO: zet methodes voor location en pokemon hier
+            return new Gymleader(data[0].ToString(), Convert.ToInt32(data[1]), data[2].ToString(), Convert.ToInt32(data[3]), Convert.ToInt32(data[4]), Convert.ToInt32(data[5]), null/*dit wordt location*/, null/*GetInventory(Convert.ToInt32(data[1]))*/, null/*GetPokemon(data[1])*/, Convert.ToBoolean(data[6]));
         }
 
         public Nurse GetNurse(int locationID)
         {
             object[] data = context.GetNurse(locationID);
-
+            // TODO: implementeer dit
             return null;
         }
 
         public ShopKeeper GetShopkeeper(int locationID)
         {
             object[] data = context.GetShopkeeper(locationID);
-           
+            // TODO: implementeer dit
             return null;
         }
 
@@ -46,7 +43,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-         //       oppenents.Add(new Oppenent());
+                // TODO: implementeer dit
             }
             return oppenents;
         }
@@ -58,7 +55,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-            //    bystanders.Add(new Bystander());
+                // TODO: implementeer dit
             }
             return bystanders;
         }
@@ -70,7 +67,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                
+                // TODO: implementeer dit
             }
 
             return passages;
@@ -87,10 +84,10 @@ namespace Classes.Repos
                 Type type = new Type(Convert.ToInt32(typeData[0]), typeData[1].ToString());
                 List<Move> pokemonMoves = GetPokemonMoves(Convert.ToInt32(row[0]));
 
-                pokemonAtLocation.Add(new Pokemon(type, pokemonMoves, Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToBoolean(data[2]),
-                    Convert.ToInt32(data[3]), Convert.ToInt32(data[4]), Convert.ToInt32(data[5]), Convert.ToInt32(data[6]),
-                    Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), Convert.ToInt32(data[9]), Convert.ToInt32(data[10]),
-                    Convert.ToInt32(data[11])));
+                pokemonAtLocation.Add(new Pokemon(type, pokemonMoves, Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToBoolean(row[2]),
+                    Convert.ToInt32(row[3]), Convert.ToInt32(row[4]), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]),
+                    Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), Convert.ToInt32(row[9]), Convert.ToInt32(row[10]),
+                    Convert.ToInt32(row[11])));
             }
             return pokemonAtLocation;
         }
@@ -102,9 +99,8 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                //TODO Roberto fix die null -> type moet ook worden opgehaald (ook fix query)
-                pokemonMoves.Add(new Move(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), Convert.ToInt32(data[3]),
-                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), null));
+                pokemonMoves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]),
+                    Convert.ToInt32(row[4]), row[5].ToString(), Convert.ToBoolean(row[6]), Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), GetMoveType(Convert.ToInt32(row[0]))));
             }
 
             return pokemonMoves;
@@ -113,6 +109,13 @@ namespace Classes.Repos
         public Type GetPokemonType(int pokemonID)
         {
             object[] data = context.GetPokemonType(pokemonID);
+
+            return new Type(Convert.ToInt32(data[0]), data[1].ToString());
+        }
+
+        public Type GetMoveType(int moveID)
+        {
+            object[] data = context.GetMoveType(moveID);
 
             return new Type(Convert.ToInt32(data[0]), data[1].ToString());
         }
@@ -146,9 +149,9 @@ namespace Classes.Repos
             {
                 for (int i = 0; i < Convert.ToInt32(data[5]); i++)
                 {
-                    revives.Add(new Revive(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
+                    revives.Add(new Revive(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
                 }
-                
+
             }
             return revives;
         }
@@ -162,8 +165,8 @@ namespace Classes.Repos
             {
                 for (int i = 0; i < Convert.ToInt32(data[5]); i++)
                 {
-                    potions.Add(new Potion(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
-                }         
+                    potions.Add(new Potion(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
+                }
             }
             return potions;
         }
@@ -177,7 +180,7 @@ namespace Classes.Repos
             {
                 for (int i = 0; i < Convert.ToInt32(data[5]); i++)
                 {
-                    pokeballs.Add(new Pokeball(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
+                    pokeballs.Add(new Pokeball(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
                 }
             }
             return pokeballs;

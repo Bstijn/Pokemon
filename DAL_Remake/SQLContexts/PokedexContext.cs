@@ -59,7 +59,7 @@ namespace DAL_Remake.SQLContexts
         {
             object[] data;
             string query = "select p.id, pp.name, p.inParty, p.level, p.currentHp, p.maxHp, p.xp, p.attack, p.defense, p.speed, pp.evolveLevel, pp.captureRate " +
-                                    "from pokemon p, pokedexpokemon pp " + 
+                                    "from pokemon p, pokedexpokemon pp " +
                                     "where p.pokedexpokemonID = pp.ID " +
                                     "and p.ID = @PokemonID";
 
@@ -111,6 +111,24 @@ namespace DAL_Remake.SQLContexts
                 {
                     data.Add(dataRow.ItemArray);
                 }
+            }
+            return data;
+        }
+
+        public object[] GetMoveType(int moveID)
+        {
+            object[] data;
+            string query = "select t.ID, t.Name " +
+                           "from type t, pokedexmove pm" +
+                           "where t.id = pm.typeID " +
+                           "and pm.ID = @MoveID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@MoveID", moveID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
             }
             return data;
         }

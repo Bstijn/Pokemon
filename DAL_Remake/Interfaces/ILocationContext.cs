@@ -21,6 +21,7 @@ namespace DAL_Remake.Interfaces
         List<object[]> GetPokemonMoves(int pokemonID);
 
         object[] GetPokemonType(int pokemonID);
+        object[] GetMoveType(int moveID);
 
         List<object[]> GetRevives(int characterID);
 
