@@ -188,7 +188,6 @@ namespace Classes.Repos
         public void InsertIntro(int pokemonID, string naam, string gender)
         {
             context.InsertIntro(pokemonID, naam, gender);
-
         }
     }
 }

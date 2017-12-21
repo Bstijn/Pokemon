@@ -259,9 +259,6 @@
     <Reference Include="System.Data">
       <HintPath>Assets/Plugins/System.Data.dll</HintPath>
     </Reference>
-    <Reference Include="DAL_Remake">
-      <HintPath>Assets/Scripts/librarys/DAL_Remake/DAL_Remake.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Floris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@1.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -276,6 +273,9 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>C:/Users/Floris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL_Remake">
+      <HintPath>Assets/Plugins/DAL_Remake.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
