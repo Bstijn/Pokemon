@@ -12,7 +12,7 @@ namespace DAL_Remake.SQLContexts
     public class PokemartContext : IPokemartContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
+        private readonly string connectionString = @"Data Source=Assets/DBProftaak.db;Version=3;";
 
         public PokemartContext()
         {

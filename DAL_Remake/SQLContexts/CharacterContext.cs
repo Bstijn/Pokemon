@@ -11,7 +11,7 @@ namespace DAL_Remake.SQLContexts
     public class CharacterContext : ICharacterContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
+        private readonly string connectionString = @"Data Source=Assets/DBProftaak.db;Version=3;";
 
         public CharacterContext()
         {
@@ -297,6 +297,22 @@ namespace DAL_Remake.SQLContexts
             return false;
         }
 
+      
+
+        private DataTable selectMovesintroPokemon()
+        {
+            string query = "select maxpp, id from PokedexMove where id in (select PokedexMoveID from PokemonMove where PokedexPokemonId =( select PokedexPokemonID from pokemon where id =(select max(id) from Pokemon)) and PokemonMove.minlvl < 5)";
+            
+            DataTable dt = new DataTable();
+            using(SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.Fill(dt);
+                
+            }
+            return dt;
+        }
+
+
         public void InsertIntro(int pokemonID, string CharacterName, string Gender)
         {
             DataTable dt = selectMovesintroPokemon();
@@ -328,24 +344,11 @@ namespace DAL_Remake.SQLContexts
                 insercharactercmd.ExecuteNonQuery();
                 pokemonInsertCmd.ExecuteNonQuery();
                 playercmd.ExecuteNonQuery();
-                foreach(DataRow r in dt.Rows)
+                foreach (DataRow r in dt.Rows)
                 {
-                    new SqliteCommand("insert into Move (PokemonID,PMID,CurrentPP) values ((select Max(id) from Pokemon),"+ r.ItemArray[1].ToString() + ","+ r.ItemArray[0].ToString() + ")", connection).ExecuteNonQuery();
+                    new SqliteCommand("insert into Move (PokemonID,PMID,CurrentPP) values ((select Max(id) from Pokemon)," + r.ItemArray[1].ToString() + "," + r.ItemArray[0].ToString() + ")", connection).ExecuteNonQuery();
                 }
             }
-        }
-
-        private DataTable selectMovesintroPokemon()
-        {
-            string query = "select maxpp, id from PokedexMove where id in (select PokedexMoveID from PokemonMove where PokedexPokemonId =( select PokedexPokemonID from pokemon where id =(select max(id) from Pokemon)) and PokemonMove.minlvl < 5)";
-            
-            DataTable dt = new DataTable();
-            using(SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
-            {
-                adapter.Fill(dt);
-                
-            }
-            return dt;
         }
     }
 }
