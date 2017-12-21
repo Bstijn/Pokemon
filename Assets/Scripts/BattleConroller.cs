@@ -41,18 +41,18 @@ namespace Assets.Scripts
             var move5 = new Move(5, "Water!!!!", 15, 15, 80, "A water attack, duhh", false, 80, 1, type2);
             var move6 = new Move(6, "grass!!!!", 15, 15, 80, "A grass attack, duhh", false, 80, 1, type3);
 
-            var movelist1 = new List<Move> {move1, move4, move3};
-            var movelist2 = new List<Move>{move5, move6};
+            var movelist1 = new List<Move> { move1, move4, move3 };
+            var movelist2 = new List<Move> { move5, move6 };
 
             var wildpokemon = new Pokemon(type3, movelist2, 110, 1, "Cutecumber", false, 10, 100, 100, 5, false, 10, 10, 10, 50, 50);
             var playerpokemon = new Pokemon(type1, movelist1, 15, 4, "Dubbleup", false, 11, 80, 100, 100, false, 15, 11, 9, 50, 10);
 
-            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon>{playerpokemon}, 50, 5, null);
+            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon> { playerpokemon }, 50, 5, null);
             var battle = new Battle(player, wildpokemon);
             CreateNewBattle(battle);
         }
 
-    public void CreateNewBattle(Battle battle)
+        public void CreateNewBattle(Battle battle)
         {
             _battle = battle;
             SetPokemonInfo(_PlayerPanel, _battle.PlayerPokemon);
@@ -151,10 +151,37 @@ namespace Assets.Scripts
             EventSystem.current.SetSelectedGameObject(null);
         }
 
+        private IEnumerator LowerHp(Pokemon pokemon)
+        {
+            if (pokemon.Id == _battle.PlayerPokemon.Id)
+            {
+                yield return LowerPokemonHp(_PlayerPanel, pokemon.CurrentHp, pokemon.MaxHp);
+            }
+            else
+            {
+                yield return LowerPokemonHp(_EnemyPanel, pokemon.CurrentHp, pokemon.MaxHp);
+            }
+        }
+
+        private IEnumerator PokemonFaintedEndBattle(Pokemon pokemon)
+        {
+            if (!pokemon.Fainted) yield break;
+            if (pokemon.Id == _battle.PlayerPokemon.Id)
+            {
+                yield return PokemonFainted(_PlayerPanel);
+            }
+            else
+            {
+                yield return PokemonFainted(_EnemyPanel);
+            }
+            yield return EndBattle(pokemon);
+        }
+
         private IEnumerator AttackTurn(int playerMoveNumber)
         {
             _textPanel.SetActive(true);
             _mainPanel.SetActive(false);
+
             var first = _battle.FirstAttack(_battle.PlayerPokemon, _battle.WildPokemon ?? _battle.OpponentPokemon);
             var second = _battle.PlayerPokemon;
             var firstMove = _battle.PickRandomMove(_battle.WildPokemon) ??
@@ -170,59 +197,16 @@ namespace Assets.Scripts
             }
 
             yield return UseAttack(first, second, firstMove);
-            if (second.Id == _battle.PlayerPokemon.Id)
-            {
-                //UpdateHpUi(_PlayerPanel, second);
-                var value = (float) second.CurrentHp / second.MaxHp;
-                yield return LowerPokemonHp(_PlayerPanel, second.CurrentHp, second.MaxHp);
-            }
-            else
-            {
-                //UpdateHpUi(_EnemyPanel, second);
-                yield return LowerPokemonHp(_EnemyPanel, second.CurrentHp, second.MaxHp);
-            }
-            if (second.Fainted)
-            {
-                if (second.Id == _battle.PlayerPokemon.Id)
-                {
-                    yield return PokemonFainted(_PlayerPanel);
-                }
-                else
-                {
-                    yield return PokemonFainted(_EnemyPanel);
-                }
-                yield return EndBattle(second);
-            }
-            else
-            {
-                yield return UseAttack(second, first, secondMove);
-                if (second.Id == _battle.PlayerPokemon.Id)
-                {
-                    //UpdateHpUi(_EnemyPanel, first);
-                    yield return LowerPokemonHp(_EnemyPanel, first.CurrentHp, first.MaxHp);
-                }
-                else
-                {
-                    //UpdateHpUi(_PlayerPanel, first);
-                    yield return LowerPokemonHp(_PlayerPanel, first.CurrentHp, first.MaxHp);
-                }
-            }
-            if (first.Fainted)
-            {
-                if (first.Id == _battle.PlayerPokemon.Id)
-                {
-                    yield return PokemonFainted(_PlayerPanel);
-                }
-                else
-                {
-                    yield return PokemonFainted(_EnemyPanel);
-                }
-                yield return EndBattle(first);
-            }
+            yield return LowerHp(second);
+            yield return PokemonFaintedEndBattle(second);
+
+            yield return UseAttack(second, first, secondMove);
+            yield return LowerHp(first);
+            yield return PokemonFaintedEndBattle(first);
+
             _textPanel.SetActive(false);
             _infoAttackPanel.transform.parent.gameObject.SetActive(false);
             _mainPanel.SetActive(true);
-            yield return null;
         }
 
         public IEnumerator EndBattle(Pokemon pokemon)
@@ -244,6 +228,7 @@ namespace Assets.Scripts
                    "\nYou won the battle.";
             }
             yield return WaitForInput();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = false;
             SceneManager.UnloadSceneAsync("Battle");
         }
 
@@ -288,6 +273,7 @@ namespace Assets.Scripts
             }
             yield return new WaitForSeconds(0.1f);
         }
+
         private IEnumerator FleeAnimation(Text text)
         {
             _mainPanel.SetActive(false);
@@ -314,18 +300,16 @@ namespace Assets.Scripts
             if (flee)
             {
                 yield return new WaitForSeconds(1f);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = false;
                 SceneManager.UnloadSceneAsync("Battle");
             }
             else
             {
-
                 var pokemon = _battle.WildPokemon ?? _battle.OpponentPokemon;
                 var move = _battle.PickRandomMove(_battle.WildPokemon) ??
                              _battle.PickRandomMove(_battle.OpponentPokemon); ;
                 yield return UseAttack(pokemon, _battle.PlayerPokemon, move);
-
-                    UpdateHpUi(_PlayerPanel, _battle.PlayerPokemon);
-                    yield return LowerPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
+                yield return LowerPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
                 if (_battle.PlayerPokemon.Fainted)
                 {
                     yield return EndBattle(_battle.PlayerPokemon);
@@ -428,6 +412,22 @@ namespace Assets.Scripts
                 pokemonTransform.localPosition += new Vector3(0, -50, 0);
                 yield return new WaitForSeconds(0.001f);
             }
+        }
+
+        private IEnumerator GetExp(Pokemon defeaded, Pokemon winner)
+        {
+            var exp = _battle.XpGranted(defeaded, winner);
+            exp = _battle.LevelUpCheck(exp, winner);
+            
+            while (exp > 0)
+            {
+                //exp full
+                //level animation
+
+
+                exp = _battle.LevelUpCheck(exp, winner);
+            }
+            yield return null;
         }
     }
 }

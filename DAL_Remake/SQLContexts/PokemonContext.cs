@@ -14,16 +14,23 @@ namespace DAL_Remake.SQLContexts
         {
             connection = new SqliteConnection(connectionString);
         }
+
+        public Pokemon GetEvolvePokemon(Pokemon pokemon)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<object[]> GetMoves(int pokemonID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select m.id, pdm.Name, m.currentpp, pdm.maxpp, pdm.accuracy, pdm.Description, pdm.hasoverworldeffect, pdm.basepower, pm.minlevel " +
-                                    "from Move as m " +
-                                    "inner join PokemonMove as pm " +
-                                    "on pm.ID = m.PMID " +
-                                    "inner join PokedexMove as pdm on pm.id = pdm.id " +
-                                    "inner join Type as t on Pdm.TypeID = t.id " +
-                                    "where m.PokemonID = @pokemonID";
+            string query =
+                "select m.id, pdm.Name, m.currentpp, pdm.maxpp, pdm.accuracy, pdm.Description, pdm.hasoverworldeffect, pdm.basepower, pm.minlevel " +
+                "from Move as m " +
+                "inner join PokemonMove as pm " +
+                "on pm.ID = m.PMID " +
+                "inner join PokedexMove as pdm on pm.id = pdm.id " +
+                "inner join Type as t on Pdm.TypeID = t.id " +
+                "where m.PokemonID = @pokemonID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -39,13 +46,18 @@ namespace DAL_Remake.SQLContexts
             return data;
         }
 
+        public object[] GetNextLevelUpXp(int level)
+        {
+            throw new NotImplementedException();
+        }
+
         public object[] GetPokemonType(int pokedexPokemonID)
         {
             object[] data;
             string query = "select t.* " +
-                                "from Type t, PokedexPokemon pp " +
-                                "where t.ID = pp.TypeID " +
-                                "and pp.ID = @PokedexPokemonID";
+                           "from Type t, PokedexPokemon pp " +
+                           "where t.ID = pp.TypeID " +
+                           "and pp.ID = @PokedexPokemonID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -97,8 +109,17 @@ namespace DAL_Remake.SQLContexts
         }
 
         /*public LevelUpXP GetLvlUp(int level)
+        public void UpdatePokemon(Pokemon pokemon)
         {
-            LevelUpXP levelUpXp;
+            throw new NotImplementedException();
+        }
+
+        /*
+        public LevelUpXP GetNextLevelUpXp(int level)
+
+        public object[] GetNextLevelUpXp(int level)
+        {
+            object[] levelUpXp;
             string query = "Select * from LevelUpXP " +
                            "where lvl = ";
 
@@ -107,10 +128,21 @@ namespace DAL_Remake.SQLContexts
                 adapter.SelectCommand.Parameters.AddWithValue("@PokemonLvl", level + 1);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                levelUpXp = new LevelUpXP(Convert.ToInt32(dataTable.Rows[0].ItemArray),Convert.ToInt32(dataTable.Rows[1].ItemArray));
-            }
-            return levelUpXp;
+                levelUpXp = dataTable.Rows[0].ItemArray;
+                return levelUpXp;
 
+            }
+        }
+
+        public void UpdatePokemon(Pokemon pokemon)//TODO Query update pokemon
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pokemon GetEvolvePokemon(Pokemon pokemon)//TODO Get Evolve Pokemon Database
+        {
+
+            throw new NotImplementedException()
         }*/
     }
 }

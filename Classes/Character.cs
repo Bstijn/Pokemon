@@ -1,4 +1,5 @@
 ﻿using Classes.Repos;
+using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
 
@@ -20,6 +21,7 @@ namespace Classes
         public List<Pokemon> Pokemons { get; private set; }
 
         private CharacterRepository repository;
+        protected LocationRepository locationRepo;
 
         public Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons)
         {
@@ -34,7 +36,7 @@ namespace Classes
             Pokemons = pokemons;
         }
 
-        public Character(string name, int id, string gender, int money, int posX, int posY)
+        public Character(string name, int id, string gender, int money, int posX, int posY, int locationID)
         {
             Name = name;
             Id = id;
@@ -47,6 +49,11 @@ namespace Classes
             //TODO: overleggen of het een list van items of list van posession wordt
             //Inventory = repository.GetInventory(id);
             Pokemons = repository.GetPokemonFromParty(id);
+            //TODO Roberto look at this
+            locationRepo = new LocationRepository();
+            CurrentLocation = locationRepo.GetCurrentLocation(locationID);
+            //Inventory = repo.GetInventory(id);
+            //Pokemons = repo.GetPokemonFromParty(id);
         }
 
         public Location GetCurrentLocation()

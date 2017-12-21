@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Classes;
+using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Transfer : MonoBehaviour {
@@ -14,17 +16,14 @@ public class Transfer : MonoBehaviour {
 
     Vector3 target;
 
-    private void Start()
+    Passage passage;
+    private void Awake()
     {
         Red = GameObject.FindGameObjectWithTag("Player");
+        //passage = Red.GetComponent<Player>().GetCurrentLocation().GetPassageByCoords(Convert.ToInt32(transform.position.x), Convert.ToInt32(transform.position.y));
         x = targetX + 0.5f;
         y = targetY + 0.5f;
         target = new Vector3(x, y, -1f);
-    }
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(Red);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +35,7 @@ public class Transfer : MonoBehaviour {
             Red.transform.position = target;
             Red.GetComponent<Player>().pos = target;
             Red.GetComponent<Player>().moving = false;
+            //Red.GetComponent<Player>().player.GoToLocation(passage);
         }
     }
 }

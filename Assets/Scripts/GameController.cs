@@ -1,4 +1,5 @@
 ﻿using Classes.Repos;
+using Classes;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
@@ -9,6 +10,7 @@ public class GameController : MonoBehaviour {
     public bool surfEnabled;
 
     Classes.Player dummy;
+    //LocationRepository repo;
     string checkDir;
     public SurfEnabler surfEnabler;
     void Awake()
@@ -22,15 +24,14 @@ public class GameController : MonoBehaviour {
             //...destroy this one because it is a duplicate.
             Destroy(gameObject);
         DontDestroyOnLoad(this);
-
         if (GameObject.FindWithTag("Player"))
         {
 
         }
         else
         {
-            Instantiate(Red, new Vector3(9.5f, 6.5f, -1f), new Quaternion());
-            dummy = new Classes.Player("Henk", 1, "male", 0, 1, 1, 0, 0);
+            Instantiate(Red, new Vector3(9.5f, 5.5f, -1f), new Quaternion());
+            dummy = new Classes.Player("Henk", 1, "male", 0, 1, 1, 0, 0, 1);
             GameObject.FindWithTag("Player").GetComponent<Player>().player = dummy;
         }
     }

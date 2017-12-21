@@ -9,7 +9,7 @@ namespace DAL_Remake.SQLContexts
     public class LocationContext : ILocationContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/testdb.db;Version=3;";
+        private readonly string connectionString = @"Data Source=Assets/DBProftaak.db;Version=3;";
 
         public LocationContext()
         {
@@ -337,13 +337,12 @@ namespace DAL_Remake.SQLContexts
         public object[] GetCurrentLocation(int locationID)
         {
             object[] data;
-            string query = "SELECT *" +
-                            "FROM location" +
-                            "LEFT OUTER JOIN Area ON location.id = area.id" +
-                            "LEFT OUTER JOIN Building ON location.id = building.id" +
-                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID" +
-                            "WHERE Location.ID = 1";
-
+            string query = "SELECT *"+
+                            "FROM location"+
+                            "LEFT OUTER JOIN Area ON location.id = area.id"+
+                            "LEFT OUTER JOIN Building ON location.id = building.id"+
+                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID"+
+                            "WHERE Location.ID = @LocationID";
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
@@ -357,6 +356,27 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetPokemonFromOpponent(int characterID)
         {
             throw new NotImplementedException();
+        }
+
+        public object[] GetPassageByLocationAndCoords(int locationID, int x, int y)
+        {
+            object[] data;
+            string query = "select passage.id, fromx, fromy, tox, toy, tolocationid " +
+                                    "from location JOIN passage ON location.id=passage.fromID" +
+                                    "where location.id = @locationID" +
+                                    "AND fromx = @X AND fromy = @Y";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@locationID", locationID);
+                adapter.SelectCommand.Parameters.AddWithValue("@X", x);
+                adapter.SelectCommand.Parameters.AddWithValue("@Y", y);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
         }
     }
 }
