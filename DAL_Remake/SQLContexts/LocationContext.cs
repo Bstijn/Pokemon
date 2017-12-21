@@ -149,8 +149,8 @@ namespace DAL_Remake.SQLContexts
                                     "from pokemon p, pokedexpokemon pp, pokemonlocation pl, area a " +
                                     "where p.pokedexpokemonID = pp.ID " +
                                     "and pp.ID = pl.pokedexpokemonID " +
-                                    "and pl.areaID = a.locationID " +
-                                    "and a.locationID = @LocationID";
+                                    "and pl.areaID = a.ID " +
+                                    "and a.ID = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -339,10 +339,10 @@ namespace DAL_Remake.SQLContexts
         {
             object[] data;
             string query = "SELECT *"+
-                            "FROM location"+
-                            "LEFT OUTER JOIN Area ON location.id = area.id"+
-                            "LEFT OUTER JOIN Building ON location.id = building.id"+
-                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID"+
+                            "FROM location "+
+                            "LEFT JOIN Area ON location.id = area.id "+
+                            "LEFT JOIN Building ON location.id = building.id "+
+                            "LEFT JOIN ROUTE ON Area.ID = Route.AreaID "+
                             "WHERE Location.ID = @LocationID";
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {

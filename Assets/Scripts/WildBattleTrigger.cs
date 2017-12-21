@@ -9,7 +9,6 @@ public class WildBattleTrigger : MonoBehaviour {
 
     public float EncounterRate;
     Area location;
-    System.Random rando;
 
     //DB -> Pokémon
     private void Start()
@@ -21,13 +20,12 @@ public class WildBattleTrigger : MonoBehaviour {
 
     private void Awake()
     {
-        rando = new System.Random();
         //Load Pokémon
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        int roll = rando.Next(99);
+        int roll = Random.Range(0, 100);
         if (roll < EncounterRate)
         {
             other.GetComponent<Player>().inBattle = true;

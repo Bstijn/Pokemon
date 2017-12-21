@@ -51,6 +51,7 @@ namespace Classes
             
             //TODO Roberto look at this
             locationRepo = new LocationRepository();
+            repository = new CharacterRepository();
             CurrentLocation = locationRepo.GetCurrentLocation(locationID);
             //Inventory = repo.GetInventory(id);
             //Pokemons = repo.GetPokemonFromParty(id);
