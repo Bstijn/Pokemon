@@ -1,4 +1,5 @@
 ﻿using Classes.Repos;
+using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
 
@@ -19,6 +20,8 @@ namespace Classes
         public List<Possesion> Inventory { get; protected set; }
         public List<Pokemon> Pokemons { get; private set; }
 
+        private CharacterRepository repository;
+        protected LocationRepository locationRepo;
 
         public Character(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons)
         {
@@ -33,7 +36,7 @@ namespace Classes
             Pokemons = pokemons;
         }
 
-        public Character(string name, int id, string gender, int money, int posX, int posY)
+        public Character(string name, int id, string gender, int money, int posX, int posY, int locationID)
         {
             Name = name;
             Id = id;
@@ -41,8 +44,14 @@ namespace Classes
             Money = money;
             PosX = posX;
             PosY = posY;
+            //int locationID = repository.GetCurrentLocationID(id);
+            //CurrentLocation = repository.GetCurrentLocation(locationID);
+            //TODO: overleggen of het een list van items of list van posession wordt
+            //Inventory = repository.GetInventory(id);
+            Pokemons = repository.GetPokemonFromParty(id);
             //TODO Roberto look at this
-            //CurrentLocation = repo.GetCurrentLocation(id);
+            locationRepo = new LocationRepository();
+            CurrentLocation = locationRepo.GetCurrentLocation(locationID);
             //Inventory = repo.GetInventory(id);
             //Pokemons = repo.GetPokemonFromParty(id);
         }
@@ -54,7 +63,7 @@ namespace Classes
 
         public void SetCurrentLocation(Location location)
         {
-            location = CurrentLocation;
+            CurrentLocation = location;
         }
 
         public List<Possesion> GetInventory()
@@ -64,7 +73,7 @@ namespace Classes
 
         public void SetInventory(List<Possesion> inventory)
         {
-           Inventory = inventory;
+            Inventory = inventory;
         }
 
         public List<Pokemon> GetPokemons()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Classes;
 using Classes.Repos;
+using UnityEngine.SceneManagement;
 
 
 
@@ -28,9 +29,10 @@ public class IntroController : MonoBehaviour
     private string name = null;
     private string gender = null;
     private int pokemonId;
-    private CharacterRepository dal = new CharacterRepository();
+    private CharacterRepository dal;
     void Start()
     {
+        dal = new CharacterRepository();
         dialogue.text = dialogues[currentdialogue];
     }
 
@@ -100,12 +102,13 @@ public class IntroController : MonoBehaviour
 
     private void SaveChoices()
     {
+        Debug.Log("we zijn hier i guess");
         dal.InserIntro(pokemonId, name, gender);
         //TODO IMPLEMENT IN DB
         StartGame();
     }
     private void StartGame()
     {
-        //TODO IMPLEMENT Right Scene
+        SceneManager.LoadScene("Park Town");
     }
 }

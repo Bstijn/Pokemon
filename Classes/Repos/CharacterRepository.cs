@@ -2,8 +2,6 @@
 using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Classes.Repos
 {
@@ -23,7 +21,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                revives.Add(new Revive(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
+                revives.Add(new Revive(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
             }
 
 
@@ -37,7 +35,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                potions.Add(new Potion(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
+                potions.Add(new Potion(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
             }
 
             return potions;
@@ -50,7 +48,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                pokeballs.Add(new Pokeball(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), data[3].ToString(), Convert.ToInt32(data[4])));
+                pokeballs.Add(new Pokeball(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
             }
 
             return pokeballs;
@@ -63,7 +61,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                badges.Add(new Badge(Convert.ToInt32(data[0]), data[1].ToString(), data[2].ToString()));
+                badges.Add(new Badge(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString()));
             }
 
             return badges;
@@ -76,7 +74,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                keyItems.Add(new KeyItem(Convert.ToInt32(data[0]), data[1].ToString(), data[2].ToString(), Convert.ToBoolean(data[3])));
+                keyItems.Add(new KeyItem(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), Convert.ToBoolean(row[3])));
             }
 
             return keyItems;
@@ -93,10 +91,10 @@ namespace Classes.Repos
                 Type type = new Type(Convert.ToInt32(typeData[0]), typeData[1].ToString());
                 List<Move> pokemonMoves = GetPokemonMoves(Convert.ToInt32(row[0]));
 
-                pokemonInParty.Add(new Pokemon(type, pokemonMoves, Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToBoolean(data[2]),
-                    Convert.ToInt32(data[3]), Convert.ToInt32(data[4]), Convert.ToInt32(data[5]), Convert.ToInt32(data[6]),
-                    Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), Convert.ToInt32(data[9]), Convert.ToInt32(data[10]),
-                    Convert.ToInt32(data[11])));
+                pokemonInParty.Add(new Pokemon(type, pokemonMoves, Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToBoolean(row[2]),
+                    Convert.ToInt32(row[3]), Convert.ToInt32(row[4]), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]),
+                    Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), Convert.ToInt32(row[9]), Convert.ToInt32(row[10]),
+                    Convert.ToInt32(row[11])));
             }
             return pokemonInParty;
         }
@@ -108,7 +106,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                dialogues.Add(new Dialogue(Convert.ToInt32(data[0]), data[1].ToString()));
+                dialogues.Add(new Dialogue(Convert.ToInt32(row[0]), row[1].ToString()));
             }
 
             return dialogues;
@@ -121,9 +119,8 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                //TODO Roberto fix die null -> type moet ook worden opgehaald (ook fix query)
-                pokemonMoves.Add(new Move(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), Convert.ToInt32(data[3]),
-                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), null));
+                pokemonMoves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]),
+                    Convert.ToInt32(row[4]), row[5].ToString(), Convert.ToBoolean(row[6]), Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), GetPokemonType(pokemonID)));
             }
 
             return pokemonMoves;
@@ -161,35 +158,36 @@ namespace Classes.Repos
             Location location;
             switch (locationType)
             {
-                //case "pokemart":
-                //    location = new Pokemart()
-                //    break;
-                //case "gym":
-                //    location = new Gym()
-                //    break;
-                //case "pokecenter":
-                //    location = new Pokecenter()
-                //    break;
-                //case "enemyhq":
-                //    location = new EnemyHQ()
-                //    break;
-                //case "city":
-                //    location = new City()
-                //    break;
-                //case "cave":
-                //    location = new Cave()
-                //    break;
-                //case "route":
-                //    location = new Route()
-                //    break;
+                // TODO: maak deze switch af
+                case "pokemart":
+                    //location = new Pokemart();
+                    break;
+                case "gym":
+                    //location = new Gym();
+                    break;
+                case "pokecenter":
+                    //location = new Pokecenter();
+                    break;
+                case "enemyhq":
+                    //location = new EnemyHQ();
+                    break;
+                case "city":
+                    //location = new City();
+                    break;
+                case "cave":
+                    //location = new Cave();
+                    break;
+                case "route":
+                    //location = new Route();
+                    break;
             }
-            //return new Location(Convert.ToInt32(data[0]), data[1].ToString()); 
+            //return location; 
             return null;
         }
 
-        public void InserIntro(int pokemonID, string naam, string gender)
+        public void InsertIntro(int pokemonID, string naam, string gender)
         {
-            context.InsterIntro(pokemonID, naam, gender);
+            context.InsertIntro(pokemonID, naam, gender);
 
         }
     }

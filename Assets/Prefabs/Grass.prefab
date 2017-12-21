@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03923a37ac05a8e48b0af761a90138b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EncounterRate: 0
+  EncounterRate: 30

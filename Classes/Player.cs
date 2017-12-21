@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Classes.Exceptions;
 
 namespace Classes
 {
@@ -10,7 +9,7 @@ namespace Classes
         public int Wins { get; private set; }
         public int Loses { get; private set; }
         public Pokecenter LastVisitedPokeCenter { get; private set; }
-        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons, int wins, int losses,Pokecenter lastVistedPokeCenter)
+        public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons, int wins, int losses, Pokecenter lastVistedPokeCenter)
             : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
         {
             this.LastVisitedPokeCenter = lastVistedPokeCenter;
@@ -18,14 +17,14 @@ namespace Classes
             this.Loses = losses;
         }
 
-        public Player(string name, int id, string gender, int money, int posX, int posY, int wins, int losses) 
-            : base(name, id, gender, money, posX, posY)
+        public Player(string name, int id, string gender, int money, int posX, int posY, int wins, int losses, int locationID) 
+            : base(name, id, gender, money, posX, posY, locationID)
         {
             this.Wins = wins;
             this.Loses = losses;
             Inventory = new List<Possesion>();
             SetPokemons(new List<Pokemon>());
-            SetCurrentLocation(new Route(1, "Route 101", new List<Passage>(), 1, 10, 0.10M, GetPokemons()));
+            SetCurrentLocation(locationRepo.GetCurrentLocation(locationID));
         }
 
 
@@ -69,7 +68,7 @@ namespace Classes
             {
                 pokemon.Heal((consumable as Potion).HealAmount);
             }
-            else if(consumable is Revive)
+            else if (consumable is Revive)
             {
                 pokemon.Revive((consumable as Revive).Percentage);
             }
@@ -109,12 +108,12 @@ namespace Classes
         {
             int index1 = Pokemons.IndexOf(pokemon1);
             int index2 = Pokemons.IndexOf(pokemon2);
-            if(index1 < index2)
+            if (index1 < index2)
             {
                 Pokemons.RemoveAt(index2);
                 Pokemons.Insert(index1, pokemon2);
                 Pokemons.Remove(pokemon1);
-                Pokemons.Insert(index2,pokemon1);
+                Pokemons.Insert(index2, pokemon1);
             }
             else
             {
@@ -163,7 +162,7 @@ namespace Classes
             }
             else
             {
-                
+
             }
         }
 

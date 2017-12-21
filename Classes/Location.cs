@@ -20,14 +20,14 @@ namespace Classes
             Id = id;
             Name = name;
             this.passages = passages;
-            repo = new LocationRepository(new LocationContext());
+            repo = new LocationRepository();
         }
 
         public Location(int id, string name)
         {
             Id = id;
             Name = name;
-            repo = new LocationRepository(new LocationContext());
+            repo = new LocationRepository();
             passages = repo.GetPassages(id);
         }
 
@@ -39,6 +39,17 @@ namespace Classes
         public List<Passage> GetPassages()
         {
             return passages;
+        }
+        public Passage GetPassageByCoords(int x, int y)
+        {
+            foreach (Passage passage in passages)
+            {
+                if(passage.FromX == x && passage.FromY == y)
+                {
+                    return passage;
+                }
+            }
+            return null;
         }
     }
 }
