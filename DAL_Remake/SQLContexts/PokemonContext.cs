@@ -1,3 +1,4 @@
+using System;
 using DAL_Remake.Interfaces;
 using Mono.Data.Sqlite;
 using System.Collections.Generic;
@@ -13,11 +14,6 @@ namespace DAL_Remake.SQLContexts
         public PokemonContext()
         {
             connection = new SqliteConnection(connectionString);
-        }
-
-        public Pokemon GetEvolvePokemon(Pokemon pokemon)
-        {
-            throw new NotImplementedException();
         }
 
         public List<object[]> GetMoves(int pokemonID)

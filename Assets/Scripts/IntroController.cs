@@ -103,7 +103,7 @@ public class IntroController : MonoBehaviour
     private void SaveChoices()
     {
         Debug.Log("we zijn hier i guess");
-        dal.InserIntro(pokemonId, name, gender);
+        dal.InsertIntro(pokemonId, name, gender);
         //TODO IMPLEMENT IN DB
         StartGame();
     }

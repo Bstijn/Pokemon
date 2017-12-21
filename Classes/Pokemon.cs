@@ -30,8 +30,6 @@ namespace Classes
         private Type type;
 
         private List<Move> moves;
-        private PokemonRepository repository;
-
         //GrowStats
 
         public int SpeedGrowth { get; private set; }

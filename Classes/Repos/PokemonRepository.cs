@@ -55,12 +55,13 @@ namespace Classes.Repos
 
         public void UpdatePokemon(Pokemon pokemon)//TODO Query voor updaten van pokemon
         {
-            context.UpdatePokemon(pokemon);
+            //context.UpdatePokemon(pokemon);
         }
 
         public Pokemon GetEvolvePokemon(Pokemon pokemon)
         {
-            return context.GetEvolvePokemon(pokemon);
+            //return context.GetEvolvePokemon(pokemon);
+            return null;
         }
     }
 }

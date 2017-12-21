@@ -77,7 +77,7 @@ namespace Classes
 
         private Possesion PossesionCheck(Consumable consumable)
         {
-            Possesion possesion = new Possesion();
+            Possesion possesion = new Possesion(0, null);//TODO
             foreach (Possesion consInInv in Inventory)
             {
                 if (consInInv.Item.Id == consumable.Id)
