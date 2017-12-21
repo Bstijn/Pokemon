@@ -10,9 +10,10 @@ namespace DAL_Remake.Interfaces
 
         object[] GetPokemonType(int pokedexPokemonID);
 
+        object[] GetMoveType(int moveID);
+
+        object GetEffectiveness(int attackTypeID, int defenseTypeID);
         object[] GetNextLevelUpXp(int level);
 
-        void UpdatePokemon(Pokemon pokemon);
-        Pokemon GetEvolvePokemon(Pokemon pokemon);
     }
 }

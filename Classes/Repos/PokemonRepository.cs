@@ -2,8 +2,6 @@
 using DAL_Remake.SQLContexts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Classes.Repos
 {
@@ -23,9 +21,8 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                //TODO Roberto fix die null -> type moet ook worden opgehaald (ook fix query)
-                moves.Add(new Move(Convert.ToInt32(data[0]), data[1].ToString(), Convert.ToInt32(data[2]), Convert.ToInt32(data[3]), 
-                    Convert.ToInt32(data[4]), data[5].ToString(), Convert.ToBoolean(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8]), null));
+                moves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]),
+                    Convert.ToInt32(row[4]), row[5].ToString(), Convert.ToBoolean(row[6]), Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), GetMoveType(Convert.ToInt32(row[0]))));
             }
 
             return moves;
@@ -34,8 +31,19 @@ namespace Classes.Repos
         public Type GetPokemonType(int pokedexPokemonID)
         {
             object[] data = context.GetPokemonType(pokedexPokemonID);
-            Type type = new Type(Convert.ToInt32(data[0]), data[1].ToString());
-            return type;
+            return new Type(Convert.ToInt32(data[0]), data[1].ToString());
+        }
+
+        public Type GetMoveType(int moveID)
+        {
+            object[] data = context.GetMoveType(moveID);
+            return new Type(Convert.ToInt32(data[0]), data[1].ToString());
+        }
+
+        public double GetEffectiveness(Type attackType, Type defenceType)
+        {
+            object data = context.GetEffectiveness(attackType.Id, defenceType.Id);
+            return Convert.ToDouble(data);
         }
         
         public LevelUpXP GetNextLevelUpXp(int level)
@@ -47,12 +55,13 @@ namespace Classes.Repos
 
         public void UpdatePokemon(Pokemon pokemon)//TODO Query voor updaten van pokemon
         {
-            context.UpdatePokemon(pokemon);
+            //context.UpdatePokemon(pokemon);
         }
 
         public Pokemon GetEvolvePokemon(Pokemon pokemon)
         {
-            return context.GetEvolvePokemon(pokemon);
+            //return context.GetEvolvePokemon(pokemon);
+            return null;
         }
     }
 }
