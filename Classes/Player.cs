@@ -23,8 +23,8 @@ namespace Classes
             this.Wins = wins;
             this.Loses = losses;
             Inventory = new List<Possesion>();
-            SetPokemons(new List<Pokemon>());
-            SetCurrentLocation(locationRepo.GetCurrentLocation(locationID));
+            Pokemons = new List<Pokemon>();
+            //SetCurrentLocation(locationRepo.GetCurrentLocation(locationID));
         }
 
 

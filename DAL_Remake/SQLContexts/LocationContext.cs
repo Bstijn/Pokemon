@@ -3,13 +3,14 @@ using Mono.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using UnityEngine;
 
 namespace DAL_Remake.SQLContexts
 {
     public class LocationContext : ILocationContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/DBProftaak.db;Version=3;";
+        private readonly string connectionString = @"Data Source="+Application.dataPath+@"\DBProftaak.db;Version=3;";
 
         public LocationContext()
         {
@@ -361,9 +362,9 @@ namespace DAL_Remake.SQLContexts
         public object[] GetPassageByLocationAndCoords(int locationID, int x, int y)
         {
             object[] data;
-            string query = "select passage.id, fromx, fromy, tox, toy, tolocationid " +
-                                    "from location JOIN passage ON location.id=passage.fromID" +
-                                    "where location.id = @locationID" +
+            string query = "SELECT passage.id, fromx, fromy, tox, toy, tolocationid " +
+                                    "FROM location JOIN passage ON location.id=passage.fromID" +
+                                    "WHERE location.id = @locationID" +
                                     "AND fromx = @X AND fromy = @Y";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))

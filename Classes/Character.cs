@@ -18,7 +18,7 @@ namespace Classes
 
         public Location CurrentLocation { get; protected set; }
         public List<Possesion> Inventory { get; protected set; }
-        public List<Pokemon> Pokemons { get; private set; }
+        public List<Pokemon> Pokemons { get; protected set; }
 
         private CharacterRepository repository;
         protected LocationRepository locationRepo;
@@ -48,12 +48,13 @@ namespace Classes
             //CurrentLocation = repository.GetCurrentLocation(locationID);
             //TODO: overleggen of het een list van items of list van posession wordt
             //Inventory = repository.GetInventory(id);
-            Pokemons = repository.GetPokemonFromParty(id);
+            
             //TODO Roberto look at this
             locationRepo = new LocationRepository();
             CurrentLocation = locationRepo.GetCurrentLocation(locationID);
             //Inventory = repo.GetInventory(id);
             //Pokemons = repo.GetPokemonFromParty(id);
+            Pokemons = repository.GetPokemonFromParty(id);
         }
 
         public Location GetCurrentLocation()
