@@ -180,7 +180,7 @@ MonoBehaviour:
   playerDown: {fileID: 21300000, guid: 478c2fe549720244da4cd137a73d4209, type: 3}
   moving: 0
   dir: 0
-  surfing: 1
+  surfing: 0
 --- !u!124 &124728794469618282
 Behaviour:
   m_ObjectHideFlags: 1
