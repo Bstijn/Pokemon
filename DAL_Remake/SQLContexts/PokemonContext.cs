@@ -3,13 +3,15 @@ using DAL_Remake.Interfaces;
 using Mono.Data.Sqlite;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
+using UnityEngine;
 
 namespace DAL_Remake.SQLContexts
 {
     public class PokemonContext : IPokemonContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/DBProftaak.db;Version=3;";
+        private readonly string connectionString = @"Data Source=" + Application.dataPath + "/DBProftaak.db;Version=3;";
 
         public PokemonContext()
         {
@@ -88,19 +90,17 @@ namespace DAL_Remake.SQLContexts
         public object GetEffectiveness(int attackTypeID, int defenseTypeID)
         {
             object data;
-            string query = "select ratio " +
-                           "from type " +
-                           "where attackTypeID = @AttackTypeID " +
-                           "and defenseTypeID = @DefenseTypeID";
+            string query = "SELECT DamageRatio FROM Effectiveness WHERE AttackTypeID = 1 AND DefenseTypeID = 2;";
 
+            DataTable dataTable = new DataTable();
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.SelectCommand.Parameters.AddWithValue("@AttackTypeID", attackTypeID);
                 adapter.SelectCommand.Parameters.AddWithValue("@DefenseTypeID", defenseTypeID);
-                DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 data = dataTable.Rows[0].ItemArray[0];
             }
+
             return data;
         }
 

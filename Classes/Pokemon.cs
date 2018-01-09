@@ -1,7 +1,8 @@
 ﻿using Classes.Repos;
 using System;
 using System.Collections.Generic;
-using Classes.Repos;
+using System.Data;
+using Mono.Data.Sqlite;
 
 namespace Classes
 {
@@ -63,6 +64,7 @@ namespace Classes
             DefenseGrowth = defenseGrowth;
             HpGrowth = hpGrowth;
             DefeatXp = defeatXp;
+            repository = new PokemonRepository();
         }
 
         public Pokemon(Type type, List<Move> moves, int id, int pokedexId, string name, bool inParty, int level,
@@ -86,6 +88,7 @@ namespace Classes
             Speed = speed;
             EvolveLevel = evolveLevel;
             CaptureRate = captureRate;
+            repository = new PokemonRepository();
         }
       
         public Pokemon(Type type, List<Move> moves, int id, string name, bool inParty, int level, int currentHp,
@@ -105,6 +108,7 @@ namespace Classes
             Speed = speed;
             EvolveLevel = evolveLevel;
             CaptureRate = captureRate;
+            repository = new PokemonRepository();
         }
 
 
@@ -217,7 +221,8 @@ namespace Classes
 
         private double GetEffectiveness(Type attackType, Type defenseType)
         {
-            return repository.GetEffectiveness(attackType, defenseType);
+            var x = repository.GetEffectiveness(attackType, defenseType);
+            return Convert.ToDouble(x);
         }
 
 

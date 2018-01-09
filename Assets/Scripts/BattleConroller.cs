@@ -27,6 +27,7 @@ namespace Assets.Scripts
         [SerializeField] private GameObject _EnemyPanel;
         [SerializeField] private GameObject _PlayerPanel;
 
+        private bool _PokemonSwitchTurn;
         private Battle _battle;
 
         public void Start()
@@ -46,8 +47,10 @@ namespace Assets.Scripts
 
             var wildpokemon = new Pokemon(type3, movelist2, 110, 1, "Cutecumber", false, 10, 100, 100, 5, false, 10, 10, 10, 50, 50);
             var playerpokemon = new Pokemon(type1, movelist1, 15, 4, "Dubbleup", false, 11, 80, 100, 100, false, 15, 11, 9, 50, 10);
+            var playerpokemon2 = new Pokemon(type3, movelist2, 2982 , 8, "Pikkie", false, 12, 110, 110, 6, false ,10, 10, 10, 25, 10);
+            var playerpokemon3 = new Pokemon(type3, movelist2, 2982 , 8, "DikkieDik", false, 12, 110, 110, 6, true ,10, 10, 10, 25, 10);
 
-            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon> { playerpokemon }, 50, 5, null);
+            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon> { playerpokemon, playerpokemon2, playerpokemon3}, 50, 5, null);
             var battle = new Battle(player, wildpokemon);
             CreateNewBattle(battle);
         }
@@ -93,7 +96,6 @@ namespace Assets.Scripts
         
         public void OnAttackMenuButtonPress(GameObject attackMenu)
         {
-
             for (var i = 0; i < 4; i++)
             {
                 var button = attackMenu.transform.Find("MoveButton" + i).gameObject;
@@ -147,7 +149,7 @@ namespace Assets.Scripts
 
         public void OnUseMoveButtonPress(int moveNumber)
         { 
-            StartCoroutine("AttackTurn", moveNumber);
+            StartCoroutine(AttackTurn(moveNumber));
             EventSystem.current.SetSelectedGameObject(null);
         }
 
@@ -174,6 +176,7 @@ namespace Assets.Scripts
             {
                 yield return PokemonFainted(_EnemyPanel);
             }
+            //TODO NO! GET NEW POKEMON?!?!?
             yield return EndBattle(pokemon);
         }
 
@@ -320,12 +323,62 @@ namespace Assets.Scripts
 
         }
             
-        public void LoadPokemonMenuInfo(GameObject pokemonMenu)
+        public void LoadPokemonMenuInfo()
         {
+            _pokemonPanel.transform.Find("BackButton").gameObject.SetActive(!_battle.PlayerPokemon.Fainted);
             for (var i = 0; i < 6; i++)
             {
-                StartCoroutine("SwitchIconSprites", i);
+                try
+                {
+                    StartCoroutine(SwitchIconSprites(i, _battle.Player.Pokemons[i].PokedexId));
+                    var button = _pokemonPanel.transform.Find("PokemonButton" + i).gameObject;
+                    button.SetActive(true);
+                    var pokemon = _battle.Player.Pokemons[i];
+                    
+                    if (pokemon.Fainted)
+                    {
+                        button.GetComponent<Image>().color = Color.red;
+                    }
+                    else
+                    {
+                        button.GetComponent<Image>().color = pokemon.Id == _battle.PlayerPokemon.Id ? Color.blue : new Color(1,1,1,1);
+                    }
+                    
+
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    _pokemonPanel.transform.Find("PokemonButton" + i).gameObject.SetActive(false);
+                }
             }
+        }
+
+        public void SwitchPokemonButton(int pokemonindex)
+        {
+            //TODO MAKE DIS ENUMERATOR WITH TEXTS IF TIME
+            _battle.PlayerPokemon = _battle.Player.Pokemons[pokemonindex];
+            SetPokemonInfo(_PlayerPanel, _battle.PlayerPokemon);
+            SetPokemonSprite(_PlayerPanel, "PokemonBack/back" + _battle.PlayerPokemon.PokedexId.ToString("000"));
+            if (_PokemonSwitchTurn)
+            {
+                StartCoroutine(EnemyMoveEndTurn());
+            }
+        }
+
+        private IEnumerator EnemyMoveEndTurn()
+        {
+            _textPanel.SetActive(true);
+            var pokemon = _battle.WildPokemon ?? _battle.OpponentPokemon;
+            var move = _battle.PickRandomMove(_battle.WildPokemon) ??
+                       _battle.PickRandomMove(_battle.OpponentPokemon); ;
+            yield return UseAttack(pokemon, _battle.PlayerPokemon, move);
+            yield return LowerPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
+            if (_battle.PlayerPokemon.Fainted)
+            {
+                yield return EndBattle(_battle.PlayerPokemon);
+            }
+            _textPanel.SetActive(false);
+            _mainPanel.SetActive(true);
         }
 
         public void ShowItems()
@@ -356,10 +409,10 @@ namespace Assets.Scripts
             }
         }
 
-        private IEnumerator SwitchIconSprites(int counter)
+        private IEnumerator SwitchIconSprites(int counter, int pokemonId)
         {
             var count = 0;
-            var sprites = Resources.LoadAll<Sprite>("PokemonIcons/icon" + (counter + 1).ToString("000"));
+            var sprites = Resources.LoadAll<Sprite>("PokemonIcons/icon" + pokemonId.ToString("000"));
             yield return sprites;
             while (_pokemonPanel.activeSelf)
             { 
@@ -378,7 +431,7 @@ namespace Assets.Scripts
             while (bar.size > newValue)
             {
                 bar.size = bar.size - 0.01f;
-                text.text = (int)(maxhp * bar.size) + " / " + maxhp;
+                text.text = (int)Mathf.Ceil(maxhp * bar.size) + " / " + maxhp;
                 if (bar.size < 0.1f)
                 {
                     bar.gameObject.transform.Find("Sliding Area").transform.Find("Handle").gameObject
@@ -412,6 +465,7 @@ namespace Assets.Scripts
                 pokemonTransform.localPosition += new Vector3(0, -50, 0);
                 yield return new WaitForSeconds(0.001f);
             }
+            //TODO GET NEW POKEMON?!?!?!
         }
 
         private IEnumerator GetExp(Pokemon defeaded, Pokemon winner)
@@ -428,6 +482,11 @@ namespace Assets.Scripts
                 exp = _battle.LevelUpCheck(exp, winner);
             }
             yield return null;
+        }
+
+        public void SetPokemonSwitchTurn(bool value)
+        {
+            _PokemonSwitchTurn = value;
         }
     }
 }
