@@ -49,6 +49,8 @@ namespace Assets.Scripts
             var playerpokemon = new Pokemon(type1, movelist1, 15, 4, "Dubbleup", false, 11, 80, 100, 100, false, 15, 11, 9, 50, 10);
             var playerpokemon2 = new Pokemon(type3, movelist2, 2982 , 8, "Pikkie", false, 12, 110, 110, 6, false ,10, 10, 10, 25, 10);
             var playerpokemon3 = new Pokemon(type3, movelist2, 2982 , 8, "DikkieDik", false, 12, 110, 110, 6, true ,10, 10, 10, 25, 10);
+            
+            var pokeball = new Pokeball(1, "Pokeball", 200, "JUST A FCKING POKEBALL BRO", 22);
 
             var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon> { playerpokemon, playerpokemon2, playerpokemon3}, 50, 5, null);
             var battle = new Battle(player, wildpokemon);
@@ -176,7 +178,7 @@ namespace Assets.Scripts
             {
                 yield return PokemonFainted(_EnemyPanel);
             }
-            //TODO NO! GET NEW POKEMON?!?!?
+            //TODO NO! GET NEW POKEMON?!?!? do before each end battle
             yield return EndBattle(pokemon);
         }
 
@@ -308,17 +310,7 @@ namespace Assets.Scripts
             }
             else
             {
-                var pokemon = _battle.WildPokemon ?? _battle.OpponentPokemon;
-                var move = _battle.PickRandomMove(_battle.WildPokemon) ??
-                             _battle.PickRandomMove(_battle.OpponentPokemon); ;
-                yield return UseAttack(pokemon, _battle.PlayerPokemon, move);
-                yield return LowerPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
-                if (_battle.PlayerPokemon.Fainted)
-                {
-                    yield return EndBattle(_battle.PlayerPokemon);
-                }
-                _textPanel.SetActive(false);
-                _mainPanel.SetActive(true);
+                yield return EnemyMoveEndTurn();
             }
 
         }
@@ -343,7 +335,7 @@ namespace Assets.Scripts
                     {
                         button.GetComponent<Image>().color = pokemon.Id == _battle.PlayerPokemon.Id ? Color.blue : new Color(1,1,1,1);
                     }
-                    
+                
 
                 }
                 catch (ArgumentOutOfRangeException)
@@ -387,6 +379,7 @@ namespace Assets.Scripts
             {
                 Destroy(i.gameObject);
             }
+            var t = _battle.Player.GetInventory();//TODO
             var itemList = new List<Item>();//TODO
             _itemContent.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 300 + 100 * itemList.Count);
             for (var i = 0; i < itemList.Count; i++)
