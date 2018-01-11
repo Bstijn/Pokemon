@@ -189,5 +189,9 @@ namespace Classes.Repos
         {
             context.InsertIntro(pokemonID, naam, gender);
         }
+        public void InsertPokemon(int lvl, int pokedexPokemonId,int? Partyid)
+        {
+            context.InsertPokemon(lvl, pokedexPokemonId, Partyid);
+        }
     }
 }

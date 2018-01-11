@@ -299,19 +299,19 @@ namespace DAL_Remake.SQLContexts
             return false;
         }
 
-      
+
 
 
         private DataTable selectMovesintroPokemon(int pokemonID)
         {
             string query = "select maxpp, id from PokedexMove where id in (select PokedexMoveID from PokemonMove where PokedexPokemonId = " + pokemonID.ToString() + "  and minlvl< 5)";
 
-            
+
             DataTable dt = new DataTable();
-            using(SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
                 adapter.Fill(dt);
-                
+
             }
             return dt;
         }
@@ -320,8 +320,8 @@ namespace DAL_Remake.SQLContexts
         public void InsertIntro(int pokemonID, string CharacterName, string Gender)
         {
             DataTable dt = selectMovesintroPokemon(pokemonID);
-            
-            if(dt.Rows[0].ItemArray[0] == null)
+
+            if (dt.Rows[0].ItemArray[0] == null)
             {
                 throw new NotImplementedException();
             }
@@ -359,5 +359,45 @@ namespace DAL_Remake.SQLContexts
                 }
             }
         }
+
+        public void InsertPokemon(int lvl, int pokedexPokemonID, int? inparty)
+        {
+            string queryGetMoves = "select maxpp, id from PokedexMove where id in (select PokedexMoveID from PokemonMove where PokedexPokemonId = @PokedexPokemonID  and minlvl<@lvl)";
+            SqliteCommand cmdGetMoves = new SqliteCommand(queryGetMoves);
+            cmdGetMoves.Parameters.Add(new SqliteParameter("@lvl", lvl));
+            cmdGetMoves.Parameters.Add(new SqliteParameter("@PokedexPokemonID", pokedexPokemonID));
+            cmdGetMoves.Connection = connection;
+            DataTable dt = new DataTable();
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(cmdGetMoves))
+            {
+                adapter.Fill(dt);
+            }
+            SqliteCommand PokemonInsertCmd = new SqliteCommand("insert into Pokemon(CharacterId, PokedexPokemonID, Inparty, CurrentHP, MaxHp, XP, Attack, Defense, Level, Speed) " +
+                "Values((select id from Character as c  inner join Player as p on p.PlayerID = c.ID)" +
+                ", @PokedexPokemonID" +
+                ", @inparty" +
+                ", (select BaseHP + HPGrowthPL * @lvl from PokedexPokemon where ID = @PokedexPokemonID)" +
+                ", (select BaseHP + HPGrowthPL * @lvl from PokedexPokemon where ID = @PokedexPokemonID)" +
+                ", 0" +
+                ", (select BaseAttack + AttackGrowthPL * @lvl from PokedexPokemon where ID = @PokedexPokemonID)" +
+                ", (select BaseDefense + DefenseGrowthPL * @lvl from PokedexPokemon where ID = @PokedexPokemonID)" +
+                ", @lvl" +
+                ",(select BaseSpeed + SpeedGrowthPL * @lvl from PokedexPokemon where ID = @PokedexPokemonID))", connection);
+            PokemonInsertCmd.Parameters.Add(new SqliteParameter("@PokedexPokemonID", pokedexPokemonID));
+            PokemonInsertCmd.Parameters.Add(new SqliteParameter("@inparty", inparty));
+            PokemonInsertCmd.Parameters.Add(new SqliteParameter("@lvl", lvl));
+            using (connection)
+            {
+                PokemonInsertCmd.ExecuteNonQuery();
+                int i = 0;
+                foreach (DataRow r in dt.Rows)
+                {
+                    if (i < 3)
+                    {
+                        i++;
+                        new SqliteCommand("insert into Move (PokemonID,PMID,CurrentPP) values ((select Max(id) from Pokemon)," + r.ItemArray[1].ToString() + "," + r.ItemArray[0].ToString() + ")", connection).ExecuteNonQuery();
+                    }
+                }
+            }
     }
 }
