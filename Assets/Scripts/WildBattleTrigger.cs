@@ -4,12 +4,12 @@ using CType = Classes.Type;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Assets.Scripts;
+using System.Collections;
 
 public class WildBattleTrigger : MonoBehaviour {
 
     public float EncounterRate;
     Area location;
-
     //DB -> Pokémon
     private void Start()
     {
@@ -58,7 +58,22 @@ public class WildBattleTrigger : MonoBehaviour {
         var player = FindObjectOfType<Player>().player;
         player.Pokemons.Add(playerpokemon);
 
-        SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
+        StartCoroutine("LoadAsyncBattle");
         FindObjectOfType<BattleConroller>().LoadBattle(player, wildpokemon);
+    }
+
+    IEnumerator LoadAsyncBattle()
+    {
+        GameController.instance.EnableLoadingScreen(true);
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        //This is particularly good for creating loading screens. You could also load the Scene by build //number.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Battle", LoadSceneMode.Additive);
+
+        //Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        GameController.instance.EnableLoadingScreen(false);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Classes.Repos;
 using Classes;
 using UnityEngine;
+using System.Collections;
 
 public class GameController : MonoBehaviour {
 
@@ -10,9 +11,15 @@ public class GameController : MonoBehaviour {
     public bool surfEnabled;
 
     Classes.Player dummy;
+
+    public GameObject loadingScreen;
+    //public GameObject loadingEventSystem;
     //LocationRepository repo;
     string checkDir;
     public SurfEnabler surfEnabler;
+
+    public GameObject load;
+    int frame;
     void Awake()
     {
         //If we don't currently have a game control...
@@ -30,7 +37,7 @@ public class GameController : MonoBehaviour {
         }
         else
         {
-            Instantiate(Red, new Vector3(9.5f, 5.5f, -1f), new Quaternion());
+            StartCoroutine("InstantiateStuff");
         }
     }
 
@@ -67,5 +74,28 @@ public class GameController : MonoBehaviour {
                 }
             }
         }
+
+        if (frame <= 25)
+        {
+            frame++;
+        }
+    }
+
+    IEnumerator InstantiateStuff()
+    {
+        frame = 0;
+        Instantiate(Red, new Vector3(9.5f, 5.5f, -1f), new Quaternion());
+        load = Instantiate(loadingScreen);
+        //GameObject eventsys = Instantiate(loadingEventSystem);
+        yield return new WaitUntil(() => frame >= 25);
+        EnableLoadingScreen(false);
+        //eventsys.SetActive(false);
+        DontDestroyOnLoad(load);
+        //DontDestroyOnLoad(eventsys);
+    }
+
+    public void EnableLoadingScreen(bool enable)
+    {
+        load.SetActive(enable);
     }
 }
