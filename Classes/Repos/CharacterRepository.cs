@@ -190,6 +190,18 @@ namespace Classes.Repos
             return null;
         }
 
+        internal void UpdatePokemons(List<Pokemon> pokemons)
+        {
+            foreach(Pokemon pokemon in pokemons)
+            {
+                context.UpdatePokemon(pokemon);
+                foreach(Move move in pokemon.GetMoves())
+                {
+                    context.UpdateMove(move, pokemon);
+                }
+            }
+        }
+
         public void InsertIntro(int pokemonID, string naam, string gender)
         {
             context.InsertIntro(pokemonID, naam, gender);

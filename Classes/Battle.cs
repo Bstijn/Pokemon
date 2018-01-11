@@ -179,5 +179,10 @@ namespace Classes
             }
             return specificItemsList;
         }
+
+        public void UpdatePokemon()
+        {
+            Player.UpdatePokemons();
+        }
     }
 }

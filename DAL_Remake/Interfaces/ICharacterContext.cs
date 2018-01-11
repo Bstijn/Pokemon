@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Classes;
 
 namespace DAL_Remake.Interfaces
 {
@@ -28,5 +29,7 @@ namespace DAL_Remake.Interfaces
 
         void InsertIntro(int pokemonID, string CharacterName, string Gender);
         void InsertPokemon(int lvl, int pokedexPokemonID, int? inparty);
+        void UpdatePokemon(Pokemon pokemon);
+        void UpdateMove(Move move, Pokemon pokemon);
     }
 }

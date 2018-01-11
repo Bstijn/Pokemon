@@ -190,6 +190,12 @@ namespace Classes
         {
             //TODO IMPLEMENTEREN JOEL POSSESION
         }
+
+        public void UpdatePokemons()
+        {
+            characterrepo.UpdatePokemons(this.Pokemons);
+        }
+
         public void GiveMoney(int amount)
         {
             Money += amount;
