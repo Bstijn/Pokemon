@@ -5,13 +5,15 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System;
+using UnityEngine;
 
 namespace DAL_Remake.SQLContexts
 {
     public class CharacterContext : ICharacterContext
     {
         private SqliteConnection connection;
-        private readonly string connectionString = @"Data Source=Assets/DBProftaak.db;Version=3;";
+        private readonly string connectionString = @"Data Source =" + @Application.dataPath + @"\DBProftaak.db;Version=3; ";
+
 
         public CharacterContext()
         {
@@ -299,9 +301,11 @@ namespace DAL_Remake.SQLContexts
 
       
 
-        private DataTable selectMovesintroPokemon()
+
+        private DataTable selectMovesintroPokemon(int pokemonID)
         {
-            string query = "select maxpp, id from PokedexMove where id in (select PokedexMoveID from PokemonMove where PokedexPokemonId =( select PokedexPokemonID from pokemon where id =(select max(id) from Pokemon)) and PokemonMove.minlvl < 5)";
+            string query = "select maxpp, id from PokedexMove where id in (select PokedexMoveID from PokemonMove where PokedexPokemonId = " + pokemonID.ToString() + "  and minlvl< 5)";
+
             
             DataTable dt = new DataTable();
             using(SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
@@ -315,16 +319,21 @@ namespace DAL_Remake.SQLContexts
 
         public void InsertIntro(int pokemonID, string CharacterName, string Gender)
         {
-            DataTable dt = selectMovesintroPokemon();
+            DataTable dt = selectMovesintroPokemon(pokemonID);
+            
+            if(dt.Rows[0].ItemArray[0] == null)
+            {
+                throw new NotImplementedException();
+            }
             string query = "insert into Character (gender, Name,Money) values (@gender,@name,@money)";
             SqliteCommand insercharactercmd = new SqliteCommand(query, connection);
             insercharactercmd.Parameters.Add(new SqliteParameter("@gender", Gender));
             insercharactercmd.Parameters.Add(new SqliteParameter("@name", CharacterName));
             insercharactercmd.Parameters.Add(new SqliteParameter("@money", 2000));
-            SqliteCommand playercmd = new SqliteCommand("insert into Player(PlayerId, wins, losses) values((select id from Character where Name = '@name'), 0, 0))", connection);
+            SqliteCommand playercmd = new SqliteCommand("insert into Player(PlayerId, wins, losses) values((select Max(id) from Character), 0, 0)", connection);
             playercmd.Parameters.Add(new SqliteParameter("@name", CharacterName));
             SqliteCommand pokemonInsertCmd = new SqliteCommand("insert into Pokemon (CharacterId,PokedexPokemonID, Inparty, CurrentHP, MaxHp, XP, Attack, Defense, Level, Speed) " +
-                "Values ((select id from Character where Name = '@name')," +
+                "Values ((select Max(id) from Character)," +
                 " @PokedexPokemonID" +
                 ", 1" +
                 ", (select BaseHP + HPGrowthPL * 5 from PokedexPokemon where ID = @PokedexPokemonID)" +
@@ -342,8 +351,8 @@ namespace DAL_Remake.SQLContexts
             {
                 connection.Open();
                 insercharactercmd.ExecuteNonQuery();
-                pokemonInsertCmd.ExecuteNonQuery();
                 playercmd.ExecuteNonQuery();
+                pokemonInsertCmd.ExecuteNonQuery();
                 foreach (DataRow r in dt.Rows)
                 {
                     new SqliteCommand("insert into Move (PokemonID,PMID,CurrentPP) values ((select Max(id) from Pokemon)," + r.ItemArray[1].ToString() + "," + r.ItemArray[0].ToString() + ")", connection).ExecuteNonQuery();

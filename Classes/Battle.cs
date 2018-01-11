@@ -164,5 +164,19 @@ namespace Classes
                 Player.Pokemons.Insert(index1, pokemon2);
             }
         }
+
+        public List<Possesion> GetSpecificItem(System.Type type)
+        {
+            List<Possesion> specificItemsList = new List<Possesion>();
+            foreach(Possesion pos in Player.Inventory)
+            {
+                if(pos.Item.GetType() == type)
+                {
+                    specificItemsList.Add(pos);
+                }
+                
+            }
+            return specificItemsList;
+        }
     }
 }
