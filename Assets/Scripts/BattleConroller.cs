@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 using Classes;
@@ -50,12 +51,16 @@ namespace Assets.Scripts
             var playerpokemon2 = new Pokemon(type3, movelist2, 2982 , 8, "Pikkie", false, 12, 110, 110, 6, false ,10, 10, 10, 25, 10);
             var playerpokemon3 = new Pokemon(type3, movelist2, 2982 , 8, "DikkieDik", false, 12, 110, 110, 6, true ,10, 10, 10, 25, 10);
             
-            var pokeball = new Pokeball(1, "Pokeball", 200, "JUST A FCKING POKEBALL BRO", 20);
-            var pokeball2 = new Pokeball(2, "Greatball", 200, "THIS THING IS FUCKING GREAT!", 40);
+            var pokeball = new Possesion(5, new Pokeball(1, "Pokeball", 200, "JUST A FCKING POKEBALL BRO", 20));
+            var pokeball2 = new Possesion(9, new Pokeball(2, "Greatball", 200, "THIS THING IS FUCKING GREAT!", 40));
 
-            var potion = new Potion();
+            var potion = new Possesion(28, new Potion(3, "fuking potion", 12, "fdsaods", 25));
+            var potion2 = new Possesion(2, new Potion(4, "fuking cool potion", 1234, "dojidsads", 40));
 
-            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon> { playerpokemon, playerpokemon2, playerpokemon3}, 50, 5, null);
+            var revive = new Possesion(4, new Revive(5, "fcking revive", 12345678, "uygradfbinjk", 50));
+            var itemlist = new List<Possesion>(){ pokeball, pokeball2, potion, potion2, revive };
+
+            var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, itemlist, new List<Pokemon> { playerpokemon, playerpokemon2, playerpokemon3}, 50, 5, null);
             var battle = new Battle(player, wildpokemon);
             CreateNewBattle(battle);
         }

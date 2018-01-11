@@ -74,9 +74,13 @@ public class IntroController : MonoBehaviour
             }
             else
             {
-                dialogue.text = "Are you a boy or a grill";
-                dialogue.fontSize = 28;
-                BoyOrGirlUI.SetActive(true);
+                if (gender == null)
+                {
+                    dialogue.text = "Are you a boy or a grill";
+                    dialogue.fontSize = 28;
+                    BoyOrGirlUI.SetActive(true);
+
+                }
             }
         }
     }
