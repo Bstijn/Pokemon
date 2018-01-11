@@ -24,5 +24,10 @@ namespace Classes
         {
             return AvailablePokemons[random.Next(AvailablePokemons.Count - 1)];
         }
+
+        public void FixEncounterablePokemon(int locationID)
+        {
+            AvailablePokemons = repo.GetEncounterablePokemon(locationID);
+        }
     }
 }

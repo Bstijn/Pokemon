@@ -146,15 +146,17 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetEncounterablePokemon(int locationID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select p.id, pp.name, p.inParty, p.level, p.currentHp, p.maxHp, p.xp, p.attack, p.defense, p.speed, pp.evolveLevel, pp.captureRate " +
-                                    "from pokemon p, pokedexpokemon pp, pokemonlocation pl, area a " +
-                                    "where p.pokedexpokemonID = pp.ID " +
-                                    "and pp.ID = pl.pokedexpokemonID " +
-                                    "and pl.areaID = a.ID " +
-                                    "and a.ID = @LocationID";
+            string query = "select * from PokedexPokemon as p " +
+                "inner join PokemonLocation as PL on pl.PokedexPokemonID = p.ID " +
+                "inner join Location as l on l.ID = pl.AreaID " +
+                "where l.id = @characterID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);

@@ -20,11 +20,11 @@ public class WildBattleTrigger : MonoBehaviour {
 
     private void Awake()
     {
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        location.FixEncounterablePokemon(FindObjectOfType<Player>().GetCurrentLocation().Id);
         int roll = Random.Range(0, 100);
         if (roll < EncounterRate)
         {

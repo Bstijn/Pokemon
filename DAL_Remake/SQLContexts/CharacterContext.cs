@@ -452,5 +452,10 @@ namespace DAL_Remake.SQLContexts
             }
             return data;
         }
+
+        public object[] Load()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

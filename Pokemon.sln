@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon", "Pokemon.csproj", "{2BA0E587-8DE9-DE32-9A64-88C1A25CDF35}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon.Editor", "Pokemon.Editor.csproj", "{A81D38D4-925A-7054-4953-AE8DA23F2988}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Remake", "DAL_Remake\DAL_Remake.csproj", "{5CEF3C99-6E7A-406D-9C11-ED9BEA5798B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{564DA5AA-C690-4456-A107-0C2824E0292E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,11 +27,12 @@ Global
 		{5CEF3C99-6E7A-406D-9C11-ED9BEA5798B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CEF3C99-6E7A-406D-9C11-ED9BEA5798B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CEF3C99-6E7A-406D-9C11-ED9BEA5798B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{564DA5AA-C690-4456-A107-0C2824E0292E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{564DA5AA-C690-4456-A107-0C2824E0292E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{564DA5AA-C690-4456-A107-0C2824E0292E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{564DA5AA-C690-4456-A107-0C2824E0292E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2771962A-7555-4168-88F8-3D0F5FEF8618}
 	EndGlobalSection
 EndGlobal

@@ -21,7 +21,7 @@ namespace DAL_Remake.Interfaces
         object[] GetPokemonType(int pokemonID);
 
         List<object[]> GetDialogues(int characterID);
-
+        object[] Load();
         object[] GetCurrentLocation(int characterID);
 
         string GetLocationType(int locationID);
