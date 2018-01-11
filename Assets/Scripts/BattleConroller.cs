@@ -51,13 +51,13 @@ namespace Assets.Scripts
             var playerpokemon2 = new Pokemon(type3, movelist2, 2982 , 8, "Pikkie", false, 12, 110, 110, 6, false ,10, 10, 10, 25, 10);
             var playerpokemon3 = new Pokemon(type3, movelist2, 2982 , 8, "DikkieDik", false, 12, 110, 110, 6, true ,10, 10, 10, 25, 10);
             
-            var pokeball = new Possesion(5, new Pokeball(1, "Pokeball", 200, "JUST A FCKING POKEBALL BRO", 20));
-            var pokeball2 = new Possesion(9, new Pokeball(2, "Greatball", 200, "THIS THING IS FUCKING GREAT!", 40));
+            var pokeball = new Possesion(5, new Pokeball(5, "Pokeball", 200, "JUST A FCKING POKEBALL BRO", 20));
+            var pokeball2 = new Possesion(9, new Pokeball(6, "Greatball", 200, "THIS THING IS FUCKING GREAT!", 40));
 
-            var potion = new Possesion(28, new Potion(3, "fuking potion", 12, "fdsaods", 25));
-            var potion2 = new Possesion(2, new Potion(4, "fuking cool potion", 1234, "dojidsads", 40));
+            var potion = new Possesion(28, new Potion(1, "fuking potion", 12, "fdsaods", 25));
+            var potion2 = new Possesion(2, new Potion(2, "fuking cool potion", 1234, "dojidsads", 40));
 
-            var revive = new Possesion(4, new Revive(5, "fcking revive", 12345678, "uygradfbinjk", 50));
+            var revive = new Possesion(4, new Revive(4, "fcking revive", 12345678, "uygradfbinjk", 50));
             var itemlist = new List<Possesion>(){ pokeball, pokeball2, potion, potion2, revive };
 
             var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, itemlist, new List<Pokemon> { playerpokemon, playerpokemon2, playerpokemon3}, 50, 5, null);
@@ -381,16 +381,30 @@ namespace Assets.Scripts
             _mainPanel.SetActive(true);
         }
 
-        public void ShowItems()
+        public void ShowItems(string type)
         {
+            var possesionList = new List<Possesion>();
+            switch (type)
+            {
+                case "Pokeball":
+                    possesionList = _battle.GetSpecificItem(typeof(Pokeball));
+                    break;
+                case "Potion":
+                    possesionList = _battle.GetSpecificItem(typeof(Potion));
+                    break;
+                case "Revive":
+                    possesionList = _battle.GetSpecificItem(typeof(Revive));
+                    break;
+                default:
+                    return;
+            }
             foreach (Transform i in _itemContent.transform)
             {
                 Destroy(i.gameObject);
             }
-            var t = _battle.Player.GetInventory();//TODO
-            var itemList = new List<Item>();//TODO
-            _itemContent.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 300 + 100 * itemList.Count);
-            for (var i = 0; i < itemList.Count; i++)
+            
+            _itemContent.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 300 + 100 * possesionList.Count);
+            for (var i = 0; i < possesionList.Count; i++)
             {
                 var button = Instantiate(_itemButton, _itemContent.transform);
                 var y = -200 - i * 100;
@@ -404,10 +418,73 @@ namespace Assets.Scripts
                     x = 400;
                 }
                 button.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(x, y, 0);
-                var sprites = Resources.LoadAll<Sprite>("ItemIcon/item" + itemList[i].Id.ToString("000"));//TODO items
+                var sprites = Resources.LoadAll<Sprite>("Items/item" + possesionList[i].Item.Id.ToString("000"));
                 button.transform.Find("Image").gameObject.GetComponent<Image>().sprite = sprites[0];
-                button.transform.Find("Text").gameObject.GetComponent<Text>().text = "DummyText";
+                button.transform.Find("Text").gameObject.GetComponent<Text>().text = possesionList[i].Item.Name + "\n (" + possesionList[i].Quantity + "x)";
+                var posession = possesionList[i];
+                button.GetComponent<Button>().onClick.AddListener(() => { HideObject(button.transform.parent.parent.parent.parent.gameObject);UseItem(posession);});
             }
+        }
+
+        private void UseItem(Possesion possesion)
+        {
+            if (possesion.Item is Potion)
+            {
+                StartCoroutine(PotionTurn((Potion) possesion.Item));
+            } else if (possesion.Item is Pokeball)
+            {
+                StartCoroutine(PokeballTurn((Pokeball) possesion.Item));
+            }
+        }
+
+        private IEnumerator PokeballTurn(Pokeball pokeball)
+        {
+            var succes = _battle.UseItem(pokeball, _battle.WildPokemon ?? _battle.OpponentPokemon);
+            if (succes)
+            {
+                //TODO pokemon caught
+
+            }
+            else
+            {
+                yield return EnemyMoveEndTurn();
+            }
+
+        }
+
+        private IEnumerator PotionTurn(Potion potion)
+        {
+            _battle.UseItem(potion, _battle.PlayerPokemon);
+            yield return UpPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
+            yield return EnemyMoveEndTurn();
+        }
+        private IEnumerator UpPokemonHp(GameObject panel, int currenthp, int maxhp)
+        {
+            var newValue = currenthp / (float)maxhp;
+            var bar = panel.transform.Find("Stats").transform.Find("HpBar").gameObject.GetComponent<Scrollbar>();
+            var text = panel.transform.Find("Stats").transform.Find("HpText").gameObject.GetComponent<Text>();
+            while (bar.size < newValue)
+            {
+                bar.size = bar.size + 0.01f;
+                text.text = (int)Mathf.Ceil(maxhp * bar.size) + " / " + maxhp;
+                if (bar.size < 0.1f)
+                {
+                    bar.gameObject.transform.Find("Sliding Area").transform.Find("Handle").gameObject
+                        .GetComponent<Image>().color = Color.red;
+                }
+                else if (bar.size < 0.5f)
+                {
+                    bar.gameObject.transform.Find("Sliding Area").transform.Find("Handle").gameObject
+                        .GetComponent<Image>().color = new Color(0.96f, 0.76f, 0.26f);
+                }
+                else
+                {
+                    bar.gameObject.transform.Find("Sliding Area").transform.Find("Handle").gameObject
+                        .GetComponent<Image>().color = Color.green;
+                }
+                yield return new WaitForSeconds(0.05f);
+            }
+            text.text = currenthp + " / " + maxhp;
         }
 
         private IEnumerator SwitchIconSprites(int counter, int pokemonId)
