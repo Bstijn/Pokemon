@@ -116,14 +116,17 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Classes">
+ <HintPath>C:/Users/stijn/Desktop/pokemonProject/Pokemon/Pokemon/Assets/Plugins/Classes.dll</HintPath>
+ </Reference>
+ <Reference Include="DAL_Remake">
+ <HintPath>C:/Users/stijn/Desktop/pokemonProject/Pokemon/Pokemon/Assets/Plugins/DAL_Remake.dll</HintPath>
+ </Reference>
  <Reference Include="Mono.Data.Sqlite">
- <HintPath>C:/Users/stijn/Desktop/pokemonProject/Pokemon/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ <HintPath>C:/Users/stijn/Desktop/pokemonProject/Pokemon/Pokemon/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
  </Reference>
  <Reference Include="System.Data">
- <HintPath>C:/Users/stijn/Desktop/pokemonProject/Pokemon/Assets/Plugins/System.Data.dll</HintPath>
- </Reference>
- <Reference Include="Classes">
- <HintPath>C:/Users/stijn/Desktop/pokemonProject/Pokemon/Assets/Scripts/librarys/Classes/Classes.dll</HintPath>
+ <HintPath>C:/Users/stijn/Desktop/pokemonProject/Pokemon/Pokemon/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Users/stijn/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@1.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
