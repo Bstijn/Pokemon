@@ -294,6 +294,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ApplicationModel.cs" />
     <Compile Include="Assets\Scripts\BattleConroller.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\IntroController.cs" />

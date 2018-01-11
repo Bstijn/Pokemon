@@ -58,8 +58,8 @@ public class WildBattleTrigger : MonoBehaviour {
         var player = FindObjectOfType<Player>().player;
         player.Pokemons.Add(playerpokemon);
 
+        ApplicationModel.battle = new Battle(player, wildpokemon);
         StartCoroutine("LoadAsyncBattle");
-        FindObjectOfType<BattleConroller>().LoadBattle(player, wildpokemon);
     }
 
     IEnumerator LoadAsyncBattle()
