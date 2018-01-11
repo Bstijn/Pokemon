@@ -50,7 +50,10 @@ namespace Assets.Scripts
             var playerpokemon2 = new Pokemon(type3, movelist2, 2982 , 8, "Pikkie", false, 12, 110, 110, 6, false ,10, 10, 10, 25, 10);
             var playerpokemon3 = new Pokemon(type3, movelist2, 2982 , 8, "DikkieDik", false, 12, 110, 110, 6, true ,10, 10, 10, 25, 10);
             
-            var pokeball = new Pokeball(1, "Pokeball", 200, "JUST A FCKING POKEBALL BRO", 22);
+            var pokeball = new Pokeball(1, "Pokeball", 200, "JUST A FCKING POKEBALL BRO", 20);
+            var pokeball2 = new Pokeball(2, "Greatball", 200, "THIS THING IS FUCKING GREAT!", 40);
+
+            var potion = new Potion();
 
             var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, null, new List<Pokemon> { playerpokemon, playerpokemon2, playerpokemon3}, 50, 5, null);
             var battle = new Battle(player, wildpokemon);
