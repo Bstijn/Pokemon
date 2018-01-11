@@ -16,6 +16,7 @@ namespace DAL_Remake.SQLContexts
         private SqliteConnection connection;
         private readonly string connectionString = @"Data Source =" + @Application.dataPath + @"\DBProftaak.db;Version=3; ";
 
+
         public PokemartContext()
         {
             connection = new SqliteConnection(connectionString);

@@ -14,6 +14,7 @@ namespace DAL_Remake.SQLContexts
         private SqliteConnection connection;
         private readonly string connectionString = @"Data Source =" + @Application.dataPath + @"\DBProftaak.db;Version=3; ";
 
+
         public CharacterContext()
         {
             connection = new SqliteConnection(connectionString);
@@ -300,9 +301,11 @@ namespace DAL_Remake.SQLContexts
 
       
 
+
         private DataTable selectMovesintroPokemon(int pokemonID)
         {
             string query = "select maxpp, id from PokedexMove where id in (select PokedexMoveID from PokemonMove where PokedexPokemonId = " + pokemonID.ToString() + "  and minlvl< 5)";
+
             
             DataTable dt = new DataTable();
             using(SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
