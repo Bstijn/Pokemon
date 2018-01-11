@@ -13,7 +13,7 @@ namespace Classes
     public class Battle
     {
         public Player Player { get; private set; }
-        public Pokemon PlayerPokemon { get; private set; }
+        public Pokemon PlayerPokemon { get; set; }
         public Pokemon WildPokemon { get; private set; }
         public Oppenent Opponent { get; private set; }
         public Pokemon OpponentPokemon { get; private set; }
@@ -39,16 +39,12 @@ namespace Classes
 
         public Pokemon FirstAttack(Pokemon enemyPokemon, Pokemon playerPokemon)
         {
-            if (enemyPokemon.Speed > playerPokemon.Speed)
-            {
-                return enemyPokemon;
-            }
-            return playerPokemon;
+            return enemyPokemon.Speed > playerPokemon.Speed ? enemyPokemon : playerPokemon;
         }
 
         public int Attack(Pokemon attackingPokemon, Pokemon defendingPokemon, Move move)
         {
-            int damageTaken = attackingPokemon.CalculateDamage(move, defendingPokemon);
+            var damageTaken = attackingPokemon.CalculateDamage(move, defendingPokemon);
             defendingPokemon.TakeDamage(damageTaken);
             return damageTaken;
         }
@@ -59,10 +55,7 @@ namespace Classes
                 return WildPokemon;
             if (PlayerPokemon.Fainted)
                 return PlayerPokemon;
-            if (OpponentPokemon.Fainted)
-                return OpponentPokemon;
-            return null;
-
+            return OpponentPokemon.Fainted ? OpponentPokemon : null;
         }
         public bool Flee(Pokemon pokemon)
         {
@@ -85,8 +78,8 @@ namespace Classes
                 return NoPPMove();
             }
             NoPPOnMove:
-            Random random = new Random();
-            int getalNext = random.Next(0, pokemon.GetMoves().Count());
+            var random = new Random();
+            var getalNext = random.Next(0, pokemon.GetMoves().Count());
             if (pokemon.GetMoves()[getalNext].CurrentPP > 0)
             {
                 return pokemon.GetMoves()[getalNext];
@@ -99,16 +92,9 @@ namespace Classes
         /// </summary>
         /// <param name="pokemon">Pokemon to check</param>
         /// <returns>true on no pp</returns>
-        public bool NoPPCheck(Pokemon pokemon) 
+        public bool NoPPCheck(Pokemon pokemon)
         {
-            foreach (Move move in pokemon.GetMoves())
-            {
-                if (move.CurrentPP > 0)
-                {
-                    return false;
-                }
-            }
-            return true;
+            return pokemon.GetMoves().All(move => move.CurrentPP <= 0);
         }
 
         public Move NoPPMove()
@@ -140,9 +126,9 @@ namespace Classes
                 formula1 = ((1.5 * Convert.ToDouble(defeatPokemon.DefeatXp) * Convert.ToDouble(defeatPokemon.Level)) / 5.0);
             }
 
-            double formula2 = Math.Pow(2.0 * Convert.ToDouble(defeatPokemon.Level) + 10.0,2.5) / Math.Pow(defeatPokemon.Level + playerPokemon.Level + 10,2.5);
+            var formula2 = Math.Pow(2.0 * Convert.ToDouble(defeatPokemon.Level) + 10.0,2.5) / Math.Pow(defeatPokemon.Level + playerPokemon.Level + 10,2.5);
 
-            int grantedXp = Convert.ToInt32(formula1 * formula2 + 1.0);
+            var grantedXp = Convert.ToInt32(formula1 * formula2 + 1.0);
 
             return grantedXp;
         }
@@ -153,19 +139,16 @@ namespace Classes
         }
         public int LevelUpCheck(int xp, Pokemon playerPokemon)
         {
-            LevelUpXP levelUpXp = playerPokemon.GetLevelUpXp(playerPokemon.Level);
-            if (levelUpXp.Xp - xp < 0 )
-            {
-                PlayerPokemon.LevelUp(playerPokemon);
-                return xp - levelUpXp.Xp;
-            }
-            return 0;
+            var levelUpXp = playerPokemon.GetLevelUpXp(playerPokemon.Level);
+            if (levelUpXp.Xp - xp >= 0) return 0;
+            PlayerPokemon.LevelUp(playerPokemon);
+            return xp - levelUpXp.Xp;
         }
 
         public void SwitchPokemon(Pokemon pokemon1, Pokemon pokemon2)//switches 2 pokemon of position in the Party.
         {
-            int index1 = Player.Pokemons.IndexOf(pokemon1);
-            int index2 = Player.Pokemons.IndexOf(pokemon2);
+            var index1 = Player.Pokemons.IndexOf(pokemon1);
+            var index2 = Player.Pokemons.IndexOf(pokemon2);
             if (index1 < index2)
             {
                 Player.Pokemons.RemoveAt(index2);
@@ -180,6 +163,20 @@ namespace Classes
                 Player.Pokemons.Remove(pokemon2);
                 Player.Pokemons.Insert(index1, pokemon2);
             }
+        }
+
+        public List<Possesion> GetSpecificItem(System.Type type)
+        {
+            List<Possesion> specificItemsList = new List<Possesion>();
+            foreach(Possesion pos in Player.Inventory)
+            {
+                if(pos.Item.GetType() == type)
+                {
+                    specificItemsList.Add(pos);
+                }
+                
+            }
+            return specificItemsList;
         }
     }
 }

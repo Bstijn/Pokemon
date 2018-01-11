@@ -29,5 +29,6 @@ namespace DAL_Remake.Interfaces
         void InsertIntro(int pokemonID, string CharacterName, string Gender);
         int GetCharacterIDForPlayer();
         object[] GetCharacter(int characterID);
+        void InsertPokemon(int lvl, int pokedexPokemonID, int? inparty);
     }
 }
