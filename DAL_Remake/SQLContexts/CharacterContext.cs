@@ -316,6 +316,24 @@ namespace DAL_Remake.SQLContexts
             return dt;
         }
 
+        private void giveItemsToPlayer()
+        {
+            SqliteCommand giveItemsCmd = new SqliteCommand("insert into Possesion (ItemID, CharacterID, Quantity) values (@ItemId,(select ID from Character inner join Player on ID = PlayerID),@quantity)", connection);
+            List<int> quantitys = new List<int>() {5,2,1,3,5,2,1,1};
+            using (connection)
+            {
+                connection.Open();
+                for (int i = 0; i < quantitys.Count; i++)
+                {
+                    giveItemsCmd.Parameters.Clear();
+                    giveItemsCmd.Parameters.Add(new SqliteParameter("@ItemId", i + 1));
+                    giveItemsCmd.Parameters.Add(new SqliteParameter("@quantity", quantitys[i]));
+                    giveItemsCmd.ExecuteNonQuery();
+                }
+            }
+            
+        }
+
 
         public void InsertIntro(int pokemonID, string CharacterName, string Gender)
         {
@@ -358,6 +376,7 @@ namespace DAL_Remake.SQLContexts
                     new SqliteCommand("insert into Move (PokemonID,PMID,CurrentPP) values ((select Max(id) from Pokemon)," + r.ItemArray[1].ToString() + "," + r.ItemArray[0].ToString() + ")", connection).ExecuteNonQuery();
                 }
             }
+            giveItemsToPlayer();
         }
 
         public void InsertPokemon(int lvl, int pokedexPokemonID, int? inparty)
@@ -388,6 +407,7 @@ namespace DAL_Remake.SQLContexts
             PokemonInsertCmd.Parameters.Add(new SqliteParameter("@lvl", lvl));
             using (connection)
             {
+                connection.Open();
                 PokemonInsertCmd.ExecuteNonQuery();
                 int i = 0;
                 foreach (DataRow r in dt.Rows)
@@ -399,5 +419,6 @@ namespace DAL_Remake.SQLContexts
                     }
                 }
             }
+        }
     }
 }
