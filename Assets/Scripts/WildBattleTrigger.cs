@@ -13,8 +13,8 @@ public class WildBattleTrigger : MonoBehaviour {
     //DB -> Pokémon
     private void Start()
     {
-        //EncounterRate = GameController.instance.encounterRate;
-        //location = FindObjectOfType<Player>().GetCurrentLocation() as Area;
+        EncounterRate = GameController.instance.encounterRate;
+        location = FindObjectOfType<Player>().GetCurrentLocation() as Area;
     }
 
 
