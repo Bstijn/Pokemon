@@ -222,25 +222,29 @@ namespace Assets.Scripts
             _mainPanel.SetActive(true);
         }
 
-        public IEnumerator EndBattle(Pokemon pokemon)
+        public IEnumerator EndBattle(Pokemon pokemon, bool pokemonCatch = false)
         {
-            if (pokemon.Id == _battle.PlayerPokemon.Id)
+            if (!pokemonCatch)
             {
-                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
-                    pokemon.Name + " has fainted.";
-                yield return WaitForInput();
-                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text +=
-                    "\nYou lost the battle.";
+                if (pokemon.Id == _battle.PlayerPokemon.Id)
+                {
+                    _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                        pokemon.Name + " has fainted.";
+                    yield return WaitForInput();
+                    _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text +=
+                        "\nYou lost the battle.";
+                }
+                else
+                {
+                    _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                        pokemon.Name + " has fainted.";
+                    yield return WaitForInput();
+                    _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text +=
+                        "\nYou won the battle.";
+                    yield return WaitForInput();
+                }
             }
-            else
-            {
-                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
-                    pokemon.Name + " has fainted.";
-                yield return WaitForInput();
-                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text +=
-                   "\nYou won the battle.";
-            }
-            yield return WaitForInput();
+            
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = false;
             SceneManager.UnloadSceneAsync("Battle");
         }
@@ -375,6 +379,7 @@ namespace Assets.Scripts
             yield return LowerPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
             if (_battle.PlayerPokemon.Fainted)
             {
+                //TODO UWW NO DIS NOT WORK
                 yield return EndBattle(_battle.PlayerPokemon);
             }
             _textPanel.SetActive(false);
@@ -439,14 +444,20 @@ namespace Assets.Scripts
 
         private IEnumerator PokeballTurn(Pokeball pokeball)
         {
-            var succes = _battle.UseItem(pokeball, _battle.WildPokemon ?? _battle.OpponentPokemon);
+            var succes = _battle.UseItem(pokeball, _battle.WildPokemon);
+            _textPanel.SetActive(true);
             if (succes)
             {
-                //TODO pokemon caught
-
+                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                    "You caught " + _battle.WildPokemon.Name + "!\nI hope you are happy";
+                _battle.Player.CatchPokemon(_battle.WildPokemon);
+                yield return WaitForInput();
             }
             else
             {
+                _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text =
+                    "You failed.\nJust like the rest of your life!";
+                yield return WaitForInput();
                 yield return EnemyMoveEndTurn();
             }
 
@@ -454,8 +465,12 @@ namespace Assets.Scripts
 
         private IEnumerator PotionTurn(Potion potion)
         {
+            _textPanel.SetActive(true);
+            var amount = Mathf.Clamp(potion.HealAmount, 0, _battle.PlayerPokemon.MaxHp - _battle.PlayerPokemon.CurrentHp);
+            _textPanel.transform.Find("Text").gameObject.GetComponent<Text>().text = "You used " + potion.Name + ".\nIt heals " + amount + " hp.";
             _battle.UseItem(potion, _battle.PlayerPokemon);
             yield return UpPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
+            yield return WaitForInput();
             yield return EnemyMoveEndTurn();
         }
         private IEnumerator UpPokemonHp(GameObject panel, int currenthp, int maxhp)
