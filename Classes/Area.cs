@@ -16,17 +16,8 @@ namespace Classes
             MinLevel = minLevel;
             MaxLevel = maxLevel;
             EncounterChance = encounterChance;
-            AvailablePokemons = availablePokemons;
+            AvailablePokemons = repo.GetEncounterablePokemon(id);
             random = new Random();
-        }
-
-        public bool EncounterPokemon()
-        {
-            if(random.Next(100) < EncounterChance * 100)
-            {
-                return true;
-            }
-            return false;
         }
 
         public Pokemon GenerateBattle()

@@ -359,5 +359,39 @@ namespace DAL_Remake.SQLContexts
                 }
             }
         }
+
+        public int GetCharacterIDForPlayer()
+        {
+            int data;
+            string query = "SELECT Character.ID " +
+                            "FROM Character INNER JOIN Player " +
+                            "ON Character.ID = Player.PlayerID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = Convert.ToInt32(dataTable.Rows[0].ItemArray[0]);
+            }
+            return data;
+        }
+
+        public object[] GetCharacter(int characterID)
+        {
+            object[] data;
+            string query = "SELECT Character.ID, Character.Name, Character.Gender, Character.Money, Player.Wins, Player.Losses " +
+                        "FROM Character INNER JOIN Player " +
+                        "ON Character.ID = Player.PlayerID " +
+                        "WHERE Character.ID = @characterID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@CharacterID", characterID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
     }
 }

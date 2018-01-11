@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Classes;
+using Classes.Repos;
+
 public enum Direction
 {
     Up,
@@ -32,6 +34,8 @@ public class Player : MonoBehaviour
     public bool surfing = false;
     public bool inBattle = false;
 
+    PlayerRepository repo;
+
     void Start()
     {
         pos = transform.position;
@@ -42,11 +46,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        repo = new PlayerRepository();
         DontDestroyOnLoad(this);
         //TODO: Vind uit waarom hier een Null Reference Exception uit komt
         if (player == null)
         {
-            player = new Classes.Player("Henk", 1, "Male", 0, 0, 0, 0, 0, 1); //Blijkbaar is dit een null reference exception
+            //player = repo.Load();
+            player = new Classes.Player("Henk", 1, "Male", 0, 0, 0, 0, 0, 2); //Blijkbaar is dit een null reference exception
         }
     }
 
