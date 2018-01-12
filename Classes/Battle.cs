@@ -104,13 +104,14 @@ namespace Classes
 
         public void PokemonCaught(Pokemon caughtPokemon)
         {
-            if (Player.Pokemons.Count() < 6)
+            if (Player.Pokemons.Count < 6)
             {
                 Player.Pokemons.Add(caughtPokemon);
+                Player.SavePokemons(caughtPokemon.Level, caughtPokemon.PokedexId, Player.Pokemons.Count - 1);
             }
             else
             {
-                //TODO Database Pokemon Caught --> Party caught
+                Player.SavePokemons(caughtPokemon.Level, caughtPokemon.PokedexId, null);
             }
         }
 

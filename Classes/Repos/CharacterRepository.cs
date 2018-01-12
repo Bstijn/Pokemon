@@ -112,6 +112,11 @@ namespace Classes.Repos
             return dialogues;
         }
 
+        public void SavePokemons(int level, int pokedexId, int? inparty)
+        {
+            context.InsertPokemon(level, pokedexId, inparty);
+        }
+
         public List<Move> GetPokemonMoves(int pokemonID)
         {
             List<object[]> data = context.GetPokemonMoves(pokemonID);
