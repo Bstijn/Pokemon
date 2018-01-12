@@ -145,11 +145,11 @@ namespace DAL_Remake.SQLContexts
 
         public List<object[]> GetEncounterablePokemon(int locationID)
         {
-            List<object[]> data = new List<object[]>();
-            string query = "select * from PokedexPokemon as p " +
+            var data = new List<object[]>();
+            var query = "select * from PokedexPokemon as p " +
                 "inner join PokemonLocation as PL on pl.PokedexPokemonID = p.ID " +
                 "inner join Location as l on l.ID = pl.AreaID " +
-                "where l.id = @characterID";
+                "where l.id = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -169,11 +169,36 @@ namespace DAL_Remake.SQLContexts
             return data;
         }
 
+        public List<object[]> GetPokedexPokemonMoves(int pokemonID, int lvl)
+        {
+            List<object[]> data = new List<object[]>();
+            string query = "select pm.id, pdm.name, pdm.maxpp, pdm.accuracy, pdm.description, pdm.basepower " +
+                           "FROM PokemonMove pm " +
+                           "INNER JOIN PokedexMove pdm " +
+                           "ON pm.pokedexmoveid = pdm.id " +
+                           "WHERE pm.PokedexPokemonID = @pokemonID AND pm.minlvl <= @lvl " +
+                           "ORDER BY Minlvl ASC";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@PokemonID", pokemonID);
+                adapter.SelectCommand.Parameters.AddWithValue("@lvl", lvl);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    data.Add(dataRow.ItemArray);
+                }
+            }
+            return data;
+        }
+
         public List<object[]> GetPokemonMoves(int pokemonID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select m.ID, pdm.name, m.currentPP, pdm.maxPP, pdm.accuracy, pdm.description, pdm.hasOverworldEffect, pdm.basePower, pm.minlevel " +
-                                    "from move m, pokemonMoves pm, pokedexMove pdm " +
+            string query = "select m.ID, pdm.name, m.currentPP, pdm.maxPP, pdm.accuracy, pdm.description, pdm.basePower, pm.minlvl " +
+                                    "from move m, pokemonMove pm, pokedexMove pdm " +
                                     "where m.pmid = pm.ID " +
                                     "and pm.ID = pdm.ID " +
                                     "and m.pokemonID = @PokemonID";
@@ -195,11 +220,7 @@ namespace DAL_Remake.SQLContexts
         public object[] GetPokemonType(int pokemonID)
         {
             object[] data;
-            string query = "select t.ID, t.Name " +
-                                    "from type t, pokedexpokemon pp, pokemon p " +
-                                    "where t.id = pp.typeID " +
-                                    "and pp.ID = p.pokedexpokemonID " +
-                                    "and p.ID = @PokemonID";
+            string query = "SELECT t.ID, t.Name FROM type t INNER JOIN PokedexPokemon pp ON t.id = pp.typeID WHERE pp.ID = @PokemonID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -270,11 +291,11 @@ namespace DAL_Remake.SQLContexts
         {
             List<object[]> data = new List<object[]>();
             string query = "select i.ID, i.Name, i.Cost, i.Description, r.Percentage, p.quantity " +
-                                    "from Posession p, Item i, Consumable c, Revive r " +
+                                    "from Possesion p, Item i, Consumable c, Revive r " +
                                     "where p.CharacterID = @CharacterID " +
                                     "and p.ItemID = i.ID " +
-                                    "and i.ID = c.ItemID " +
-                                    "and c.ItemID = r.ConsumableID";
+                                    "and i.ID = c.id " +
+                                    "and c.id = r.id";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -294,11 +315,11 @@ namespace DAL_Remake.SQLContexts
         {
             List<object[]> data = new List<object[]>();
             string query = "select i.ID, i.Name, i.Cost, i.Description, h.HealAmount, p.quantity " +
-                                    "from Posession p, Item i, Consumable c, HealthPotion h " +
+                                    "from Possesion p, Item i, Consumable c, HealthPotion h " +
                                     "where p.CharacterID = @CharacterID " +
                                     "and p.ItemID = i.ID " +
-                                    "and i.ID = c.ItemID " +
-                                    "and c.ItemID = h.ConsumableID";
+                                    "and i.ID = c.id " +
+                                    "and c.id = h.id";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -318,11 +339,11 @@ namespace DAL_Remake.SQLContexts
         {
             List<object[]> data = new List<object[]>();
             string query = "select i.ID, i.Name, i.Cost, i.Description, pb.CatchRate, p.quantity " +
-                                    "from Posession p, Item i, Consumable c, Pokeball pb " +
+                                    "from Possesion p, Item i, Consumable c, Pokeball pb " +
                                     "where p.CharacterID = @CharacterID " +
                                     "and p.ItemID = i.ID " +
-                                    "and i.ID = c.ItemID " +
-                                    "and c.ItemID = pb.ConsumableID";
+                                    "and i.ID = c.id " +
+                                    "and c.id = pb.id";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {

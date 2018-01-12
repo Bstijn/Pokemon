@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Red: {fileID: 0}
   sceneName: Route 101
+  toLocationId: 2
   targetX: 10
   targetY: 1
 --- !u!1 &400077371
@@ -667,6 +668,11 @@ Prefab:
         type: 2}
       propertyPath: targetY
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114525234408827216, guid: 5be7ecdc62144c44ea3dde57cdf8528b,
+        type: 2}
+      propertyPath: toLocationId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5be7ecdc62144c44ea3dde57cdf8528b, type: 2}

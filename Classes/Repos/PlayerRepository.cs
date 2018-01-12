@@ -9,11 +9,13 @@ namespace Classes.Repos
     {
         private ICharacterContext context;
         private CharacterRepository repo;
+        private IPlayerContext playerContext;
 
         public PlayerRepository()
         {
             context = new CharacterContext();
             repo = new CharacterRepository();
+            playerContext = new PlayerContext();
         }
 
         public void Save()
@@ -24,7 +26,8 @@ namespace Classes.Repos
         public Player Load()
         {
             object[] data = context.Load();
-            Player player = new Player(data[0].ToString(), (int)data[1], data[2].ToString(), (int)data[3], (int)data[4], (int)data[5], (int)data[6], (int)data[7], (int)data[8]);
+            Player player = new Player(data[0].ToString(), Convert.ToInt32(data[1]), data[2].ToString(), Convert.ToInt32(data[3]), 
+                Convert.ToInt32(data[4]), Convert.ToInt32(data[5]), Convert.ToInt32(data[6]), Convert.ToInt32(data[7]), Convert.ToInt32(data[8]));
             player.SetPokemons(GetPokemonFromParty(player.Id));
             player.SetInventory(GetInventory(player.Id));
 
@@ -58,7 +61,7 @@ namespace Classes.Repos
             foreach (object[] row in data)
             {
                 pokemonMoves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]),
-                    Convert.ToInt32(row[4]), row[5].ToString(), Convert.ToBoolean(row[6]), Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), GetPokemonType(pokemonID)));
+                    Convert.ToInt32(row[4]), row[5].ToString(), false, Convert.ToInt32(row[6]), Convert.ToInt32(row[7]), GetPokemonType(pokemonID)));
             }
 
             return pokemonMoves;
@@ -89,6 +92,17 @@ namespace Classes.Repos
 
             return inventory;
         }
+        private int ConvertToInt32(object value, int defaultvalue = 0)
+        {
+            try
+            {
+                return Convert.ToInt32(value);
+            }
+            catch (Exception)
+            {
+                return defaultvalue;
+            }
+        }
 
         private List<Possesion> GetRevives(int characterID)
         {
@@ -97,7 +111,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                revives.Add(new Possesion((int)row[5], new Revive(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
+                revives.Add(new Possesion(ConvertToInt32(row[5]), new Revive(ConvertToInt32(row[0]), row[1].ToString(), ConvertToInt32(row[2]), row[3].ToString(), (int) Convert.ToDouble(row[4]))));
             }
 
 
@@ -111,7 +125,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                potions.Add(new Possesion((int)row[5], new Potion(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
+                potions.Add(new Possesion(ConvertToInt32(row[5]), new Potion(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
             }
 
             return potions;
@@ -124,7 +138,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                pokeballs.Add(new Possesion((int)row[5], new Pokeball(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
+                pokeballs.Add(new Possesion(ConvertToInt32(row[5]), new Pokeball(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
             }
 
             return pokeballs;
@@ -137,7 +151,7 @@ namespace Classes.Repos
 
             foreach (object[] row in data)
             {
-                badges.Add(new Possesion((int)row[3], new Badge(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString())));
+                badges.Add(new Possesion(ConvertToInt32(row[3]), new Badge(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString())));
             }
 
             return badges;
@@ -154,6 +168,11 @@ namespace Classes.Repos
             }
 
             return keyItems;
+        }
+
+        public void UpdatePlayerLocation(int locationid)
+        {
+            playerContext.UpdatePlayerLocation(locationid);
         }
     }
 }

@@ -7,6 +7,7 @@ public class Transfer : MonoBehaviour {
 
     public GameObject Red;
     public string sceneName;
+    public int toLocationId;
 
     public int targetX;
     public int targetY;
@@ -15,8 +16,7 @@ public class Transfer : MonoBehaviour {
     float y;
 
     Vector3 target;
-
-    Passage passage;
+    
     private void Awake()
     {
         Red = GameObject.FindGameObjectWithTag("Player");
@@ -35,7 +35,7 @@ public class Transfer : MonoBehaviour {
             Red.transform.position = target;
             Red.GetComponent<Player>().pos = target;
             Red.GetComponent<Player>().moving = false;
-            //Red.GetComponent<Player>().player.GoToLocation(passage);
+            Red.GetComponent<Player>().player.GoToLocation(toLocationId);
         }
     }
 }
