@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Classes.Repos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace Classes
         public int Wins { get; private set; }
         public int Loses { get; private set; }
         public Pokecenter LastVisitedPokeCenter { get; private set; }
+        private CharacterRepository characterrepo;
         public Player(string name, int id, string gender, int money, int posX, int posY, Location currentLocation, List<Possesion> inventory, List<Pokemon> pokemons, int wins, int losses, Pokecenter lastVistedPokeCenter)
             : base(name, id, gender, money, posX, posY, currentLocation, inventory, pokemons)
         {
@@ -98,6 +100,10 @@ namespace Classes
             throw new NotImplementedException();
         }
 
+        public void SavePokemons(int level, int pokedexId, int? inparty)
+        {
+            characterrepo.SavePokemons(level, pokedexId, inparty);
+        }
 
         public void EncounterOppenent(Oppenent oppenent)
         {
