@@ -22,12 +22,14 @@ namespace DAL_Remake.Interfaces
         object[] GetPokemonType(int pokemonID);
 
         List<object[]> GetDialogues(int characterID);
-
+        object[] Load();
         object[] GetCurrentLocation(int characterID);
 
         string GetLocationType(int locationID);
 
         void InsertIntro(int pokemonID, string CharacterName, string Gender);
+        int GetCharacterIDForPlayer();
+        object[] GetCharacter(int characterID);
         void InsertPokemon(int lvl, int pokedexPokemonID, int? inparty);
         void UpdatePokemon(Pokemon pokemon);
         void UpdateMove(Move move, Pokemon pokemon);

@@ -1,10 +1,8 @@
 ﻿using DAL_Remake.Interfaces;
 using Mono.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System;
 using UnityEngine;
 using Classes;
 
@@ -24,12 +22,12 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetRevives(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description, r.Percentage " +
-                           "from Posession p, Item i, Consumable c, Revive r " +
+            string query = "select i.ID, i.Name, i.Cost, i.Description, r.Percentage, p.Quantity " +
+                           "from Possesion p, Item i, Consumable c, Revive r " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
-                           "and i.ID = c.ItemID " +
-                           "and c.ItemID = r.ConsumableID";
+                           "and i.ID = c.ID " +
+                           "and c.ID = r.ID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -48,12 +46,12 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetPotions(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description, h.HealAmount " +
-                           "from Posession p, Item i, Consumable c, HealthPotion h " +
+            string query = "select i.ID, i.Name, i.Cost, i.Description, h.HealAmount, p.Quantity " +
+                           "from Possesion p, Item i, Consumable c, HealthPotion h " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
-                           "and i.ID = c.ItemID " +
-                           "and c.ItemID = h.ConsumableID";
+                           "and i.ID = c.ID " +
+                           "and c.ID = h.id";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -72,12 +70,12 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetPokeballs(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description, pb.CatchRate " +
-                           "from Posession p, Item i, Consumable c, Pokeball pb " +
+            string query = "select i.ID, i.Name, i.Cost, i.Description, pb.CatchRate, p.Quantity " +
+                           "from Possesion p, Item i, Consumable c, Pokeball pb " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
-                           "and i.ID = c.ItemID " +
-                           "and c.ItemID = pb.ConsumableID";
+                           "and i.ID = c.ID " +
+                           "and c.ID = pb.id";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -96,12 +94,12 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetBadges(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Description " +
-                           "from Posession p, Item i, NonConsumable nc, Badge b " +
+            string query = "select i.ID, i.Name, i.Description, p.Quantity " +
+                           "from Possesion p, Item i, NonConsumable nc, Badge b " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
-                           "and i.ID = nc.ItemID " +
-                           "and nc.ItemID = b.NCID";
+                           "and i.ID = nc.id " +
+                           "and nc.id = b.id";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -120,15 +118,17 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetKeyItems(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Description, ki.IsUsable " +
-                           "from Posession p, Item i, NonConsumable nc, KeyItem ki " +
+            string query = "select i.ID, i.Name, i.Description, ki.IsUseable, p.Quantity " +
+                           "from Possesion p, Item i, NonConsumable nc, KeyItem ki " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
-                           "and i.ID = nc.ItemID " +
-                           "and nc.ItemID = ki.NCID";
+                           "and i.ID = nc.id " +
+                           "and nc.id = ki.id";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
+                adapter.SelectCommand.Parameters.AddWithValue("@CharacterID", characterID);
+
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
@@ -147,7 +147,7 @@ namespace DAL_Remake.SQLContexts
                 "select p.id, pp.name, p.inParty, p.level, p.currentHp, p.maxHp, p.xp, p.attack, p.defense, p.speed, pp.evolveLevel, pp.captureRate " +
                 "from pokemon p, pokedexpokemon pp " +
                 "where p.pokedexpokemonID = pp.ID " +
-                "and p.InParty = 1 " +
+                "and p.InParty IS NOT NULL " +
                 "and p.CharacterID = @CharacterID";
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -188,8 +188,8 @@ namespace DAL_Remake.SQLContexts
         {
             List<object[]> data = new List<object[]>();
             string query =
-                "select m.ID, pdm.name, m.currentPP, pdm.maxPP, pdm.accuracy, pdm.description, pdm.hasOverworldEffect, pdm.basePower, pm.minlevel " +
-                "from move m, pokemonMoves pm, pokedexMove pdm " +
+                "select m.ID, pdm.name, m.currentPP, pdm.maxPP, pdm.accuracy, pdm.description, pdm.basePower, pm.minlvl " +
+                "from move m, pokemonMove pm, pokedexMove pdm " +
                 "where m.pmid = pm.ID " +
                 "and pm.ID = pdm.ID " +
                 "and m.pokemonID = @PokemonID";
@@ -378,6 +378,15 @@ namespace DAL_Remake.SQLContexts
                 }
             }
             giveItemsToPlayer();
+            InsertCharacterLocation();
+        }
+
+        private void InsertCharacterLocation()
+        {
+            string query = "insert into CharacterLocation (CharacterID,LocationID,PosX,posy) values((select Id from Character inner join player as p on id = p.PlayerID),1,0,0)";
+            SqliteCommand cmd = new SqliteCommand(query, connection);
+            connection.Open();
+            cmd.ExecuteNonQuery();
         }
 
         public void InsertPokemon(int lvl, int pokedexPokemonID, int? inparty)
@@ -455,6 +464,55 @@ namespace DAL_Remake.SQLContexts
                     giveItemsCmd.ExecuteNonQuery();
                 }
             }
+
+        public int GetCharacterIDForPlayer()
+        {
+            int data;
+            string query = "SELECT Character.ID " +
+                            "FROM Character INNER JOIN Player " +
+                            "ON Character.ID = Player.PlayerID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = Convert.ToInt32(dataTable.Rows[0].ItemArray[0]);
+            }
+            return data;
+        }
+
+        public object[] GetCharacter(int characterID)
+        {
+            object[] data;
+            string query = "SELECT Character.ID, Character.Name, Character.Gender, Character.Money, Player.Wins, Player.Losses " +
+                        "FROM Character INNER JOIN Player " +
+                        "ON Character.ID = Player.PlayerID " +
+                        "WHERE Character.ID = @characterID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@CharacterID", characterID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
+
+        public object[] Load()
+        {
+            object[] data;
+            string query = "select c.name, c.id, c.gender, c.money, cl.posx,cl.posy, p.wins, p.losses, cl.Locationid from Character as c " +
+                           "inner join player as p on c.id = p.PlayerID " +
+                           "inner join CharacterLocation as cl on cl.CharacterID = c.id";
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+
         }
     }
 }

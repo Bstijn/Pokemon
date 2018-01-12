@@ -26,6 +26,19 @@
             MinLevel = minLevel;
             this.type = type;
         }
+        public Move(int id, string name, int maxPp, int accuracy, string description, int basePower, int minLevel, Type type)
+        {
+            Id = id;
+            Name = name;
+            CurrentPP = maxPp;
+            MaxPP = maxPp;
+            Accuracy = accuracy;
+            Description = description;
+            HasOverworldEffect = false;
+            BasePower = basePower;
+            MinLevel = minLevel;
+            this.type = type;
+        }
 
         public Type GetType()
         {

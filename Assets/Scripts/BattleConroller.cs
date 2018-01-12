@@ -33,7 +33,7 @@ namespace Assets.Scripts
 
         public void Start()
         {
-            var type1 = new CType(1, "Fire");
+            /*var type1 = new CType(1, "Fire");
             var type2 = new CType(2, "Water");
             var type3 = new CType(3, "Grass");
 
@@ -62,8 +62,8 @@ namespace Assets.Scripts
 
             var player = new CPlayer("Ayyayayay", 1, "Male", 1000, 5, 5, null, itemlist, new List<Pokemon> { playerpokemon, playerpokemon2, playerpokemon3}, 50, 5, null);
             var battle = new Battle(player, wildpokemon);
-            CreateNewBattle(battle);
-            
+            CreateNewBattle(battle);*/
+            CreateNewBattle(ApplicationModel.battle);
         }
 
         public void CreateNewBattle(Battle battle)

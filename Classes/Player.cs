@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DAL_Remake.SQLContexts;
 
 namespace Classes
 {
@@ -25,8 +26,8 @@ namespace Classes
             this.Wins = wins;
             this.Loses = losses;
             Inventory = new List<Possesion>();
-            SetPokemons(new List<Pokemon>());
-            SetCurrentLocation(locationRepo.GetCurrentLocation(locationID));
+            Pokemons = new List<Pokemon>();
+            //SetCurrentLocation(locationRepo.GetCurrentLocation(locationID));
         }
 
 
@@ -210,11 +211,11 @@ namespace Classes
             throw new NotImplementedException();
 
         }
-        public void GoToLocation(Passage passage)//Maybe check with database if character can go to location.
+        public void GoToLocation(int locationid)//Maybe check with database if character can go to location.
         {
-            CurrentLocation = passage.ToLocation;
-            PosX = passage.ToX;
-            PosY = passage.ToY;
+            CurrentLocation = locationRepo.GetCurrentLocation(locationid);
+
+            new PlayerContext().UpdatePlayerLocation(CurrentLocation.Id);
         }
     }
 }

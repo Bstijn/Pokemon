@@ -268,6 +268,12 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Classes">
+      <HintPath>Assets/Plugins/Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL_Remake">
+      <HintPath>Assets/Plugins/DAL_Remake.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
@@ -288,12 +294,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>C:/Users/Floris/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="Classes">
-      <HintPath>Assets/Plugins/Classes.dll</HintPath>
-    </Reference>
-    <Reference Include="DAL_Remake">
-      <HintPath>Assets/Plugins/DAL_Remake.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Editor\Data\PlaybackEngines\AppleTVSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

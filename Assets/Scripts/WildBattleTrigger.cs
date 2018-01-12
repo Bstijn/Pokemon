@@ -4,34 +4,32 @@ using CType = Classes.Type;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Assets.Scripts;
+using System.Collections;
 
 public class WildBattleTrigger : MonoBehaviour {
 
     public float EncounterRate;
     Area location;
-    System.Random rando;
-
     //DB -> Pokémon
     private void Start()
     {
-        //EncounterRate = GameController.instance.encounterRate;
-        //location = FindObjectOfType<Player>().GetCurrentLocation() as Area;
+        EncounterRate = GameController.instance.encounterRate;
+        location = FindObjectOfType<Player>().GetCurrentLocation() as Area;
     }
 
 
     private void Awake()
     {
-        rando = new System.Random();
-        //Load Pokémon
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        int roll = rando.Next(99);
+        location.FixEncounterablePokemon(FindObjectOfType<Player>().GetCurrentLocation().Id);
+        int roll = Random.Range(0, 100);
         if (roll < EncounterRate)
         {
             other.GetComponent<Player>().inBattle = true;
-            SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
+            CreateBattle();
         }
         else
         {
@@ -56,11 +54,26 @@ public class WildBattleTrigger : MonoBehaviour {
 
         //var wildpokemon = new Pokemon(type3, movelist2, 110, 1, "Cutecumber", false, 10, 100, 100, 5, false, 10, 10, 10, 50, 50);
         //var playerpokemon = new Pokemon(type1, movelist1, 15, 4, "Dubbleup", false, 11, 80, 100, 100, false, 15, 11, 9, 50, 10);
-
-        //var player = FindObjectOfType<Player>().player;
+        var wildpokemon = location.GenerateBattle();
+        var player = FindObjectOfType<Player>().player;
         //player.Pokemons.Add(playerpokemon);
-        //var battle = new Battle(player, wildpokemon);
 
-        //GameObject.GetComponent<BattleConroller>().CreateNewBattle(battle);
+        ApplicationModel.battle = new Battle(player, wildpokemon);
+        StartCoroutine("LoadAsyncBattle");
+    }
+
+    IEnumerator LoadAsyncBattle()
+    {
+        GameController.instance.EnableLoadingScreen(true);
+        // The Application loads the Scene in the background at the same time as the current Scene.
+        //This is particularly good for creating loading screens. You could also load the Scene by build //number.
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Battle", LoadSceneMode.Additive);
+
+        //Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        GameController.instance.EnableLoadingScreen(false);
     }
 }
