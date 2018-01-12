@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using Classes;
 
 namespace DAL_Remake.SQLContexts
 {
@@ -430,6 +431,40 @@ namespace DAL_Remake.SQLContexts
             }
         }
 
+        public void UpdatePokemon(Pokemon pokemon)
+        {
+            SqliteCommand giveItemsCmd = new SqliteCommand("update pokemon set currentHP = @CurrentHP where ID = @ID", connection);
+            List<int> quantitys = new List<int>() { 5, 2, 1, 3, 5, 2, 1, 1 };
+            using (connection)
+            {
+                connection.Open();
+                for (int i = 0; i < quantitys.Count; i++)
+                {
+                    giveItemsCmd.Parameters.Clear();
+                    giveItemsCmd.Parameters.Add(new SqliteParameter("@CurrentHP", pokemon.CurrentHp));
+                    giveItemsCmd.Parameters.Add(new SqliteParameter("@ID", pokemon.Id));
+                    giveItemsCmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateMove(Move move, Pokemon pokemon)
+        {
+            SqliteCommand giveItemsCmd = new SqliteCommand("update move set currentPP = @CurrentPP where PokemonID = @PokemonID and ID = move.id", connection);
+            List<int> quantitys = new List<int>() { 5, 2, 1, 3, 5, 2, 1, 1 };
+            using (connection)
+            {
+                connection.Open();
+                for (int i = 0; i < quantitys.Count; i++)
+                {
+                    giveItemsCmd.Parameters.Clear();
+                    giveItemsCmd.Parameters.Add(new SqliteParameter("@CurrentPP", move.CurrentPP));
+                    giveItemsCmd.Parameters.Add(new SqliteParameter("@ID", move.Id));
+                    giveItemsCmd.Parameters.Add(new SqliteParameter("@PokemonID", pokemon.Id));
+                    giveItemsCmd.ExecuteNonQuery();
+                }
+            }
+
         public int GetCharacterIDForPlayer()
         {
             int data;
@@ -477,6 +512,7 @@ namespace DAL_Remake.SQLContexts
                 data = dataTable.Rows[0].ItemArray;
             }
             return data;
+
         }
     }
 }

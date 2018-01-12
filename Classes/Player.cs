@@ -37,9 +37,7 @@ namespace Classes
             useditem.ItemUsed();
             if (consumable.GetType() == typeof(Pokeball))
             {
-                if (consumable.Use(targetPokemon))
-                    return true;
-                return false;
+                return consumable.Use(targetPokemon);
             }
 
             var selectedPokemon = Pokemons.First(p => targetPokemon.Id == p.Id);
@@ -80,8 +78,8 @@ namespace Classes
 
         private Possesion PossesionCheck(Consumable consumable)
         {
-            Possesion possesion = new Possesion(0, null);//TODO
-            foreach (Possesion consInInv in Inventory)
+            var possesion = new Possesion(0, null);//TODO
+            foreach (var consInInv in Inventory)
             {
                 if (consInInv.Item.Id == consumable.Id)
                 {
@@ -191,6 +189,12 @@ namespace Classes
         {
             //TODO IMPLEMENTEREN JOEL POSSESION
         }
+
+        public void UpdatePokemons()
+        {
+            characterrepo.UpdatePokemons(this.Pokemons);
+        }
+
         public void GiveMoney(int amount)
         {
             Money += amount;

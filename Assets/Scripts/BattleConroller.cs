@@ -46,8 +46,8 @@ namespace Assets.Scripts
             var movelist1 = new List<Move> { move1, move4, move3 };
             var movelist2 = new List<Move> { move5, move6 };
 
-            var wildpokemon = new Pokemon(type3, movelist2, 110, 1, "Cutecumber", false, 10, 100, 100, 5, false, 10, 10, 10, 50, 50);
-            var playerpokemon = new Pokemon(type1, movelist1, 15, 4, "Dubbleup", false, 11, 80, 100, 100, false, 15, 11, 9, 50, 10);
+            var wildpokemon = new Pokemon(type3, movelist2, 110, 1, "Cutescumber", false, 10, 100, 100, 5, false, 10, 10, 10, 50, 50);
+            var playerpokemon = new Pokemon(type1, movelist1, 15, 4, "Dubbleup", false, 11, 5, 100, 100, false, 15, 11, 9, 50, 10);
             var playerpokemon2 = new Pokemon(type3, movelist2, 2982 , 8, "Pikkie", false, 12, 110, 110, 6, false ,10, 10, 10, 25, 10);
             var playerpokemon3 = new Pokemon(type3, movelist2, 2982 , 8, "DikkieDik", false, 12, 110, 110, 6, true ,10, 10, 10, 25, 10);
             
@@ -103,6 +103,22 @@ namespace Assets.Scripts
                 pokemon.CurrentHp / (float) pokemon.MaxHp;
             panel.transform.Find("Stats").transform.Find("HpText").gameObject.GetComponent<Text>().text =
                 pokemon.CurrentHp + "/" + pokemon.MaxHp;
+            var bar = panel.transform.Find("Stats").transform.Find("HpBar").gameObject.GetComponent<Scrollbar>();
+            if (pokemon.CurrentHp/(float)pokemon.MaxHp < 0.1f)
+            {
+                bar.gameObject.transform.Find("Sliding Area").transform.Find("Handle").gameObject
+                    .GetComponent<Image>().color = Color.red;
+            }
+            else if (pokemon.CurrentHp / (float)pokemon.MaxHp < 0.5f)
+            {
+                bar.gameObject.transform.Find("Sliding Area").transform.Find("Handle").gameObject
+                    .GetComponent<Image>().color = new Color(0.96f, 0.76f, 0.26f);
+            }
+            else
+            {
+                bar.gameObject.transform.Find("Sliding Area").transform.Find("Handle").gameObject
+                    .GetComponent<Image>().color = Color.green;
+            }
         }
         
         public void OnAttackMenuButtonPress(GameObject attackMenu)
@@ -164,6 +180,23 @@ namespace Assets.Scripts
             EventSystem.current.SetSelectedGameObject(null);
         }
 
+        private IEnumerator SwitchPokemonIfAlive(Pokemon pokemon)
+        {
+            if (_battle.Player.Pokemons.Exists(p => !p.Fainted))
+            {
+            
+                SetPokemonSwitchTurn(false);
+                LoadPokemonMenuInfo();
+                _pokemonPanel.SetActive(true);
+            }
+            else
+            {
+                yield return EndBattle(pokemon);
+            }
+            
+            yield return null;
+        }
+
         private IEnumerator LowerHp(Pokemon pokemon)
         {
             if (pokemon.Id == _battle.PlayerPokemon.Id)
@@ -187,8 +220,7 @@ namespace Assets.Scripts
             {
                 yield return PokemonFainted(_EnemyPanel);
             }
-            //TODO NO! GET NEW POKEMON?!?!? do before each end battle
-            yield return EndBattle(pokemon);
+            yield return SwitchPokemonIfAlive(pokemon);
         }
 
         private IEnumerator AttackTurn(int playerMoveNumber)
@@ -213,14 +245,17 @@ namespace Assets.Scripts
             yield return UseAttack(first, second, firstMove);
             yield return LowerHp(second);
             yield return PokemonFaintedEndBattle(second);
+            if (!second.Fainted)
+            {
+                yield return UseAttack(second, first, secondMove);
+                yield return LowerHp(first);
+                yield return PokemonFaintedEndBattle(first);
 
-            yield return UseAttack(second, first, secondMove);
-            yield return LowerHp(first);
-            yield return PokemonFaintedEndBattle(first);
+                _textPanel.SetActive(false);
+                _infoAttackPanel.transform.parent.gameObject.SetActive(false);
+                _mainPanel.SetActive(true);
+            }
 
-            _textPanel.SetActive(false);
-            _infoAttackPanel.transform.parent.gameObject.SetActive(false);
-            _mainPanel.SetActive(true);
         }
 
         public IEnumerator EndBattle(Pokemon pokemon, bool pokemonCatch = false)
@@ -361,12 +396,24 @@ namespace Assets.Scripts
         public void SwitchPokemonButton(int pokemonindex)
         {
             //TODO MAKE DIS ENUMERATOR WITH TEXTS IF TIME
+            if (_battle.Player.Pokemons[pokemonindex].Fainted)
+            {
+                return;
+            }
             _battle.PlayerPokemon = _battle.Player.Pokemons[pokemonindex];
             SetPokemonInfo(_PlayerPanel, _battle.PlayerPokemon);
             SetPokemonSprite(_PlayerPanel, "PokemonBack/back" + _battle.PlayerPokemon.PokedexId.ToString("000"));
             if (_PokemonSwitchTurn)
             {
                 StartCoroutine(EnemyMoveEndTurn());
+            }
+            else
+            {
+                //TODO switch pokemon when dead
+                _PlayerPanel.transform.Find("Base").transform.Find("Image").transform.localPosition = new Vector3(0, 150, 0);
+                _textPanel.SetActive(false);
+                _infoAttackPanel.transform.parent.gameObject.SetActive(false);
+                _mainPanel.SetActive(true);
             }
         }
 
@@ -380,8 +427,7 @@ namespace Assets.Scripts
             yield return LowerPokemonHp(_PlayerPanel, _battle.PlayerPokemon.CurrentHp, _battle.PlayerPokemon.MaxHp);
             if (_battle.PlayerPokemon.Fainted)
             {
-                //TODO UWW NO DIS NOT WORK
-                yield return EndBattle(_battle.PlayerPokemon);
+                yield return SwitchPokemonIfAlive(_battle.PlayerPokemon);
             }
             _textPanel.SetActive(false);
             _mainPanel.SetActive(true);
@@ -474,6 +520,7 @@ namespace Assets.Scripts
             yield return WaitForInput();
             yield return EnemyMoveEndTurn();
         }
+
         private IEnumerator UpPokemonHp(GameObject panel, int currenthp, int maxhp)
         {
             var newValue = currenthp / (float)maxhp;
@@ -559,7 +606,6 @@ namespace Assets.Scripts
                 pokemonTransform.localPosition += new Vector3(0, -50, 0);
                 yield return new WaitForSeconds(0.001f);
             }
-            //TODO GET NEW POKEMON?!?!?!
         }
 
         private IEnumerator GetExp(Pokemon defeaded, Pokemon winner)
