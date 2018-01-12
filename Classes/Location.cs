@@ -1,6 +1,7 @@
 ﻿using Classes.Repos;
 using DAL_Remake.SQLContexts;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Classes
 {
@@ -42,14 +43,7 @@ namespace Classes
         }
         public Passage GetPassageByCoords(int x, int y)
         {
-            foreach (Passage passage in passages)
-            {
-                if(passage.FromX == x && passage.FromY == y)
-                {
-                    return passage;
-                }
-            }
-            return null;
+            return passages.FirstOrDefault(passage => passage.FromX == x && passage.FromY == y);
         }
     }
 }

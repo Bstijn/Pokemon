@@ -115,7 +115,7 @@ namespace Classes
         public void TakeDamage(int damage)
         {
             CurrentHp = Math.Max(CurrentHp - damage, 0);
-            if (CurrentHp == 0)
+            if (CurrentHp <= 0)
             {
                 Fainted = true;
             }
