@@ -146,15 +146,17 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetEncounterablePokemon(int locationID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select p.id, pp.name, p.inParty, p.level, p.currentHp, p.maxHp, p.xp, p.attack, p.defense, p.speed, pp.evolveLevel, pp.captureRate " +
-                                    "from pokemon p, pokedexpokemon pp, pokemonlocation pl, area a " +
-                                    "where p.pokedexpokemonID = pp.ID " +
-                                    "and pp.ID = pl.pokedexpokemonID " +
-                                    "and pl.areaID = a.locationID " +
-                                    "and a.locationID = @LocationID";
+            string query = "select * from PokedexPokemon as p " +
+                "inner join PokemonLocation as PL on pl.PokedexPokemonID = p.ID " +
+                "inner join Location as l on l.ID = pl.AreaID " +
+                "where l.id = @characterID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 adapter.SelectCommand.Parameters.AddWithValue("@LocationID", locationID);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
@@ -340,10 +342,10 @@ namespace DAL_Remake.SQLContexts
         {
             object[] data;
             string query = "SELECT *"+
-                            "FROM location"+
-                            "LEFT OUTER JOIN Area ON location.id = area.id"+
-                            "LEFT OUTER JOIN Building ON location.id = building.id"+
-                            "LEFT OUTER JOIN ROUTE ON Area.ID = Route.AreaID"+
+                            "FROM location "+
+                            "LEFT JOIN Area ON location.id = area.id "+
+                            "LEFT JOIN Building ON location.id = building.id "+
+                            "LEFT JOIN ROUTE ON Area.ID = Route.AreaID "+
                             "WHERE Location.ID = @LocationID";
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -363,9 +365,9 @@ namespace DAL_Remake.SQLContexts
         public object[] GetPassageByLocationAndCoords(int locationID, int x, int y)
         {
             object[] data;
-            string query = "select passage.id, fromx, fromy, tox, toy, tolocationid " +
-                                    "from location JOIN passage ON location.id=passage.fromID" +
-                                    "where location.id = @locationID" +
+            string query = "SELECT passage.id, fromx, fromy, tox, toy, tolocationid " +
+                                    "FROM location JOIN passage ON location.id=passage.fromID" +
+                                    "WHERE location.id = @locationID" +
                                     "AND fromx = @X AND fromy = @Y";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))

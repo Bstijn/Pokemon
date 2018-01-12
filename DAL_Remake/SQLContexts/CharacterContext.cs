@@ -1,10 +1,8 @@
 ﻿using DAL_Remake.Interfaces;
 using Mono.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System;
 using UnityEngine;
 
 namespace DAL_Remake.SQLContexts
@@ -23,7 +21,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetRevives(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description, r.Percentage " +
+            string query = "select i.ID, i.Name, i.Cost, i.Description, r.Percentage, p.Amount " +
                            "from Posession p, Item i, Consumable c, Revive r " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
@@ -47,7 +45,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetPotions(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description, h.HealAmount " +
+            string query = "select i.ID, i.Name, i.Cost, i.Description, h.HealAmount, p.Amount " +
                            "from Posession p, Item i, Consumable c, HealthPotion h " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
@@ -71,7 +69,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetPokeballs(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Cost, i.Description, pb.CatchRate " +
+            string query = "select i.ID, i.Name, i.Cost, i.Description, pb.CatchRate, p.Amount " +
                            "from Posession p, Item i, Consumable c, Pokeball pb " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
@@ -95,7 +93,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetBadges(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Description " +
+            string query = "select i.ID, i.Name, i.Description, p.Amount " +
                            "from Posession p, Item i, NonConsumable nc, Badge b " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
@@ -119,7 +117,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetKeyItems(int characterID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select i.ID, i.Name, i.Description, ki.IsUsable " +
+            string query = "select i.ID, i.Name, i.Description, ki.IsUsable, p.Amount " +
                            "from Posession p, Item i, NonConsumable nc, KeyItem ki " +
                            "where p.CharacterID = @CharacterID " +
                            "and p.ItemID = i.ID " +
@@ -419,6 +417,45 @@ namespace DAL_Remake.SQLContexts
                     }
                 }
             }
+        }
+
+        public int GetCharacterIDForPlayer()
+        {
+            int data;
+            string query = "SELECT Character.ID " +
+                            "FROM Character INNER JOIN Player " +
+                            "ON Character.ID = Player.PlayerID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = Convert.ToInt32(dataTable.Rows[0].ItemArray[0]);
+            }
+            return data;
+        }
+
+        public object[] GetCharacter(int characterID)
+        {
+            object[] data;
+            string query = "SELECT Character.ID, Character.Name, Character.Gender, Character.Money, Player.Wins, Player.Losses " +
+                        "FROM Character INNER JOIN Player " +
+                        "ON Character.ID = Player.PlayerID " +
+                        "WHERE Character.ID = @characterID";
+
+            using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
+            {
+                adapter.SelectCommand.Parameters.AddWithValue("@CharacterID", characterID);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                data = dataTable.Rows[0].ItemArray;
+            }
+            return data;
+        }
+
+        public object[] Load()
+        {
+            throw new NotImplementedException();
         }
     }
 }

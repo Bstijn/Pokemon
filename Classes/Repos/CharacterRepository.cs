@@ -14,67 +14,67 @@ namespace Classes.Repos
             context = new CharacterContext();
         }
 
-        private List<Revive> GetRevives(int characterID)
+        private List<Possesion> GetRevives(int characterID)
         {
             List<object[]> data = context.GetRevives(characterID);
-            List<Revive> revives = new List<Revive>();
+            List<Possesion> revives = new List<Possesion>();
 
             foreach (object[] row in data)
             {
-                revives.Add(new Revive(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
+                revives.Add(new Possesion((int)row[5], new Revive(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
             }
 
 
             return revives;
         }
 
-        private List<Potion> GetPotions(int characterID)
+        private List<Possesion> GetPotions(int characterID)
         {
             List<object[]> data = context.GetPotions(characterID);
-            List<Potion> potions = new List<Potion>();
+            List<Possesion> potions = new List<Possesion>();
 
             foreach (object[] row in data)
             {
-                potions.Add(new Potion(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
+                potions.Add(new Possesion((int)row[5], new Potion(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
             }
 
             return potions;
         }
 
-        private List<Pokeball> GetPokeballs(int characterID)
+        private List<Possesion> GetPokeballs(int characterID)
         {
             List<object[]> data = context.GetPokeballs(characterID);
-            List<Pokeball> pokeballs = new List<Pokeball>();
+            List<Possesion> pokeballs = new List<Possesion>();
 
             foreach (object[] row in data)
             {
-                pokeballs.Add(new Pokeball(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4])));
+                pokeballs.Add(new Possesion((int)row[5], new Pokeball(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), row[3].ToString(), Convert.ToInt32(row[4]))));
             }
 
             return pokeballs;
         }
 
-        private List<Badge> GetBadges(int characterID)
+        private List<Possesion> GetBadges(int characterID)
         {
             List<object[]> data = context.GetBadges(characterID);
-            List<Badge> badges = new List<Badge>();
+            List<Possesion> badges = new List<Possesion>();
 
             foreach (object[] row in data)
             {
-                badges.Add(new Badge(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString()));
+                badges.Add(new Possesion((int)row[3], new Badge(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString())));
             }
 
             return badges;
         }
 
-        private List<KeyItem> GetKeyItems(int characterID)
+        private List<Possesion> GetKeyItems(int characterID)
         {
             List<object[]> data = context.GetKeyItems(characterID);
-            List<KeyItem> keyItems = new List<KeyItem>();
+            List<Possesion> keyItems = new List<Possesion>();
 
             foreach (object[] row in data)
             {
-                keyItems.Add(new KeyItem(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), Convert.ToBoolean(row[3])));
+                keyItems.Add(new Possesion(Convert.ToInt32(row[4]), new KeyItem(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(), Convert.ToBoolean(row[3]))));
             }
 
             return keyItems;
@@ -139,19 +139,19 @@ namespace Classes.Repos
         }
 
 
-        public List<Item> GetInventory(int characterID)
+        public List<Possesion> GetInventory(int characterID)
         {
-            List<Item> inventory = new List<Item>();
+            List<Possesion> inventory = new List<Possesion>();
 
-            foreach (Potion potion in GetPotions(characterID))
+            foreach (Possesion potion in GetPotions(characterID))
                 inventory.Add(potion);
-            foreach (Revive revive in GetRevives(characterID))
+            foreach (Possesion revive in GetRevives(characterID))
                 inventory.Add(revive);
-            foreach (Pokeball pokeball in GetPokeballs(characterID))
+            foreach (Possesion pokeball in GetPokeballs(characterID))
                 inventory.Add(pokeball);
-            foreach (KeyItem keyItem in GetKeyItems(characterID))
+            foreach (Possesion keyItem in GetKeyItems(characterID))
                 inventory.Add(keyItem);
-            foreach (Badge badge in GetBadges(characterID))
+            foreach (Possesion badge in GetBadges(characterID))
                 inventory.Add(badge);
 
             return inventory;

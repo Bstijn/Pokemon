@@ -77,4 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03923a37ac05a8e48b0af761a90138b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 1345552746569672, guid: f4884fd8fde9052458409617bba5077b,
+    type: 2}
+  loadingEventSystem: {fileID: 1900195854999448, guid: bf41719a2d549f948a140d5123553b8c,
+    type: 2}
   EncounterRate: 30

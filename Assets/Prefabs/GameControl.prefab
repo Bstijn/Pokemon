@@ -52,3 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Red: {fileID: 1062571061028454, guid: e48e98ac904ea6843894f78138e639be, type: 2}
+  encounterRate: 0
+  surfEnabled: 0
+  loadingScreen: {fileID: 1345552746569672, guid: f4884fd8fde9052458409617bba5077b,
+    type: 2}
+  surfEnabler: {fileID: 0}
