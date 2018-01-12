@@ -125,7 +125,7 @@ namespace Classes.Repos
             foreach (object[] row in data)
             {
                 pokemonMoves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]),
-                    Convert.ToInt32(row[4]), row[5].ToString(), Convert.ToBoolean(row[6]), Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), GetPokemonType(pokemonID)));
+                    Convert.ToInt32(row[4]), row[5].ToString(), false, Convert.ToInt32(row[6]), Convert.ToInt32(row[7]), GetPokemonType(pokemonID)));
             }
 
             return pokemonMoves;

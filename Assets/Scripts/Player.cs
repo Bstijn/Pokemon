@@ -51,8 +51,8 @@ public class Player : MonoBehaviour
         //TODO: Vind uit waarom hier een Null Reference Exception uit komt
         if (player == null)
         {
-            //player = repo.Load();
-            player = new Classes.Player("Henk", 1, "Male", 0, 0, 0, 0, 0, 2); //Blijkbaar is dit een null reference exception
+            player = repo.Load();
+            //player = new Classes.Player("Henk", 1, "Male", 0, 0, 0, 0, 0, 2); //Blijkbaar is dit een null reference exception
         }
     }
 

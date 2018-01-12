@@ -82,14 +82,26 @@ namespace Classes.Repos
             {
                 object[] typeData = context.GetPokemonType(Convert.ToInt32(row[0]));
                 Type type = new Type(Convert.ToInt32(typeData[0]), typeData[1].ToString());
-                List<Move> pokemonMoves = GetPokemonMoves(Convert.ToInt32(row[0]));
+                List<Move> pokemonMoves = GetPokedexPokemonMoves(Convert.ToInt32(row[0]), Convert.ToInt32(row[3]));
 
                 pokemonAtLocation.Add(new Pokemon(type, pokemonMoves, Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToBoolean(row[2]),
-                    Convert.ToInt32(row[3]), Convert.ToInt32(row[4]), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]),
-                    Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), Convert.ToInt32(row[9]), Convert.ToInt32(row[10]),
-                    Convert.ToInt32(row[11])));
+                    ConvertToInt32(row[3]), ConvertToInt32(row[4]), ConvertToInt32(row[5]), ConvertToInt32(row[6]),
+                    ConvertToInt32(row[7]), ConvertToInt32(row[8]), ConvertToInt32(row[9]), ConvertToInt32(row[10]),
+                    ConvertToInt32(row[11])));
             }
             return pokemonAtLocation;
+        }
+
+        private int ConvertToInt32(object value, int defaultvalue = 0)
+        {
+            try
+            {
+                return Convert.ToInt32(value);
+            }
+            catch (Exception)
+            {
+                return defaultvalue;
+            }
         }
 
         public List<Move> GetPokemonMoves(int pokemonID)
@@ -100,7 +112,21 @@ namespace Classes.Repos
             foreach (object[] row in data)
             {
                 pokemonMoves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]),
-                    Convert.ToInt32(row[4]), row[5].ToString(), Convert.ToBoolean(row[6]), Convert.ToInt32(row[7]), Convert.ToInt32(row[8]), GetMoveType(Convert.ToInt32(row[0]))));
+                    Convert.ToInt32(row[4]), row[5].ToString(), false, Convert.ToInt32(row[6]), Convert.ToInt32(row[7]), GetMoveType(Convert.ToInt32(row[0]))));
+            }
+
+            return pokemonMoves;
+        }
+
+        public List<Move> GetPokedexPokemonMoves(int pokemonID, int level)
+        {
+            List<object[]> data = context.GetPokedexPokemonMoves(pokemonID, level);
+            List<Move> pokemonMoves = new List<Move>();
+
+            foreach (object[] row in data)
+            {
+                pokemonMoves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]),
+                    Convert.ToInt32(row[3]), row[4].ToString(), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]), GetMoveType(Convert.ToInt32(row[0]))));
             }
 
             return pokemonMoves;
