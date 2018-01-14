@@ -96,7 +96,7 @@ namespace Classes
         {
             this.type = type;
             this.moves = moves;
-            Id = id;
+            PokedexId = id;
             Name = name;
             InParty = inParty;
             Level = level;

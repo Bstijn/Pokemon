@@ -2,14 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization.Formatters;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 using Classes;
 using Classes.Exceptions;
 using UnityEngine.EventSystems;
-using UnityEngine.Networking.NetworkSystem;
 using UnityEngine.SceneManagement;
 using CPlayer = Classes.Player;
 using CType = Classes.Type;

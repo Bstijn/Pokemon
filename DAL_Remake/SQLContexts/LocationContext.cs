@@ -147,9 +147,10 @@ namespace DAL_Remake.SQLContexts
         {
             var data = new List<object[]>();
             var query = "select * from PokedexPokemon as p " +
-                "inner join PokemonLocation as PL on pl.PokedexPokemonID = p.ID " +
-                "inner join Location as l on l.ID = pl.AreaID " +
-                "where l.id = @LocationID";
+                        "inner join PokemonLocation as PL on pl.PokedexPokemonID = p.ID " +
+                        "inner join Location as l on l.ID = pl.AreaID " +
+                        "inner join Area as a on a.ID = l.ID " +
+                        "where l.id = @LocationID";
 
             using (SqliteDataAdapter adapter = new SqliteDataAdapter(query, connection))
             {
@@ -172,7 +173,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetPokedexPokemonMoves(int pokemonID, int lvl)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select pm.id, pdm.name, pdm.maxpp, pdm.accuracy, pdm.description, pdm.basepower " +
+            string query = "select pdm.id, pdm.name, pdm.maxpp, pdm.accuracy, pdm.description, pdm.basepower " +
                            "FROM PokemonMove pm " +
                            "INNER JOIN PokedexMove pdm " +
                            "ON pm.pokedexmoveid = pdm.id " +
@@ -197,7 +198,7 @@ namespace DAL_Remake.SQLContexts
         public List<object[]> GetPokemonMoves(int pokemonID)
         {
             List<object[]> data = new List<object[]>();
-            string query = "select m.ID, pdm.name, m.currentPP, pdm.maxPP, pdm.accuracy, pdm.description, pdm.basePower, pm.minlvl " +
+            string query = "select pdm.id, pdm.name, m.currentPP, pdm.maxPP, pdm.accuracy, pdm.description, pdm.basePower, pm.minlvl " +
                                     "from move m, pokemonMove pm, pokedexMove pdm " +
                                     "where m.pmid = pm.ID " +
                                     "and pm.ID = pdm.ID " +
@@ -236,7 +237,7 @@ namespace DAL_Remake.SQLContexts
         {
             object[] data;
             string query = "select t.ID, t.Name " +
-                           "from type t, pokedexmove pm" +
+                           "from type t, pokedexmove pm " +
                            "where t.id = pm.typeID " +
                            "and pm.ID = @MoveID";
 

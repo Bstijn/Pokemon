@@ -82,12 +82,13 @@ namespace Classes.Repos
             {
                 object[] typeData = context.GetPokemonType(Convert.ToInt32(row[0]));
                 Type type = new Type(Convert.ToInt32(typeData[0]), typeData[1].ToString());
-                List<Move> pokemonMoves = GetPokedexPokemonMoves(Convert.ToInt32(row[0]), Convert.ToInt32(row[3]));
+                var level = new Random().Next(ConvertToInt32(row[24]), ConvertToInt32(row[25]));
+                List<Move> pokemonMoves = GetPokedexPokemonMoves(Convert.ToInt32(row[0]), level);
 
-                pokemonAtLocation.Add(new Pokemon(type, pokemonMoves, Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToBoolean(row[2]),
-                    ConvertToInt32(row[3]), ConvertToInt32(row[4]), ConvertToInt32(row[5]), ConvertToInt32(row[6]),
-                    ConvertToInt32(row[7]), ConvertToInt32(row[8]), ConvertToInt32(row[9]), ConvertToInt32(row[10]),
-                    ConvertToInt32(row[11])));
+                pokemonAtLocation.Add(new Pokemon(type, pokemonMoves, Convert.ToInt32(row[0]), row[1].ToString(), false,
+                    level, ConvertToInt32(row[13]), ConvertToInt32(row[13]), 0,
+                    ConvertToInt32(row[7]), ConvertToInt32(row[8]), ConvertToInt32(row[11]), ConvertToInt32(row[6]),
+                    ConvertToInt32(row[15])));
             }
             return pokemonAtLocation;
         }
@@ -126,7 +127,7 @@ namespace Classes.Repos
             foreach (object[] row in data)
             {
                 pokemonMoves.Add(new Move(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]),
-                    Convert.ToInt32(row[3]), row[4].ToString(), Convert.ToInt32(row[5]), Convert.ToInt32(row[6]), GetMoveType(Convert.ToInt32(row[0]))));
+                    Convert.ToInt32(row[3]), row[4].ToString(), Convert.ToInt32(row[5]), GetMoveType(Convert.ToInt32(row[0]))));
             }
 
             return pokemonMoves;
